@@ -1,0 +1,142 @@
+============================================================
+DATASET PREPARATION SUMMARY
+============================================================
+
+OPTION A — Full Dataset
+----------------------------------------
+  Total rows:       13,899
+  Sepsis (pos):     985  (7.1%)
+  Non-sepsis (neg): 12,914  (92.9%)
+  Class ratio:      1 : 13.1
+  Columns:          390
+  Use case:         Baseline modelling, larger dataset
+
+OPTION B — Infection-Only Dataset
+----------------------------------------
+  Total rows:       3,511
+  Sepsis (pos):     985  (28.1%)
+  Non-sepsis (neg): 2,526  (71.9%)
+  Class ratio:      1 : 2.6
+  Columns:          390
+  Use case:         Clinically meaningful, real ICU scenario
+
+============================================================
+MISSING VALUE HANDLING
+============================================================
+
+  Strategy: Median imputation for all numeric columns
+  Additional: Columns with >20% missing also get a
+  '_was_measured' binary indicator column
+  Rationale: Missingness is informative in clinical data
+  (sicker patients get more tests)
+
+  Columns imputed:                  234
+  Columns with indicator added:      104
+  Total columns after preparation:   390
+
+COLUMNS WITH INDICATOR FLAGS ADDED (>20% missing):
+----------------------------------------
+  albumin_first                            36.6% missing
+  albumin_max                              36.6% missing
+  albumin_mean                             36.6% missing
+  albumin_min                              36.6% missing
+  alt_first                                27.4% missing
+  alt_max                                  27.4% missing
+  alt_mean                                 27.4% missing
+  alt_min                                  27.4% missing
+  anion_gap_first                          26.1% missing
+  anion_gap_max                            26.1% missing
+  anion_gap_mean                           26.1% missing
+  anion_gap_min                            26.1% missing
+  ast_first                                36.6% missing
+  ast_max                                  36.6% missing
+  ast_mean                                 36.6% missing
+  ast_min                                  36.6% missing
+  bilirubin_mgdl_first                     28.0% missing
+  bilirubin_mgdl_max                       28.0% missing
+  bilirubin_mgdl_mean                      28.0% missing
+  bilirubin_mgdl_min                       28.0% missing
+  bilirubin_umol_first                     28.0% missing
+  bilirubin_umol_max                       28.0% missing
+  bilirubin_umol_mean                      28.0% missing
+  bilirubin_umol_min                       28.0% missing
+  blood_glucose_chart_first                97.6% missing
+  blood_glucose_chart_max                  97.6% missing
+  blood_glucose_chart_mean                 97.6% missing
+  blood_glucose_chart_min                  97.6% missing
+  ck_first                                 37.2% missing
+  ck_max                                   37.2% missing
+  ck_mean                                  37.2% missing
+  ck_min                                   37.2% missing
+  creatinine_mgdl_first                    27.7% missing
+  creatinine_mgdl_max                      27.7% missing
+  creatinine_mgdl_mean                     27.7% missing
+  creatinine_mgdl_min                      27.7% missing
+  creatinine_umol_first                    27.7% missing
+  creatinine_umol_max                      27.7% missing
+  creatinine_umol_mean                     27.7% missing
+  creatinine_umol_min                      27.7% missing
+  crp_first                                28.3% missing
+  crp_max                                  28.3% missing
+  crp_mean                                 28.3% missing
+  crp_min                                  28.3% missing
+  ddimer_first                             60.6% missing
+  ddimer_max                               60.6% missing
+  ddimer_mean                              60.6% missing
+  ddimer_min                               60.6% missing
+  diastolic_bp_first                       62.8% missing
+  diastolic_bp_max                         62.8% missing
+  diastolic_bp_mean                        62.8% missing
+  diastolic_bp_min                         62.8% missing
+  fibrinogen_first                         60.3% missing
+  fibrinogen_max                           60.3% missing
+  fibrinogen_mean                          60.3% missing
+  fibrinogen_min                           60.3% missing
+  heart_rate_first                         55.7% missing
+  heart_rate_max                           55.7% missing
+  heart_rate_mean                          55.7% missing
+  heart_rate_min                           55.7% missing
+  inr_first                                34.3% missing
+  inr_max                                  34.3% missing
+  inr_mean                                 34.3% missing
+  inr_min                                  34.3% missing
+  ldh_first                                37.0% missing
+  ldh_max                                  37.0% missing
+  ldh_mean                                 37.0% missing
+  ldh_min                                  37.0% missing
+  map_first                                62.8% missing
+  map_max                                  62.8% missing
+  map_mean                                 62.8% missing
+  map_min                                  62.8% missing
+  pt_first                                 34.3% missing
+  pt_max                                   34.3% missing
+  pt_mean                                  34.3% missing
+  pt_min                                   34.3% missing
+  ptt_first                                34.7% missing
+  ptt_max                                  34.7% missing
+  ptt_mean                                 34.7% missing
+  ptt_min                                  34.7% missing
+  resp_rate_first                          44.0% missing
+  resp_rate_max                            44.0% missing
+  resp_rate_mean                           44.0% missing
+  resp_rate_min                            44.0% missing
+  spo2_first                               69.5% missing
+  spo2_max                                 69.5% missing
+  spo2_mean                                69.5% missing
+  spo2_min                                 69.5% missing
+  systolic_bp_first                        62.8% missing
+  systolic_bp_max                          62.8% missing
+  systolic_bp_mean                         62.8% missing
+  systolic_bp_min                          62.8% missing
+  temperature_first                        44.0% missing
+  temperature_max                          44.0% missing
+  temperature_mean                         44.0% missing
+  temperature_min                          44.0% missing
+  urea_first                               29.8% missing
+  urea_max                                 29.8% missing
+  urea_mean                                29.8% missing
+  urea_min                                 29.8% missing
+  uric_acid_first                          36.7% missing
+  uric_acid_max                            36.7% missing
+  uric_acid_mean                           36.7% missing
+  uric_acid_min                            36.7% missing

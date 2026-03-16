@@ -1,0 +1,36 @@
+# =========================
+# macOS junk
+# =========================
+.DS_Store
+
+# =========================
+# Raw PIC dataset files
+# (huge + licensed)
+# =========================
+paediatric-intensive-care-database-1.1.0/*.csv.gz
+paediatric-intensive-care-database-1.1.0/*.csv
+
+paediatric-intensive-care-database-1.1.0/V1.1.0/
+paediatric-intensive-care-database-1.1.0/update_to_v1.1.0/
+# Ignore database schema folders
+paediatric-intensive-care-database-1.1.0/mysql/
+paediatric-intensive-care-database-1.1.0/postgresql/
+paediatric-intensive-care-database-1.1.0/README.txt
+paediatric-intensive-care-database-1.1.0/LICENSE.txt
+
+
+
+
+
+# =========================
+# Python environment junk
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# Logs
+# =========================
+*.log

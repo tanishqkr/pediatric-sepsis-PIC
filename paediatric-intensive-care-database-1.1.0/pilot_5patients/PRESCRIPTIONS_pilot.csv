@@ -1,0 +1,939 @@
+ROW_ID,SUBJECT_ID,HADM_ID,ICUSTAY_ID,STARTDATE,ENDDATE,DRUG_NAME,DRUG_NAME_EN,PROD_STRENGTH,DRUG_NAME_GENERIC,DOSE_VAL_RX,DOSE_UNIT_RX,DRUG_FORM
+1002,10002,110224,,2077-01-02 11:48:47,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+3123,10000,110773,,2080-05-07 08:56:22,,茵栀黄口服液,Yinzhihuang oral liquid,10ml*10,,5.0,ml,chinese patent drug
+3124,10000,110773,,2080-05-07 08:56:48,,双歧杆菌三联活菌散,"Live Combined Bifidobacterium, Lactobacillus and Enterococcus Powder,oral",1g*7,,0.5,g,powder
+3125,10000,110773,,2080-05-07 08:57:00,,熊去氧胆酸胶囊,Ursodeoxycholic Acid Capsules,250mg*25,,50.0,mg,tablet/capsule
+18525,10002,110224,,2077-01-03 10:36:28,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,25.0,ml,injection
+20087,10002,110224,,2077-01-03 16:21:05,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+20575,10002,110224,,2077-01-04 09:17:32,2077-01-08 10:31:01,氢氯噻嗪片,Hydrochlorothiazide Tablets,25mg*100,,2.5,mg,tablet/capsule
+20576,10002,110224,,2077-01-04 09:17:48,2077-01-08 10:31:01,螺内酯片,Spironolactone Tablets,20mg*100,,2.5,mg,tablet/capsule
+20577,10002,110224,,2077-01-04 09:18:03,2077-01-06 10:03:47,呋塞米片,Furosemide Tablets,20mg*100,,2.5,mg,tablet/capsule
+20578,10002,110224,,2077-01-04 09:18:19,2077-01-06 10:03:49,氯化钾片,Potassium Chloride Tablets,0.25g*100,,0.025,g,tablet/capsule
+20579,10002,110224,,2077-01-04 09:18:52,2077-01-08 10:31:01,果糖二磷酸钠口服液,Fructose Sodium Diphosphate Oral Solution,10ml:1g*10,,5.0,ml,water aqua
+20580,10002,110224,,2077-01-04 09:19:07,,果糖二磷酸钠口服液,Fructose Sodium Diphosphate Oral Solution,10ml:1g*10,,5.0,ml,water aqua
+33901,10002,110224,,2077-01-05 07:59:28,,灌肠用水合氯醛粉,Chloral hydrate powder for enema,0.5g:5ml,,2.0,ml,water aqua
+56515,10002,110224,,2077-01-06 10:03:20,2077-01-08 10:31:01,阿司匹林肠溶片,Aspirin Enteric-Coated Tablets,25mg*100,,12.5,mg,tablet/capsule
+508128,10002,110224,,2077-01-07 09:26:56,2077-01-08 08:50:15,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+508129,10002,110224,,2077-01-07 09:26:56,2077-01-08 08:50:15,注射用磷酸肌酸钠,Creatine phosphate sodium for injection,0.5g,,0.5,g,injection
+508130,10002,110224,,2077-01-07 09:26:56,2077-01-08 08:50:15,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+508161,10002,110224,,2077-01-07 15:56:43,,双歧杆菌三联活菌散,"Live Combined Bifidobacterium, Lactobacillus and Enterococcus Powder,oral",1g*7,,0.5,g,powder
+569183,10002,110224,,2077-01-08 10:31:07,,盐酸索他洛尔片,Sotalol Hydrochloride Tablets,80mg*24,,5.0,mg,tablet/capsule
+569184,10002,110224,,2077-01-08 10:31:44,,氢氯噻嗪片,Hydrochlorothiazide Tablets,25mg*100,,2.5,mg,tablet/capsule
+569185,10002,110224,,2077-01-08 10:32:01,,螺内酯片,Spironolactone Tablets,20mg*100,,2.5,mg,tablet/capsule
+569186,10002,110224,,2077-01-08 10:32:07,,阿司匹林肠溶片,Aspirin Enteric-Coated Tablets,25mg*100,,12.5,mg,tablet/capsule
+569187,10002,110224,,2077-01-08 10:32:22,,果糖二磷酸钠口服液,Fructose Sodium Diphosphate Oral Solution,10ml:1g*10,,5.0,ml,water aqua
+688714,10003,110226,,2112-01-20 23:59:51,,灭菌注射用水,Sterile Water Injection,500ml,,500.0,ml,injection
+688715,10003,110226,,2112-01-21 00:31:35,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+688716,10003,110226,,2112-01-21 00:31:35,,地西泮注射液,Diazepam Injection,2ml:10mg*10,,3.0,mg,injection
+688717,10003,110226,,2112-01-21 00:06:00,2112-01-21 04:20:58,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+688718,10003,110226,,2112-01-21 00:49:42,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+688719,10003,110226,,2112-01-21 00:49:42,,乳酸米力农注射液,Milrinone Lactate Injection,5ml:5mg*2,,0.5,mg,injection
+688720,10003,110226,,2112-01-21 00:50:25,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+688721,10003,110226,,2112-01-21 00:50:25,,乳酸米力农注射液,Milrinone Lactate Injection,5ml:5mg*2,,4.5,mg,injection
+688722,10003,110226,,2112-01-21 00:53:39,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,6.0,mg,injection
+688723,10003,110226,,2112-01-21 00:55:36,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,6.0,mg,injection
+688724,10003,110226,,2112-01-21 00:56:40,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+688725,10003,110226,,2112-01-21 00:56:40,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,20.0,ml,injection
+688726,10003,110226,,2112-01-21 00:56:40,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+688727,10003,110226,,2112-01-21 01:22:49,,甘油果糖氯化钠注射液,Glycerol Fructose and Sodium Chloride Injection,250ml,,80.0,ml,injection
+688728,10003,110226,,2112-01-21 02:30:11,2112-01-21 04:21:01,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+688729,10003,110226,,2112-01-21 02:30:11,2112-01-21 04:21:01,注射用磷酸肌酸钠,Creatine phosphate sodium for injection,0.5g,,0.5,g,injection
+688730,10003,110226,,2112-01-21 02:30:11,2112-01-21 04:21:01,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+688731,10003,110226,,2112-01-21 02:31:01,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+688732,10003,110226,,2112-01-21 02:31:01,,维生素C注射液,Vitamin C Injection,1.0g/5ml*5,,1.0,g,injection
+688733,10003,110226,,2112-01-21 02:51:40,2112-01-21 04:21:02,螺内酯片,Spironolactone Tablets,20mg*100,,20.0,mg,tablet/capsule
+688734,10003,110226,,2112-01-21 02:59:38,,灌肠用水合氯醛粉,Chloral hydrate powder for enema,0.5g:5ml,,5.0,ml,water aqua
+688735,10003,110226,,2112-01-21 04:33:08,2112-01-21 13:59:51,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,10ml:0.5g*5,,10.0,ml,injection
+688736,10003,110226,,2112-01-21 04:33:10,2112-01-21 13:59:51,灭菌注射用水,Sterile Water Injection,500ml,,500.0,ml,injection
+688737,10003,110226,,2112-01-21 04:33:11,2112-01-21 13:59:51,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+688738,10003,110226,,2112-01-21 04:33:09,,苯扎氯铵贴,Benzalkonium Chloride Patches,100,,5.0,,water aqua
+688739,10003,110226,,2112-01-21 04:33:09,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,12500.0,u,injection
+688740,10003,110226,,2112-01-21 04:33:09,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,20.0,ml,injection
+688741,10003,110226,,2112-01-21 04:34:21,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,35.0,ml,injection
+688742,10003,110226,,2112-01-21 04:34:21,,咪达唑仑注射液,Midazolam Injection,2ml:10mg,,20.0,mg,injection
+688743,10003,110226,,2112-01-21 04:35:20,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,32.0,ml,injection
+688744,10003,110226,,2112-01-21 04:35:20,,枸橼酸芬太尼注射液,Fentanyl Citrate Injection,2ml:0.1mg*10,,0.3,mg,injection
+688745,10003,110226,210697,2112-01-21 04:49:07,,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,10ml:0.5g*5,,25.0,ml,injection
+688746,10003,110226,210697,2112-01-21 04:49:07,,灭菌注射用水,Sterile Water Injection,500ml,,25.0,ml,injection
+689462,10003,110226,210697,2112-01-21 04:53:09,2112-01-21 13:59:51,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+689463,10003,110226,210697,2112-01-21 04:53:09,2112-01-21 13:59:51,注射用磷酸肌酸钠,Creatine phosphate sodium for injection,0.5g,,0.5,g,injection
+689464,10003,110226,210697,2112-01-21 04:53:09,2112-01-21 13:59:51,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+689465,10003,110226,210697,2112-01-21 05:01:32,2112-01-21 13:59:51,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+689466,10003,110226,210697,2112-01-21 05:01:32,2112-01-21 13:59:51,维生素C注射液,Vitamin C Injection,1.0g/5ml*5,,1.0,g,injection
+689467,10003,110226,210697,2112-01-21 05:02:16,2112-01-21 13:59:51,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+689468,10003,110226,210697,2112-01-21 05:02:16,2112-01-21 13:59:51,酚磺乙胺注射液,Etamsylate Injection,2ml:0.5g*10,,0.5,g,injection
+689469,10003,110226,210697,2112-01-21 05:02:16,2112-01-21 13:59:51,氨甲苯酸注射液,Aminomethylbenzoic Acid Injection,10ml:0.1g*5,,0.1,g,injection
+689470,10003,110226,210697,2112-01-21 05:04:55,2112-01-21 13:59:51,螺内酯片,Spironolactone Tablets,20mg*100,,20.0,mg,tablet/capsule
+689471,10003,110226,210697,2112-01-21 05:05:37,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+689472,10003,110226,210697,2112-01-21 05:05:37,,乳酸米力农注射液,Milrinone Lactate Injection,5ml:5mg*2,,4.5,mg,injection
+689473,10003,110226,210697,2112-01-21 05:07:40,2112-01-21 13:59:51,甘油果糖氯化钠注射液,Glycerol Fructose and Sodium Chloride Injection,250ml,,90.0,ml,injection
+689474,10003,110226,210697,2112-01-21 05:09:20,,灭菌注射用水,Sterile Water Injection,500ml,,35.0,ml,injection
+689475,10003,110226,210697,2112-01-21 05:09:20,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,15.0,ml,injection
+689476,10003,110226,210697,2112-01-21 05:13:03,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+689477,10003,110226,210697,2112-01-21 05:13:03,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,40.0,mg,injection
+689478,10003,110226,210697,2112-01-21 06:36:14,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+689479,10003,110226,210697,2112-01-21 08:01:37,,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,10ml:0.5g*5,,25.0,ml,injection
+689480,10003,110226,210697,2112-01-21 08:01:37,,灭菌注射用水,Sterile Water Injection,500ml,,25.0,ml,injection
+689524,10003,110226,210697,2112-01-21 09:49:43,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,35.0,ml,injection
+689525,10003,110226,210697,2112-01-21 09:49:43,,乳酸米力农注射液,Milrinone Lactate Injection,5ml:5mg*2,,10.0,mg,injection
+689526,10003,110226,210697,2112-01-21 09:51:25,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+689527,10003,110226,210697,2112-01-21 09:51:25,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,40.0,mg,injection
+689974,10005,110228,,2069-12-05 10:28:42,2069-12-06 10:34:06,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+689975,10005,110228,,2069-12-05 10:28:52,2069-12-09 09:57:53,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+689976,10005,110228,,2069-12-05 10:28:52,2069-12-09 09:57:53,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,15.0,mg,injection
+689977,10005,110228,,2069-12-05 10:29:16,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+689978,10005,110228,,2069-12-05 10:29:16,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+689990,10005,110228,,2069-12-05 16:50:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+689991,10005,110228,,2069-12-05 16:50:15,,碘佛醇注射液,Ioversol Injection,50ml:33.9g,,50.0,ml,injection
+690082,10002,110224,,2076-12-02 19:49:43,2076-12-14 10:08:17,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,10ml:0.5g*5,,10.0,ml,injection
+690083,10002,110224,,2076-12-02 19:49:45,2076-12-14 10:08:17,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+690084,10002,110224,,2076-12-02 19:49:40,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+690085,10002,110224,,2076-12-02 19:49:40,,维生素K1注射液,Vitamin K1 Injection,1ml:10mg*10,,3.0,mg,injection
+690086,10002,110224,,2076-12-02 19:49:42,,聚维酮碘溶液,Povidone lodine Solution,5% 100ml,,100.0,ml,water aqua
+690087,10002,110224,,2076-12-02 19:49:45,,过氧化氢溶液,Hydrogen Peroxide Solution,100ml 3%,,100.0,ml,water aqua
+690088,10002,110224,,2076-12-02 19:50:37,2076-12-14 10:08:17,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,500ml,,500.0,ml,injection
+690089,10002,110224,,2076-12-02 20:01:03,2076-12-08 10:24:31,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+690090,10002,110224,,2076-12-02 20:01:03,2076-12-08 10:24:31,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,1.0,ml,water aqua
+690091,10002,110224,,2076-12-02 20:01:05,2076-12-08 10:24:40,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+690092,10002,110224,,2076-12-02 20:02:09,2076-12-11 09:37:12,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+690093,10002,110224,,2076-12-02 20:02:09,2076-12-11 09:37:12,注射用头孢噻肟钠,Cefotaxime Sodium for Injection,2.0g,Claforan,0.19,g,injection
+690399,10003,110226,210697,2112-01-21 09:52:44,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,35.0,ml,injection
+690400,10003,110226,210697,2112-01-21 09:52:44,,咪达唑仑注射液,Midazolam Injection,2ml:10mg,,20.0,mg,injection
+690401,10003,110226,210697,2112-01-21 09:54:38,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,32.0,ml,injection
+690402,10003,110226,210697,2112-01-21 09:54:38,,枸橼酸芬太尼注射液,Fentanyl Citrate Injection,2ml:0.1mg*10,,0.3,mg,injection
+690403,10003,110226,210697,2112-01-21 09:56:00,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,15.0,ml,injection
+690404,10003,110226,210697,2112-01-21 09:56:00,,灭菌注射用水,Sterile Water Injection,500ml,,35.0,ml,injection
+690405,10003,110226,210697,2112-01-21 07:43:00,2112-01-21 13:59:51,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,500ml,,500.0,ml,injection
+690406,10003,110226,210697,2112-01-21 07:43:00,2112-01-21 13:59:51,复方氯己定含漱液,Compound Chlorhexidine Gargle,200ml,,5.0,ml,water aqua
+690407,10003,110226,210697,2112-01-21 07:43:00,2112-01-21 13:59:51,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,0.5,ml,injection
+690408,10003,110226,210697,2112-01-21 07:43:00,,复方氯己定含漱液,Compound Chlorhexidine Gargle,200ml,,200.0,ml,water aqua
+690409,10003,110226,210697,2112-01-21 10:02:58,2112-01-21 13:59:51,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+690410,10003,110226,210697,2112-01-21 10:02:58,2112-01-21 13:59:51,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.5,g,injection
+690411,10003,110226,210697,2112-01-21 10:02:58,2112-01-21 13:59:51,灭菌注射用水,Sterile Water Injection,5ml*50,,2.5,ml,injection
+690412,10003,110226,210697,2112-01-21 10:07:15,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+690413,10003,110226,210697,2112-01-21 10:07:15,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,7.5,ml,injection
+690414,10003,110226,210697,2112-01-21 10:07:26,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+690415,10003,110226,210697,2112-01-21 10:07:26,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+690416,10003,110226,210697,2112-01-21 10:07:36,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+690417,10003,110226,210697,2112-01-21 10:07:36,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+690418,10003,110226,210697,2112-01-21 10:20:35,2112-01-21 13:59:51,氢氯噻嗪片,Hydrochlorothiazide Tablets,25mg*100,,8.33,mg,tablet/capsule
+690419,10003,110226,210697,2112-01-21 10:30:03,,灭菌注射用水,Sterile Water Injection,500ml,,25.0,ml,injection
+690420,10003,110226,210697,2112-01-21 10:30:03,,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,10ml:0.5g*5,,25.0,ml,injection
+690423,10003,110226,210697,2112-01-21 10:54:22,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,28.0,ml,injection
+690424,10003,110226,210697,2112-01-21 10:54:22,,盐酸多巴酚丁胺注射液,Dobutamine Hydrochloride Injection,2ml:20mg*5,,80.0,mg,injection
+690460,10003,110226,210697,2112-01-21 12:45:42,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,35.0,ml,injection
+690461,10003,110226,210697,2112-01-21 12:45:42,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,1.0,mg,injection
+691508,10003,110226,210697,2112-01-21 13:13:38,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,26.0,ml,injection
+691509,10003,110226,210697,2112-01-21 13:13:38,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,3.0,mg,injection
+691510,10003,110226,210697,2112-01-21 12:52:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+691511,10003,110226,210697,2112-01-21 12:52:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,1.0,mg,injection
+691512,10003,110226,210697,2112-01-21 12:52:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+691513,10003,110226,210697,2112-01-21 12:52:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.1,mg,injection
+691514,10003,110226,210697,2112-01-21 12:55:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+691515,10003,110226,210697,2112-01-21 12:55:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.1,mg,injection
+691516,10003,110226,210697,2112-01-21 13:10:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+691517,10003,110226,210697,2112-01-21 13:10:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.1,mg,injection
+691518,10003,110226,210697,2112-01-21 13:25:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+691519,10003,110226,210697,2112-01-21 13:25:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.1,mg,injection
+691520,10003,110226,210697,2112-01-21 13:28:00,,灭菌注射用水,Sterile Water Injection,500ml,,10.0,ml,injection
+691521,10003,110226,210697,2112-01-21 13:28:00,,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,10ml:0.5g*5,,10.0,ml,injection
+691851,10005,110228,,2069-12-05 20:19:36,,布洛芬混悬液,Ibuprofen Suspension,30ml:0.6g,Motrin,4.0,ml,water aqua
+691922,10002,110224,,2076-12-02 20:02:09,2076-12-11 09:37:12,灭菌注射用水,Sterile Water Injection,5ml*50,,0.5,ml,injection
+692707,10003,110226,210697,2112-01-21 13:29:00,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,10.0,ml,injection
+692708,10003,110226,210697,2112-01-21 13:29:00,,10％葡萄糖酸钙注射液,10% Calcium Gluconate Injection,10ml:1g*5,,10.0,ml,injection
+692709,10003,110226,210697,2112-01-21 13:31:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+692710,10003,110226,210697,2112-01-21 13:31:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.1,mg,injection
+692711,10003,110226,210697,2112-01-21 13:31:00,,灭菌注射用水,Sterile Water Injection,500ml,,10.0,ml,injection
+692712,10003,110226,210697,2112-01-21 13:31:00,,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,10ml:0.5g*5,,10.0,ml,injection
+692713,10003,110226,210697,2112-01-21 13:34:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+692714,10003,110226,210697,2112-01-21 13:34:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.1,mg,injection
+692715,10003,110226,210697,2112-01-21 13:25:00,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+692716,10003,110226,210697,2112-01-21 14:06:04,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,35.0,ml,injection
+692717,10003,110226,210697,2112-01-21 14:06:04,,乳酸米力农注射液,Milrinone Lactate Injection,5ml:5mg*2,,10.0,mg,injection
+692718,10003,110226,210697,2112-01-21 14:06:34,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+692719,10003,110226,210697,2112-01-21 14:06:34,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,40.0,mg,injection
+692720,10003,110226,210697,2112-01-21 14:07:19,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,35.0,ml,injection
+692721,10003,110226,210697,2112-01-21 14:07:19,,咪达唑仑注射液,Midazolam Injection,2ml:10mg,,20.0,mg,injection
+692722,10003,110226,210697,2112-01-21 14:11:38,,灭菌注射用水,Sterile Water Injection,500ml,,35.0,ml,injection
+692723,10003,110226,210697,2112-01-21 14:11:38,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,15.0,ml,injection
+692724,10003,110226,210697,2112-01-21 14:12:07,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+692725,10003,110226,210697,2112-01-21 14:12:07,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,7.5,ml,injection
+692726,10003,110226,210697,2112-01-21 14:12:32,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+692727,10003,110226,210697,2112-01-21 14:12:32,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+692728,10003,110226,210697,2112-01-21 14:12:59,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+692729,10003,110226,210697,2112-01-21 14:12:59,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+692734,10003,110226,210697,2112-01-21 14:16:20,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+692735,10003,110226,210697,2112-01-21 14:16:20,,注射用磷酸肌酸钠,Creatine phosphate sodium for injection,0.5g,,0.5,g,injection
+692736,10003,110226,210697,2112-01-21 14:16:20,,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+692737,10003,110226,210697,2112-01-21 14:16:53,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+692738,10003,110226,210697,2112-01-21 14:16:53,,维生素C注射液,Vitamin C Injection,1.0g/5ml*5,,1.0,g,injection
+692739,10003,110226,210697,2112-01-21 14:17:25,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+692740,10003,110226,210697,2112-01-21 14:17:25,,酚磺乙胺注射液,Etamsylate Injection,2ml:0.5g*10,,0.5,g,injection
+692741,10003,110226,210697,2112-01-21 14:17:25,,氨甲苯酸注射液,Aminomethylbenzoic Acid Injection,10ml:0.1g*5,,0.1,g,injection
+692742,10003,110226,210697,2112-01-21 14:18:14,,甘油果糖氯化钠注射液,Glycerol Fructose and Sodium Chloride Injection,250ml,,90.0,ml,injection
+692743,10003,110226,210697,2112-01-21 14:19:05,,甘油果糖氯化钠注射液,Glycerol Fructose and Sodium Chloride Injection,250ml,,90.0,ml,injection
+692744,10003,110226,210697,2112-01-21 14:19:13,,甘油果糖氯化钠注射液,Glycerol Fructose and Sodium Chloride Injection,250ml,,90.0,ml,injection
+692745,10003,110226,210697,2112-01-21 14:19:55,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+692746,10003,110226,210697,2112-01-21 14:19:55,,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.5,g,injection
+692747,10003,110226,210697,2112-01-21 14:19:55,,灭菌注射用水,Sterile Water Injection,5ml*50,,2.5,ml,injection
+692748,10003,110226,210697,2112-01-21 14:20:45,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+692749,10003,110226,210697,2112-01-21 14:20:45,,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.5,g,injection
+692750,10003,110226,210697,2112-01-21 14:20:45,,灭菌注射用水,Sterile Water Injection,5ml*50,,2.5,ml,injection
+692751,10003,110226,210697,2112-01-21 14:20:51,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+692752,10003,110226,210697,2112-01-21 14:20:51,,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.5,g,injection
+692753,10003,110226,210697,2112-01-21 14:20:51,,灭菌注射用水,Sterile Water Injection,5ml*50,,2.5,ml,injection
+692754,10003,110226,210697,2112-01-21 14:21:23,,甘油果糖氯化钠注射液,Glycerol Fructose and Sodium Chloride Injection,250ml,,90.0,ml,injection
+716847,10002,110224,,2076-12-03 10:34:18,2076-12-11 09:36:45,螺内酯片,Spironolactone Tablets,20mg*100,,3.33,mg,tablet/capsule
+716848,10002,110224,,2076-12-03 10:35:56,2076-12-11 09:36:49,氢氯噻嗪片,Hydrochlorothiazide Tablets,25mg*100,,2.5,mg,tablet/capsule
+719346,10006,110229,,2108-12-28 08:06:21,,灌肠用水合氯醛粉,Chloral hydrate powder for enema,0.5g:5ml,,7.0,ml,water aqua
+720691,10006,110229,210699,2108-12-28 11:50:00,2108-12-29 09:16:32,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,20.0,ml,injection
+720692,10006,110229,210699,2108-12-28 11:50:00,2108-12-29 09:16:32,脑苷肌肽注射液,Cattle Encephalon Glycoside and Ignotin Injection,2ml,,4.0,ml,injection
+720693,10006,110229,210699,2108-12-28 11:50:00,2108-12-29 09:16:32,注射用尖吻蝮蛇血凝酶,Haemocoagulase Agkistrodon for Injection,1Unit,,1.0,u,injection
+720694,10006,110229,210699,2108-12-28 11:50:00,2108-12-29 09:16:32,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+720695,10006,110229,210699,2108-12-28 11:50:00,2108-12-29 09:16:32,盐酸氨溴索葡萄糖注射液,Ambroxol Hydrochloride and Glucose Injection,50ml:30mg,,15.0,mg,injection
+720696,10006,110229,210699,2108-12-28 11:50:00,2108-12-29 09:16:32,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,30.0,ml,injection
+720697,10006,110229,210699,2108-12-28 11:50:00,2108-12-29 09:16:32,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,12.0,mg,injection
+720698,10006,110229,210699,2108-12-28 11:50:00,2108-12-29 09:16:32,生理氯化钠溶液,Sodium Chloride Physiological Solution,500ml:4.5g,,500.0,ml,water aqua
+720699,10006,110229,210699,2108-12-28 11:50:00,,苯扎氯铵贴,Benzalkonium Chloride Patches,100,,1.0,,water aqua
+720700,10006,110229,210699,2108-12-28 11:50:00,,聚维酮碘溶液,Povidone lodine Solution,5% 100ml,,5.0,ml,water aqua
+720701,10006,110229,210699,2108-12-28 11:50:00,,注射用胸腺法新,Thymalfasin for Injection,1.6mg,,1.2,mg,injection
+720702,10006,110229,210699,2108-12-28 11:55:00,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+720703,10006,110229,210699,2108-12-28 11:55:00,,氨基酸注射液,5% Amino Acidi Injection,5% 250ml,,250.0,ml,injection
+720704,10006,110229,210699,2108-12-28 11:55:00,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,10.0,ml,injection
+720705,10006,110229,210699,2108-12-28 11:55:00,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+722804,10005,110228,,2069-12-06 10:35:33,,盐酸奥布卡因凝胶,Oxybuprocaine Hydrochloride Gel,10ml:30mg,,10.0,ml,water aqua
+722805,10005,110228,,2069-12-06 10:35:34,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,5.0,ml,water aqua
+722806,10005,110228,,2069-12-06 10:35:35,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+722807,10005,110228,,2069-12-06 10:35:35,,注射用矛头蝮蛇血凝酶,Hemocoagulase Atrox for Injection,1Unit,,1.0,u,injection
+722808,10005,110228,,2069-12-06 10:41:40,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+722809,10005,110228,,2069-12-06 10:41:40,,注射用头孢拉定,Cefradine for Injection,0.5g,,0.8,g,injection
+722810,10005,110228,,2069-12-06 10:41:40,,灭菌注射用水,Sterile Water Injection,5ml*50,,8.0,ml,injection
+740284,10006,110229,210699,2108-12-28 16:16:42,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+740285,10006,110229,210699,2108-12-28 16:16:42,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,4.0,ml,injection
+740286,10006,110229,210699,2108-12-28 16:16:48,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+740287,10006,110229,210699,2108-12-28 16:16:48,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,4.0,ml,injection
+740854,10006,110229,210699,2108-12-28 19:03:00,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,50.0,u,injection
+740855,10006,110229,210699,2108-12-28 19:03:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+740856,10006,110229,210699,2108-12-28 20:12:36,2108-12-29 09:16:32,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+740857,10006,110229,210699,2108-12-28 20:12:36,2108-12-29 09:16:32,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+740858,10006,110229,210699,2108-12-28 20:12:39,2108-12-29 09:16:32,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,1.0,ml,water aqua
+740859,10006,110229,210699,2108-12-28 20:10:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+740860,10006,110229,210699,2108-12-28 20:10:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.25,mg,injection
+740861,10006,110229,210699,2108-12-28 20:10:00,,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,0.5,ml,water aqua
+740880,10006,110229,210699,2108-12-29 09:16:17,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,0.5,ml,injection
+745536,10006,110229,,2108-12-29 09:58:46,2109-01-01 08:45:36,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+745537,10006,110229,,2108-12-29 09:59:15,2108-12-29 15:06:34,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+745877,10006,110229,,2108-12-29 09:59:16,2108-12-29 15:06:34,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,1.0,ml,water aqua
+745878,10006,110229,,2108-12-29 09:59:17,2108-12-29 15:06:34,吸入用硫酸沙丁胺醇溶液,Salbutamol Sulfate Nebules Inhalation Solution,2.5ml:5mg*5,,1.0,ml,water aqua
+745879,10006,110229,,2108-12-29 09:59:17,2108-12-29 15:06:42,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+745880,10006,110229,,2108-12-29 09:59:18,2108-12-29 15:06:42,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,2.0,ml,water aqua
+745881,10006,110229,,2108-12-29 09:59:18,2108-12-29 15:06:42,吸入用硫酸沙丁胺醇溶液,Salbutamol Sulfate Nebules Inhalation Solution,2.5ml:5mg*5,,2.0,ml,water aqua
+745882,10006,110229,,2108-12-29 09:59:39,2108-12-31 10:36:29,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+745883,10006,110229,,2108-12-29 09:59:39,2108-12-31 10:36:29,注射用尖吻蝮蛇血凝酶,Haemocoagulase Agkistrodon for Injection,1Unit,,1.0,u,injection
+745884,10006,110229,,2108-12-29 09:59:39,2108-12-31 10:36:29,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+745906,10006,110229,,2108-12-29 15:33:35,,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+745907,10006,110229,,2108-12-29 15:33:51,,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,2.0,ml,water aqua
+745908,10006,110229,,2108-12-29 15:34:05,,吸入用硫酸沙丁胺醇溶液,Salbutamol Sulfate Nebules Inhalation Solution,2.5ml:5mg*5,,2.0,ml,water aqua
+750001,10005,110228,,2069-12-08 10:02:20,,开塞露,Enema Glycerini,10ml,,10.0,ml,water aqua
+764172,10000,110773,,2080-04-18 19:46:15,,开塞露,Enema Glycerini,10ml,,10.0,ml,water aqua
+764177,10000,110773,,2080-04-19 08:44:24,2080-04-22 08:52:26,生理氯化钠溶液,Sodium Chloride Physiological Solution,500ml:4.5g,,500.0,ml,water aqua
+764178,10000,110773,,2080-04-19 08:45:02,2080-04-22 08:52:26,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+764179,10000,110773,,2080-04-19 08:45:02,2080-04-22 08:52:26,注射用甲硝唑磷酸二钠,Metronidazole Disodium Phosphate for Injection,0.915g:0.5g,,0.05,g,injection
+764180,10000,110773,,2080-04-19 08:45:02,2080-04-22 08:52:26,灭菌注射用水,Sterile Water Injection,5ml*50,,0.5,ml,injection
+764187,10000,110773,,2080-04-19 08:46:21,,口服补液盐散(I),Oral Rehydration Salts Powder(I),14.75g*20,,14.75,g,powder
+781241,10005,110228,,2069-12-09 09:17:35,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+781242,10005,110228,,2069-12-09 09:17:35,,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,15.0,mg,injection
+784364,10006,110229,,2108-12-31 09:44:13,,口服用水合氯醛粉,Oral Chloral Hydrate,0.5g:5ml,,7.0,ml,water aqua
+786235,10005,110228,,2069-12-09 10:04:44,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+786236,10005,110228,,2069-12-09 10:04:44,,注射用头孢拉定,Cefradine for Injection,0.5g,,0.8,g,injection
+786237,10005,110228,,2069-12-09 10:04:44,,灭菌注射用水,Sterile Water Injection,5ml*50,,8.0,ml,injection
+786251,10005,110228,,2069-12-09 18:40:21,2069-12-10 13:41:45,注射用尖吻蝮蛇血凝酶,Haemocoagulase Agkistrodon for Injection,1Unit,,1.0,u,injection
+786252,10005,110228,,2069-12-09 18:40:21,2069-12-10 13:41:45,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+786253,10005,110228,,2069-12-09 18:40:22,2069-12-10 13:41:45,盐酸氨溴索葡萄糖注射液,Ambroxol Hydrochloride and Glucose Injection,50ml:30mg,,15.0,mg,injection
+786254,10005,110228,,2069-12-09 18:40:25,2069-12-10 13:41:45,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+786255,10005,110228,,2069-12-09 18:40:25,2069-12-10 13:41:45,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,14.0,mg,injection
+786256,10005,110228,,2069-12-09 18:40:26,2069-12-10 13:41:45,生理氯化钠溶液,Sodium Chloride Physiological Solution,500ml:4.5g,,500.0,ml,water aqua
+786257,10005,110228,,2069-12-09 18:40:20,,苯扎氯铵贴,Benzalkonium Chloride Patches,100,,1.0,,water aqua
+786258,10005,110228,,2069-12-09 18:40:20,,聚维酮碘溶液,Povidone lodine Solution,5% 100ml,,5.0,ml,water aqua
+786259,10005,110228,,2069-12-09 18:40:26,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,250ml(Bag),,50.0,ml,injection
+806878,10006,110229,,2108-12-31 13:24:33,,灌肠用水合氯醛粉,Chloral hydrate powder for enema,0.5g:5ml,,7.0,ml,water aqua
+806880,10006,110229,,2108-12-31 14:53:05,,口服用水合氯醛粉,Oral Chloral Hydrate,0.5g:5ml,,7.0,ml,water aqua
+807403,10002,110224,,2076-12-07 15:44:26,,碘佛醇注射液,Ioversol Injection,50ml:33.9g,,50.0,ml,injection
+807404,10002,110224,,2076-12-07 15:44:57,,灌肠用水合氯醛粉,Chloral hydrate powder for enema,0.5g:5ml,,2.0,ml,water aqua
+807405,10002,110224,,2076-12-07 15:44:57,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+807779,10005,110228,,2069-12-09 18:40:26,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,50.0,u,injection
+807780,10005,110228,,2069-12-09 18:42:24,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+807781,10005,110228,,2069-12-09 18:42:24,,注射用头孢拉定,Cefradine for Injection,0.5g,,0.5,g,injection
+807782,10005,110228,,2069-12-09 18:42:24,,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+807783,10005,110228,,2069-12-09 18:43:19,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+807784,10005,110228,,2069-12-09 18:43:19,,注射用头孢拉定,Cefradine for Injection,0.5g,,0.5,g,injection
+807785,10005,110228,,2069-12-09 18:43:19,,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+807786,10005,110228,210698,2069-12-09 19:11:19,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,30.0,ml,injection
+807787,10005,110228,210698,2069-12-09 19:11:19,,注射用生长抑素,Somatostatin For Injection,3mg,Stilamin,2.1,mg,injection
+807788,10005,110228,210698,2069-12-09 19:10:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,500ml,,5.0,ml,injection
+807789,10005,110228,210698,2069-12-09 19:10:00,,注射用生长抑素,Somatostatin For Injection,3mg,Stilamin,0.07400000000000001,mg,injection
+807790,10005,110228,210698,2069-12-09 21:46:53,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,500ml(Bag),,500.0,ml,injection
+807791,10005,110228,210698,2069-12-09 21:46:53,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,8.0,ml,injection
+807792,10005,110228,210698,2069-12-09 21:47:34,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+807793,10005,110228,210698,2069-12-09 21:47:34,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+807794,10005,110228,210698,2069-12-09 21:48:20,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+807795,10005,110228,210698,2069-12-09 21:48:20,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+807796,10005,110228,210698,2069-12-09 23:00:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+807797,10005,110228,210698,2069-12-09 23:00:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.25,mg,injection
+807798,10005,110228,210698,2069-12-09 23:00:00,,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,0.5,ml,water aqua
+807799,10005,110228,210698,2069-12-10 03:19:44,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+807800,10005,110228,210698,2069-12-10 03:19:44,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+807801,10005,110228,210698,2069-12-10 07:14:39,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,5.0,mg,injection
+807802,10005,110228,210698,2069-12-10 07:38:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+813915,10005,110228,210698,2069-12-10 13:41:24,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,0.5,ml,injection
+813916,10005,110228,,2069-12-10 14:19:14,2069-12-16 10:11:28,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,1.0,ml,water aqua
+813917,10005,110228,,2069-12-10 14:19:15,2069-12-16 10:11:28,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+813918,10005,110228,,2069-12-10 14:21:31,2069-12-16 10:11:23,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+813919,10005,110228,,2069-12-10 14:21:31,2069-12-16 10:11:23,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,14.0,mg,injection
+813920,10005,110228,,2069-12-10 14:22:22,2069-12-23 13:36:17,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,250ml(Bag),,100.0,ml,injection
+813921,10005,110228,,2069-12-10 14:22:22,2069-12-23 13:36:17,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,1000.0,u,injection
+813922,10005,110228,,2069-12-10 14:26:01,2069-12-12 08:14:12,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+813923,10005,110228,,2069-12-10 14:26:01,2069-12-12 08:14:12,注射用尖吻蝮蛇血凝酶,Haemocoagulase Agkistrodon for Injection,1Unit,,1.0,u,injection
+813924,10005,110228,,2069-12-10 14:26:01,2069-12-12 08:14:12,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+813925,10005,110228,,2069-12-10 14:26:14,2069-12-16 10:12:05,盐酸氨溴索葡萄糖注射液,Ambroxol Hydrochloride and Glucose Injection,50ml:30mg,,15.0,mg,injection
+813926,10005,110228,,2069-12-10 14:27:07,2069-12-12 10:00:35,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+813927,10005,110228,,2069-12-10 14:27:07,2069-12-12 10:00:35,注射用头孢拉定,Cefradine for Injection,0.5g,,0.5,g,injection
+813928,10005,110228,,2069-12-10 14:27:07,2069-12-12 10:00:35,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+813929,10005,110228,,2069-12-10 14:30:26,2069-12-17 16:57:19,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+813930,10005,110228,,2069-12-10 14:30:26,2069-12-17 16:57:19,注射用生长抑素,Somatostatin For Injection,3mg,Stilamin,1.7,mg,injection
+813931,10005,110228,,2069-12-10 14:33:22,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,500ml(Bag),,500.0,ml,injection
+813932,10005,110228,,2069-12-10 14:33:22,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+813933,10005,110228,,2069-12-10 14:33:42,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,500ml(Bag),,500.0,ml,injection
+813934,10005,110228,,2069-12-10 14:33:42,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+813935,10005,110228,,2069-12-10 14:33:52,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+813936,10005,110228,,2069-12-10 14:33:52,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+813948,10005,110228,,2069-12-11 10:07:15,2070-01-01 13:47:38,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+813949,10005,110228,,2069-12-11 10:07:15,2070-01-01 13:47:38,复方甘草酸苷注射液,Compound Glycyrrhizin Injection,20ml*10,,20.0,ml,injection
+814357,10002,110224,,2076-12-08 10:12:46,2076-12-11 15:25:19,卡托普利片,Captopril Tablets,12.5mg*100,Capoten,1.56,mg,tablet/capsule
+814358,10002,110224,,2076-12-08 10:25:41,2076-12-11 09:35:47,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+814359,10002,110224,,2076-12-08 10:25:41,2076-12-11 09:35:47,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,1.0,ml,water aqua
+814360,10002,110224,,2076-12-08 10:25:44,2076-12-11 09:35:52,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+814953,10005,110228,,2069-12-11 10:43:46,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,100.0,ml,injection
+814954,10005,110228,,2069-12-11 10:43:46,,复方氨基酸注射液,Compound Amino Acid Injection,250ml,Vamin,250.0,ml,injection
+814955,10005,110228,,2069-12-11 10:43:46,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,800.0,ml,injection
+814956,10005,110228,,2069-12-11 10:43:46,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,100.0,ml,injection
+814957,10005,110228,,2069-12-11 10:43:46,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,1.0,tube,injection
+814958,10005,110228,,2069-12-11 10:43:46,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,1.0,bottle,injection
+814959,10005,110228,,2069-12-11 10:43:46,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,20.0,ml,injection
+814960,10005,110228,,2069-12-11 10:43:46,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,20.0,ml,injection
+815344,10006,110229,,2109-01-01 09:32:06,,聚维酮碘溶液,Povidone lodine Solution,5% 100ml,,1.0,ml,water aqua
+815406,10002,110224,,2076-12-10 09:47:13,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,50.0,ml,injection
+815407,10002,110224,,2076-12-10 09:47:13,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,2.0,ml,injection
+815408,10002,110224,,2076-12-10 09:47:13,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.75,ml,injection
+815412,10002,110224,,2076-12-10 15:23:52,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,50.0,ml,injection
+815413,10002,110224,,2076-12-10 15:23:52,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,2.0,ml,injection
+815414,10002,110224,,2076-12-10 15:23:52,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.75,ml,injection
+815415,10002,110224,,2076-12-10 15:24:02,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,2.0,mg,injection
+816237,10005,110228,,2069-12-12 10:00:47,2069-12-26 09:46:37,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+816238,10005,110228,,2069-12-12 10:00:47,2069-12-26 09:46:37,注射用拉氧头孢钠,Latamoxef Sodium for Injection,0.25g,Shiomarin,0.5,g,injection
+816239,10005,110228,,2069-12-12 10:00:47,2069-12-26 09:46:37,灭菌注射用水,Sterile Water Injection,5ml*50,,10.0,ml,injection
+817063,10005,110228,,2069-12-12 10:14:34,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+817064,10005,110228,,2069-12-12 10:14:34,,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,10ml:0.5g*5,,7.0,ml,injection
+817065,10005,110228,,2069-12-12 10:14:34,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,2.0,ml,injection
+817066,10005,110228,,2069-12-12 10:14:34,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+817069,10005,110228,,2069-12-12 10:32:02,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,150.0,ml,injection
+817070,10005,110228,,2069-12-12 10:32:02,,复方氨基酸注射液,Compound Amino Acid Injection,250ml,Vamin,500.0,ml,injection
+817071,10005,110228,,2069-12-12 10:32:02,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,400.0,ml,injection
+817072,10005,110228,,2069-12-12 10:32:02,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,220.0,ml,injection
+817073,10005,110228,,2069-12-12 10:32:02,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,1.0,tube,injection
+817074,10005,110228,,2069-12-12 10:32:02,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,1.0,bottle,injection
+817075,10005,110228,,2069-12-12 10:32:02,,多种微量元素注射液Ⅱ,Multi-trace Elements Injection(Ⅱ),10ml*10,,10.0,ml,injection
+817076,10005,110228,,2069-12-12 10:32:02,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,16.0,ml,injection
+817077,10005,110228,,2069-12-12 10:32:02,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,16.0,ml,injection
+817078,10005,110228,,2069-12-12 10:32:02,,10％葡萄糖酸钙注射液,10% Calcium Gluconate Injection,10ml:1g*5,,15.0,ml,injection
+817079,10005,110228,,2069-12-12 10:32:02,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,8.0,ml,injection
+839504,10005,110228,,2069-12-13 10:47:15,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,150.0,ml,injection
+839505,10005,110228,,2069-12-13 10:47:15,,复方氨基酸注射液,Compound Amino Acid Injection,250ml,Vamin,500.0,ml,injection
+839506,10005,110228,,2069-12-13 10:47:15,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,400.0,ml,injection
+839507,10005,110228,,2069-12-13 10:47:15,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,220.0,ml,injection
+839508,10005,110228,,2069-12-13 10:47:15,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,1.0,tube,injection
+839509,10005,110228,,2069-12-13 10:47:15,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,1.0,bottle,injection
+839510,10005,110228,,2069-12-13 10:47:15,,多种微量元素注射液Ⅱ,Multi-trace Elements Injection(Ⅱ),10ml*10,,10.0,ml,injection
+839511,10005,110228,,2069-12-13 10:47:15,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,16.0,ml,injection
+839970,10005,110228,,2069-12-13 10:47:15,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,16.0,ml,injection
+839971,10005,110228,,2069-12-13 10:47:15,,10％葡萄糖酸钙注射液,10% Calcium Gluconate Injection,10ml:1g*5,,15.0,ml,injection
+839972,10005,110228,,2069-12-13 10:47:15,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,8.0,ml,injection
+840303,10005,110228,,2069-12-13 11:43:27,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+841938,10005,110228,,2069-12-13 20:29:43,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+843710,10000,110773,,2080-04-20 08:35:16,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,15.0,ml,injection
+843711,10000,110773,,2080-04-20 08:35:16,,蔗糖铁注射液,Iron Sucrese Injection,5ml:100mg*5,,15.0,mg,injection
+843721,10000,110773,,2080-04-21 08:57:38,,口服补液盐散(I),Oral Rehydration Salts Powder(I),14.75g*20,,14.75,g,powder
+843726,10000,110773,,2080-04-22 08:44:18,,开塞露,Enema Glycerini,10ml,,10.0,ml,water aqua
+843727,10000,110773,,2080-04-22 08:44:18,,盐酸奥布卡因凝胶,Oxybuprocaine Hydrochloride Gel,10ml:30mg,,10.0,ml,water aqua
+843728,10000,110773,,2080-04-22 08:44:19,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,5.0,ml,water aqua
+843729,10000,110773,,2080-04-22 08:44:20,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+843730,10000,110773,,2080-04-22 08:44:20,,注射用矛头蝮蛇血凝酶,Hemocoagulase Atrox for Injection,1Unit,,0.5,u,injection
+843731,10000,110773,,2080-04-22 08:48:49,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+843732,10000,110773,,2080-04-22 08:48:49,,注射用盐酸头孢甲肟,Cefmenoxime Hydrochloride for Injection,0.25g,,0.2,g,injection
+843733,10000,110773,,2080-04-22 08:48:49,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,8.0,ml,injection
+843737,10000,110773,,2080-04-22 11:13:54,,生理氯化钠溶液,Sodium Chloride Physiological Solution,500ml:4.5g,,500.0,ml,water aqua
+843746,10000,110773,,2080-04-22 16:28:17,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+843747,10000,110773,,2080-04-22 16:28:17,,复方甘草酸苷注射液,Compound Glycyrrhizin Injection,20ml*10,,10.0,ml,injection
+843748,10000,110773,,2080-04-22 16:29:29,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+843749,10000,110773,,2080-04-22 16:29:29,,注射用丁二磺酸腺苷蛋氨酸,"Ademetionine  1,4-Butanedisulfonate for Injection",0.5g*5,Transmetil,0.25,g,injection
+843752,10000,110773,,2080-04-23 08:47:57,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,16.0,ml,injection
+843753,10000,110773,,2080-04-23 08:47:57,,蔗糖铁注射液,Iron Sucrese Injection,5ml:100mg*5,,16.0,mg,injection
+843754,10000,110773,,2080-04-23 08:49:30,2080-04-24 09:50:39,生理氯化钠溶液,Sodium Chloride Physiological Solution,500ml:4.5g,,500.0,ml,water aqua
+843755,10000,110773,,2080-04-23 08:49:43,2080-04-24 09:50:39,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+843756,10000,110773,,2080-04-23 08:49:43,2080-04-24 09:50:39,注射用甲硝唑磷酸二钠,Metronidazole Disodium Phosphate for Injection,0.915g:0.5g,,0.05,g,injection
+843757,10000,110773,,2080-04-23 08:49:43,2080-04-24 09:50:39,灭菌注射用水,Sterile Water Injection,5ml*50,,0.5,ml,injection
+843758,10000,110773,,2080-04-23 08:50:59,2080-04-24 09:50:39,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+843759,10000,110773,,2080-04-23 08:50:59,2080-04-24 09:50:39,复方甘草酸苷注射液,Compound Glycyrrhizin Injection,20ml*10,,10.0,ml,injection
+843760,10000,110773,,2080-04-23 08:51:43,2080-04-24 09:50:39,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+843761,10000,110773,,2080-04-23 08:51:43,2080-04-24 09:50:39,注射用丁二磺酸腺苷蛋氨酸,"Ademetionine  1,4-Butanedisulfonate for Injection",0.5g*5,Transmetil,0.27,g,injection
+844359,10000,110773,,2080-04-23 09:20:17,2080-04-24 09:50:39,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+847111,10002,110224,,2076-12-11 09:36:06,2076-12-12 09:45:05,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+847112,10002,110224,,2076-12-11 09:36:09,2076-12-12 09:45:10,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+847113,10002,110224,,2076-12-11 09:36:09,2076-12-12 09:45:10,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,1.0,ml,water aqua
+847114,10002,110224,,2076-12-11 09:36:11,2076-12-12 09:45:10,吸入用硫酸沙丁胺醇溶液,Salbutamol Sulfate Nebules Inhalation Solution,2.5ml:5mg*5,,0.25,ml,water aqua
+847115,10002,110224,,2076-12-11 09:36:11,2076-12-14 10:08:17,吸入用硫酸沙丁胺醇溶液,Salbutamol Sulfate Nebules Inhalation Solution,2.5ml:5mg*5,,2.5,ml,water aqua
+847116,10002,110224,,2076-12-11 09:37:28,2076-12-14 10:08:17,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,40.0,ml,injection
+847117,10002,110224,,2076-12-11 09:37:28,2076-12-14 10:08:17,注射用乳糖酸红霉素,Erythromycin Lactobionate for Injection,0.25g,,0.04,g,injection
+847118,10002,110224,,2076-12-11 09:37:28,2076-12-14 10:08:17,灭菌注射用水,Sterile Water Injection,5ml*50,,0.8,ml,injection
+847119,10002,110224,,2076-12-11 09:37:29,2076-12-14 10:08:17,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,10ml:0.5g*5,,0.3,ml,injection
+847120,10002,110224,,2076-12-11 09:47:22,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,25.0,ml,injection
+847121,10002,110224,,2076-12-11 09:47:22,,静脉注射用人免疫球蛋白,Human Immumoglobulin for Intravenous Injection,2.5g,,1.25,g,injection
+847122,10002,110224,,2076-12-11 09:47:24,,静脉注射用人免疫球蛋白,Human Immumoglobulin for Intravenous Injection,2.5g,,2.5,g,injection
+847123,10002,110224,,2076-12-11 09:47:25,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,25.0,ml,injection
+847124,10002,110224,,2076-12-11 09:47:25,,静脉注射用人免疫球蛋白,Human Immumoglobulin for Intravenous Injection,2.5g,,1.25,g,injection
+847125,10002,110224,,2076-12-11 10:49:10,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,2.0,mg,injection
+848554,10005,110228,,2069-12-14 09:46:34,,开塞露,Enema Glycerini,10ml,,10.0,ml,water aqua
+851919,10002,110224,,2076-12-11 15:28:39,2076-12-14 10:08:17,螺内酯片,Spironolactone Tablets,20mg*100,,3.33,mg,tablet/capsule
+851920,10002,110224,,2076-12-11 20:56:52,2076-12-12 14:42:54,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+851921,10002,110224,,2076-12-11 20:56:52,2076-12-12 14:42:54,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.2,g,injection
+851922,10002,110224,,2076-12-11 20:56:52,2076-12-12 14:42:54,灭菌注射用水,Sterile Water Injection,5ml*50,,1.0,ml,injection
+851936,10002,110224,,2076-12-12 09:44:17,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,25.0,ml,injection
+851937,10002,110224,,2076-12-12 09:44:17,,静脉注射用人免疫球蛋白,Human Immumoglobulin for Intravenous Injection,2.5g,,1.25,g,injection
+851938,10002,110224,,2076-12-12 09:44:19,,静脉注射用人免疫球蛋白,Human Immumoglobulin for Intravenous Injection,2.5g,,2.5,g,injection
+851939,10002,110224,,2076-12-12 09:44:20,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,25.0,ml,injection
+851940,10002,110224,,2076-12-12 09:44:20,,静脉注射用人免疫球蛋白,Human Immumoglobulin for Intravenous Injection,2.5g,,1.25,g,injection
+851941,10002,110224,,2076-12-12 09:45:28,2076-12-14 10:08:17,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+851942,10002,110224,,2076-12-12 09:45:31,2076-12-14 10:08:17,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+851943,10002,110224,,2076-12-12 09:45:31,2076-12-14 10:08:17,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,1.0,ml,water aqua
+851944,10002,110224,,2076-12-12 09:45:33,2076-12-14 10:08:17,吸入用硫酸沙丁胺醇溶液,Salbutamol Sulfate Nebules Inhalation Solution,2.5ml:5mg*5,,0.25,ml,water aqua
+851945,10002,110224,,2076-12-12 09:46:30,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,2.0,mg,injection
+851946,10002,110224,,2076-12-12 10:05:07,2076-12-14 10:08:17,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+851947,10002,110224,,2076-12-12 10:05:07,2076-12-14 10:08:17,注射用甲泼尼龙琥珀酸钠,Methylprednisolone Sodium Succinate for Injection,40mg,,7.0,mg,injection
+851948,10002,110224,,2076-12-12 10:05:58,2076-12-14 10:08:17,注射用甲泼尼龙琥珀酸钠,Methylprednisolone Sodium Succinate for Injection,40mg,,40.0,mg,injection
+853448,10005,110228,,2069-12-14 11:38:32,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,150.0,ml,injection
+853449,10005,110228,,2069-12-14 11:38:32,,复方氨基酸注射液,Compound Amino Acid Injection,250ml,Vamin,500.0,ml,injection
+853450,10005,110228,,2069-12-14 11:38:32,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,400.0,ml,injection
+853451,10005,110228,,2069-12-14 11:38:32,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,220.0,ml,injection
+853452,10005,110228,,2069-12-14 11:38:32,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,1.0,tube,injection
+853453,10005,110228,,2069-12-14 11:38:32,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,1.0,bottle,injection
+853454,10005,110228,,2069-12-14 11:38:32,,多种微量元素注射液Ⅱ,Multi-trace Elements Injection(Ⅱ),10ml*10,,10.0,ml,injection
+853455,10005,110228,,2069-12-14 11:38:32,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,16.0,ml,injection
+853456,10005,110228,,2069-12-14 11:38:32,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,16.0,ml,injection
+853457,10005,110228,,2069-12-14 11:38:32,,25％硫酸镁注射液,25% Magnesium Sulfate Injection,10ml:2.5g*5,,4.0,ml,injection
+853458,10005,110228,,2069-12-14 11:38:32,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,8.0,ml,injection
+878045,10005,110228,,2069-12-15 09:54:39,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,150.0,ml,injection
+878046,10005,110228,,2069-12-15 09:54:39,,复方氨基酸注射液,Compound Amino Acid Injection,250ml,Vamin,500.0,ml,injection
+878047,10005,110228,,2069-12-15 09:54:39,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,400.0,ml,injection
+878048,10005,110228,,2069-12-15 09:54:39,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,220.0,ml,injection
+878049,10005,110228,,2069-12-15 09:54:39,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,1.0,tube,injection
+878050,10005,110228,,2069-12-15 09:54:39,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,1.0,bottle,injection
+878051,10005,110228,,2069-12-15 09:54:39,,多种微量元素注射液Ⅱ,Multi-trace Elements Injection(Ⅱ),10ml*10,,10.0,ml,injection
+878052,10005,110228,,2069-12-15 09:54:39,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,16.0,ml,injection
+878053,10005,110228,,2069-12-15 09:54:39,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,16.0,ml,injection
+878054,10005,110228,,2069-12-15 09:54:39,,10％葡萄糖酸钙注射液,10% Calcium Gluconate Injection,10ml:1g*5,,15.0,ml,injection
+878055,10005,110228,,2069-12-15 09:54:39,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,8.0,ml,injection
+879505,10002,110224,,2076-12-12 14:43:37,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+879506,10002,110224,,2076-12-12 14:43:37,,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.2,g,injection
+879507,10002,110224,,2076-12-12 14:43:37,,灭菌注射用水,Sterile Water Injection,5ml*50,,1.0,ml,injection
+879508,10002,110224,,2076-12-12 14:44:52,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+879509,10002,110224,,2076-12-12 14:44:52,,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.2,g,injection
+879510,10002,110224,,2076-12-12 14:44:52,,灭菌注射用水,Sterile Water Injection,5ml*50,,1.0,ml,injection
+879511,10002,110224,,2076-12-12 14:46:49,2076-12-12 19:05:57,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+879512,10002,110224,,2076-12-12 14:46:49,2076-12-12 19:05:57,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.2,g,injection
+879513,10002,110224,,2076-12-12 14:46:49,2076-12-12 19:05:57,灭菌注射用水,Sterile Water Injection,5ml*50,,1.0,ml,injection
+879514,10002,110224,,2076-12-12 19:19:47,2076-12-14 10:08:17,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+879515,10002,110224,,2076-12-12 19:19:47,2076-12-14 10:08:17,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.2,g,injection
+879516,10002,110224,,2076-12-12 19:19:47,2076-12-14 10:08:17,灭菌注射用水,Sterile Water Injection,5ml*50,,1.0,ml,injection
+879517,10002,110224,,2076-12-12 19:21:13,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+879518,10002,110224,,2076-12-12 19:21:13,,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.2,g,injection
+879519,10002,110224,,2076-12-12 19:21:13,,灭菌注射用水,Sterile Water Injection,5ml*50,,1.0,ml,injection
+880809,10002,110224,,2076-12-12 19:21:56,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+880810,10002,110224,,2076-12-12 19:21:56,,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.2,g,injection
+880811,10002,110224,,2076-12-12 19:21:56,,灭菌注射用水,Sterile Water Injection,5ml*50,,1.0,ml,injection
+903098,10005,110228,,2069-12-16 10:15:54,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,150.0,ml,injection
+903099,10005,110228,,2069-12-16 10:15:54,,复方氨基酸注射液,Compound Amino Acid Injection,250ml,Vamin,500.0,ml,injection
+903100,10005,110228,,2069-12-16 10:15:54,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,400.0,ml,injection
+903101,10005,110228,,2069-12-16 10:15:54,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,220.0,ml,injection
+903102,10005,110228,,2069-12-16 10:15:54,,脂溶性维生素注射液Ⅱ,Fat-Soluble Vitamin Injection(Ⅱ),10ml,Vitalipid,10.0,ml,injection
+903103,10005,110228,,2069-12-16 10:15:54,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,1.0,tube,injection
+903104,10005,110228,,2069-12-16 10:15:54,,多种微量元素注射液Ⅱ,Multi-trace Elements Injection(Ⅱ),10ml*10,,10.0,ml,injection
+903105,10005,110228,,2069-12-16 10:15:54,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,16.0,ml,injection
+903106,10005,110228,,2069-12-16 10:15:54,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,16.0,ml,injection
+903107,10005,110228,,2069-12-16 10:15:54,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,8.0,ml,injection
+903108,10005,110228,,2069-12-16 10:15:54,,25％硫酸镁注射液,25% Magnesium Sulfate Injection,10ml:2.5g*5,,4.0,ml,injection
+904742,10002,110224,,2076-12-14 09:12:09,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+904743,10002,110224,,2076-12-14 09:12:09,,苯巴比妥钠注射液,Phenobarbital Sodium Injection,1ml:0.1g*10,,0.04,g,injection
+904744,10002,110224,,2076-12-14 09:25:56,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+904745,10002,110224,,2076-12-14 10:55:31,2076-12-25 09:00:00,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,500ml,,500.0,ml,injection
+904746,10002,110224,,2076-12-14 10:56:26,2076-12-25 09:00:00,双歧杆菌三联活菌散,"Live Combined Bifidobacterium, Lactobacillus and Enterococcus Powder,oral",1g*7,,0.5,g,powder
+904747,10002,110224,,2076-12-14 10:56:42,2076-12-25 09:00:00,氢氯噻嗪片,Hydrochlorothiazide Tablets,25mg*100,,3.125,mg,tablet/capsule
+904748,10002,110224,,2076-12-14 10:57:03,2076-12-25 09:00:00,螺内酯片,Spironolactone Tablets,20mg*100,,2.5,mg,tablet/capsule
+904749,10002,110224,210695,2076-12-14 11:01:57,2076-12-16 08:57:42,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+904750,10002,110224,210695,2076-12-14 11:01:57,2076-12-16 08:57:42,注射用甲泼尼龙琥珀酸钠,Methylprednisolone Sodium Succinate for Injection,40mg,,8.0,mg,injection
+904751,10002,110224,210695,2076-12-14 11:02:24,2076-12-23 09:09:55,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,4.0,mg,injection
+904752,10002,110224,210695,2076-12-14 11:02:56,2076-12-25 09:00:00,枸橼酸西地那非片,Sildenafil Citrate Tablets,25mg*7,,2.08,mg,tablet/capsule
+904753,10002,110224,210695,2076-12-14 11:03:20,2076-12-14 11:20:00,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+904754,10002,110224,210695,2076-12-14 11:03:20,2076-12-14 11:20:00,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,1.0,ml,water aqua
+904755,10002,110224,210695,2076-12-14 11:03:21,2076-12-14 11:20:00,硫酸特布他林雾化液,Terbutaline Sulphate Solution for Nebulization,2ml:5mg*20,,1.0,ml,water aqua
+904756,10002,110224,210695,2076-12-14 11:03:22,2076-12-14 11:20:00,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+904757,10002,110224,210695,2076-12-14 11:03:40,2076-12-25 09:00:00,(婴)维生素AD滴剂,Vitamin A and D Drops,10*4,VitAD,1.0,,tablet/capsule
+904758,10002,110224,210695,2076-12-14 11:03:51,2076-12-25 09:00:00,葡萄糖酸钙口服溶液,Calcium Gluconate Oral Solution,10ml*10,,5.0,ml,water aqua
+904759,10002,110224,210695,2076-12-14 11:04:22,2076-12-22 10:44:16,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,10.0,ml,injection
+904760,10002,110224,210695,2076-12-14 11:04:22,2076-12-22 10:44:16,注射用头孢哌酮钠舒巴坦钠,Cefoperazone Sodium and Sulbactam Sodium for Injection,1.0g,Sulperazon,0.21,g,injection
+904761,10002,110224,210695,2076-12-14 11:04:22,2076-12-22 10:44:16,灭菌注射用水,Sterile Water Injection,5ml*50,,1.1,ml,injection
+904762,10002,110224,210695,2076-12-14 11:05:26,2076-12-22 10:44:33,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+904763,10002,110224,210695,2076-12-14 11:05:26,2076-12-22 10:44:33,注射用磷酸肌酸钠,Creatine phosphate sodium for injection,0.5g,,0.5,g,injection
+904764,10002,110224,210695,2076-12-14 11:05:26,2076-12-22 10:44:33,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+904765,10002,110224,210695,2076-12-14 11:05:59,2076-12-16 09:20:14,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+904766,10002,110224,210695,2076-12-14 11:05:59,2076-12-16 09:20:14,维生素C注射液,Vitamin C Injection,1.0g/5ml*5,,0.5,g,injection
+904767,10002,110224,210695,2076-12-14 11:05:59,2076-12-16 09:20:14,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.6,ml,injection
+904768,10002,110224,210695,2076-12-14 11:06:44,,地西泮注射液,Diazepam Injection,2ml:10mg*10,,0.8,mg,injection
+904769,10002,110224,210695,2076-12-14 11:06:50,,对乙酰氨基酚混悬滴剂,Paracetamol Suspension Drop,15ml:1.5g,Tylenol,0.4,ml,water aqua
+904770,10002,110224,210695,2076-12-14 11:06:59,,枸橼酸西地那非片,Sildenafil Citrate Tablets,25mg*7,,2.08,mg,tablet/capsule
+904771,10002,110224,210695,2076-12-14 11:07:08,,双歧杆菌三联活菌散,"Live Combined Bifidobacterium, Lactobacillus and Enterococcus Powder,oral",1g*7,,0.5,g,powder
+904772,10002,110224,210695,2076-12-14 11:07:18,,葡萄糖酸钙口服溶液,Calcium Gluconate Oral Solution,10ml*10,,5.0,ml,water aqua
+904773,10002,110224,210695,2076-12-14 11:07:34,,(婴)维生素AD滴剂,Vitamin A and D Drops,10*4,VitAD,1.0,,tablet/capsule
+904774,10002,110224,210695,2076-12-14 11:07:46,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,4.0,mg,injection
+904775,10002,110224,210695,2076-12-14 11:18:24,2076-12-14 22:53:43,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,1.5,ml,injection
+904776,10002,110224,210695,2076-12-14 11:18:24,2076-12-14 22:53:43,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+904777,10002,110224,210695,2076-12-14 11:18:26,2076-12-14 22:53:43,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,0.5,ml,water aqua
+904778,10002,110224,210695,2076-12-14 11:18:29,2076-12-14 22:53:43,硫酸特布他林雾化液,Terbutaline Sulphate Solution for Nebulization,2ml:5mg*20,,0.5,ml,water aqua
+905028,10005,110228,,2069-12-17 09:58:52,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,150.0,ml,injection
+905029,10005,110228,,2069-12-17 09:58:52,,复方氨基酸注射液,Compound Amino Acid Injection,250ml,Vamin,500.0,ml,injection
+905030,10005,110228,,2069-12-17 09:58:52,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,400.0,ml,injection
+905031,10005,110228,,2069-12-17 09:58:52,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,220.0,ml,injection
+905032,10005,110228,,2069-12-17 09:58:52,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,1.0,tube,injection
+905033,10005,110228,,2069-12-17 09:58:52,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,1.0,bottle,injection
+905034,10005,110228,,2069-12-17 09:58:52,,多种微量元素注射液Ⅱ,Multi-trace Elements Injection(Ⅱ),10ml*10,,10.0,ml,injection
+905035,10005,110228,,2069-12-17 09:58:52,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,16.0,ml,injection
+905036,10005,110228,,2069-12-17 09:58:52,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,16.0,ml,injection
+905037,10005,110228,,2069-12-17 09:58:52,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,8.0,ml,injection
+905038,10005,110228,,2069-12-17 09:58:52,,10％葡萄糖酸钙注射液,10% Calcium Gluconate Injection,10ml:1g*5,,15.0,ml,injection
+905729,10002,110224,210695,2076-12-14 11:18:30,2076-12-14 22:53:43,灭菌注射用水,Sterile Water Injection,5ml*50,,3.5,ml,injection
+905740,10002,110224,210695,2076-12-14 22:53:57,2076-12-25 09:00:00,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,1.5,ml,injection
+905741,10002,110224,210695,2076-12-14 22:53:57,2076-12-25 09:00:00,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+905742,10002,110224,210695,2076-12-14 22:53:59,2076-12-25 09:00:00,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,0.5,ml,water aqua
+905743,10002,110224,210695,2076-12-14 22:54:00,2076-12-25 09:00:00,硫酸特布他林雾化液,Terbutaline Sulphate Solution for Nebulization,2ml:5mg*20,,0.5,ml,water aqua
+905744,10002,110224,210695,2076-12-14 22:54:01,2076-12-25 09:00:00,灭菌注射用水,Sterile Water Injection,5ml*50,,3.5,ml,injection
+924627,10000,110773,,2080-04-24 09:43:53,,开塞露,Enema Glycerini,10ml,,10.0,ml,water aqua
+924628,10000,110773,,2080-04-24 09:43:53,,盐酸奥布卡因凝胶,Oxybuprocaine Hydrochloride Gel,10ml:30mg,,10.0,ml,water aqua
+924629,10000,110773,,2080-04-24 09:43:55,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,5.0,ml,water aqua
+924630,10000,110773,,2080-04-24 09:43:56,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+924631,10000,110773,,2080-04-24 09:43:56,,注射用矛头蝮蛇血凝酶,Hemocoagulase Atrox for Injection,1Unit,,0.5,u,injection
+926723,10000,110773,,2080-04-24 09:46:24,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+926724,10000,110773,,2080-04-24 09:46:24,,注射用盐酸头孢甲肟,Cefmenoxime Hydrochloride for Injection,0.25g,,0.2,g,injection
+926725,10000,110773,,2080-04-24 09:46:24,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,8.0,ml,injection
+926726,10000,110773,,2080-04-24 09:47:50,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+926727,10000,110773,,2080-04-24 09:47:50,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+926730,10000,110773,,2080-04-24 09:48:32,,生理氯化钠溶液,Sodium Chloride Physiological Solution,500ml:4.5g,,500.0,ml,water aqua
+926741,10000,110773,,2080-04-24 11:45:57,,口服补液盐散(I),Oral Rehydration Salts Powder(I),14.75g*20,,14.75,g,powder
+926759,10000,110773,,2080-04-24 15:28:03,,开塞露,Enema Glycerini,10ml,,10.0,ml,water aqua
+926760,10000,110773,,2080-04-24 15:28:11,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,50.0,ml,water aqua
+926761,10000,110773,,2080-04-24 15:28:19,,盐酸奥布卡因凝胶,Oxybuprocaine Hydrochloride Gel,10ml:30mg,,5.0,ml,water aqua
+942363,10000,110773,,2080-04-25 13:52:22,2080-04-26 10:46:05,注射用尖吻蝮蛇血凝酶,Haemocoagulase Agkistrodon for Injection,1Unit,,0.5,u,injection
+942364,10000,110773,,2080-04-25 13:52:22,2080-04-26 10:46:05,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+942365,10000,110773,,2080-04-25 13:52:22,2080-04-26 10:46:05,盐酸氨溴索葡萄糖注射液,Ambroxol Hydrochloride and Glucose Injection,50ml:30mg,,7.5,mg,injection
+942366,10000,110773,,2080-04-25 13:52:25,2080-04-26 10:46:05,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,10.0,ml,injection
+942367,10000,110773,,2080-04-25 13:52:25,2080-04-26 10:46:05,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,3.5,mg,injection
+942368,10000,110773,,2080-04-25 13:52:26,2080-04-26 10:46:05,生理氯化钠溶液,Sodium Chloride Physiological Solution,500ml:4.5g,,500.0,ml,water aqua
+942369,10000,110773,,2080-04-25 13:52:20,,苯扎氯铵贴,Benzalkonium Chloride Patches,100,,1.0,,water aqua
+942370,10000,110773,,2080-04-25 13:52:20,,聚维酮碘溶液,Povidone lodine Solution,5% 100ml,,5.0,ml,water aqua
+942371,10000,110773,,2080-04-25 13:52:26,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,250ml(Bag),,50.0,ml,injection
+942389,10005,110228,,2069-12-17 16:57:37,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+942390,10005,110228,,2069-12-17 16:57:37,,注射用生长抑素,Somatostatin For Injection,3mg,Stilamin,1.7,mg,injection
+943186,10005,110228,,2069-12-18 10:05:36,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,75.0,ml,injection
+943187,10005,110228,,2069-12-18 10:05:36,,复方氨基酸注射液,Compound Amino Acid Injection,250ml,Vamin,250.0,ml,injection
+943188,10005,110228,,2069-12-18 10:05:36,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,200.0,ml,injection
+943189,10005,110228,,2069-12-18 10:05:36,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,110.0,ml,injection
+943190,10005,110228,,2069-12-18 10:05:36,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,1.0,tube,injection
+943191,10005,110228,,2069-12-18 10:05:36,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,1.0,bottle,injection
+943192,10005,110228,,2069-12-18 10:05:36,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,8.0,ml,injection
+943193,10005,110228,,2069-12-18 10:05:36,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,8.0,ml,injection
+956355,10002,110224,210695,2076-12-15 09:14:51,,静脉注射用人免疫球蛋白,Human Immumoglobulin for Intravenous Injection,2.5g,,2.5,g,injection
+956356,10002,110224,210695,2076-12-16 09:20:30,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+956357,10002,110224,210695,2076-12-16 09:20:30,,维生素C注射液,Vitamin C Injection,1.0g/5ml*5,,0.5,g,injection
+956358,10002,110224,210695,2076-12-16 09:20:30,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.6,ml,injection
+956359,10002,110224,210695,2076-12-16 09:26:24,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+956360,10002,110224,210695,2076-12-16 09:26:24,,注射用甲泼尼龙琥珀酸钠,Methylprednisolone Sodium Succinate for Injection,40mg,,8.0,mg,injection
+956361,10002,110224,210695,2076-12-16 09:42:05,,灭菌注射用水,Sterile Water Injection,5ml*50,,7.0,ml,injection
+956362,10002,110224,210695,2076-12-16 09:42:05,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,3.0,ml,injection
+956363,10002,110224,210695,2076-12-16 16:26:29,,灭菌注射用水,Sterile Water Injection,5ml*50,,7.0,ml,injection
+956364,10002,110224,210695,2076-12-16 16:26:29,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,3.0,ml,injection
+956365,10002,110224,210695,2076-12-16 16:34:32,,咪达唑仑注射液,Midazolam Injection,2ml:10mg,,0.4,mg,injection
+956372,10002,110224,210695,2076-12-16 21:04:36,,地西泮注射液,Diazepam Injection,2ml:10mg*10,,0.5,mg,injection
+956373,10002,110224,210695,2076-12-16 22:16:42,,口服用水合氯醛粉,Oral Chloral Hydrate,0.5g:5ml,,2.0,ml,water aqua
+956375,10002,110224,210695,2076-12-17 08:50:57,,枸橼酸西地那非片,Sildenafil Citrate Tablets,25mg*7,,2.08,mg,tablet/capsule
+956503,10002,110224,210695,2076-12-17 12:25:09,,5％氯化钙注射液,5% Calcium Chloride Injection,20ml:1g*5,,20.0,ml,injection
+956504,10002,110224,210695,2076-12-17 12:25:18,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+956505,10002,110224,210695,2076-12-17 12:25:18,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.6,ml,injection
+956506,10002,110224,210695,2076-12-17 12:25:25,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+956510,10002,110224,210695,2076-12-17 16:50:31,,5％氯化钙注射液,5% Calcium Chloride Injection,20ml:1g*5,,20.0,ml,injection
+957684,10005,110228,,2069-12-19 08:15:21,,开塞露,Enema Glycerini,10ml,,10.0,ml,water aqua
+961958,10000,110773,,2080-04-25 13:52:26,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,50.0,u,injection
+961960,10000,110773,211238,2080-04-25 14:10:20,2080-04-26 10:46:05,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+961961,10000,110773,211238,2080-04-25 14:10:20,2080-04-26 10:46:05,注射用美罗培南,Meropenem for Injection,0.5g,,0.2,g,injection
+961962,10000,110773,211238,2080-04-25 14:10:20,2080-04-26 10:46:05,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,4.0,ml,injection
+961963,10000,110773,211238,2080-04-25 14:11:09,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,100.0,ml,injection
+961964,10000,110773,211238,2080-04-25 14:11:09,,小儿复方氨基酸注射液(19AA-1),Pediatric Compound Amino Acid Injection(19AA-I),20ml:1.2g,,60.0,ml,injection
+961965,10000,110773,211238,2080-04-25 14:11:10,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+961966,10000,110773,211238,2080-04-25 14:11:10,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,2.0,ml,injection
+961967,10000,110773,211238,2080-04-25 14:11:14,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+961968,10000,110773,211238,2080-04-25 14:11:14,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+961969,10000,110773,211238,2080-04-25 14:12:39,2080-04-26 10:46:05,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+961970,10000,110773,211238,2080-04-25 14:12:39,2080-04-26 10:46:05,复方甘草酸苷注射液,Compound Glycyrrhizin Injection,20ml*10,,10.0,ml,injection
+961971,10000,110773,211238,2080-04-25 14:13:00,2080-04-26 10:46:05,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+961972,10000,110773,211238,2080-04-25 14:13:00,2080-04-26 10:46:05,注射用丁二磺酸腺苷蛋氨酸,"Ademetionine  1,4-Butanedisulfonate for Injection",0.5g*5,Transmetil,0.25,g,injection
+961991,10000,110773,211238,2080-04-25 16:18:12,,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,250ml:12.5g,,10.0,ml,injection
+961992,10000,110773,211238,2080-04-25 16:18:12,,灭菌注射用水,Sterile Water Injection,500ml,,10.0,ml,injection
+961999,10000,110773,211238,2080-04-25 17:33:13,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+962000,10000,110773,211238,2080-04-25 17:45:32,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,50.0,u,injection
+962001,10000,110773,211238,2080-04-25 17:45:32,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+963085,10000,110773,211238,2080-04-26 07:00:00,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+963086,10000,110773,211238,2080-04-26 07:00:00,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.25,mg,injection
+963087,10000,110773,211238,2080-04-26 07:00:00,,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,0.5,ml,water aqua
+963088,10000,110773,211238,2080-04-26 07:49:01,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,100.0,ml,injection
+963089,10000,110773,211238,2080-04-26 07:49:01,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,6.0,ml,injection
+963090,10000,110773,211238,2080-04-26 07:49:01,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+963091,10000,110773,211238,2080-04-26 08:25:13,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+963092,10000,110773,211238,2080-04-26 08:25:13,,酚磺乙胺注射液,Etamsylate Injection,2ml:0.5g*10,,0.15,g,injection
+963093,10000,110773,211238,2080-04-26 08:25:13,,氨甲苯酸注射液,Aminomethylbenzoic Acid Injection,10ml:0.1g*5,,0.03,g,injection
+976123,10000,110773,211238,2080-04-26 10:45:46,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+976130,10000,110773,,2080-04-26 11:51:07,2080-05-03 09:52:19,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,30.0,ml,injection
+976131,10000,110773,,2080-04-26 11:51:07,2080-05-03 09:52:19,盐酸氨溴索注射液,Ambroxol Hydrochloride Injection,2ml:15mg*5,,7.5,mg,injection
+976132,10000,110773,,2080-04-26 11:51:09,2080-04-29 08:43:58,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,30.0,ml,injection
+976133,10000,110773,,2080-04-26 11:51:09,2080-04-29 08:43:58,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,3.5,mg,injection
+976134,10000,110773,,2080-04-26 11:51:11,2080-04-29 08:44:03,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,30.0,ml,injection
+976135,10000,110773,,2080-04-26 11:51:11,2080-04-29 08:44:03,注射用尖吻蝮蛇血凝酶,Haemocoagulase Agkistrodon for Injection,1Unit,,0.5,u,injection
+976136,10000,110773,,2080-04-26 11:51:11,2080-04-29 08:44:03,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+976137,10000,110773,,2080-04-26 11:52:41,2080-04-26 14:32:14,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+976138,10000,110773,,2080-04-26 11:52:41,2080-04-26 14:32:14,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,2500.0,u,injection
+976139,10000,110773,,2080-04-26 11:55:50,2080-05-07 08:55:43,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+976140,10000,110773,,2080-04-26 11:55:50,2080-05-07 08:55:43,复方甘草酸苷注射液,Compound Glycyrrhizin Injection,20ml*10,,10.0,ml,injection
+976141,10000,110773,,2080-04-26 11:56:11,2080-05-07 08:55:43,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+976142,10000,110773,,2080-04-26 11:56:11,2080-05-07 08:55:43,注射用丁二磺酸腺苷蛋氨酸,"Ademetionine  1,4-Butanedisulfonate for Injection",0.5g*5,Transmetil,0.25,g,injection
+976143,10000,110773,,2080-04-26 11:56:51,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+976144,10000,110773,,2080-04-26 11:56:51,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+976145,10000,110773,,2080-04-26 11:57:23,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+976146,10000,110773,,2080-04-26 11:57:23,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+976147,10000,110773,,2080-04-26 11:58:06,2080-05-01 08:53:43,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,20.0,ml,injection
+976148,10000,110773,,2080-04-26 11:58:06,2080-05-01 08:53:43,注射用美罗培南,Meropenem for Injection,0.5g,,0.2,g,injection
+976149,10000,110773,,2080-04-26 11:58:06,2080-05-01 08:53:43,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,4.0,ml,injection
+976151,10000,110773,,2080-04-26 14:32:16,2080-05-02 08:49:48,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+976152,10000,110773,,2080-04-26 14:32:16,2080-05-02 08:49:48,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,1000.0,u,injection
+976153,10000,110773,,2080-04-26 14:40:29,2080-05-07 08:55:43,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+976154,10000,110773,,2080-04-26 14:41:00,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,50.0,ml,water aqua
+977300,10000,110773,,2080-04-26 17:17:47,2080-04-30 08:55:58,5％葡萄糖注射液,5% Glucose Injection,250ml(Bag),,25.0,ml,injection
+977301,10000,110773,,2080-04-26 17:17:47,2080-04-30 08:55:58,20％人血白蛋白注射液,20% Albumin Prepared From Human Plasma Injection,5g/25ml,,5.0,g,injection
+979411,10002,110224,210695,2076-12-18 09:34:51,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+979412,10002,110224,210695,2076-12-18 09:35:13,,灭菌注射用水,Sterile Water Injection,5ml*50,,7.0,ml,injection
+979413,10002,110224,210695,2076-12-18 09:35:13,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,3.0,ml,injection
+979421,10002,110224,210695,2076-12-18 13:32:33,,灭菌注射用水,Sterile Water Injection,5ml*50,,7.0,ml,injection
+979422,10002,110224,210695,2076-12-18 13:32:33,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,3.0,ml,injection
+979427,10002,110224,210695,2076-12-18 19:46:00,,灭菌注射用水,Sterile Water Injection,5ml*50,,3.0,ml,injection
+979428,10002,110224,210695,2076-12-18 19:46:00,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,3.0,ml,injection
+979429,10002,110224,210695,2076-12-18 19:11:21,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+979430,10002,110224,210695,2076-12-18 19:11:21,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.6,ml,injection
+979431,10002,110224,210695,2076-12-18 19:11:52,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+979432,10002,110224,210695,2076-12-18 19:44:33,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,100.0,ml,injection
+979433,10002,110224,210695,2076-12-19 09:38:58,,5％氯化钙注射液,5% Calcium Chloride Injection,20ml:1g*5,,20.0,ml,injection
+980161,10002,110224,210695,2076-12-20 09:29:27,,枸橼酸西地那非片,Sildenafil Citrate Tablets,25mg*7,,2.08,mg,tablet/capsule
+980166,10002,110224,210695,2076-12-20 09:42:59,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+980167,10002,110224,210695,2076-12-20 17:03:42,,5％氯化钙注射液,5% Calcium Chloride Injection,20ml:1g*5,,20.0,ml,injection
+980176,10002,110224,210695,2076-12-21 09:16:32,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,30.0,ml,injection
+980177,10002,110224,210695,2076-12-21 09:16:32,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.2,ml,injection
+980178,10002,110224,210695,2076-12-21 09:17:14,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+987964,10000,110773,,2080-04-27 09:14:16,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+987965,10000,110773,,2080-04-27 09:14:16,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+987966,10000,110773,,2080-04-27 09:14:26,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,100.0,ml,injection
+987967,10000,110773,,2080-04-27 09:14:26,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+987968,10000,110773,,2080-04-27 09:19:24,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,50.0,ml,injection
+987969,10000,110773,,2080-04-27 09:19:24,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+987970,10000,110773,,2080-04-27 09:19:39,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,50.0,ml,injection
+987971,10000,110773,,2080-04-27 09:19:39,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+1005800,10005,110228,,2069-12-23 13:36:39,2070-01-01 13:47:38,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1017072,10000,110773,,2080-04-28 10:20:18,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+1017073,10000,110773,,2080-04-28 10:20:18,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,4.0,ml,injection
+1017074,10000,110773,,2080-04-28 10:20:29,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+1017075,10000,110773,,2080-04-28 10:20:29,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1017076,10000,110773,,2080-04-28 10:27:08,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,50.0,ml,water aqua
+1017117,10000,110773,,2080-04-29 08:44:52,,双歧杆菌三联活菌散,"Live Combined Bifidobacterium, Lactobacillus and Enterococcus Powder,oral",1g*7,,0.5,g,powder
+1017118,10000,110773,,2080-04-29 08:45:09,2080-05-07 08:55:43,双歧杆菌三联活菌散,"Live Combined Bifidobacterium, Lactobacillus and Enterococcus Powder,oral",1g*7,,0.5,g,powder
+1017119,10000,110773,,2080-04-29 08:46:14,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,250.0,ml,injection
+1017120,10000,110773,,2080-04-29 08:46:14,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+1017121,10000,110773,,2080-04-29 08:46:53,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+1017122,10000,110773,,2080-04-29 08:46:53,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1047862,10002,110224,210695,2076-12-21 14:52:23,,注射用尿激酶,Urokinase for Injection,100000iu,,10.0,10000iu,injection
+1047863,10002,110224,210695,2076-12-21 14:52:32,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+1047864,10002,110224,210695,2076-12-21 14:52:40,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,20.0,ml,injection
+1047865,10002,110224,210695,2076-12-21 14:52:40,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.6,ml,injection
+1047868,10002,110224,210695,2076-12-22 09:22:07,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1047869,10002,110224,210695,2076-12-22 09:23:22,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,20.0,ml,injection
+1047870,10002,110224,210695,2076-12-22 09:23:22,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.6,ml,injection
+1047871,10002,110224,210695,2076-12-22 10:44:43,2076-12-25 09:00:00,果糖二磷酸钠口服液,Fructose Sodium Diphosphate Oral Solution,10ml:1g*10,,5.0,ml,water aqua
+1047872,10002,110224,210695,2076-12-22 10:44:58,,果糖二磷酸钠口服液,Fructose Sodium Diphosphate Oral Solution,10ml:1g*10,,5.0,ml,water aqua
+1047877,10002,110224,210695,2076-12-23 07:29:33,,口服用水合氯醛粉,Oral Chloral Hydrate,0.5g:5ml,,2.0,ml,water aqua
+1047878,10002,110224,210695,2076-12-23 09:08:58,2076-12-25 09:00:00,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+1047879,10002,110224,210695,2076-12-23 09:09:11,2076-12-25 09:00:00,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,2.0,ml,injection
+1047880,10002,110224,210695,2076-12-23 09:09:11,2076-12-25 09:00:00,灭菌注射用水,Sterile Water Injection,5ml*50,,2.0,ml,injection
+1047881,10002,110224,210695,2076-12-23 09:09:57,2076-12-25 09:00:00,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,4.0,mg,injection
+1047893,10002,110224,210695,2076-12-24 08:52:16,,开塞露,Enema Glycerini,10ml,,5.0,ml,water aqua
+1047894,10002,110224,210695,2076-12-24 08:53:05,,维生素K1注射液,Vitamin K1 Injection,1ml:10mg*10,,5.0,mg,injection
+1047895,10002,110224,210695,2076-12-24 08:53:13,,维生素K1注射液,Vitamin K1 Injection,1ml:10mg*10,,5.0,mg,injection
+1047896,10002,110224,210695,2076-12-24 08:53:38,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+1047897,10002,110224,210695,2076-12-24 08:53:38,,注射用头孢拉定,Cefradine for Injection,0.5g,,0.15,g,injection
+1048529,10002,110224,210695,2076-12-24 08:53:38,,灭菌注射用水,Sterile Water Injection,5ml*50,,1.5,ml,injection
+1048530,10002,110224,210695,2076-12-24 09:28:25,,20％人血白蛋白注射液,20% Albumin Prepared From Human Plasma Injection,10g/50ml,,10.0,g,injection
+1048531,10002,110224,210695,2076-12-24 09:28:26,,5％碳酸氢钠注射液,5% Sodium Bicarbonate Injection,250ml:12.5g,,250.0,ml,injection
+1048532,10002,110224,210695,2076-12-24 09:28:26,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,20.0,ml,injection
+1048533,10002,110224,210695,2076-12-24 09:28:26,,20％甘露醇注射液,20% Mannitol Injection,100ml:20g,,100.0,ml,injection
+1048534,10002,110224,210695,2076-12-24 09:28:27,,10％葡萄糖酸钙注射液,10% Calcium Gluconate Injection,10ml:1g*5,,10.0,ml,injection
+1048535,10002,110224,210695,2076-12-24 09:28:27,,25％硫酸镁注射液,25% Magnesium Sulfate Injection,10ml:2.5g*5,,10.0,ml,injection
+1048536,10002,110224,210695,2076-12-24 09:28:28,,注射用甲泼尼龙琥珀酸钠,Methylprednisolone Sodium Succinate for Injection,0.5g,,0.5,g,injection
+1048537,10002,110224,210695,2076-12-24 09:28:29,,注射用磷酸肌酸钠,Creatine phosphate sodium for injection,0.5g,,1.0,g,injection
+1048549,10002,110224,210695,2076-12-24 12:53:09,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1048550,10002,110224,210695,2076-12-24 12:53:17,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,10.0,ml,injection
+1048551,10002,110224,210695,2076-12-24 12:53:17,,5％氯化钙注射液,5% Calcium Chloride Injection,20ml:1g*5,,1.5,ml,injection
+1048552,10002,110224,210695,2076-12-24 12:54:36,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,100ml(Tube),,100.0,ml,injection
+1048553,10002,110224,210695,2076-12-24 12:54:36,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+1048556,10002,110224,210695,2076-12-24 21:49:40,,口服用水合氯醛粉,Oral Chloral Hydrate,0.5g:5ml,,2.0,ml,water aqua
+1065268,10002,110224,210695,2076-12-25 04:33:41,,口服用水合氯醛粉,Oral Chloral Hydrate,0.5g:5ml,,2.0,ml,water aqua
+1065269,10002,110224,210695,2076-12-25 12:31:23,2076-12-30 09:32:07,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,500ml,,500.0,ml,injection
+1065270,10002,110224,210695,2076-12-25 12:31:23,2076-12-27 10:48:55,玻璃酸钠滴眼液,Sodium Hyaluronate Eye Drops,5ml:5mg,,1.0,drop,water aqua
+1065271,10002,110224,210695,2076-12-25 12:31:44,2076-12-27 08:10:50,注射用矛头蝮蛇血凝酶,Hemocoagulase Atrox for Injection,1Unit,,0.4,u,injection
+1065272,10002,110224,210695,2076-12-25 12:31:55,2076-12-26 08:22:59,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,50.0,ml,injection
+1065273,10002,110224,210695,2076-12-25 12:31:55,2076-12-26 08:22:59,胰岛素注射液,Insulin Injection,10ml:400iu,,1.2,iu,injection
+1071908,10002,110224,210695,2076-12-25 12:31:55,2076-12-26 08:22:59,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+1071909,10002,110224,210695,2076-12-25 12:31:55,2076-12-30 09:32:07,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+1071910,10002,110224,210695,2076-12-25 12:31:55,2076-12-30 09:32:07,盐酸氨溴索注射液,Ambroxol Hydrochloride Injection,2ml:15mg*5,,7.5,mg,injection
+1071911,10002,110224,210695,2076-12-25 12:31:57,2076-12-30 09:32:07,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+1071912,10002,110224,210695,2076-12-25 12:31:57,2076-12-30 09:32:07,注射用磷酸肌酸钠,Creatine phosphate sodium for injection,0.5g,,0.5,g,injection
+1071913,10002,110224,210695,2076-12-25 12:31:57,2076-12-30 09:32:07,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+1071914,10002,110224,210695,2076-12-25 12:31:57,2076-12-28 08:23:44,地塞米松磷酸钠注射液,Dexamethasone Sodium Phosphate Injection,2mg:1ml*10,,1.0,mg,injection
+1071915,10002,110224,210695,2076-12-25 12:31:57,2076-12-30 09:32:07,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,250ml(Bag),,10.0,ml,injection
+1071916,10002,110224,210695,2076-12-25 12:31:58,2076-12-30 09:32:07,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,3.0,mg,injection
+1071917,10002,110224,210695,2076-12-25 12:32:00,2076-12-30 09:32:07,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,20.0,ml,injection
+1071918,10002,110224,210695,2076-12-25 12:32:00,2076-12-30 09:32:07,维生素C注射液,Vitamin C Injection,1.0g/5ml*5,,0.5,g,injection
+1071919,10002,110224,210695,2076-12-25 12:32:01,2076-12-30 09:32:07,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.6,ml,injection
+1071920,10002,110224,210695,2076-12-25 12:31:26,,玻璃酸钠滴眼液,Sodium Hyaluronate Eye Drops,5ml:5mg,,1.0,drop,water aqua
+1071921,10002,110224,210695,2076-12-25 12:31:27,,苯扎氯铵贴,Benzalkonium Chloride Patches,100,,10.0,,water aqua
+1071922,10002,110224,210695,2076-12-25 12:31:27,,聚维酮碘溶液,Povidone lodine Solution,5% 100ml,,100.0,ml,water aqua
+1071923,10002,110224,210695,2076-12-25 12:31:57,,胰岛素注射液,Insulin Injection,10ml:400iu,,400.0,iu,injection
+1071924,10002,110224,210695,2076-12-25 12:32:19,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+1071925,10002,110224,210695,2076-12-25 12:32:19,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,50.0,u,injection
+1071926,10002,110224,210695,2076-12-25 12:32:21,,5％葡萄糖注射液,5% Glucose Injection,250ml(Bag),,25.0,ml,injection
+1071927,10002,110224,210695,2076-12-25 12:32:21,,乳酸米力农注射液,Milrinone Lactate Injection,5ml:5mg*2,,5.0,mg,injection
+1071928,10002,110224,210695,2076-12-25 12:32:22,,5％氯化钙注射液,5% Calcium Chloride Injection,20ml:1g*5,,20.0,ml,injection
+1071929,10002,110224,210695,2076-12-25 12:32:38,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,250ml(Bag),,25.0,ml,injection
+1071930,10002,110224,210695,2076-12-25 12:32:39,,盐酸多巴胺注射液,Dopamine Hydrochloride Injection,2ml:20mg*10,,48.0,mg,injection
+1071931,10002,110224,210695,2076-12-25 12:32:39,,盐酸多巴酚丁胺注射液,Dobutamine Hydrochloride Injection,2ml:20mg*5,,48.0,mg,injection
+1071932,10002,110224,210695,2076-12-25 12:32:52,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,25.0,ml,injection
+1071933,10002,110224,210695,2076-12-25 12:32:52,,咪达唑仑注射液,Midazolam Injection,2ml:10mg,,12.0,mg,injection
+1071934,10002,110224,210695,2076-12-25 12:33:03,,枸橼酸芬太尼注射液,Fentanyl Citrate Injection,2ml:0.1mg*10,,1.0,mg,injection
+1071935,10002,110224,210695,2076-12-25 12:34:35,,注射用胸腺法新,Thymalfasin for Injection,1.6mg,,0.8,mg,injection
+1071936,10002,110224,210695,2076-12-25 12:35:31,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+1071937,10002,110224,210695,2076-12-25 12:35:31,,注射用头孢拉定,Cefradine for Injection,0.5g,,0.2,g,injection
+1071938,10002,110224,210695,2076-12-25 12:35:31,,灭菌注射用水,Sterile Water Injection,5ml*50,,2.0,ml,injection
+1100918,10000,110773,,2080-04-29 14:46:15,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,10.0,ml,water aqua
+1100919,10000,110773,,2080-04-29 15:46:39,,熊去氧胆酸胶囊,Ursodeoxycholic Acid Capsules,250mg*25,,50.0,mg,tablet/capsule
+1100920,10000,110773,,2080-04-29 15:47:04,,茵栀黄口服液,Yinzhihuang oral liquid,10ml*10,,5.0,ml,chinese patent drug
+1100921,10000,110773,,2080-04-29 15:47:24,2080-05-07 08:55:43,熊去氧胆酸胶囊,Ursodeoxycholic Acid Capsules,250mg*25,,50.0,mg,tablet/capsule
+1100922,10000,110773,,2080-04-29 15:47:38,2080-05-07 08:55:43,茵栀黄口服液,Yinzhihuang oral liquid,10ml*10,,5.0,ml,chinese patent drug
+1100923,10000,110773,,2080-04-30 08:58:04,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+1100924,10000,110773,,2080-04-30 08:58:05,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+1100925,10000,110773,,2080-04-30 08:58:05,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,50.0,ml,injection
+1100926,10000,110773,,2080-04-30 08:58:05,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+1100945,10000,110773,,2080-05-01 08:55:31,2080-05-07 08:55:43,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,30.0,ml,injection
+1100946,10000,110773,,2080-05-01 08:55:31,2080-05-07 08:55:43,注射用拉氧头孢钠,Latamoxef Sodium for Injection,0.25g,Shiomarin,0.2,g,injection
+1100947,10000,110773,,2080-05-01 08:55:31,2080-05-07 08:55:43,灭菌注射用水,Sterile Water Injection,5ml*50,,4.0,ml,injection
+1100948,10000,110773,,2080-05-01 08:57:24,,5％葡萄糖氯化钠注射液,5% Glucose and Sodium Chloride Injection,250ml(Bag),,150.0,ml,injection
+1100949,10000,110773,,2080-05-01 08:57:24,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+1101351,10000,110773,,2080-05-01 16:54:18,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,50.0,ml,water aqua
+1108911,10002,110224,210695,2076-12-25 12:35:59,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+1108912,10002,110224,210695,2076-12-25 12:35:59,,注射用头孢拉定,Cefradine for Injection,0.5g,,0.2,g,injection
+1112359,10002,110224,210695,2076-12-25 12:35:59,,灭菌注射用水,Sterile Water Injection,5ml*50,,2.0,ml,injection
+1112360,10002,110224,210695,2076-12-25 12:36:34,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+1112361,10002,110224,210695,2076-12-25 12:36:34,,20％人血白蛋白注射液,20% Albumin Prepared From Human Plasma Injection,5g/25ml,,5.0,g,injection
+1112362,10002,110224,210695,2076-12-25 14:55:59,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,3.0,ml,injection
+1112363,10002,110224,210695,2076-12-25 16:33:47,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,3.0,mg,injection
+1112364,10002,110224,210695,2076-12-25 16:45:33,,注射用维库溴铵,Vecuronium Bromide for Injection,4mg*10,,0.4,mg,injection
+1112365,10002,110224,210695,2076-12-25 16:48:18,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+1112366,10002,110224,210695,2076-12-25 16:48:19,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,50.0,u,injection
+1112367,10002,110224,210695,2076-12-25 19:20:23,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1112368,10002,110224,210695,2076-12-25 19:20:59,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+1112369,10002,110224,210695,2076-12-25 19:20:59,,胰岛素注射液,Insulin Injection,10ml:400iu,,20.0,iu,injection
+1112372,10002,110224,210695,2076-12-25 22:01:47,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+1112379,10002,110224,210695,2076-12-26 07:33:27,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.5,ml,injection
+1112380,10002,110224,210695,2076-12-26 08:20:14,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,25.0,ml,injection
+1112381,10002,110224,210695,2076-12-26 08:20:14,,盐酸多巴胺注射液,Dopamine Hydrochloride Injection,2ml:20mg*10,,48.0,mg,injection
+1112382,10002,110224,210695,2076-12-26 08:20:14,,盐酸多巴酚丁胺注射液,Dobutamine Hydrochloride Injection,2ml:20mg*10,,48.0,mg,injection
+1112383,10002,110224,210695,2076-12-26 08:23:35,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+1112384,10002,110224,210695,2076-12-26 08:23:35,,注射用头孢拉定,Cefradine for Injection,0.5g,,0.2,g,injection
+1112385,10002,110224,210695,2076-12-26 08:23:35,,灭菌注射用水,Sterile Water Injection,5ml*50,,2.0,ml,injection
+1112386,10002,110224,210695,2076-12-26 08:23:52,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+1112387,10002,110224,210695,2076-12-26 08:23:52,,注射用头孢拉定,Cefradine for Injection,0.5g,,0.2,g,injection
+1112388,10002,110224,210695,2076-12-26 08:23:52,,灭菌注射用水,Sterile Water Injection,5ml*50,,2.0,ml,injection
+1112389,10002,110224,210695,2076-12-26 08:24:23,2076-12-30 09:32:07,氢氯噻嗪片,Hydrochlorothiazide Tablets,25mg*100,,3.125,mg,tablet/capsule
+1112390,10002,110224,210695,2076-12-26 08:24:23,2076-12-30 09:32:07,螺内酯片,Spironolactone Tablets,20mg*100,,2.5,mg,tablet/capsule
+1112391,10002,110224,210695,2076-12-26 08:24:23,2076-12-30 09:32:07,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+1112392,10002,110224,210695,2076-12-26 08:24:53,2076-12-30 09:32:07,枸橼酸西地那非片,Sildenafil Citrate Tablets,25mg*7,,2.08,mg,tablet/capsule
+1112393,10002,110224,210695,2076-12-26 08:25:19,,枸橼酸西地那非片,Sildenafil Citrate Tablets,25mg*7,,2.08,mg,tablet/capsule
+1112394,10002,110224,210695,2076-12-26 08:25:40,,小儿复方氨基酸注射液(19AA-1),Pediatric Compound Amino Acid Injection(19AA-I),20ml:1.2g,,80.0,ml,injection
+1112395,10002,110224,210695,2076-12-26 08:25:40,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,60.0,ml,injection
+1112396,10002,110224,210695,2076-12-26 08:25:40,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,20.0,ml,injection
+1112397,10002,110224,210695,2076-12-26 08:25:40,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,4.0,ml,injection
+1112398,10002,110224,210695,2076-12-26 08:25:40,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,0.4,tube,injection
+1112399,10002,110224,210695,2076-12-26 08:25:40,,注射用丙氨酰谷氨酰胺,Glutamine for Injection,10g,,0.9,g,injection
+1112400,10002,110224,210695,2076-12-26 08:25:40,,25％硫酸镁注射液,25% Magnesium Sulfate Injection,10ml:2.5g*5,,1.0,ml,injection
+1112401,10002,110224,210695,2076-12-26 08:25:40,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+1112402,10002,110224,210695,2076-12-26 08:25:40,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,4.0,ml,injection
+1112403,10002,110224,210695,2076-12-26 08:25:40,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,0.4,bottle,injection
+1112404,10002,110224,210695,2076-12-26 08:25:40,,多种微量元素注射液Ⅱ,Multi-trace Elements Injection(Ⅱ),10ml*10,,4.0,ml,injection
+1112405,10002,110224,210695,2076-12-26 08:26:55,,10％葡萄糖注射液,10% Glucose Injection,250ml(Bag),,50.0,ml,injection
+1112406,10002,110224,210695,2076-12-26 08:26:55,,胰岛素注射液,Insulin Injection,10ml:400iu,,1.2,iu,injection
+1112407,10002,110224,210695,2076-12-26 08:26:55,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+1112408,10002,110224,210695,2076-12-26 08:27:38,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,4.0,mg,injection
+1112414,10002,110224,210695,2076-12-26 11:02:23,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,25.0,ml,injection
+1112415,10002,110224,210695,2076-12-26 11:02:23,,20％人血白蛋白注射液,20% Albumin Prepared From Human Plasma Injection,5g/25ml,,5.0,g,injection
+1113633,10000,110773,,2080-05-02 09:30:42,2080-05-07 08:55:43,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+1115572,10002,110224,210695,2076-12-26 11:07:38,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,100.0,mg,injection
+1115577,10002,110224,210695,2076-12-26 12:37:19,,枸橼酸西地那非片,Sildenafil Citrate Tablets,25mg*7,,2.08,mg,tablet/capsule
+1116151,10002,110224,210695,2076-12-26 15:51:08,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,30.0,ml,injection
+1116152,10002,110224,210695,2076-12-26 15:51:08,,咪达唑仑注射液,Midazolam Injection,2ml:10mg,,20.0,mg,injection
+1116156,10002,110224,210695,2076-12-26 17:07:26,,5％氯化钙注射液,5% Calcium Chloride Injection,20ml:1g*5,,20.0,ml,injection
+1116165,10002,110224,210695,2076-12-26 22:51:10,,口服用水合氯醛粉,Oral Chloral Hydrate,0.5g:5ml,,2.0,ml,water aqua
+1116166,10002,110224,210695,2076-12-26 22:51:10,,灭菌注射用水,Sterile Water Injection,5ml*50,,2.0,ml,injection
+1120769,10002,110224,210695,2076-12-27 08:10:54,,小儿复方氨基酸注射液(19AA-1),Pediatric Compound Amino Acid Injection(19AA-I),20ml:1.2g,,100.0,ml,injection
+1120770,10002,110224,210695,2076-12-27 08:10:54,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,80.0,ml,injection
+1120771,10002,110224,210695,2076-12-27 08:10:54,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,30.0,ml,injection
+1120772,10002,110224,210695,2076-12-27 08:10:54,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,4.0,ml,injection
+1120773,10002,110224,210695,2076-12-27 08:10:54,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,0.4,tube,injection
+1120774,10002,110224,210695,2076-12-27 08:10:54,,注射用丙氨酰谷氨酰胺,Glutamine for Injection,10g,,1.2,g,injection
+1120775,10002,110224,210695,2076-12-27 08:10:54,,25％硫酸镁注射液,25% Magnesium Sulfate Injection,10ml:2.5g*5,,1.0,ml,injection
+1120776,10002,110224,210695,2076-12-27 08:10:54,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,6.0,ml,injection
+1120777,10002,110224,210695,2076-12-27 08:10:54,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,4.0,ml,injection
+1120778,10002,110224,210695,2076-12-27 08:10:54,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,0.4,bottle,injection
+1122833,10002,110224,210695,2076-12-27 08:10:54,,多种微量元素注射液Ⅱ,Multi-trace Elements Injection(Ⅱ),10ml*10,,4.0,ml,injection
+1122834,10002,110224,210695,2076-12-27 08:14:49,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,50.0,ml,injection
+1122835,10002,110224,210695,2076-12-27 08:14:49,,盐酸异丙肾上腺素注射液,Isoprenaline Hydrochloride Injection,2ml:1mg*2,,0.24,mg,injection
+1122836,10002,110224,210695,2076-12-27 08:28:29,2076-12-30 09:32:07,卡托普利片,Captopril Tablets,12.5mg*100,Capoten,0.5,mg,tablet/capsule
+1122837,10002,110224,210695,2076-12-27 09:34:00,2076-12-30 09:32:07,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+1122838,10002,110224,210695,2076-12-27 09:34:00,2076-12-30 09:32:07,注射用拉氧头孢钠,Latamoxef Sodium for Injection,0.25g,Shiomarin,0.15,g,injection
+1122839,10002,110224,210695,2076-12-27 09:34:00,2076-12-30 09:32:07,灭菌注射用水,Sterile Water Injection,5ml*50,,3.0,ml,injection
+1122840,10002,110224,210695,2076-12-27 08:40:12,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+1122841,10002,110224,210695,2076-12-27 08:40:12,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,50.0,u,injection
+1122842,10002,110224,210695,2076-12-27 08:40:15,,5％葡萄糖注射液,5% Glucose Injection,250ml(Bag),,25.0,ml,injection
+1122843,10002,110224,210695,2076-12-27 08:40:15,,乳酸米力农注射液,Milrinone Lactate Injection,5ml:5mg*2,,5.0,mg,injection
+1122844,10002,110224,210695,2076-12-27 08:40:16,,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,100.0,mg,injection
+1122857,10002,110224,210695,2076-12-27 10:20:41,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+1122858,10002,110224,210695,2076-12-27 10:20:41,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.25,mg,injection
+1122859,10002,110224,210695,2076-12-27 10:20:41,,吸入用丙酸倍氯米松混悬液,Beclomethasone dipropionate inhalation suspension,2ml:0.8mg,,0.5,ml,water aqua
+1122860,10002,110224,210695,2076-12-27 10:20:43,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+1122861,10002,110224,210695,2076-12-27 10:20:43,,盐酸肾上腺素注射液,Adrenaline Hydrochlaride Injection,1mg*10,,0.25,mg,injection
+1122862,10002,110224,210695,2076-12-27 10:20:43,,吸入用丙酸倍氯米松混悬液,Beclomethasone dipropionate inhalation suspension,2ml:0.8mg,,0.5,ml,water aqua
+1122863,10002,110224,210695,2076-12-27 10:38:35,2076-12-30 09:32:07,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,5.0,ml,injection
+1122864,10002,110224,210695,2076-12-27 10:38:36,2076-12-30 09:32:07,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,1.0,ml,water aqua
+1123813,10002,110224,210695,2076-12-27 10:38:37,2076-12-30 09:32:07,硫酸特布他林雾化液,Terbutaline Sulphate Solution for Nebulization,2ml:5mg*20,,1.0,ml,water aqua
+1123814,10002,110224,210695,2076-12-27 10:38:38,2076-12-30 09:32:07,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+1123817,10002,110224,210695,2076-12-27 11:41:03,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1123825,10002,110224,210695,2076-12-27 18:42:34,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1131845,10002,110224,210695,2076-12-27 22:11:32,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1131846,10002,110224,210695,2076-12-28 07:46:49,,地西泮注射液,Diazepam Injection,2ml:10mg*10,,1.0,mg,injection
+1131847,10002,110224,210695,2076-12-28 08:29:20,,小儿复方氨基酸注射液(19AA-1),Pediatric Compound Amino Acid Injection(19AA-I),20ml:1.2g,,80.0,ml,injection
+1131848,10002,110224,210695,2076-12-28 08:29:22,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,60.0,ml,injection
+1131849,10002,110224,210695,2076-12-28 08:29:23,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,20.0,ml,injection
+1131850,10002,110224,210695,2076-12-28 08:29:24,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,4.0,ml,injection
+1131851,10002,110224,210695,2076-12-28 08:29:25,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,0.4,tube,injection
+1131852,10002,110224,210695,2076-12-28 08:29:26,,注射用丙氨酰谷氨酰胺,Glutamine for Injection,10g,,0.8,g,injection
+1131853,10002,110224,210695,2076-12-28 08:29:29,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,4.0,ml,injection
+1131854,10002,110224,210695,2076-12-28 08:29:29,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,4.0,ml,injection
+1131855,10002,110224,210695,2076-12-28 08:29:29,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,0.4,bottle,injection
+1131856,10002,110224,210695,2076-12-28 08:31:01,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+1133544,10002,110224,210695,2076-12-28 08:31:01,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,50.0,u,injection
+1133545,10002,110224,210695,2076-12-28 08:31:14,2076-12-30 09:32:07,(婴)维生素AD滴剂,Vitamin A and D Drops,10*4,VitAD,1.0,,tablet/capsule
+1133546,10002,110224,210695,2076-12-28 08:31:36,,(婴)维生素AD滴剂,Vitamin A and D Drops,10*4,VitAD,1.0,,tablet/capsule
+1133547,10002,110224,210695,2076-12-28 08:32:04,2076-12-30 09:32:07,葡萄糖酸钙口服溶液,Calcium Gluconate Oral Solution,10ml*10,,10.0,ml,water aqua
+1133548,10002,110224,210695,2076-12-28 08:32:24,,葡萄糖酸钙口服溶液,Calcium Gluconate Oral Solution,10ml*10,,10.0,ml,water aqua
+1133575,10002,110224,210695,2076-12-28 14:45:53,,地西泮注射液,Diazepam Injection,2ml:10mg*10,,0.8,mg,injection
+1133576,10002,110224,210695,2076-12-28 15:15:52,,盐酸吗啡注射液,Morphine Hydrachloride Injection,1ml:10mg*10,,0.4,mg,injection
+1133577,10002,110224,210695,2076-12-28 15:39:16,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+1137572,10000,110773,,2080-05-03 15:46:24,,熊去氧胆酸胶囊,Ursodeoxycholic Acid Capsules,250mg*25,,50.0,mg,tablet/capsule
+1141054,10002,110224,210695,2076-12-29 02:44:30,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+1141075,10002,110224,210695,2076-12-29 08:39:00,,5％葡萄糖注射液,5% Glucose Injection,250ml(Bag),,25.0,ml,injection
+1141076,10002,110224,210695,2076-12-29 08:39:00,,乳酸米力农注射液,Milrinone Lactate Injection,5ml:5mg*2,,5.0,mg,injection
+1141077,10002,110224,210695,2076-12-29 08:40:01,,小儿复方氨基酸注射液(19AA-1),Pediatric Compound Amino Acid Injection(19AA-I),20ml:1.2g,,60.0,ml,injection
+1141078,10002,110224,210695,2076-12-29 08:40:04,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,50.0,ml,injection
+1141079,10002,110224,210695,2076-12-29 08:40:04,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,20.0,ml,injection
+1158396,10002,110224,210695,2076-12-29 08:40:09,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,4.0,ml,injection
+1158397,10002,110224,210695,2076-12-29 08:40:10,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,0.4,tube,injection
+1158398,10002,110224,210695,2076-12-29 08:40:11,,注射用丙氨酰谷氨酰胺,Glutamine for Injection,10g,,0.5,g,injection
+1158399,10002,110224,210695,2076-12-29 08:40:14,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,4.0,ml,injection
+1158400,10002,110224,210695,2076-12-29 08:40:14,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,4.0,ml,injection
+1158401,10002,110224,210695,2076-12-29 08:40:14,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,0.4,bottle,injection
+1161709,10002,110224,210695,2076-12-29 13:36:33,2076-12-30 09:32:07,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,3.0,mg,injection
+1161744,10002,110224,210695,2076-12-29 15:27:40,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.5,ml,injection
+1163752,10002,110224,210695,2076-12-29 18:13:05,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+1163753,10002,110224,210695,2076-12-29 18:13:05,,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,50.0,u,injection
+1163759,10002,110224,210695,2076-12-30 08:46:42,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,20.0,ml,injection
+1163760,10002,110224,210695,2076-12-30 08:46:42,,维生素C注射液,Vitamin C Injection,1.0g/5ml*5,,0.5,g,injection
+1163761,10002,110224,210695,2076-12-30 08:46:42,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,0.6,ml,injection
+1163762,10002,110224,210695,2076-12-30 08:47:13,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+1163763,10002,110224,210695,2076-12-30 08:47:13,,注射用磷酸肌酸钠,Creatine phosphate sodium for injection,0.5g,,0.5,g,injection
+1163764,10002,110224,210695,2076-12-30 08:47:13,,灭菌注射用水,Sterile Water Injection,5ml*50,,5.0,ml,injection
+1163765,10002,110224,210695,2076-12-30 08:47:30,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,10.0,ml,injection
+1163766,10002,110224,210695,2076-12-30 08:47:30,,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,3.0,mg,injection
+1163767,10002,110224,210695,2076-12-30 08:47:53,,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,10.0,ml,injection
+1163768,10002,110224,210695,2076-12-30 08:47:53,,盐酸氨溴索注射液,Ambroxol Hydrochloride Injection,2ml:15mg*5,,7.5,mg,injection
+1164852,10002,110224,,2076-12-30 14:54:02,2077-01-08 08:50:08,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,2.0,ml,injection
+1164853,10002,110224,,2076-12-30 14:54:03,2077-01-08 08:50:08,吸入用异丙托溴铵溶液,Ipratropium Bromide Solution for Inhalation,2ml:500μg*10,,1.0,ml,water aqua
+1164854,10002,110224,,2076-12-30 14:54:03,2077-01-08 08:50:08,硫酸特布他林雾化液,Terbutaline Sulphate Solution for Nebulization,2ml:5mg*20,,0.5,ml,water aqua
+1164855,10002,110224,,2076-12-30 14:54:04,2077-01-08 08:50:08,吸入用布地奈德混悬液,Budesonide Suspension for Inhalation,2ml:1mg*5,,2.0,ml,water aqua
+1164859,10002,110224,,2076-12-30 14:57:32,2077-01-04 09:15:12,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,10ml(Bottle),,10.0,ml,injection
+1164860,10002,110224,,2076-12-30 14:57:32,2077-01-04 09:15:12,注射用奥美拉唑钠,Omeprazole Sodium For Injection,20mg,Losec,3.0,mg,injection
+1164861,10002,110224,,2076-12-30 14:58:58,2077-01-07 09:25:42,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,15.0,ml,injection
+1164862,10002,110224,,2076-12-30 14:58:58,2077-01-07 09:25:42,注射用磷酸肌酸钠,Creatine phosphate sodium for injection,0.5g,,0.25,g,injection
+1164863,10002,110224,,2076-12-30 14:58:58,2077-01-07 09:25:42,灭菌注射用水,Sterile Water Injection,5ml*50,,2.5,ml,injection
+1164864,10002,110224,,2076-12-30 15:00:10,2077-01-04 09:16:32,氢氯噻嗪片,Hydrochlorothiazide Tablets,25mg*100,,3.125,mg,tablet/capsule
+1164865,10002,110224,,2076-12-30 15:00:26,2077-01-04 09:16:35,螺内酯片,Spironolactone Tablets,20mg*100,,2.5,mg,tablet/capsule
+1164866,10002,110224,,2076-12-30 15:02:31,2077-01-06 10:03:12,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,15.0,ml,injection
+1164867,10002,110224,,2076-12-30 15:02:31,2077-01-06 10:03:12,盐酸氨溴索注射液,Ambroxol Hydrochloride Injection,2ml:15mg*5,,5.0,mg,injection
+1164868,10002,110224,,2076-12-30 15:04:56,2077-01-04 09:16:47,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,1.0,ml,injection
+1164869,10002,110224,,2076-12-30 15:05:30,2077-01-06 10:04:02,枸橼酸西地那非片,Sildenafil Citrate Tablets,25mg*7,,2.08,mg,tablet/capsule
+1164870,10002,110224,,2076-12-30 15:05:59,2077-01-04 09:17:18,卡托普利片,Captopril Tablets,12.5mg*100,Capoten,0.5,mg,tablet/capsule
+1164871,10002,110224,,2076-12-30 15:06:21,2077-01-02 07:46:18,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,15.0,ml,injection
+1164872,10002,110224,,2076-12-30 15:06:21,2077-01-02 07:46:18,注射用拉氧头孢钠,Latamoxef Sodium for Injection,0.25g,Shiomarin,0.15,g,injection
+1164873,10002,110224,,2076-12-30 15:06:21,2077-01-02 07:46:18,灭菌注射用水,Sterile Water Injection,5ml*50,,3.0,ml,injection
+1164874,10002,110224,,2076-12-30 15:07:24,2077-01-08 10:31:01,(婴)维生素AD滴剂,Vitamin A and D Drops,10*4,VitAD,1.0,,tablet/capsule
+1164875,10002,110224,,2076-12-30 15:08:00,2077-01-08 10:31:01,葡萄糖酸钙口服溶液,Calcium Gluconate Oral Solution,10ml*10,,10.0,ml,water aqua
+1164876,10002,110224,,2076-12-30 15:08:13,2077-01-04 09:16:27,呋塞米注射液,Furosemide Injection,2ml:20mg*10,,3.0,mg,injection
+1164877,10002,110224,,2076-12-30 15:11:40,2077-01-08 10:31:01,肝素钠注射液,Heparin Sodium Injection,2ml:12500u*10,,12500.0,u,injection
+1164878,10002,110224,,2076-12-30 15:12:55,,小儿复方氨基酸注射液(19AA-1),Pediatric Compound Amino Acid Injection(19AA-I),20ml:1.2g,,60.0,ml,injection
+1164879,10002,110224,,2076-12-30 15:12:55,,50％葡萄糖注射液,50% Glucose Injection,20ml:10g,,50.0,ml,injection
+1164880,10002,110224,,2076-12-30 15:12:55,,中长链脂肪乳注射液,Medium and Long Chain Fat Emulsion Injection,250ml 20%,,20.0,ml,injection
+1164881,10002,110224,,2076-12-30 15:12:55,,浓氯化钠注射液,Concentrated Sodium Chloride Injection,10ml:1g*5,,4.0,ml,injection
+1164882,10002,110224,,2076-12-30 15:12:55,,注射用水溶性维生素,Water-soluble Vitamin for Injection,,,0.4,tube,injection
+1164883,10002,110224,,2076-12-30 15:12:55,,注射用丙氨酰谷氨酰胺,Glutamine for Injection,10g,,0.5,g,injection
+1164884,10002,110224,,2076-12-30 15:12:55,,10％氯化钾注射液,10% Potassium Chloride Injection,10ml(Bottle),,4.0,ml,injection
+1164885,10002,110224,,2076-12-30 15:12:55,,甘油磷酸钠注射液,Sodium Glycerophosphate Injection,10ml:2.16g,,4.0,ml,injection
+1164886,10002,110224,,2076-12-30 15:12:55,,注射用脂溶性维生素,Fat-soluble Vitamins for Injection(I),VA2300IU,,0.4,bottle,injection
+1164888,10002,110224,,2076-12-30 15:44:24,,氢氯噻嗪片,Hydrochlorothiazide Tablets,25mg*100,,3.125,mg,tablet/capsule
+1164889,10002,110224,,2076-12-30 15:44:43,,螺内酯片,Spironolactone Tablets,20mg*100,,2.5,mg,tablet/capsule
+1169593,10000,110773,,2080-05-05 09:19:57,,双歧杆菌三联活菌散,"Live Combined Bifidobacterium, Lactobacillus and Enterococcus Powder,oral",1g*7,,0.5,g,powder
+1169600,10000,110773,,2080-05-05 16:50:58,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,50.0,ml,water aqua
+1170036,10002,110224,,2076-12-31 03:09:06,,口服用水合氯醛粉,Oral Chloral Hydrate,0.5g:5ml,,2.0,ml,water aqua
+1178658,10002,110224,,2076-12-31 15:15:09,2077-01-06 10:03:04,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,500ml,,500.0,ml,injection
+1194205,10002,110224,,2077-01-01 11:02:07,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+1194220,10002,110224,,2077-01-01 16:52:12,,0.9％氯化钠注射液,0.9% Sodium Chloride Injection,100ml(Bag),,50.0,ml,injection
+1194686,10000,110773,,2080-05-06 15:57:01,,苯扎氯铵溶液,Benzalkonium Chloride Solut ion,150ml:0.15g,,50.0,ml,water aqua
+1196325,10002,110224,,2077-01-02 07:46:23,2077-01-06 10:03:00,(4:1)葡萄糖氯化钠注射液,(4:1)Glucose and Sodium Chloride Injection,50ml(Bag),,15.0,ml,injection
+1196326,10002,110224,,2077-01-02 07:46:23,2077-01-06 10:03:00,注射用拉氧头孢钠,Latamoxef Sodium for Injection,0.25g,Shiomarin,0.15,g,injection
+1196327,10002,110224,,2077-01-02 07:46:23,2077-01-06 10:03:00,灭菌注射用水,Sterile Water Injection,5ml*50,,3.0,ml,injection
