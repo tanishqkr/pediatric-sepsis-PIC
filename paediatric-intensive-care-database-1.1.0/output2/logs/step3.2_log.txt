@@ -1,0 +1,28 @@
+============================================================
+STEP 3 SUMMARY — Feature Extraction
+============================================================
+Total stays processed:  12,447
+Total feature columns:  281
+
+Column                          Present  Missing   Missing%
+------------------------------------------------------------
+lactate_max                      11,309    1,138       9.1%
+platelets_min                    11,104    1,343      10.8%
+inr_max                           8,235    4,212      33.8%
+ddimer_max                        4,901    7,546      60.6%
+creatinine_max                    9,181    3,266      26.2%
+bilirubin_max                     9,223    3,224      25.9%
+glucose_max                      11,168    1,279      10.3%
+map_min                           4,527    7,920      63.6%
+heart_rate_max                    5,495    6,952      55.9%
+resp_rate_max                     6,841    5,606      45.0%
+temperature_max                   6,899    5,548      44.6%
+ph_min                           11,315    1,132       9.1%
+base_excess_min                  11,315    1,132       9.1%
+hemoglobin_mean                  11,397    1,050       8.4%
+shock_index                       2,875    9,572      76.9%
+
+NOTE: No imputation applied here.
+Imputation happens in Step 6 after train/test split.
+
+Output: output2/cohort_step3.2_features.csv

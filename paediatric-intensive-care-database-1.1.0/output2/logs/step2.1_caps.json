@@ -1,0 +1,409 @@
+{
+  "lactate": {
+    "floor": 0.0,
+    "cap": 30.0,
+    "convert_factor": 1.0,
+    "unit": "mmol/L",
+    "rationale": "Highest documented survivable lactate ~25 mmol/L. Cap 30 with buffer.",
+    "itemids": [
+      "5227"
+    ]
+  },
+  "ph": {
+    "floor": 6.5,
+    "cap": 7.9,
+    "convert_factor": 1.0,
+    "unit": "pH units",
+    "rationale": "pH outside 6.5-7.9 incompatible with life.",
+    "itemids": [
+      "5237",
+      "5238"
+    ]
+  },
+  "pco2": {
+    "floor": 5.0,
+    "cap": 200.0,
+    "convert_factor": 1.0,
+    "unit": "mmHg",
+    "rationale": "Extreme hypercapnia documented up to ~150-180 mmHg.",
+    "itemids": [
+      "5235",
+      "5236"
+    ]
+  },
+  "pao2": {
+    "floor": 0.0,
+    "cap": 600.0,
+    "convert_factor": 1.0,
+    "unit": "mmHg",
+    "rationale": "Maximum on 100% FiO2 ~500-600 mmHg.",
+    "itemids": [
+      "5239",
+      "5244"
+    ]
+  },
+  "bicarbonate": {
+    "floor": 0.0,
+    "cap": 60.0,
+    "convert_factor": 1.0,
+    "unit": "mmol/L",
+    "rationale": "Extreme metabolic alkalosis documented up to ~50 mmol/L.",
+    "itemids": [
+      "5248",
+      "5224"
+    ]
+  },
+  "base_excess": {
+    "floor": -50.0,
+    "cap": 50.0,
+    "convert_factor": 1.0,
+    "unit": "mmol/L",
+    "rationale": "Extreme BE documented at \u00b140. Cap \u00b150 with buffer.",
+    "itemids": [
+      "5211",
+      "5249"
+    ]
+  },
+  "anion_gap": {
+    "floor": -5.0,
+    "cap": 60.0,
+    "convert_factor": 1.0,
+    "unit": "mmol/L",
+    "rationale": "Floor changed from 0 to -5 (Step 2.1 fix). Anion gap = Na - Cl - HCO3. Measurement variation in independently measured electrolytes can produce values down to -4 mmol/L. These are valid readings. Only below -5 are genuine errors.",
+    "itemids": [
+      "5212",
+      "5213"
+    ]
+  },
+  "spo2_lab": {
+    "floor": 50.0,
+    "cap": 100.5,
+    "convert_factor": 1.0,
+    "unit": "%",
+    "rationale": "Cap raised from 100.0 to 100.5 (Step 2.1 fix). Blood gas analysers report 100.1-100.5 due to rounding. These are valid 100% readings. Below 50 patient would be dead.",
+    "itemids": [
+      "5252"
+    ]
+  },
+  "platelets": {
+    "floor": 0.0,
+    "cap": 2000.0,
+    "convert_factor": 1.0,
+    "unit": "10^9/L",
+    "rationale": "Extreme thrombocytosis documented up to ~1500.",
+    "itemids": [
+      "5129"
+    ]
+  },
+  "inr": {
+    "floor": 0.5,
+    "cap": 20.0,
+    "convert_factor": 1.0,
+    "unit": "ratio",
+    "rationale": "INR >20 essentially unmeasurable.",
+    "itemids": [
+      "5174"
+    ]
+  },
+  "ddimer": {
+    "floor": 0.0,
+    "cap": 200.0,
+    "convert_factor": 1.0,
+    "unit": "mg/L FEU",
+    "rationale": "Extreme D-dimer in severe DIC documented up to ~150.",
+    "itemids": [
+      "5163"
+    ]
+  },
+  "fibrinogen": {
+    "floor": 0.0,
+    "cap": 15.0,
+    "convert_factor": 1.0,
+    "unit": "g/L",
+    "rationale": "Maximum fibrinogen in acute phase response ~10-12 g/L.",
+    "itemids": [
+      "5164"
+    ]
+  },
+  "pt": {
+    "floor": 0.0,
+    "cap": 200.0,
+    "convert_factor": 1.0,
+    "unit": "seconds",
+    "rationale": "Extreme PT in severe coagulopathy documented up to ~150s.",
+    "itemids": [
+      "5186"
+    ]
+  },
+  "ptt": {
+    "floor": 0.0,
+    "cap": 300.0,
+    "convert_factor": 1.0,
+    "unit": "seconds",
+    "rationale": "Extreme PTT in severe coagulopathy documented up to ~250s.",
+    "itemids": [
+      "5161"
+    ]
+  },
+  "creatinine_umol": {
+    "floor": 0.0,
+    "cap": 2000.0,
+    "convert_factor": 1.0,
+    "unit": "umol/L",
+    "rationale": "2000 umol/L = ~22.6 mg/dL. Extreme renal failure.",
+    "itemids": [
+      "5032",
+      "5041",
+      "6954"
+    ]
+  },
+  "bilirubin_umol": {
+    "floor": 0.0,
+    "cap": 1800.0,
+    "convert_factor": 1.0,
+    "unit": "umol/L",
+    "rationale": "1800 umol/L = ~105 mg/dL. Extreme in biliary atresia.",
+    "itemids": [
+      "5075",
+      "5255"
+    ]
+  },
+  "alt": {
+    "floor": 0.0,
+    "cap": 50000.0,
+    "convert_factor": 1.0,
+    "unit": "IU/L",
+    "rationale": "Extreme ALT in acute liver failure documented >30,000.",
+    "itemids": [
+      "5026",
+      "5195"
+    ]
+  },
+  "ast": {
+    "floor": 0.0,
+    "cap": 50000.0,
+    "convert_factor": 1.0,
+    "unit": "IU/L",
+    "rationale": "Same as ALT.",
+    "itemids": [
+      "5031"
+    ]
+  },
+  "glucose_mmol": {
+    "floor": 0.5,
+    "cap": 80.0,
+    "convert_factor": 1.0,
+    "unit": "mmol/L",
+    "rationale": "80 mmol/L = ~1440 mg/dL. Extreme hyperglycaemic crisis.",
+    "itemids": [
+      "5047",
+      "5223"
+    ]
+  },
+  "anc": {
+    "floor": 0.0,
+    "cap": 100.0,
+    "convert_factor": 1.0,
+    "unit": "10^9/L",
+    "rationale": "Extreme neutrophilia in leukaemoid reaction up to ~80.",
+    "itemids": [
+      "5094"
+    ]
+  },
+  "alc": {
+    "floor": 0.0,
+    "cap": 100.0,
+    "convert_factor": 1.0,
+    "unit": "10^9/L",
+    "rationale": "Extreme lymphocytosis documented up to ~80.",
+    "itemids": [
+      "5110"
+    ]
+  },
+  "wbc": {
+    "floor": 0.0,
+    "cap": 300.0,
+    "convert_factor": 1.0,
+    "unit": "10^9/L",
+    "rationale": "Extreme leukocytosis in leukaemia documented up to ~200-250.",
+    "itemids": [
+      "5141"
+    ]
+  },
+  "hemoglobin": {
+    "floor": 0.0,
+    "cap": 25.0,
+    "convert_factor": 0.1,
+    "unit": "g/dL (raw values in PIC are g/L, divided by 10)",
+    "rationale": "Unit conversion added (Step 2.1 fix). PIC stores haemoglobin in g/L (Chinese lab standard). Normal range 120-180 g/L = 12-18 g/dL. Values like 145 are normal (145 g/L = 14.5 g/dL). Divide by 10 before applying cap of 25 g/dL.",
+    "itemids": [
+      "5099",
+      "5257"
+    ]
+  },
+  "hematocrit": {
+    "floor": 0.0,
+    "cap": 75.0,
+    "convert_factor": 1.0,
+    "unit": "%",
+    "rationale": "Extreme polycythaemia documented up to ~70%.",
+    "itemids": [
+      "5097",
+      "5225"
+    ]
+  },
+  "sodium": {
+    "floor": 100.0,
+    "cap": 200.0,
+    "convert_factor": 1.0,
+    "unit": "mmol/L",
+    "rationale": "Extreme hypo/hypernatraemia documented at 100-190 mmol/L.",
+    "itemids": [
+      "5062",
+      "5230"
+    ]
+  },
+  "potassium": {
+    "floor": 1.0,
+    "cap": 12.0,
+    "convert_factor": 1.0,
+    "unit": "mmol/L",
+    "rationale": "Extreme hypo/hyperkalaemia documented at 1.5-10 mmol/L.",
+    "itemids": [
+      "5056",
+      "5226"
+    ]
+  },
+  "calcium": {
+    "floor": 0.0,
+    "cap": 5.0,
+    "convert_factor": 1.0,
+    "unit": "mmol/L",
+    "rationale": "Extreme hypercalcaemia documented up to ~4.5 mmol/L.",
+    "itemids": [
+      "5034",
+      "5215"
+    ]
+  },
+  "albumin": {
+    "floor": 0.0,
+    "cap": 70.0,
+    "convert_factor": 1.0,
+    "unit": "g/L",
+    "rationale": "Normal range 35-50 g/L. Values above 70 are errors.",
+    "itemids": [
+      "5024"
+    ]
+  },
+  "crp": {
+    "floor": 0.0,
+    "cap": 500.0,
+    "convert_factor": 1.0,
+    "unit": "mg/L",
+    "rationale": "Extreme CRP in severe sepsis up to ~400 mg/L.",
+    "itemids": [
+      "5626",
+      "5821"
+    ]
+  },
+  "ldh": {
+    "floor": 0.0,
+    "cap": 100000.0,
+    "convert_factor": 1.0,
+    "unit": "IU/L",
+    "rationale": "Extreme LDH in haemolysis/malignancy up to ~50,000.",
+    "itemids": [
+      "5057"
+    ]
+  },
+  "urea": {
+    "floor": 0.0,
+    "cap": 100.0,
+    "convert_factor": 1.0,
+    "unit": "mmol/L",
+    "rationale": "Extreme uraemia documented up to ~80 mmol/L.",
+    "itemids": [
+      "5033"
+    ]
+  },
+  "uric_acid": {
+    "floor": 0.0,
+    "cap": 2000.0,
+    "convert_factor": 1.0,
+    "unit": "umol/L",
+    "rationale": "Extreme in tumour lysis syndrome up to ~1500 umol/L.",
+    "itemids": [
+      "5083"
+    ]
+  },
+  "ck": {
+    "floor": 0.0,
+    "cap": 1000000.0,
+    "convert_factor": 1.0,
+    "unit": "IU/L",
+    "rationale": "Extreme CK in rhabdomyolysis up to ~500,000 IU/L.",
+    "itemids": [
+      "5038"
+    ]
+  },
+  "heart_rate": {
+    "floor": 10.0,
+    "cap": 350.0,
+    "convert_factor": 1.0,
+    "unit": "bpm",
+    "rationale": "Absolute maximum in SVT/VT ~320 bpm. Cap 350 with buffer.",
+    "itemids": [
+      "1003"
+    ]
+  },
+  "resp_rate": {
+    "floor": 0.0,
+    "cap": 100.0,
+    "convert_factor": 1.0,
+    "unit": "breaths/min",
+    "rationale": "Maximum documented RR in severe distress ~80-90/min.",
+    "itemids": [
+      "1004"
+    ]
+  },
+  "temperature": {
+    "floor": 30.0,
+    "cap": 43.0,
+    "convert_factor": 1.0,
+    "unit": "Celsius",
+    "rationale": "Lowest survival hypothermia ~27C. Maximum hyperthermia ~43C.",
+    "itemids": [
+      "1001"
+    ]
+  },
+  "systolic_bp": {
+    "floor": 20.0,
+    "cap": 300.0,
+    "convert_factor": 1.0,
+    "unit": "mmHg",
+    "rationale": "Extreme hypertensive crisis documented up to ~300 mmHg.",
+    "itemids": [
+      "1016"
+    ]
+  },
+  "diastolic_bp": {
+    "floor": 5.0,
+    "cap": 200.0,
+    "convert_factor": 1.0,
+    "unit": "mmHg",
+    "rationale": "Extreme diastolic hypertension documented up to ~180 mmHg.",
+    "itemids": [
+      "1015"
+    ]
+  },
+  "spo2_chart": {
+    "floor": 50.0,
+    "cap": 100.5,
+    "convert_factor": 1.0,
+    "unit": "%",
+    "rationale": "Cap raised to 100.5 (Step 2.1 fix, consistent with spo2_lab). Monitors can report 100.1-100.5 due to rounding.",
+    "itemids": [
+      "1006"
+    ]
+  }
+}
