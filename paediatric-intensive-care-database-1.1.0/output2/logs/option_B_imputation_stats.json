@@ -1,0 +1,1598 @@
+{
+  "age_years": {
+    "median": 1.095,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "age_months": {
+    "median": 13.1,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "los_hours": {
+    "median": 59.595,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "lactate_max": {
+    "median": 2.2,
+    "missing_rate": 0.0277,
+    "n_present": 2460,
+    "n_missing": 70,
+    "add_indicator": false
+  },
+  "lactate_min": {
+    "median": 1.1,
+    "missing_rate": 0.0277,
+    "n_present": 2460,
+    "n_missing": 70,
+    "add_indicator": false
+  },
+  "lactate_mean": {
+    "median": 1.65,
+    "missing_rate": 0.0277,
+    "n_present": 2460,
+    "n_missing": 70,
+    "add_indicator": false
+  },
+  "lactate_first": {
+    "median": 1.7,
+    "missing_rate": 0.0277,
+    "n_present": 2460,
+    "n_missing": 70,
+    "add_indicator": false
+  },
+  "lactate_count": {
+    "median": 3.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "platelets_max": {
+    "median": 291.0,
+    "missing_rate": 0.0411,
+    "n_present": 2426,
+    "n_missing": 104,
+    "add_indicator": false
+  },
+  "platelets_min": {
+    "median": 254.0,
+    "missing_rate": 0.0411,
+    "n_present": 2426,
+    "n_missing": 104,
+    "add_indicator": false
+  },
+  "platelets_mean": {
+    "median": 270.5,
+    "missing_rate": 0.0411,
+    "n_present": 2426,
+    "n_missing": 104,
+    "add_indicator": false
+  },
+  "platelets_first": {
+    "median": 273.0,
+    "missing_rate": 0.0411,
+    "n_present": 2426,
+    "n_missing": 104,
+    "add_indicator": false
+  },
+  "platelets_count": {
+    "median": 2.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "inr_max": {
+    "median": 1.06,
+    "missing_rate": 0.2545,
+    "n_present": 1886,
+    "n_missing": 644,
+    "add_indicator": true
+  },
+  "inr_min": {
+    "median": 1.04,
+    "missing_rate": 0.2545,
+    "n_present": 1886,
+    "n_missing": 644,
+    "add_indicator": true
+  },
+  "inr_mean": {
+    "median": 1.055,
+    "missing_rate": 0.2545,
+    "n_present": 1886,
+    "n_missing": 644,
+    "add_indicator": true
+  },
+  "inr_first": {
+    "median": 1.05,
+    "missing_rate": 0.2545,
+    "n_present": 1886,
+    "n_missing": 644,
+    "add_indicator": true
+  },
+  "inr_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "ddimer_max": {
+    "median": 1.55,
+    "missing_rate": 0.6617,
+    "n_present": 856,
+    "n_missing": 1674,
+    "add_indicator": true
+  },
+  "ddimer_min": {
+    "median": 1.43,
+    "missing_rate": 0.6617,
+    "n_present": 856,
+    "n_missing": 1674,
+    "add_indicator": true
+  },
+  "ddimer_mean": {
+    "median": 1.495,
+    "missing_rate": 0.6617,
+    "n_present": 856,
+    "n_missing": 1674,
+    "add_indicator": true
+  },
+  "ddimer_first": {
+    "median": 1.475,
+    "missing_rate": 0.6617,
+    "n_present": 856,
+    "n_missing": 1674,
+    "add_indicator": true
+  },
+  "ddimer_count": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "fibrinogen_max": {
+    "median": 2.02,
+    "missing_rate": 0.6549,
+    "n_present": 873,
+    "n_missing": 1657,
+    "add_indicator": true
+  },
+  "fibrinogen_min": {
+    "median": 1.96,
+    "missing_rate": 0.6549,
+    "n_present": 873,
+    "n_missing": 1657,
+    "add_indicator": true
+  },
+  "fibrinogen_mean": {
+    "median": 1.99,
+    "missing_rate": 0.6549,
+    "n_present": 873,
+    "n_missing": 1657,
+    "add_indicator": true
+  },
+  "fibrinogen_first": {
+    "median": 1.97,
+    "missing_rate": 0.6549,
+    "n_present": 873,
+    "n_missing": 1657,
+    "add_indicator": true
+  },
+  "fibrinogen_count": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "creatinine_max": {
+    "median": 0.486425,
+    "missing_rate": 0.2581,
+    "n_present": 1877,
+    "n_missing": 653,
+    "add_indicator": true
+  },
+  "creatinine_min": {
+    "median": 0.463801,
+    "missing_rate": 0.2581,
+    "n_present": 1877,
+    "n_missing": 653,
+    "add_indicator": true
+  },
+  "creatinine_mean": {
+    "median": 0.4695,
+    "missing_rate": 0.2581,
+    "n_present": 1877,
+    "n_missing": 653,
+    "add_indicator": true
+  },
+  "creatinine_first": {
+    "median": 0.463801,
+    "missing_rate": 0.2581,
+    "n_present": 1877,
+    "n_missing": 653,
+    "add_indicator": true
+  },
+  "creatinine_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "bilirubin_max": {
+    "median": 0.654971,
+    "missing_rate": 0.3126,
+    "n_present": 1739,
+    "n_missing": 791,
+    "add_indicator": true
+  },
+  "bilirubin_min": {
+    "median": 0.608187,
+    "missing_rate": 0.3126,
+    "n_present": 1739,
+    "n_missing": 791,
+    "add_indicator": true
+  },
+  "bilirubin_mean": {
+    "median": 0.6316,
+    "missing_rate": 0.3126,
+    "n_present": 1739,
+    "n_missing": 791,
+    "add_indicator": true
+  },
+  "bilirubin_first": {
+    "median": 0.631579,
+    "missing_rate": 0.3126,
+    "n_present": 1739,
+    "n_missing": 791,
+    "add_indicator": true
+  },
+  "bilirubin_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "alt_max": {
+    "median": 20.0,
+    "missing_rate": 0.2565,
+    "n_present": 1881,
+    "n_missing": 649,
+    "add_indicator": true
+  },
+  "alt_min": {
+    "median": 18.0,
+    "missing_rate": 0.2565,
+    "n_present": 1881,
+    "n_missing": 649,
+    "add_indicator": true
+  },
+  "alt_mean": {
+    "median": 19.5,
+    "missing_rate": 0.2565,
+    "n_present": 1881,
+    "n_missing": 649,
+    "add_indicator": true
+  },
+  "alt_first": {
+    "median": 20.0,
+    "missing_rate": 0.2565,
+    "n_present": 1881,
+    "n_missing": 649,
+    "add_indicator": true
+  },
+  "alt_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "ast_max": {
+    "median": 41.0,
+    "missing_rate": 0.4004,
+    "n_present": 1517,
+    "n_missing": 1013,
+    "add_indicator": true
+  },
+  "ast_min": {
+    "median": 40.0,
+    "missing_rate": 0.4004,
+    "n_present": 1517,
+    "n_missing": 1013,
+    "add_indicator": true
+  },
+  "ast_mean": {
+    "median": 40.5,
+    "missing_rate": 0.4004,
+    "n_present": 1517,
+    "n_missing": 1013,
+    "add_indicator": true
+  },
+  "ast_first": {
+    "median": 41.0,
+    "missing_rate": 0.4004,
+    "n_present": 1517,
+    "n_missing": 1013,
+    "add_indicator": true
+  },
+  "ast_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "glucose_max": {
+    "median": 154.8,
+    "missing_rate": 0.0498,
+    "n_present": 2404,
+    "n_missing": 126,
+    "add_indicator": false
+  },
+  "glucose_min": {
+    "median": 102.6,
+    "missing_rate": 0.0498,
+    "n_present": 2404,
+    "n_missing": 126,
+    "add_indicator": false
+  },
+  "glucose_mean": {
+    "median": 127.8,
+    "missing_rate": 0.0498,
+    "n_present": 2404,
+    "n_missing": 126,
+    "add_indicator": false
+  },
+  "glucose_first": {
+    "median": 118.8,
+    "missing_rate": 0.0498,
+    "n_present": 2404,
+    "n_missing": 126,
+    "add_indicator": false
+  },
+  "glucose_count": {
+    "median": 3.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "anc_max": {
+    "median": 8.16,
+    "missing_rate": 0.0731,
+    "n_present": 2345,
+    "n_missing": 185,
+    "add_indicator": false
+  },
+  "anc_min": {
+    "median": 5.49,
+    "missing_rate": 0.0731,
+    "n_present": 2345,
+    "n_missing": 185,
+    "add_indicator": false
+  },
+  "anc_mean": {
+    "median": 6.89,
+    "missing_rate": 0.0731,
+    "n_present": 2345,
+    "n_missing": 185,
+    "add_indicator": false
+  },
+  "anc_first": {
+    "median": 6.22,
+    "missing_rate": 0.0731,
+    "n_present": 2345,
+    "n_missing": 185,
+    "add_indicator": false
+  },
+  "anc_count": {
+    "median": 2.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "alc_max": {
+    "median": 2.48,
+    "missing_rate": 0.0731,
+    "n_present": 2345,
+    "n_missing": 185,
+    "add_indicator": false
+  },
+  "alc_min": {
+    "median": 1.81,
+    "missing_rate": 0.0731,
+    "n_present": 2345,
+    "n_missing": 185,
+    "add_indicator": false
+  },
+  "alc_mean": {
+    "median": 2.19,
+    "missing_rate": 0.0731,
+    "n_present": 2345,
+    "n_missing": 185,
+    "add_indicator": false
+  },
+  "alc_first": {
+    "median": 2.16,
+    "missing_rate": 0.0731,
+    "n_present": 2345,
+    "n_missing": 185,
+    "add_indicator": false
+  },
+  "alc_count": {
+    "median": 2.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "wbc_max": {
+    "median": 11.97,
+    "missing_rate": 0.0423,
+    "n_present": 2423,
+    "n_missing": 107,
+    "add_indicator": false
+  },
+  "wbc_min": {
+    "median": 8.87,
+    "missing_rate": 0.0423,
+    "n_present": 2423,
+    "n_missing": 107,
+    "add_indicator": false
+  },
+  "wbc_mean": {
+    "median": 10.58,
+    "missing_rate": 0.0423,
+    "n_present": 2423,
+    "n_missing": 107,
+    "add_indicator": false
+  },
+  "wbc_first": {
+    "median": 9.57,
+    "missing_rate": 0.0423,
+    "n_present": 2423,
+    "n_missing": 107,
+    "add_indicator": false
+  },
+  "wbc_count": {
+    "median": 2.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "ph_max": {
+    "median": 7.43,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "ph_min": {
+    "median": 7.337,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "ph_mean": {
+    "median": 7.384,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "ph_first": {
+    "median": 7.361,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "ph_count": {
+    "median": 4.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "pco2_max": {
+    "median": 40.7,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "pco2_min": {
+    "median": 32.2,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "pco2_mean": {
+    "median": 36.3667,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "pco2_first": {
+    "median": 37.7,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "pco2_count": {
+    "median": 4.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "pao2_max": {
+    "median": 164.5,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "pao2_min": {
+    "median": 84.45,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "pao2_mean": {
+    "median": 124.99,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "pao2_first": {
+    "median": 124.0,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "pao2_count": {
+    "median": 4.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "base_excess_max": {
+    "median": -0.9,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "base_excess_min": {
+    "median": -4.9,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "base_excess_mean": {
+    "median": -3.0146,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "base_excess_first": {
+    "median": -3.5,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "base_excess_count": {
+    "median": 6.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "bicarbonate_max": {
+    "median": 23.75,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "bicarbonate_min": {
+    "median": 19.45,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "bicarbonate_mean": {
+    "median": 21.55,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "bicarbonate_first": {
+    "median": 21.1,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "bicarbonate_count": {
+    "median": 6.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "anion_gap_max": {
+    "median": 9.0,
+    "missing_rate": 0.034,
+    "n_present": 2444,
+    "n_missing": 86,
+    "add_indicator": false
+  },
+  "anion_gap_min": {
+    "median": 3.9,
+    "missing_rate": 0.034,
+    "n_present": 2444,
+    "n_missing": 86,
+    "add_indicator": false
+  },
+  "anion_gap_mean": {
+    "median": 6.3225,
+    "missing_rate": 0.034,
+    "n_present": 2444,
+    "n_missing": 86,
+    "add_indicator": false
+  },
+  "anion_gap_first": {
+    "median": 7.1,
+    "missing_rate": 0.034,
+    "n_present": 2444,
+    "n_missing": 86,
+    "add_indicator": false
+  },
+  "anion_gap_count": {
+    "median": 3.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "spo2_lab_max": {
+    "median": 99.4,
+    "missing_rate": 0.0312,
+    "n_present": 2451,
+    "n_missing": 79,
+    "add_indicator": false
+  },
+  "spo2_lab_min": {
+    "median": 97.1,
+    "missing_rate": 0.0312,
+    "n_present": 2451,
+    "n_missing": 79,
+    "add_indicator": false
+  },
+  "spo2_lab_mean": {
+    "median": 98.1833,
+    "missing_rate": 0.0312,
+    "n_present": 2451,
+    "n_missing": 79,
+    "add_indicator": false
+  },
+  "spo2_lab_first": {
+    "median": 98.6,
+    "missing_rate": 0.0312,
+    "n_present": 2451,
+    "n_missing": 79,
+    "add_indicator": false
+  },
+  "spo2_lab_count": {
+    "median": 3.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "hemoglobin_max": {
+    "median": 11.8,
+    "missing_rate": 0.0241,
+    "n_present": 2469,
+    "n_missing": 61,
+    "add_indicator": false
+  },
+  "hemoglobin_min": {
+    "median": 8.7,
+    "missing_rate": 0.0241,
+    "n_present": 2469,
+    "n_missing": 61,
+    "add_indicator": false
+  },
+  "hemoglobin_mean": {
+    "median": 9.8667,
+    "missing_rate": 0.0241,
+    "n_present": 2469,
+    "n_missing": 61,
+    "add_indicator": false
+  },
+  "hemoglobin_first": {
+    "median": 10.0,
+    "missing_rate": 0.0241,
+    "n_present": 2469,
+    "n_missing": 61,
+    "add_indicator": false
+  },
+  "hemoglobin_count": {
+    "median": 5.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "hematocrit_max": {
+    "median": 36.7,
+    "missing_rate": 0.0241,
+    "n_present": 2469,
+    "n_missing": 61,
+    "add_indicator": false
+  },
+  "hematocrit_min": {
+    "median": 29.9,
+    "missing_rate": 0.0241,
+    "n_present": 2469,
+    "n_missing": 61,
+    "add_indicator": false
+  },
+  "hematocrit_mean": {
+    "median": 33.15,
+    "missing_rate": 0.0241,
+    "n_present": 2469,
+    "n_missing": 61,
+    "add_indicator": false
+  },
+  "hematocrit_first": {
+    "median": 33.9,
+    "missing_rate": 0.0241,
+    "n_present": 2469,
+    "n_missing": 61,
+    "add_indicator": false
+  },
+  "hematocrit_count": {
+    "median": 5.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "pt_max": {
+    "median": 12.8,
+    "missing_rate": 0.2545,
+    "n_present": 1886,
+    "n_missing": 644,
+    "add_indicator": true
+  },
+  "pt_min": {
+    "median": 12.5,
+    "missing_rate": 0.2545,
+    "n_present": 1886,
+    "n_missing": 644,
+    "add_indicator": true
+  },
+  "pt_mean": {
+    "median": 12.65,
+    "missing_rate": 0.2545,
+    "n_present": 1886,
+    "n_missing": 644,
+    "add_indicator": true
+  },
+  "pt_first": {
+    "median": 12.6,
+    "missing_rate": 0.2545,
+    "n_present": 1886,
+    "n_missing": 644,
+    "add_indicator": true
+  },
+  "pt_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "ptt_max": {
+    "median": 32.6,
+    "missing_rate": 0.2577,
+    "n_present": 1878,
+    "n_missing": 652,
+    "add_indicator": true
+  },
+  "ptt_min": {
+    "median": 30.8,
+    "missing_rate": 0.2577,
+    "n_present": 1878,
+    "n_missing": 652,
+    "add_indicator": true
+  },
+  "ptt_mean": {
+    "median": 31.825,
+    "missing_rate": 0.2577,
+    "n_present": 1878,
+    "n_missing": 652,
+    "add_indicator": true
+  },
+  "ptt_first": {
+    "median": 32.1,
+    "missing_rate": 0.2577,
+    "n_present": 1878,
+    "n_missing": 652,
+    "add_indicator": true
+  },
+  "ptt_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "sodium_max": {
+    "median": 139.0,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "sodium_min": {
+    "median": 135.0,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "sodium_mean": {
+    "median": 137.1667,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "sodium_first": {
+    "median": 137.0,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "sodium_count": {
+    "median": 3.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "potassium_max": {
+    "median": 4.1,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "potassium_min": {
+    "median": 3.5,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "potassium_mean": {
+    "median": 3.75,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "potassium_first": {
+    "median": 3.7,
+    "missing_rate": 0.0269,
+    "n_present": 2462,
+    "n_missing": 68,
+    "add_indicator": false
+  },
+  "potassium_count": {
+    "median": 3.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "calcium_max": {
+    "median": 1.99,
+    "missing_rate": 0.0253,
+    "n_present": 2466,
+    "n_missing": 64,
+    "add_indicator": false
+  },
+  "calcium_min": {
+    "median": 1.12,
+    "missing_rate": 0.0253,
+    "n_present": 2466,
+    "n_missing": 64,
+    "add_indicator": false
+  },
+  "calcium_mean": {
+    "median": 1.31,
+    "missing_rate": 0.0253,
+    "n_present": 2466,
+    "n_missing": 64,
+    "add_indicator": false
+  },
+  "calcium_first": {
+    "median": 1.2,
+    "missing_rate": 0.0253,
+    "n_present": 2466,
+    "n_missing": 64,
+    "add_indicator": false
+  },
+  "calcium_count": {
+    "median": 4.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "albumin_max": {
+    "median": 35.8,
+    "missing_rate": 0.4004,
+    "n_present": 1517,
+    "n_missing": 1013,
+    "add_indicator": true
+  },
+  "albumin_min": {
+    "median": 35.6,
+    "missing_rate": 0.4004,
+    "n_present": 1517,
+    "n_missing": 1013,
+    "add_indicator": true
+  },
+  "albumin_mean": {
+    "median": 35.7,
+    "missing_rate": 0.4004,
+    "n_present": 1517,
+    "n_missing": 1013,
+    "add_indicator": true
+  },
+  "albumin_first": {
+    "median": 35.7,
+    "missing_rate": 0.4004,
+    "n_present": 1517,
+    "n_missing": 1013,
+    "add_indicator": true
+  },
+  "albumin_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "crp_max": {
+    "median": 14.0,
+    "missing_rate": 0.2494,
+    "n_present": 1899,
+    "n_missing": 631,
+    "add_indicator": true
+  },
+  "crp_min": {
+    "median": 9.0,
+    "missing_rate": 0.2494,
+    "n_present": 1899,
+    "n_missing": 631,
+    "add_indicator": true
+  },
+  "crp_mean": {
+    "median": 12.0,
+    "missing_rate": 0.2494,
+    "n_present": 1899,
+    "n_missing": 631,
+    "add_indicator": true
+  },
+  "crp_first": {
+    "median": 9.0,
+    "missing_rate": 0.2494,
+    "n_present": 1899,
+    "n_missing": 631,
+    "add_indicator": true
+  },
+  "crp_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "ldh_max": {
+    "median": 368.0,
+    "missing_rate": 0.3889,
+    "n_present": 1546,
+    "n_missing": 984,
+    "add_indicator": true
+  },
+  "ldh_min": {
+    "median": 347.0,
+    "missing_rate": 0.3889,
+    "n_present": 1546,
+    "n_missing": 984,
+    "add_indicator": true
+  },
+  "ldh_mean": {
+    "median": 355.25,
+    "missing_rate": 0.3889,
+    "n_present": 1546,
+    "n_missing": 984,
+    "add_indicator": true
+  },
+  "ldh_first": {
+    "median": 362.0,
+    "missing_rate": 0.3889,
+    "n_present": 1546,
+    "n_missing": 984,
+    "add_indicator": true
+  },
+  "ldh_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "urea_max": {
+    "median": 3.57,
+    "missing_rate": 0.2787,
+    "n_present": 1825,
+    "n_missing": 705,
+    "add_indicator": true
+  },
+  "urea_min": {
+    "median": 3.4,
+    "missing_rate": 0.2787,
+    "n_present": 1825,
+    "n_missing": 705,
+    "add_indicator": true
+  },
+  "urea_mean": {
+    "median": 3.5,
+    "missing_rate": 0.2787,
+    "n_present": 1825,
+    "n_missing": 705,
+    "add_indicator": true
+  },
+  "urea_first": {
+    "median": 3.51,
+    "missing_rate": 0.2787,
+    "n_present": 1825,
+    "n_missing": 705,
+    "add_indicator": true
+  },
+  "urea_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "uric_acid_max": {
+    "median": 260.0,
+    "missing_rate": 0.4008,
+    "n_present": 1516,
+    "n_missing": 1014,
+    "add_indicator": true
+  },
+  "uric_acid_min": {
+    "median": 258.45,
+    "missing_rate": 0.4008,
+    "n_present": 1516,
+    "n_missing": 1014,
+    "add_indicator": true
+  },
+  "uric_acid_mean": {
+    "median": 259.0,
+    "missing_rate": 0.4008,
+    "n_present": 1516,
+    "n_missing": 1014,
+    "add_indicator": true
+  },
+  "uric_acid_first": {
+    "median": 259.0,
+    "missing_rate": 0.4008,
+    "n_present": 1516,
+    "n_missing": 1014,
+    "add_indicator": true
+  },
+  "uric_acid_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "ck_max": {
+    "median": 149.0,
+    "missing_rate": 0.3917,
+    "n_present": 1539,
+    "n_missing": 991,
+    "add_indicator": true
+  },
+  "ck_min": {
+    "median": 137.0,
+    "missing_rate": 0.3917,
+    "n_present": 1539,
+    "n_missing": 991,
+    "add_indicator": true
+  },
+  "ck_mean": {
+    "median": 145.0,
+    "missing_rate": 0.3917,
+    "n_present": 1539,
+    "n_missing": 991,
+    "add_indicator": true
+  },
+  "ck_first": {
+    "median": 145.0,
+    "missing_rate": 0.3917,
+    "n_present": 1539,
+    "n_missing": 991,
+    "add_indicator": true
+  },
+  "ck_count": {
+    "median": 1.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "spo2_max": {
+    "median": 100.0,
+    "missing_rate": 0.766,
+    "n_present": 592,
+    "n_missing": 1938,
+    "add_indicator": true
+  },
+  "spo2_min": {
+    "median": 100.0,
+    "missing_rate": 0.766,
+    "n_present": 592,
+    "n_missing": 1938,
+    "add_indicator": true
+  },
+  "spo2_mean": {
+    "median": 100.0,
+    "missing_rate": 0.766,
+    "n_present": 592,
+    "n_missing": 1938,
+    "add_indicator": true
+  },
+  "spo2_first": {
+    "median": 100.0,
+    "missing_rate": 0.766,
+    "n_present": 592,
+    "n_missing": 1938,
+    "add_indicator": true
+  },
+  "spo2_count": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "systolic_bp_max": {
+    "median": 102.0,
+    "missing_rate": 0.6688,
+    "n_present": 838,
+    "n_missing": 1692,
+    "add_indicator": true
+  },
+  "systolic_bp_min": {
+    "median": 96.0,
+    "missing_rate": 0.6688,
+    "n_present": 838,
+    "n_missing": 1692,
+    "add_indicator": true
+  },
+  "systolic_bp_mean": {
+    "median": 100.6667,
+    "missing_rate": 0.6688,
+    "n_present": 838,
+    "n_missing": 1692,
+    "add_indicator": true
+  },
+  "systolic_bp_first": {
+    "median": 101.0,
+    "missing_rate": 0.6688,
+    "n_present": 838,
+    "n_missing": 1692,
+    "add_indicator": true
+  },
+  "systolic_bp_count": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "diastolic_bp_max": {
+    "median": 61.0,
+    "missing_rate": 0.6692,
+    "n_present": 837,
+    "n_missing": 1693,
+    "add_indicator": true
+  },
+  "diastolic_bp_min": {
+    "median": 56.0,
+    "missing_rate": 0.6692,
+    "n_present": 837,
+    "n_missing": 1693,
+    "add_indicator": true
+  },
+  "diastolic_bp_mean": {
+    "median": 58.5,
+    "missing_rate": 0.6692,
+    "n_present": 837,
+    "n_missing": 1693,
+    "add_indicator": true
+  },
+  "diastolic_bp_first": {
+    "median": 59.0,
+    "missing_rate": 0.6692,
+    "n_present": 837,
+    "n_missing": 1693,
+    "add_indicator": true
+  },
+  "diastolic_bp_count": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "heart_rate_max": {
+    "median": 146.0,
+    "missing_rate": 0.6407,
+    "n_present": 909,
+    "n_missing": 1621,
+    "add_indicator": true
+  },
+  "heart_rate_min": {
+    "median": 120.0,
+    "missing_rate": 0.6407,
+    "n_present": 909,
+    "n_missing": 1621,
+    "add_indicator": true
+  },
+  "heart_rate_mean": {
+    "median": 132.3333,
+    "missing_rate": 0.6407,
+    "n_present": 909,
+    "n_missing": 1621,
+    "add_indicator": true
+  },
+  "heart_rate_first": {
+    "median": 134.0,
+    "missing_rate": 0.6407,
+    "n_present": 909,
+    "n_missing": 1621,
+    "add_indicator": true
+  },
+  "heart_rate_count": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "resp_rate_max": {
+    "median": 36.0,
+    "missing_rate": 0.5925,
+    "n_present": 1031,
+    "n_missing": 1499,
+    "add_indicator": true
+  },
+  "resp_rate_min": {
+    "median": 28.0,
+    "missing_rate": 0.5925,
+    "n_present": 1031,
+    "n_missing": 1499,
+    "add_indicator": true
+  },
+  "resp_rate_mean": {
+    "median": 30.6667,
+    "missing_rate": 0.5925,
+    "n_present": 1031,
+    "n_missing": 1499,
+    "add_indicator": true
+  },
+  "resp_rate_first": {
+    "median": 30.0,
+    "missing_rate": 0.5925,
+    "n_present": 1031,
+    "n_missing": 1499,
+    "add_indicator": true
+  },
+  "resp_rate_count": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "temperature_max": {
+    "median": 37.2,
+    "missing_rate": 0.5897,
+    "n_present": 1038,
+    "n_missing": 1492,
+    "add_indicator": true
+  },
+  "temperature_min": {
+    "median": 36.3,
+    "missing_rate": 0.5897,
+    "n_present": 1038,
+    "n_missing": 1492,
+    "add_indicator": true
+  },
+  "temperature_mean": {
+    "median": 36.8333,
+    "missing_rate": 0.5897,
+    "n_present": 1038,
+    "n_missing": 1492,
+    "add_indicator": true
+  },
+  "temperature_first": {
+    "median": 36.6,
+    "missing_rate": 0.5897,
+    "n_present": 1038,
+    "n_missing": 1492,
+    "add_indicator": true
+  },
+  "temperature_count": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "map_max": {
+    "median": 74.7,
+    "missing_rate": 0.6692,
+    "n_present": 837,
+    "n_missing": 1693,
+    "add_indicator": true
+  },
+  "map_min": {
+    "median": 70.0,
+    "missing_rate": 0.6692,
+    "n_present": 837,
+    "n_missing": 1693,
+    "add_indicator": true
+  },
+  "map_mean": {
+    "median": 73.0,
+    "missing_rate": 0.6692,
+    "n_present": 837,
+    "n_missing": 1693,
+    "add_indicator": true
+  },
+  "map_first": {
+    "median": 73.7,
+    "missing_rate": 0.6692,
+    "n_present": 837,
+    "n_missing": 1693,
+    "add_indicator": true
+  },
+  "map_count": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "shock_index": {
+    "median": 1.2812,
+    "missing_rate": 0.7387,
+    "n_present": 661,
+    "n_missing": 1869,
+    "add_indicator": true
+  },
+  "lactate_trend": {
+    "median": -0.3,
+    "missing_rate": 0.1826,
+    "n_present": 2068,
+    "n_missing": 462,
+    "add_indicator": false
+  },
+  "platelets_trend": {
+    "median": 0.0,
+    "missing_rate": 0.33,
+    "n_present": 1695,
+    "n_missing": 835,
+    "add_indicator": true
+  },
+  "creatinine_trend": {
+    "median": 0.0,
+    "missing_rate": 0.7542,
+    "n_present": 622,
+    "n_missing": 1908,
+    "add_indicator": true
+  },
+  "bilirubin_trend": {
+    "median": 0.0,
+    "missing_rate": 0.7241,
+    "n_present": 698,
+    "n_missing": 1832,
+    "add_indicator": true
+  },
+  "inr_trend": {
+    "median": -0.04,
+    "missing_rate": 0.7735,
+    "n_present": 573,
+    "n_missing": 1957,
+    "add_indicator": true
+  },
+  "wbc_trend": {
+    "median": 0.96,
+    "missing_rate": 0.3308,
+    "n_present": 1693,
+    "n_missing": 837,
+    "add_indicator": true
+  },
+  "hemoglobin_trend": {
+    "median": -0.1,
+    "missing_rate": 0.0391,
+    "n_present": 2431,
+    "n_missing": 99,
+    "add_indicator": false
+  },
+  "glucose_trend": {
+    "median": -7.2,
+    "missing_rate": 0.2277,
+    "n_present": 1954,
+    "n_missing": 576,
+    "add_indicator": true
+  },
+  "ph_trend": {
+    "median": 0.044,
+    "missing_rate": 0.1154,
+    "n_present": 2238,
+    "n_missing": 292,
+    "add_indicator": false
+  },
+  "base_excess_trend": {
+    "median": 1.2,
+    "missing_rate": 0.0277,
+    "n_present": 2460,
+    "n_missing": 70,
+    "add_indicator": false
+  },
+  "sodium_trend": {
+    "median": -1.0,
+    "missing_rate": 0.1818,
+    "n_present": 2070,
+    "n_missing": 460,
+    "add_indicator": false
+  },
+  "potassium_trend": {
+    "median": 0.1,
+    "missing_rate": 0.1826,
+    "n_present": 2068,
+    "n_missing": 462,
+    "add_indicator": false
+  },
+  "heart_rate_trend": {
+    "median": -2.0,
+    "missing_rate": 0.7364,
+    "n_present": 667,
+    "n_missing": 1863,
+    "add_indicator": true
+  },
+  "resp_rate_trend": {
+    "median": 0.0,
+    "missing_rate": 0.6779,
+    "n_present": 815,
+    "n_missing": 1715,
+    "add_indicator": true
+  },
+  "temperature_trend": {
+    "median": 0.5,
+    "missing_rate": 0.6763,
+    "n_present": 819,
+    "n_missing": 1711,
+    "add_indicator": true
+  },
+  "spo2_trend": {
+    "median": 0.0,
+    "missing_rate": 0.8972,
+    "n_present": 260,
+    "n_missing": 2270,
+    "add_indicator": true
+  },
+  "urine_output_total_ml": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "urine_output_per_hour": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "fluid_input_total_ml": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "fluid_balance_ml": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "n_vasoactives_24h": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "n_antibiotics_24h": {
+    "median": 2.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "n_cultures_24h": {
+    "median": 2.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  },
+  "n_positive_cultures": {
+    "median": 0.0,
+    "missing_rate": 0.0,
+    "n_present": 2530,
+    "n_missing": 0,
+    "add_indicator": false
+  }
+}

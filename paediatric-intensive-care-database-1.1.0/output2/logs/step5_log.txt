@@ -1,0 +1,107 @@
+=================================================================
+PART A — DEEP LABEL VERIFICATION
+=================================================================
+
+Total stays:                 12,447
+Sepsis (label=1):               864  (6.9%)
+Inf, no sepsis (label=0):     2,299  (18.5%)
+No infection (label=0):       9,284  (74.6%)
+
+A1. SEPSIS LABEL BASIS
+  Both vasoactives + labs:          637  (73.7%)
+  Labs only (no vasoactives):       210  (24.3%)
+  Vasoactives only (no labs):        17  (2.0%)
+  Neither (score via MAP only):       0  (0.0%)
+  Assessment: 17 vasoactive-only cases (2.0%) — acceptable (<5%)
+
+A2. CARE UNIT DISTRIBUTION
+  Unit               Total   Sepsis   Prevalence
+  -----------------------------------------------
+  NICU               3,064       72         2.3%
+  General ICU        2,573      359        14.0%
+  SICU               2,460      231         9.4%
+  CICU               2,439      115         4.7%
+  PICU               1,911       87         4.6%
+
+A3. AGE GROUP DISTRIBUTION
+  Age group                 Total   Sepsis   Prevalence
+  ------------------------------------------------------
+  Neonate <1m               1,922       61         3.2%
+  Infant 1-12m              4,016      301         7.5%
+  Toddler 1-5y              3,289      275         8.4%
+  Child 5-12y               1,809      150         8.3%
+  Adolescent 12-18y           500       55        11.0%
+
+A4. SCORE COMPONENT DRIVERS (among sepsis cases)
+    What drove the label for each sepsis patient?
+
+  Cardio score >=2 (cardiovascular failure):    456 (52.8%)
+  Coag score  >=2 (coagulation failure):        333 (38.5%)
+  Both cardio+coag contributed:                 564 (65.3%)
+  Cardio alone drove label (coag=0):            167 (19.3%)
+  Coag alone drove label (cardio=0):            133 (15.4%)
+
+A5. CLINICAL COMPARISON — Sepsis vs Infected Non-Sepsis
+  Variable                         Sepsis  Inf.NoSep  Direction  Expected
+  ---------------------------------------------------------------------------
+  lactate_max                         3.9        1.9  PASS    Sepsis has higher lactate
+  platelets_min                     152.0      277.0  PASS    Thrombocytopenia in sepsis
+  inr_max                            1.26       1.03  PASS    Coagulopathy in sepsis
+  n_vasoactives_24h                   1.0        0.0  PASS    More vasopressors in sepsis
+  phoenix_8_score                     4.0        1.0  PASS    Higher organ dysfunction
+  los_hours                        72.435      50.39  PASS    Sepsis = longer stay
+  bilirubin_max                     0.711      0.632  PASS    Hepatic dysfunction in sepsis
+  creatinine_max                    0.543      0.464  PASS    Renal dysfunction in sepsis
+  expire_flag (mortality rate)           18.1%        4.4%  PASS    Sepsis has 18.1% vs 4.4% mortality
+  shock_index                        SKIPPED  SKIPPED  NOTE: Only 26% coverage — selection bias makes comparison unreliable
+
+  Overall clinical validity: ALL PASS
+
+A6. ICD CODE SPOT CHECK (sepsis patients)
+    Checking if sepsis-labeled patients have infection-related ICD codes
+  Sepsis patients with infection-related ICD: 220/864 (25.5%)
+  Note: ICD codes are DISCHARGE diagnoses — not all sepsis gets coded as
+  infection (e.g. cardiac patient who develops sepsis may be coded as cardiac)
+  Low rate here is expected and not a concern.
+
+A7. WHY DID INFECTED PATIENTS NOT REACH SEPSIS THRESHOLD?
+    Analysis of 2,299 suspected-infection patients with score < 2
+  Core score      Count        %
+  --------------------------------
+  0               1,366    59.4%
+  1                 933    40.6%
+  Interpretation: patients with score 1 were close to threshold but
+  had only one organ system mildly affected — appropriate non-sepsis label.
+
+=================================================================
+PART B — DATASET SPLITTING
+=================================================================
+
+OPTION A — Full Dataset
+  Total rows:           12,447
+  Sepsis (pos):            864  (6.9%)
+  Non-sepsis (neg):     11,583  (93.1%)
+  Class ratio:        1 : 13.4
+  Use case:           Baseline modelling, larger dataset
+
+OPTION B — Infection-Only Dataset
+  Total rows:            3,163
+  Sepsis (pos):            864  (27.3%)
+  Non-sepsis (neg):      2,299  (72.7%)
+  Class ratio:        1 : 2.7
+  Use case:           Clinically meaningful — real ICU decision scenario
+
+NOTE: No imputation applied at this stage.
+Imputation happens in Step 6 AFTER train/test split to prevent leakage.
+
+Option A saved -> output2/option_A_full.csv
+Option B saved -> output2/option_B_infection_only.csv
+
+=================================================================
+STEP 5 COMPLETE
+=================================================================
+Label verification:    ALL PASS
+Option A rows:         12,447
+Option B rows:         3,163
+
+Next: Step 6 — Train/test split + imputation
