@@ -71,6 +71,7 @@ DROP_ZERO_VARIANCE = [
     "vaso_vasopressin",               # constant 0 in entire Option B
     "suspected_infection",            # constant 1 in Option B (everyone is infected by definition)
     "symptom_anhelation_and_cyanosis",# constant 0
+    "symptom_infection",              # r=0.005 with label, 99.2% zeros — pure noise
 ]
 
 DROP_FREE_TEXT = [
