@@ -1,0 +1,10 @@
+{
+  "zero_variance": [
+    "vaso_vasopressin",
+    "symptom_anhelation_and_cyanosis"
+  ],
+  "near_zero_variance": [
+    "vaso_vasopressin",
+    "symptom_anhelation_and_cyanosis"
+  ]
+}
