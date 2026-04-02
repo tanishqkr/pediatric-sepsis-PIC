@@ -1298,5 +1298,80 @@
       "n_trials": 100,
       "n_features": 225
     }
+  },
+  {
+    "timestamp": "2026-04-01T16:58:14",
+    "experiment_id": "phase2_stacking_ensemble_B",
+    "dataset": "B",
+    "model_name": "stacking_ensemble",
+    "phase": "ensemble",
+    "params": {
+      "base_models": [
+        "catboost_tuned",
+        "xgboost",
+        "lightgbm"
+      ],
+      "meta_learner": "logistic_regression",
+      "n_interaction_features": 10
+    },
+    "metrics": {
+      "auroc": 0.9850716260366927,
+      "auprc": 0.967954512766965,
+      "f1": 0.8942598187311178,
+      "sensitivity": 0.8554913294797688,
+      "specificity": 0.9782608695652174,
+      "ppv": 0.9367088607594937,
+      "npv": 0.9473684210526315,
+      "brier_score": 0.04223415148663896,
+      "threshold": 0.4744647380004357,
+      "tp": 148,
+      "fp": 10,
+      "tn": 450,
+      "fn": 25,
+      "auroc_ci_low": 0.9761440243613214,
+      "auroc_ci_high": 0.9923225564849943,
+      "auprc_ci_low": 0.9507504222621359,
+      "auprc_ci_high": 0.98294480255315,
+      "delong_z_vs_tuned": -0.9159792625876518,
+      "delong_p_vs_tuned": 0.35967777167859627
+    },
+    "notes": "Stacking: tuned CatBoost + XGBoost + LightGBM + LR meta. Features: 225 original + 10 clinical interactions = 235"
+  },
+  {
+    "timestamp": "2026-04-02T11:20:38",
+    "experiment_id": "phase2_custom_loss_B",
+    "dataset": "B",
+    "model_name": "catboost_custom_loss",
+    "phase": "custom_loss",
+    "params": {
+      "alpha": 2.8312651973888303,
+      "base_weight": 4.467040717091945,
+      "iterations": 438,
+      "learning_rate": 0.02108068073497902,
+      "depth": 4,
+      "l2_leaf_reg": 1.1819239407237159
+    },
+    "metrics": {
+      "auroc": 0.9673598894194521,
+      "auprc": 0.931258176426768,
+      "f1": 0.8385269121813032,
+      "sensitivity": 0.8554913294797688,
+      "specificity": 0.9304347826086956,
+      "ppv": 0.8222222222222222,
+      "npv": 0.9448123620309051,
+      "brier_score": 0.10052317513370698,
+      "threshold": 0.708250531978046,
+      "tp": 148,
+      "fp": 32,
+      "tn": 428,
+      "fn": 25,
+      "auroc_ci_low": 0.9541025556510756,
+      "auroc_ci_high": 0.9793694927224452,
+      "auprc_ci_low": 0.904121793020709,
+      "auprc_ci_high": 0.9544848192517388,
+      "delong_z_vs_tuned": -3.367399009293375,
+      "delong_p_vs_tuned": 0.0007588081290666044
+    },
+    "notes": "Phoenix-aware asymmetric loss, alpha=2.831, base_weight=4.467, severity from 7 Phoenix variables"
   }
 ]

@@ -1,0 +1,27 @@
+{
+  "n_interaction_features": 10,
+  "features": [
+    "ix_lactate_x_platelets",
+    "ix_ddimer_x_inr",
+    "ix_base_excess_ph_ratio",
+    "ix_pt_x_inr",
+    "ix_shock_coagulopathy",
+    "ix_glucose_range",
+    "ix_anion_gap_x_base_excess",
+    "ix_pt_x_ptt",
+    "ix_lactate_relative_change",
+    "ix_crp_x_ddimer"
+  ],
+  "correlations_with_label": {
+    "ix_lactate_x_platelets": 0.0329,
+    "ix_ddimer_x_inr": 0.3429,
+    "ix_base_excess_ph_ratio": 0.325,
+    "ix_pt_x_inr": 0.2201,
+    "ix_shock_coagulopathy": 0.033,
+    "ix_glucose_range": 0.2817,
+    "ix_anion_gap_x_base_excess": 0.3247,
+    "ix_pt_x_ptt": 0.2916,
+    "ix_lactate_relative_change": 0.0028,
+    "ix_crp_x_ddimer": 0.2432
+  }
+}

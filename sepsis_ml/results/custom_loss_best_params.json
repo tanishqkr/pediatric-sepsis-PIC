@@ -1,0 +1,13 @@
+{
+  "best_cv_auprc": 0.9281484715621527,
+  "best_params": {
+    "alpha": 2.8312651973888303,
+    "base_weight": 4.467040717091945,
+    "iterations": 438,
+    "learning_rate": 0.02108068073497902,
+    "depth": 4,
+    "l2_leaf_reg": 1.1819239407237159
+  },
+  "n_trials": 50,
+  "timestamp": "2026-04-02T11:20:36"
+}
