@@ -1,0 +1,4 @@
+ANN
+DL
+FL(simulate 10 nodes )
+Architecture
