@@ -1,0 +1,8 @@
+{
+  "tabnet_auroc": 0.930635838150289,
+  "catboost_auroc": 0.9867931641115858,
+  "z_statistic": -2.4637349397386736,
+  "p_value": 0.013749775065749148,
+  "significant": true,
+  "direction": "CatBoost better"
+}

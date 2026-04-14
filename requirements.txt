@@ -1,0 +1,25 @@
+# Data Handling
+pandas
+numpy==1.26.4
+
+# Machine Learning Models
+scikit-learn
+catboost
+xgboost
+lightgbm
+
+# Hyperparameter Tuning & Explainability
+optuna
+shap
+
+# Statistics & Analysis
+scipy
+
+# Deep Learning (Recently installed/Future use)
+rtdl==0.0.13
+torch==1.13.1
+pytorch-tabnet==4.1.0
+
+# Visualization
+matplotlib
+seaborn

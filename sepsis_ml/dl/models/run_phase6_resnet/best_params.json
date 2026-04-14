@@ -1,0 +1,10 @@
+{
+  "n_blocks": 8,
+  "d_main": 512,
+  "d_hidden": 512,
+  "dropout_first": 0.2035559528057898,
+  "dropout_second": 0.443735760539045,
+  "lr": 0.0001593197097729997,
+  "weight_decay": 1.6682060845143364e-06,
+  "batch_size": 64
+}

@@ -1,0 +1,51 @@
+{
+  "model": "TabNet",
+  "phase": "Phase 6",
+  "timestamp": "2026-04-14T18:18:27.754974",
+  "dataset": "Option B (infection-only)",
+  "n_train": 2530,
+  "n_test": 633,
+  "n_features": 225,
+  "best_optuna_auprc": 0.9049488182163015,
+  "test_metrics": {
+    "auroc": 0.930635838150289,
+    "auroc_ci_lower": 0.9088127113059009,
+    "auroc_ci_upper": 0.9496637888677264,
+    "auprc": 0.8657428845038643,
+    "auprc_ci_lower": 0.8224579635544175,
+    "auprc_ci_upper": 0.9015866177715745,
+    "brier_score": 0.1076376294632797,
+    "threshold_90sens": {
+      "threshold": 0.003,
+      "sensitivity": 0.9075,
+      "specificity": 0.7696,
+      "ppv": 0.597,
+      "npv": 0.9568,
+      "f1": 0.7202,
+      "tp": 157,
+      "fp": 106,
+      "fn": 16
+    }
+  },
+  "best_hyperparameters": {
+    "n_d": 64,
+    "n_a": 16,
+    "n_steps": 4,
+    "gamma": 1.0819496044865418,
+    "lambda_sparse": 0.0024060669002724223,
+    "lr": 0.007886484303209868,
+    "momentum": 0.2211943480509406,
+    "mask_type": "entmax",
+    "batch_size": 128,
+    "virtual_batch_size": 64
+  },
+  "delong_vs_catboost": {
+    "tabnet_auroc": 0.930635838150289,
+    "catboost_auroc": 0.9867931641115858,
+    "z_statistic": -2.4637349397386736,
+    "p_value": 0.013749775065749148,
+    "significant": true,
+    "direction": "CatBoost better"
+  },
+  "runtime_minutes": 136.16962841351827
+}
