@@ -1,0 +1,115 @@
+{
+  "phase": "Phase5_SensitivityAnalysis",
+  "timestamp": "2026-04-11T15:07:56.973579",
+  "dataset": "Option_A_full_cohort",
+  "model": "CatBoost_fixed_tuned_params_from_PhaseB",
+  "n_train": 9957,
+  "n_test": 2490,
+  "n_sepsis_train": 691,
+  "n_sepsis_test": 173,
+  "prevalence_train": 0.06939841317665964,
+  "prevalence_test": 0.06947791164658634,
+  "auroc": 0.9968441352057299,
+  "auroc_ci": [
+    0.9950464759488641,
+    0.9982187814972283
+  ],
+  "auprc": 0.9644465262895474,
+  "auprc_ci": [
+    0.9452678364316247,
+    0.9795304574742796
+  ],
+  "brier": 0.01635112277565916,
+  "metrics_at_0365": {
+    "threshold": 0.365,
+    "TP": 170,
+    "FP": 73,
+    "TN": 2244,
+    "FN": 3,
+    "sensitivity": 0.9826589595375722,
+    "specificity": 0.9684937419076391,
+    "PPV": 0.6995884773662552,
+    "NPV": 0.9986648865153538,
+    "F1": 0.8173076923076923
+  },
+  "option_B_reference": {
+    "auroc": 0.9868,
+    "auroc_ci": [
+      0.9794,
+      0.9931
+    ],
+    "auprc": 0.9691,
+    "sensitivity": 0.896,
+    "specificity": 0.963,
+    "ppv": 0.901,
+    "npv": 0.961,
+    "f1": 0.899,
+    "brier": 0.0385,
+    "n_train": 2530,
+    "n_test": 633,
+    "prevalence": 0.273,
+    "threshold": 0.365
+  },
+  "delta_auroc_A_minus_B": 0.010044135205729887,
+  "delta_auprc_A_minus_B": -0.004653473710452549,
+  "top_10_features_shap": [
+    {
+      "feature": "n_antibiotics_24h",
+      "mean_abs_shap": 5.283468248874338
+    },
+    {
+      "feature": "lactate_max",
+      "mean_abs_shap": 0.9557294547569664
+    },
+    {
+      "feature": "platelets_min",
+      "mean_abs_shap": 0.5684624151156141
+    },
+    {
+      "feature": "ddimer_max",
+      "mean_abs_shap": 0.5344203338315858
+    },
+    {
+      "feature": "inr_max",
+      "mean_abs_shap": 0.5291146709671948
+    },
+    {
+      "feature": "n_cultures_24h",
+      "mean_abs_shap": 0.44574691048563025
+    },
+    {
+      "feature": "ddimer_mean",
+      "mean_abs_shap": 0.37908675996758684
+    },
+    {
+      "feature": "glucose_max",
+      "mean_abs_shap": 0.12840236057841972
+    },
+    {
+      "feature": "pt_max",
+      "mean_abs_shap": 0.12398414436537626
+    },
+    {
+      "feature": "platelets_mean",
+      "mean_abs_shap": 0.11879013344931147
+    }
+  ],
+  "hyperparameters_used": {
+    "iterations": 510,
+    "learning_rate": 0.0342,
+    "depth": 7,
+    "l2_leaf_reg": 3.754,
+    "bagging_temperature": 0.975,
+    "random_strength": 0.05,
+    "border_count": 233,
+    "class_weights": [
+      1.0,
+      13.4
+    ],
+    "eval_metric": "AUC",
+    "random_seed": 42,
+    "verbose": 100,
+    "early_stopping_rounds": 50
+  },
+  "note": "Hyperparameters fixed from Phase 2A Option B tuning. Only class_weights updated for Option A prevalence (1:13.4). This isolates the effect of cohort definition on performance."
+}

@@ -1,0 +1,36 @@
+{
+  "severity_variables": [
+    [
+      "lactate_max",
+      "high"
+    ],
+    [
+      "platelets_min",
+      "low"
+    ],
+    [
+      "inr_max",
+      "high"
+    ],
+    [
+      "ddimer_max",
+      "high"
+    ],
+    [
+      "base_excess_min",
+      "extreme"
+    ],
+    [
+      "pt_mean",
+      "high"
+    ],
+    [
+      "ptt_max",
+      "high"
+    ]
+  ],
+  "alpha_best": 2.8312651973888303,
+  "base_weight_best": 4.467040717091945,
+  "severity_mean_sepsis": 0.2611768832290091,
+  "severity_mean_nonsep": 0.12428472577806081
+}

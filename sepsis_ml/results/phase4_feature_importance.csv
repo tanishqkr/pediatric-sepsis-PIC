@@ -1,0 +1,226 @@
+feature,mean_abs_shap,display_name,rank
+lactate_max,0.9919822184263843,Lactate (max),1
+ddimer_max,0.9573892607351585,D-dimer (max),2
+platelets_min,0.7762260985403078,Platelets (min),3
+inr_max,0.5389678237873222,INR (max),4
+calcium_max,0.5191997851768151,Calcium (max),5
+pt_max,0.2590288028360192,PT (max),6
+calcium_mean,0.2215509804597806,Calcium (mean),7
+glucose_max,0.21425035354092437,Glucose (max),8
+pao2_max,0.17612490214623078,PaO2 (max),9
+ph_min,0.16052059860986806,pH (min),10
+hematocrit_min,0.14608882452732036,Haematocrit (min),11
+platelets_first,0.14574488051553858,Platelets (first),12
+care_unit_SICU,0.12438593197560101,care_unit_SICU,13
+fibrinogen_min,0.11477667979186779,Fibrinogen (min),14
+care_unit_CICU,0.11361650594750734,care_unit_CICU,15
+ddimer_mean,0.1083113265650977,D-dimer (mean),16
+platelets_mean,0.0908292526218213,Platelets (mean),17
+potassium_min,0.08437896319605707,Potassium (min),18
+lactate_first,0.07490995109813448,Lactate (first),19
+bicarbonate_min,0.07258060843322736,Bicarbonate (min),20
+care_unit_General ICU,0.06793521848662402,care_unit_General ICU,21
+inr_mean,0.05749415659668742,INR (mean),22
+glucose_mean,0.056833795432197236,glucose_mean,23
+platelets_max,0.049017303945450216,Platelets (max),24
+pco2_max,0.0467839680806388,pco2_max,25
+lactate_trend,0.045349048422891725,Lactate (trend),26
+calcium_min,0.044766822658430294,Calcium (min),27
+creatinine_mean,0.04104280763190054,creatinine_mean,28
+lactate_mean,0.04047180569185874,Lactate (mean),29
+temperature_max,0.039746647527765154,temperature_max,30
+calcium_first,0.03895348737869682,calcium_first,31
+resp_rate_max,0.03796756005896561,resp_rate_max,32
+ph_max,0.037216120125666274,ph_max,33
+pt_first,0.036952828252913086,PT (first),34
+fibrinogen_first,0.036125227943613426,fibrinogen_first,35
+urea_first,0.03382976679950632,urea_first,36
+inr_first,0.03355226365160838,INR (first),37
+hemoglobin_mean,0.0329535220115284,hemoglobin_mean,38
+base_excess_trend,0.03158338696295933,base_excess_trend,39
+anion_gap_first,0.031439840562658285,anion_gap_first,40
+pao2_first,0.03097749367662373,pao2_first,41
+base_excess_min,0.030424310423907665,Base excess (min),42
+base_excess_max,0.029764031412249977,base_excess_max,43
+sodium_min,0.029691824131727374,sodium_min,44
+gender,0.02941276251045307,gender,45
+pao2_mean,0.029409123307706776,pao2_mean,46
+had_surgery_flag,0.029235799878033094,had_surgery_flag,47
+age_years,0.028888393366969342,Age (years),48
+urea_min,0.027316030547932475,urea_min,49
+hemoglobin_min,0.024181594007117578,hemoglobin_min,50
+n_antibiotics_24h,0.02310667977807315,n_antibiotics_24h,51
+bicarbonate_max,0.02248187386787471,bicarbonate_max,52
+base_excess_mean,0.022401457465201724,Base excess (mean),53
+ph_mean,0.02220081449728869,ph_mean,54
+n_cultures_24h,0.020955601231586286,n_cultures_24h,55
+creatinine_max,0.01940155912449399,Creatinine (max),56
+potassium_mean,0.01926197252872772,potassium_mean,57
+spo2_lab_max,0.019201923724602183,spo2_lab_max,58
+bicarbonate_first,0.018481793659658432,bicarbonate_first,59
+pao2_min,0.017424783323816518,pao2_min,60
+bicarbonate_mean,0.0168580459742522,bicarbonate_mean,61
+ddimer_first,0.016836826249148104,D-dimer (first),62
+anion_gap_min,0.016466654250654307,anion_gap_min,63
+pco2_min,0.016062740903034327,pco2_min,64
+hemoglobin_trend,0.015950687240504195,hemoglobin_trend,65
+pco2_first,0.015007200415068258,pco2_first,66
+care_unit_NICU,0.014729847742813091,care_unit_NICU,67
+urea_max,0.014540204116397365,urea_max,68
+anion_gap_max,0.013583775342237295,anion_gap_max,69
+crp_first,0.013241907082681232,crp_first,70
+hematocrit_first,0.013003751174759591,hematocrit_first,71
+spo2_lab_first,0.012997034634603293,spo2_lab_first,72
+fibrinogen_mean,0.012879438071766615,fibrinogen_mean,73
+crp_max,0.012674993608704296,CRP (max),74
+potassium_max,0.012632393203951202,potassium_max,75
+wbc_min,0.012382962640434493,wbc_min,76
+potassium_first,0.01221478898778401,potassium_first,77
+lactate_min,0.012012613091922688,Lactate (min),78
+inr_trend,0.011456181945692865,inr_trend,79
+pt_mean,0.011406556982656997,PT (mean),80
+alt_max,0.011220602267163846,ALT (max),81
+ph_trend,0.01103798506040865,ph_trend,82
+glucose_first,0.010992332536886223,glucose_first,83
+anc_first,0.010987024085978727,anc_first,84
+inr_min,0.01080568422391878,inr_min,85
+ast_first,0.010479698376536404,ast_first,86
+ck_min,0.01027445099250571,ck_min,87
+glucose_min,0.01017395423969128,Glucose (min),88
+sodium_trend,0.010095117998581636,sodium_trend,89
+hematocrit_mean,0.009877430691920696,hematocrit_mean,90
+ptt_mean,0.00984047432864093,ptt_mean,91
+uric_acid_min,0.009721603404816483,uric_acid_min,92
+heart_rate_trend,0.009719053090362018,heart_rate_trend,93
+n_positive_cultures,0.009709145040892658,n_positive_cultures,94
+ddimer_min,0.00951630887349438,ddimer_min,95
+heart_rate_first,0.009248016829460097,heart_rate_first,96
+glucose_trend,0.009243539740604987,glucose_trend,97
+ptt_min,0.00909967691573716,ptt_min,98
+sodium_mean,0.008886934426838026,sodium_mean,99
+systolic_bp_first,0.008674907238272068,systolic_bp_first,100
+temperature_min,0.0083948666685777,temperature_min,101
+hemoglobin_max,0.0083292016494168,hemoglobin_max,102
+anion_gap_mean,0.008169892489524277,anion_gap_mean,103
+hematocrit_max,0.008060089986025929,hematocrit_max,104
+platelets_trend,0.008028308864035997,platelets_trend,105
+ast_min,0.008004900761541967,ast_min,106
+sodium_max,0.007840569741909966,sodium_max,107
+ldh_first,0.007741129821992005,ldh_first,108
+uric_acid_mean,0.007457645281178754,uric_acid_mean,109
+ck_mean,0.007397101024622766,ck_mean,110
+resp_rate_first,0.0071343419962004995,resp_rate_first,111
+bilirubin_first,0.0070781528106466166,bilirubin_first,112
+ptt_first,0.0069559333762036005,ptt_first,113
+pco2_mean,0.006932167857876878,pco2_mean,114
+ldh_max,0.006905182981820857,ldh_max,115
+resp_rate_trend,0.006904850797315175,resp_rate_trend,116
+uric_acid_first,0.0068994112905572,uric_acid_first,117
+uric_acid_max,0.006850487394895498,uric_acid_max,118
+hemoglobin_first,0.006726557761774094,hemoglobin_first,119
+ck_first,0.006570919007858645,ck_first,120
+bilirubin_min,0.0064897815130774235,bilirubin_min,121
+ast_mean,0.00621214227962164,ast_mean,122
+crp_min,0.006049765433912902,crp_min,123
+pt_min,0.005945393748375232,pt_min,124
+spo2_lab_min,0.005934834767337739,spo2_lab_min,125
+wbc_max,0.005852891653286516,WBC (max),126
+creatinine_min,0.005852476393580712,creatinine_min,127
+alt_min,0.005820540650075125,alt_min,128
+heart_rate_max,0.005587867681297996,Heart rate (max),129
+alc_min,0.005580750856459744,ALC (min),130
+base_excess_first,0.00545622849990915,base_excess_first,131
+anc_min,0.005233491571700851,ANC (min),132
+alt_first,0.005218592156400334,alt_first,133
+alt_mean,0.005122843565160307,alt_mean,134
+urea_mean,0.0050431974994525905,urea_mean,135
+wbc_first,0.004853308998982359,wbc_first,136
+anc_max,0.004720050427178346,anc_max,137
+ptt_max,0.00470154797460152,PTT (max),138
+temperature_mean,0.004617575748206571,temperature_mean,139
+potassium_trend,0.004528491983608736,potassium_trend,140
+alc_max,0.00451072185104076,alc_max,141
+crp_mean,0.004444446473190887,crp_mean,142
+anc_mean,0.004435694490439406,anc_mean,143
+resp_rate_min,0.004243481693608001,resp_rate_min,144
+urine_output_total_ml,0.004223632079790598,urine_output_total_ml,145
+alc_mean,0.00420091822348938,alc_mean,146
+systolic_bp_mean,0.00417827205775069,systolic_bp_mean,147
+heart_rate_mean,0.004103912015514733,heart_rate_mean,148
+wbc_mean,0.0035030455956161347,wbc_mean,149
+ph_first,0.00330182582624232,ph_first,150
+diastolic_bp_min,0.0032561688594263363,diastolic_bp_min,151
+fibrinogen_max,0.0031552805877650032,fibrinogen_max,152
+alc_first,0.002922744591656007,alc_first,153
+hr_abnormal_for_age,0.0027605102339030314,hr_abnormal_for_age,154
+systolic_bp_min,0.0027473529328318953,systolic_bp_min,155
+bilirubin_max,0.002689113847834324,Bilirubin (max),156
+albumin_min,0.002685957881367393,albumin_min,157
+wbc_trend,0.0026744010738659996,wbc_trend,158
+temperature_trend,0.0026300776178878825,temperature_trend,159
+ast_max,0.0024411952021992723,ast_max,160
+ldh_mean,0.0023671288657975643,ldh_mean,161
+creatinine_first,0.0023326600696454173,creatinine_first,162
+bilirubin_mean,0.0022936216601070905,bilirubin_mean,163
+heart_rate_min,0.002065845598414951,heart_rate_min,164
+albumin_max,0.0019758159203395256,albumin_max,165
+albumin_first,0.00195446283382227,albumin_first,166
+ldh_min,0.0019402205205611314,ldh_min,167
+resp_rate_mean,0.001914194040363471,resp_rate_mean,168
+temperature_first,0.0017943225706535857,temperature_first,169
+bilirubin_trend,0.0016309189395217005,bilirubin_trend,170
+fluid_input_total_ml,0.0015545460906762523,fluid_input_total_ml,171
+sodium_first,0.0014936678374004874,sodium_first,172
+ck_max,0.001415784190810728,ck_max,173
+symptom_erythra,0.0010062683349181959,symptom_erythra,174
+spo2_lab_mean,0.0008549669460774872,spo2_lab_mean,175
+symptom_phlegm_sound,0.0008124972053979104,symptom_phlegm_sound,176
+symptom_cough,0.0007720056675689804,symptom_cough,177
+albumin_mean,0.0007266632638592101,albumin_mean,178
+urine_output_per_hour,0.0007115124748684712,urine_output_per_hour,179
+creatinine_trend,0.0006113252318184374,creatinine_trend,180
+map_min,0.0005224977323253197,MAP (min),181
+rr_abnormal_for_age,0.0005067109528938654,rr_abnormal_for_age,182
+diastolic_bp_max,0.000498121580668467,diastolic_bp_max,183
+diastolic_bp_mean,0.000492895131819497,diastolic_bp_mean,184
+systolic_bp_max,0.00031437135980252873,systolic_bp_max,185
+shock_index,0.0002733535428115687,Shock index,186
+fluid_balance_ml,0.00024703752964695886,fluid_balance_ml,187
+map_first,0.00013660086696950423,map_first,188
+spo2_trend,0.0001276421096178441,spo2_trend,189
+symptom_cyanosis,7.328852851093034e-05,symptom_cyanosis,190
+symptom_edema,5.456271599930313e-05,symptom_edema,191
+symptom_listless,2.6209733974232147e-05,symptom_listless,192
+symptom_moist_rale,0.0,symptom_moist_rale,193
+symptom_dry_and_moist_rales,0.0,symptom_dry_and_moist_rales,194
+symptom_headache,0.0,symptom_headache,195
+symptom_abdominal_distension,0.0,symptom_abdominal_distension,196
+symptom_pharyngeal_red,0.0,symptom_pharyngeal_red,197
+symptom_abdominal_tenderness,0.0,symptom_abdominal_tenderness,198
+symptom_chest_tightness,0.0,symptom_chest_tightness,199
+symptom_rebound_tenderness,0.0,symptom_rebound_tenderness,200
+had_cardiac_surgery_flag,0.0,had_cardiac_surgery_flag,201
+spo2_first,0.0,spo2_first,202
+spo2_min,0.0,spo2_min,203
+spo2_max,0.0,spo2_max,204
+care_unit_PICU,0.0,care_unit_PICU,205
+symptom_three_depressions_sign,0.0,symptom_three_depressions_sign,206
+symptom_diarrhea,0.0,symptom_diarrhea,207
+symptom_tenderness,0.0,symptom_tenderness,208
+symptom_swelling,0.0,symptom_swelling,209
+sbp_abnormal_for_age,0.0,sbp_abnormal_for_age,210
+map_mean,0.0,map_mean,211
+map_max,0.0,map_max,212
+symptom_fever,0.0,symptom_fever,213
+diastolic_bp_first,0.0,diastolic_bp_first,214
+symptom_rale,0.0,symptom_rale,215
+symptom_twitching,0.0,symptom_twitching,216
+symptom_anhelation,0.0,symptom_anhelation,217
+symptom_cool_extremities,0.0,symptom_cool_extremities,218
+symptom_warm_extremities,0.0,symptom_warm_extremities,219
+symptom_hemorrhage,0.0,symptom_hemorrhage,220
+symptom_dysphoria,0.0,symptom_dysphoria,221
+symptom_skin_jaundice,0.0,symptom_skin_jaundice,222
+symptom_arrhythmia,0.0,symptom_arrhythmia,223
+symptom_vomiting,0.0,symptom_vomiting,224
+spo2_mean,0.0,spo2_mean,225

@@ -1,0 +1,52 @@
+{
+  "model": "FT-Transformer",
+  "phase": "Phase 6",
+  "timestamp": "2026-04-16T14:53:58.491710",
+  "dataset": "Option B (infection-only)",
+  "n_train": 2530,
+  "n_test": 633,
+  "n_features": 225,
+  "best_optuna_auprc": 0.9452850526340073,
+  "test_metrics": {
+    "auroc": 0.9577280723799949,
+    "auroc_ci_lower": 0.9404206248944487,
+    "auroc_ci_upper": 0.9736610985653851,
+    "auprc": 0.9131468775183493,
+    "auprc_ci_lower": 0.8747774185757509,
+    "auprc_ci_upper": 0.9484255195814473,
+    "brier_score": 0.07328284035767214,
+    "threshold_90sens": {
+      "threshold": 0.011,
+      "sensitivity": 0.896,
+      "specificity": 0.8522,
+      "ppv": 0.6951,
+      "npv": 0.9561,
+      "f1": 0.7828,
+      "tp": 155,
+      "fp": 68,
+      "fn": 18
+    }
+  },
+  "best_hyperparameters": {
+    "n_blocks": 2,
+    "d_block": 256,
+    "attention_n_heads": 8,
+    "attention_dropout": 0.1420643896254694,
+    "ffn_d_hidden_multiplier": 2.3381985918911274,
+    "ffn_dropout": 0.06628786356198257,
+    "residual_dropout": 0.012643727975254121,
+    "lr": 0.00040916879266671645,
+    "weight_decay": 7.708372367836823e-05,
+    "batch_size": 128,
+    "actual_attention_n_heads": 8
+  },
+  "delong_vs_catboost": {
+    "fttransformer_auroc": 0.957728072379995,
+    "catboost_auroc": 0.9867931641115858,
+    "z_statistic": -1.3742644260806753,
+    "p_value": 0.1693596060047282,
+    "significant": false,
+    "direction": "CatBoost better"
+  },
+  "runtime_minutes": 40.84952633778254
+}

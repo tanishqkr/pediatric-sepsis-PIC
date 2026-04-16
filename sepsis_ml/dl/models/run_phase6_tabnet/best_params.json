@@ -1,0 +1,12 @@
+{
+  "n_d": 64,
+  "n_a": 16,
+  "n_steps": 4,
+  "gamma": 1.0819496044865418,
+  "lambda_sparse": 0.0024060669002724223,
+  "lr": 0.007886484303209868,
+  "momentum": 0.2211943480509406,
+  "mask_type": "entmax",
+  "batch_size": 128,
+  "virtual_batch_size": 64
+}

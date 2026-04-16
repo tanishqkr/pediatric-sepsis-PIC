@@ -1,0 +1,8 @@
+{
+  "fttransformer_auroc": 0.957728072379995,
+  "catboost_auroc": 0.9867931641115858,
+  "z_statistic": -1.3742644260806753,
+  "p_value": 0.1693596060047282,
+  "significant": false,
+  "direction": "CatBoost better"
+}

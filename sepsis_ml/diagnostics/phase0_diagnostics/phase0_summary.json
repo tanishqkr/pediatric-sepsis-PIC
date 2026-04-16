@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-03-21T17:16:12",
+  "class_distribution": {
+    "A": {
+      "neg": 9266,
+      "pos": 691,
+      "total": 9957,
+      "ratio": 13.41
+    },
+    "B": {
+      "neg": 1839,
+      "pos": 691,
+      "total": 2530,
+      "ratio": 2.66
+    }
+  },
+  "missingness": {
+    "A": {
+      "n_features": 380,
+      "n_any_missing": 2,
+      "n_high_missing": 0,
+      "n_zero_var": 2
+    },
+    "B": {
+      "n_features": 377,
+      "n_any_missing": 2,
+      "n_high_missing": 0,
+      "n_zero_var": 3
+    }
+  },
+  "correlation": {
+    "A": {
+      "n_high_corr_pairs": 385
+    },
+    "B": {
+      "n_high_corr_pairs": 360
+    }
+  },
+  "tsne": {
+    "A": {
+      "tsne_sample_size": 2000
+    },
+    "B": {
+      "tsne_sample_size": 2000
+    }
+  },
+  "zero_variance": {
+    "A": {
+      "n_zero_var": 2,
+      "n_near_zero": 2,
+      "drop_list": [
+        "vaso_vasopressin",
+        "symptom_anhelation_and_cyanosis"
+      ]
+    },
+    "B": {
+      "n_zero_var": 3,
+      "n_near_zero": 3,
+      "drop_list": [
+        "vaso_vasopressin",
+        "suspected_infection",
+        "symptom_anhelation_and_cyanosis"
+      ]
+    }
+  }
+}

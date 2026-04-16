@@ -1,0 +1,288 @@
+{
+  "timestamp": "2026-03-21T17:11:58",
+  "dataset_A": {
+    "label": "Option A \u2014 Full cohort",
+    "train_shape": [
+      9957,
+      383
+    ],
+    "test_shape": [
+      2490,
+      383
+    ],
+    "n_total_cols": 383,
+    "n_numeric_cols": 378,
+    "n_nonnumeric_cols": 5,
+    "n_flagged_cols": 20,
+    "n_zero_variance": 2,
+    "n_constant": 2,
+    "n_high_missing": 0,
+    "n_leakage_risk": 5,
+    "flagged_columns": [
+      {
+        "column": "expire_flag",
+        "flags": "possible_label_leakage"
+      },
+      {
+        "column": "hosp_expire",
+        "flags": "possible_label_leakage"
+      },
+      {
+        "column": "diagnosis",
+        "flags": "possible_free_text"
+      },
+      {
+        "column": "icd10",
+        "flags": "possible_free_text"
+      },
+      {
+        "column": "uric_acid_max",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_max_was_measured",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_min",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_min_was_measured",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_mean",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_mean_was_measured",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_first",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_first_was_measured",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_count",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "fluid_input_total_ml",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "fluid_balance_ml",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "vaso_vasopressin",
+        "flags": "constant_column|zero_variance"
+      },
+      {
+        "column": "symptom_anhelation_and_cyanosis",
+        "flags": "constant_column|zero_variance"
+      },
+      {
+        "column": "phoenix_core_score",
+        "flags": "possible_label_leakage"
+      },
+      {
+        "column": "phoenix_8_score",
+        "flags": "possible_label_leakage"
+      },
+      {
+        "column": "sepsis_label",
+        "flags": "possible_label_leakage"
+      }
+    ],
+    "non_numeric_columns": [
+      "gender",
+      "care_unit",
+      "diagnosis",
+      "icd10",
+      "ethnicity"
+    ],
+    "zero_variance_columns": [
+      "vaso_vasopressin",
+      "symptom_anhelation_and_cyanosis"
+    ],
+    "constant_columns": [
+      "vaso_vasopressin",
+      "symptom_anhelation_and_cyanosis"
+    ],
+    "leakage_risk_columns": [
+      "expire_flag",
+      "hosp_expire",
+      "phoenix_core_score",
+      "phoenix_8_score",
+      "sepsis_label"
+    ]
+  },
+  "dataset_B": {
+    "label": "Option B \u2014 Infection-only",
+    "train_shape": [
+      2530,
+      380
+    ],
+    "test_shape": [
+      633,
+      380
+    ],
+    "n_total_cols": 380,
+    "n_numeric_cols": 375,
+    "n_nonnumeric_cols": 5,
+    "n_flagged_cols": 21,
+    "n_zero_variance": 3,
+    "n_constant": 3,
+    "n_high_missing": 0,
+    "n_leakage_risk": 5,
+    "flagged_columns": [
+      {
+        "column": "expire_flag",
+        "flags": "possible_label_leakage"
+      },
+      {
+        "column": "hosp_expire",
+        "flags": "possible_label_leakage"
+      },
+      {
+        "column": "diagnosis",
+        "flags": "possible_free_text"
+      },
+      {
+        "column": "icd10",
+        "flags": "possible_free_text"
+      },
+      {
+        "column": "uric_acid_max",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_max_was_measured",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_min",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_min_was_measured",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_mean",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_mean_was_measured",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_first",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_first_was_measured",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "uric_acid_count",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "fluid_input_total_ml",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "fluid_balance_ml",
+        "flags": "possible_id_column"
+      },
+      {
+        "column": "vaso_vasopressin",
+        "flags": "constant_column|zero_variance"
+      },
+      {
+        "column": "suspected_infection",
+        "flags": "constant_column|zero_variance"
+      },
+      {
+        "column": "symptom_anhelation_and_cyanosis",
+        "flags": "constant_column|zero_variance"
+      },
+      {
+        "column": "phoenix_core_score",
+        "flags": "possible_label_leakage"
+      },
+      {
+        "column": "phoenix_8_score",
+        "flags": "possible_label_leakage"
+      },
+      {
+        "column": "sepsis_label",
+        "flags": "possible_label_leakage"
+      }
+    ],
+    "non_numeric_columns": [
+      "gender",
+      "care_unit",
+      "diagnosis",
+      "icd10",
+      "ethnicity"
+    ],
+    "zero_variance_columns": [
+      "vaso_vasopressin",
+      "suspected_infection",
+      "symptom_anhelation_and_cyanosis"
+    ],
+    "constant_columns": [
+      "vaso_vasopressin",
+      "suspected_infection",
+      "symptom_anhelation_and_cyanosis"
+    ],
+    "leakage_risk_columns": [
+      "expire_flag",
+      "hosp_expire",
+      "phoenix_core_score",
+      "phoenix_8_score",
+      "sepsis_label"
+    ]
+  },
+  "cross_dataset": {
+    "shared_columns": 380,
+    "only_in_A": [
+      "lactate_trend_was_measured",
+      "potassium_trend_was_measured",
+      "sodium_trend_was_measured"
+    ],
+    "only_in_B": []
+  },
+  "action_items": {
+    "drop_nonnumeric": [
+      "icd10",
+      "gender",
+      "diagnosis",
+      "care_unit",
+      "ethnicity"
+    ],
+    "drop_zero_variance": [
+      "symptom_anhelation_and_cyanosis",
+      "suspected_infection",
+      "vaso_vasopressin",
+      "symptom_anhelation_and_cyanosis",
+      "suspected_infection",
+      "vaso_vasopressin"
+    ],
+    "review_leakage": [
+      "phoenix_core_score",
+      "sepsis_label",
+      "expire_flag",
+      "hosp_expire",
+      "phoenix_8_score"
+    ]
+  }
+}

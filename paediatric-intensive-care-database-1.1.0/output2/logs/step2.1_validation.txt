@@ -1,0 +1,174 @@
+===========================================================================
+STEP 2.1 VALIDATION REPORT — Revised Physiological Caps
+===========================================================================
+
+CHANGES FROM STEP 2:
+  FIX 1 - hemoglobin:  convert_factor=0.1 (PIC stores in g/L, cap in g/dL)
+  FIX 2 - anion_gap:   floor 0 -> -5 (measurement variation is valid)
+  FIX 3 - spo2_lab:    cap 100.0 -> 100.5 (rounding artefact)
+  FIX 3 - spo2_chart:  cap 100.0 -> 100.5 (same reason)
+
+Variable                  Total    Below    Above    % bad  Cap range
+------------------------------------------------------------------------------------------
+albumin                  42,325        0        3    0.01%  [0.0 – 70.0] g/L ⚠
+alc                     106,136        0        0    0.00%  [0.0 – 100.0] 10^9/L
+alt                      52,868        0        1    0.00%  [0.0 – 50000.0] IU/L ⚠
+anc                     106,046        0        3    0.00%  [0.0 – 100.0] 10^9/L ⚠
+anion_gap               189,141    5,120       20    2.72%  [-5.0 – 60.0] mmol/L ⚠ ✱ FIXED
+ast                      42,707        0        0    0.00%  [0.0 – 50000.0] IU/L
+base_excess             385,201        0        0    0.00%  [-50.0 – 50.0] mmol/L
+bicarbonate             387,813        2       37    0.01%  [0.0 – 60.0] mmol/L ⚠
+bilirubin_umol           76,522        5        1    0.01%  [0.0 – 1800.0] umol/L ⚠
+calcium                 231,374        2       16    0.01%  [0.0 – 5.0] mmol/L ⚠
+ck                       40,033        0        0    0.00%  [0.0 – 1000000.0] IU/L
+creatinine_umol          51,665        0      193    0.37%  [0.0 – 2000.0] umol/L ⚠
+crp                      80,170        0        0    0.00%  [0.0 – 500.0] mg/L
+ddimer                   21,044        0        0    0.00%  [0.0 – 200.0] mg/L FEU
+diastolic_bp             90,948      102       12    0.13%  [5.0 – 200.0] mmHg ⚠
+fibrinogen               21,388        0        1    0.00%  [0.0 – 15.0] g/L ⚠
+glucose_mmol            185,222      212        4    0.12%  [0.5 – 80.0] mmol/L ⚠
+heart_rate              230,634       13       35    0.02%  [10.0 – 350.0] bpm ⚠
+hematocrit              306,909        0       17    0.01%  [0.0 – 75.0] % ⚠
+hemoglobin              305,950        7       24    0.01%  [0.0 – 25.0] g/dL (raw values in PIC are g/L, divided by 10) [×0.1] ⚠ ✱ FIXED
+inr                      41,938        0        0    0.00%  [0.5 – 20.0] ratio
+lactate                 191,817        0        1    0.00%  [0.0 – 30.0] mmol/L ⚠
+ldh                      40,666        0        0    0.00%  [0.0 – 100000.0] IU/L
+pao2                    228,856        0        5    0.00%  [0.0 – 600.0] mmHg ⚠
+pco2                    228,906        3       51    0.02%  [5.0 – 200.0] mmHg ⚠
+ph                      228,984       17       18    0.02%  [6.5 – 7.9] pH units ⚠
+platelets               112,948        0        1    0.00%  [0.0 – 2000.0] 10^9/L ⚠
+potassium               194,472        5      209    0.11%  [1.0 – 12.0] mmol/L ⚠
+pt                       41,935        0        2    0.00%  [0.0 – 200.0] seconds ⚠
+ptt                      41,100        0        0    0.00%  [0.0 – 300.0] seconds
+resp_rate               559,979        0    4,188    0.75%  [0.0 – 100.0] breaths/min ⚠
+sodium                  194,563      142       37    0.09%  [100.0 – 200.0] mmol/L ⚠
+spo2_chart              277,498      138       21    0.06%  [50.0 – 100.5] % ⚠ ✱ FIXED
+spo2_lab                193,852    2,897       33    1.51%  [50.0 – 100.5] % ⚠ ✱ FIXED
+systolic_bp              90,957      120        8    0.14%  [20.0 – 300.0] mmHg ⚠
+temperature             435,828       29       56    0.02%  [30.0 – 43.0] Celsius ⚠
+urea                     49,005        0        1    0.00%  [0.0 – 100.0] mmol/L ⚠
+uric_acid                41,690        2       10    0.03%  [0.0 – 2000.0] umol/L ⚠
+wbc                     112,875        0      106    0.09%  [0.0 – 300.0] 10^9/L ⚠
+------------------------------------------------------------------------------------------
+TOTAL                  6,261,965                      0.22%  values affected: 13,930
+
+===========================================================================
+SAMPLE OUTLIER VALUES (after conversion)
+===========================================================================
+
+albumin [g/L]:
+  Above cap (70.0): [70.7, 73.7, 73.7]
+
+alt [IU/L]:
+  Above cap (50000.0): [100000.0]
+
+anc [10^9/L]:
+  Above cap (100.0): [115.3, 201.33, 190.2]
+
+anion_gap [mmol/L]:
+  Below floor (-5.0): [-6.7, -6.7, -5.6]
+  Above cap (60.0): [60.8, 99.1, 65.2]
+
+bicarbonate [mmol/L]:
+  Below floor (0.0): [-7.4, -2.0]
+  Above cap (60.0): [61.3, 76.6, 77.0]
+
+bilirubin_umol [umol/L]:
+  Below floor (0.0): [-1.7, -47.7, -3.5]
+  Above cap (1800.0): [22055891700.0]
+
+calcium [mmol/L]:
+  Below floor (0.0): [-0.02, -0.02]
+  Above cap (5.0): [9.34, 6.27, 6.26]
+
+creatinine_umol [umol/L]:
+  Above cap (2000.0): [2433.3, 2764.0, 2764.0]
+
+diastolic_bp [mmHg]:
+  Below floor (5.0): [0.0, 0.0]
+  Above cap (200.0): [243.0, 456.0]
+
+fibrinogen [g/L]:
+  Above cap (15.0): [28.7]
+
+glucose_mmol [mmol/L]:
+  Below floor (0.5): [0.06, 0.06, 0.4]
+  Above cap (80.0): [108883.0, 84.64, 88.25]
+
+heart_rate [bpm]:
+  Below floor (10.0): [0.0, 0.0]
+  Above cap (350.0): [1032.0, 1160.0]
+
+hematocrit [%]:
+  Above cap (75.0): [76.4, 76.6, 79.4]
+
+hemoglobin [g/dL (raw values in PIC are g/L, divided by 10)] [raw ÷10 = converted]:
+  Below floor (0.0): [-0.065, -0.069, -0.072]
+  Above cap (25.0): [2177159577.6, 25.2, 25.6]
+
+lactate [mmol/L]:
+  Above cap (30.0): [22112446464.0]
+
+pao2 [mmHg]:
+  Above cap (600.0): [21771.0, 21983129600.0, 21774659584.0]
+
+pco2 [mmHg]:
+  Below floor (5.0): [3.1, 3.9, 1.8]
+  Above cap (200.0): [21771593728.0, 228.0, 219.0]
+
+ph [pH units]:
+  Below floor (6.5): [6.464, 6.414, 6.414]
+  Above cap (7.9): [215759863808.0, 218776268007.37, 217715802112.0]
+
+platelets [10^9/L]:
+  Above cap (2000.0): [2661.0]
+
+potassium [mmol/L]:
+  Below floor (1.0): [0.9, 0.8, 0.6]
+  Above cap (12.0): [13.3, 16.9, 23.94]
+
+pt [seconds]:
+  Above cap (200.0): [202.8, 239.1]
+
+resp_rate [breaths/min]:
+  Above cap (100.0): [540.0, 480.0]
+
+sodium [mmol/L]:
+  Below floor (100.0): [87.0, 62.0, 82.0]
+  Above cap (200.0): [214.0, 203.0, 201.0]
+
+spo2_chart [%]:
+  Below floor (50.0): [34.0, 29.0]
+  Above cap (100.5): [400.0, 102.0]
+
+spo2_lab [%]:
+  Below floor (50.0): [44.1, 33.6, 36.2]
+  Above cap (100.5): [100.6, 100.8, 21771612160.0]
+
+systolic_bp [mmHg]:
+  Below floor (20.0): [11.0, 0.0]
+  Above cap (300.0): [783.0, 974.0]
+
+temperature [Celsius]:
+  Below floor (30.0): [3.5, 3.0]
+  Above cap (43.0): [365.0, 337.9]
+
+urea [mmol/L]:
+  Above cap (100.0): [100000.0]
+
+uric_acid [umol/L]:
+  Below floor (0.0): [-2.0, -1.0]
+  Above cap (2000.0): [3876.0, 3876.0, 2711.0]
+
+wbc [10^9/L]:
+  Above cap (300.0): [340.0, 386.01, 312.57]
+
+===========================================================================
+INTERPRETATION
+===========================================================================
+Remaining outliers after fixes are genuine data errors in PIC.
+Step 3 will set these to NULL during feature extraction.
+Median imputation replaces NULLs in Step 6 (after train/test split).
+
+Caps config: output2/logs/step2.1_caps.json
+Step 3 imports step2.1_caps.json automatically.

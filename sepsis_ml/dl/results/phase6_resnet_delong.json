@@ -1,0 +1,8 @@
+{
+  "resnet_auroc": 0.9311259110329229,
+  "catboost_auroc": 0.9867931641115858,
+  "z_statistic": -2.3565892581090973,
+  "p_value": 0.01844363458879772,
+  "significant": true,
+  "direction": "CatBoost better"
+}

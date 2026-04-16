@@ -1,0 +1,45 @@
+=================================================================
+STEP 4 SUMMARY — Phoenix Sepsis Labeling
+=================================================================
+
+COHORT BREAKDOWN
+  Total ICU stays:                          12,447
+  No suspected infection:                    9,284  (74.6%)
+  Suspected infection, no sepsis:            2,299  (18.5%)
+  SEPSIS (label=1):                            864  (6.9%)
+  Sepsis prevalence overall:              6.9%
+
+SEPSIS LABEL BASIS (among 864 sepsis cases)
+  Vasoactives only (no lab data):               17  (2.0%)
+  Labs only (no vasoactives):                  210  (24.3%)
+  Both vasoactives + labs:                     637  (73.7%)
+
+PHOENIX CORE SCORE DISTRIBUTION
+  Score       Count        %
+  --------------------------
+  0           6,129    49.2%
+  1           3,675    29.5%
+  2           1,622    13.0% <- SEPSIS THRESHOLD
+  3             626     5.0%
+  4             265     2.1%
+  5              79     0.6%
+  6              49     0.4%
+  7               2     0.0%
+
+COMPONENT SCORE DISTRIBUTIONS
+  Component         [0pts]:8,384    [1pts]:2,791    [2pts]:1,029    [3pts]:156    [4pts]:83    [5pts]:4    [6pts]:0
+  cardio          [0]:8,384  [1]:2,791  [2]:1,029  [3]:156  [4]:83  [5]:4  [6]:0
+  coag            [0]:8,627  [1]:2,749  [2]:1,071
+  endo            [0]:6,214  [1]:6,233
+  immuno          [0]:10,520  [1]:1,927
+  renal           [0]:7,217  [1]:5,230
+  hepatic         [0]:9,566  [1]:2,881
+
+KNOWN LIMITATIONS (documented)
+  Respiratory score: 0 for all — FiO2/ventilation unavailable in PIC
+  Neurological score: 0 for all — GCS unavailable in PIC
+  Label is conservative — patients septic via respiratory/neuro
+  dysfunction only will be missed (mislabeled as non-sepsis)
+
+OUTPUT: output2/cohort_step4_labeled.csv
+=================================================================

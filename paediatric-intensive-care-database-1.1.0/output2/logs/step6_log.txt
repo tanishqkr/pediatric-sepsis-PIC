@@ -1,0 +1,143 @@
+=================================================================
+STEP 6 — Train/Test Split and Imputation
+=================================================================
+
+Split ratio:       80/19
+Random seed:       42
+Indicator thresh:  >20% missing
+Score cols dropped: 8 (prevent label leakage into features)
+
+
+=================================================================
+OPTION A: output2/option_A_full.csv
+=================================================================
+Column breakdown:
+  Total columns in input:     292
+  Dropped (score leakage):    8
+  Dropped (too sparse):       5
+  Identifier (metadata only): 3
+  Binary (no imputation):     40
+  Non-numeric categorical:    13
+  Numeric (will impute):      228
+
+Train/Test Split (stratified, seed=42):
+  Train: 9,957 rows  (691 sepsis = 6.9%)
+  Test:  2,490 rows  (173 sepsis = 6.9%)
+
+Imputation (fitted on train only):
+  Numeric columns imputed:          228
+  Columns with >20% missing         102
+  (these get _was_measured indicator)
+
+  Column                               Missing%     Median
+  --------------------------------------------------------
+  spo2_trend                              86.7%     0.0000
+  heart_rate_trend                        77.5%    -3.0000
+  shock_index                             77.2%     1.2650
+  bilirubin_trend                         73.1%     0.2222
+  creatinine_trend                        71.1%     0.1176
+  spo2_max                                70.9%   100.0000
+  spo2_min                                70.9%    99.0000
+  spo2_mean                               70.9%    99.0000
+  spo2_first                              70.9%   100.0000
+  inr_trend                               70.7%    -0.0500
+  temperature_trend                       64.9%     0.4000
+  resp_rate_trend                         64.5%     0.0000
+  diastolic_bp_max                        64.1%    60.0000
+  diastolic_bp_min                        64.1%    56.0000
+  diastolic_bp_mean                       64.1%    58.0000
+  diastolic_bp_first                      64.1%    59.0000
+  map_max                                 64.1%    74.3000
+  map_min                                 64.1%    70.0000
+  map_mean                                64.1%    72.6500
+  map_first                               64.1%    73.3000
+  ... and 82 more
+
+Output files:
+  Train: output2/option_A_train.csv
+    Rows: 9,957   Columns: 383
+  Test:  output2/option_A_test.csv
+    Rows: 2,490   Columns: 383
+  Metadata train: output2/option_A_meta_train.csv
+  Metadata test:  output2/option_A_meta_test.csv
+  Imputation stats: output2/logs/option_A_imputation_stats.json
+
+
+=================================================================
+OPTION B: output2/option_B_infection_only.csv
+=================================================================
+Column breakdown:
+  Total columns in input:     292
+  Dropped (score leakage):    8
+  Dropped (too sparse):       5
+  Identifier (metadata only): 3
+  Binary (no imputation):     40
+  Non-numeric categorical:    13
+  Numeric (will impute):      228
+
+Train/Test Split (stratified, seed=42):
+  Train: 2,530 rows  (691 sepsis = 27.3%)
+  Test:  633 rows  (173 sepsis = 27.3%)
+
+Imputation (fitted on train only):
+  Numeric columns imputed:          228
+  Columns with >20% missing         99
+  (these get _was_measured indicator)
+
+  Column                               Missing%     Median
+  --------------------------------------------------------
+  spo2_trend                              89.7%     0.0000
+  inr_trend                               77.3%    -0.0400
+  spo2_max                                76.6%   100.0000
+  spo2_min                                76.6%   100.0000
+  spo2_mean                               76.6%   100.0000
+  spo2_first                              76.6%   100.0000
+  creatinine_trend                        75.4%     0.0000
+  shock_index                             73.9%     1.2812
+  heart_rate_trend                        73.6%    -2.0000
+  bilirubin_trend                         72.4%     0.0000
+  resp_rate_trend                         67.8%     0.0000
+  temperature_trend                       67.6%     0.5000
+  diastolic_bp_max                        66.9%    61.0000
+  diastolic_bp_min                        66.9%    56.0000
+  diastolic_bp_mean                       66.9%    58.5000
+  diastolic_bp_first                      66.9%    59.0000
+  map_max                                 66.9%    74.7000
+  map_min                                 66.9%    70.0000
+  map_mean                                66.9%    73.0000
+  map_first                               66.9%    73.7000
+  ... and 79 more
+
+Output files:
+  Train: output2/option_B_train.csv
+    Rows: 2,530   Columns: 380
+  Test:  output2/option_B_test.csv
+    Rows: 633   Columns: 380
+  Metadata train: output2/option_B_meta_train.csv
+  Metadata test:  output2/option_B_meta_test.csv
+  Imputation stats: output2/logs/option_B_imputation_stats.json
+
+=================================================================
+STEP 6 SUMMARY
+=================================================================
+
+Dataset         Train     Test   Cols  Train+pos  Test+pos
+---------------------------------------------------------
+Option A         9,957    2,490    383       691         173
+Option B         2,530      633    380       691         173
+
+IMPORTANT NOTES
+  1. Imputation medians computed on TRAIN set only — no leakage
+  2. Same medians applied to TEST set
+  3. _was_measured indicator columns added for >20% missing cols
+  4. Score component columns dropped — they encode the label
+  5. Identifier columns in meta files only — not in model features
+  6. Random seed fixed at 42 — fully reproducible
+
+READY FOR MODELLING
+  Primary model: CatBoost (handles categoricals natively)
+  Comparison:    XGBoost, LightGBM, Random Forest,
+                 Logistic Regression, MLP
+  Explainability: SHAP TreeExplainer on best model
+
+Next: Step 7 — Model training and comparison

@@ -1,0 +1,25 @@
+============================================================
+STEP 1 SUMMARY — Cohort Filtering
+============================================================
+
+INPUT
+  Total ICU stays in PIC V1.1.0:        13,941
+  Total unique patients:                 12,881
+
+EXCLUSIONS
+  No patient record:                         0
+  Age out of range (0-18y):                  42
+  Not first ICU stay for patient:         1,060
+  Stay too short (<6 hours):                392
+
+OUTPUT
+  Eligible stays (passed all filters):   12,447
+
+FILTER PARAMETERS
+  Age range:        0 – 18 years
+  Stay type:        First ICU stay per patient only
+  Minimum stay:     6 hours
+
+OUTPUT FILE: output2/cohort_step1.csv
+EXCLUSION LOG: output2/logs/step1_exclusions.csv
+============================================================

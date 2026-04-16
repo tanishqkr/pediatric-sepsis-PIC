@@ -1,0 +1,48 @@
+============================================================
+EXTRACTION SUMMARY
+============================================================
+Total patients in PIC:                  12,881
+Total ICU stays:                        13,941
+ICU stays age 0-18 (eligible):          13,899
+  -> No suspected infection:            10,388
+  -> Suspected infection, no sepsis:     2,526
+  -> SEPSIS (label=1):                     985
+  -> Total records in output CSV:       13,899
+
+Sepsis prevalence:                    7.1%
+Negative:Positive ratio:              2.6:1
+Total feature columns:                286
+
+============================================================
+KNOWN LIMITATIONS
+============================================================
+Respiratory score: NOT computed — FiO2, PaO2/FiO2, SpO2/FiO2,
+  and mechanical ventilation flag unavailable in PIC database.
+  Score set to 0 per Phoenix missing-data convention.
+Neurological score: NOT computed — GCS and pupil data
+  unavailable in PIC database. Score set to 0.
+Consequence: Label is conservative. Patients septic only via
+  respiratory/neuro dysfunction will be mislabeled as non-sepsis.
+  This is consistent with all prior PIC-based ML studies.
+
+============================================================
+UNIT CONVERSIONS APPLIED
+============================================================
+Bilirubin:  umol/L -> mg/dL  (divide by 17.1)
+Creatinine: umol/L -> mg/dL  (divide by 88.4)
+Glucose:    mmol/L -> mg/dL  (multiply by 18)
+Fibrinogen: g/L, threshold 1.0 g/L (= 100 mg/dL in Phoenix)
+ANC/ALC:    10^9/L, threshold 0.5 and 1.0 respectively
+
+============================================================
+FEATURE ENGINEERING
+============================================================
+Each continuous variable has 5 columns:
+  _max   : maximum value in first 24h (worst for high-bad variables)
+  _min   : minimum value in first 24h (worst for low-bad variables)
+  _mean  : average value in first 24h
+  _first : first recorded value (admission state)
+  _count : number of measurements (proxy for clinical concern)
+
+Phoenix label uses WORST values per paper specification.
+Model features use all 5 statistics (Approach 2).

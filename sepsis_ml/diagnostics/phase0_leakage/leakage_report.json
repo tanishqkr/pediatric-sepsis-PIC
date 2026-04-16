@@ -1,0 +1,48 @@
+{
+  "suspect_1_count_cols": {
+    "n_count_cols": 40,
+    "top_correlation": 0.4509191277147546,
+    "top_col": "calcium_count",
+    "isolation_auroc": 0.8781540588087459,
+    "isolation_auprc": 0.7745188034527254,
+    "verdict": "LEAKAGE"
+  },
+  "suspect_2_vaso_cols": {
+    "n_vaso_cols": 6,
+    "n_vasoactives_corr": 0.543920266498416,
+    "sepsis_vaso_pct": 73.51664254703329,
+    "nonsepsis_vaso_pct": 23.65415986949429,
+    "isolation_auroc": 0.862848705704951,
+    "isolation_auprc": 0.731281681768756,
+    "verdict": "LEAKAGE"
+  },
+  "suspect_3_trend_cols": {
+    "n_trend_cols": 16,
+    "top_correlation": 0.15896420421613322,
+    "isolation_auroc": 0.8482407640110581,
+    "verdict": "ACCEPTABLE"
+  },
+  "suspect_4_fluid_cols": {
+    "n_fluid_cols": 4,
+    "isolation_auroc": 0.6093365167127419,
+    "verdict": "ACCEPTABLE"
+  },
+  "suspect_5_patient_overlap": {
+    "n_overlap": -1,
+    "verdict": "CANNOT VERIFY"
+  },
+  "suspect_6_imputation": {
+    "max_median_diff": 4.164999999999999,
+    "mean_median_diff": 0.013946666666666665,
+    "n_cols_different": 2,
+    "verdict": "INVESTIGATE"
+  },
+  "clinical_only_test": {
+    "n_clinical_cols": 236,
+    "n_removed_cols": 69,
+    "isolation_auroc": 0.9776765518974616,
+    "isolation_auprc": 0.9496059487019085
+  },
+  "clinical_isolation_auroc": 0.9776765518974616,
+  "timestamp": "2026-03-21T18:12:03"
+}

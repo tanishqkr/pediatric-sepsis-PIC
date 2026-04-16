@@ -1,0 +1,49 @@
+{
+  "model": "Tabular ResNet",
+  "phase": "Phase 6",
+  "timestamp": "2026-04-14T12:48:03.003568",
+  "dataset": "Option B (infection-only)",
+  "n_train": 2530,
+  "n_test": 633,
+  "n_features": 225,
+  "best_optuna_auprc": 0.8593550363087931,
+  "test_metrics": {
+    "auroc": 0.9311259110329229,
+    "auroc_ci_lower": 0.9045833874470007,
+    "auroc_ci_upper": 0.9538055662805918,
+    "auprc": 0.8744221504518763,
+    "auprc_ci_lower": 0.8295061645642686,
+    "auprc_ci_upper": 0.9132049379539358,
+    "brier_score": 0.09449014806342257,
+    "threshold_90sens": {
+      "threshold": 0.005,
+      "sensitivity": 0.9017,
+      "specificity": 0.813,
+      "ppv": 0.6446,
+      "npv": 0.9565,
+      "f1": 0.7518,
+      "tp": 156,
+      "fp": 86,
+      "fn": 17
+    }
+  },
+  "best_hyperparameters": {
+    "n_blocks": 8,
+    "d_main": 512,
+    "d_hidden": 512,
+    "dropout_first": 0.2035559528057898,
+    "dropout_second": 0.443735760539045,
+    "lr": 0.0001593197097729997,
+    "weight_decay": 1.6682060845143364e-06,
+    "batch_size": 64
+  },
+  "delong_vs_catboost": {
+    "resnet_auroc": 0.9311259110329229,
+    "catboost_auroc": 0.9867931641115858,
+    "z_statistic": -2.3565892581090973,
+    "p_value": 0.01844363458879772,
+    "significant": true,
+    "direction": "CatBoost better"
+  },
+  "runtime_minutes": 28.838872583707175
+}
