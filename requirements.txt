@@ -23,3 +23,31 @@ pytorch-tabnet==4.1.0
 # Visualization
 matplotlib
 seaborn
+
+
+
+#newnewnew
+# Data Handling
+pandas
+numpy==1.26.4
+
+# Machine Learning Models
+scikit-learn
+catboost
+xgboost
+lightgbm
+
+# Hyperparameter Tuning & Explainability
+optuna
+shap
+
+# Statistics & Analysis
+scipy
+
+# Deep Learning
+pytorch-tabnet==4.1.0
+# rtdl and torch installed separately - see below
+
+# Visualization
+matplotlib
+seaborn
