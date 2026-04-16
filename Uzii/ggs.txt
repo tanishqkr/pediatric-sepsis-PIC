@@ -2,3 +2,4 @@ ANN
 DL
 FL(simulate 10 nodes )
 Architecture
+Fttransformer ka terminal output logs me save nahi hua pls refer to sepsis_ml/dl/results/phase6_fttransformer_results.json
