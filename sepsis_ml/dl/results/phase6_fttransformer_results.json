@@ -1,7 +1,7 @@
 {
   "model": "FT-Transformer",
   "phase": "Phase 6",
-  "timestamp": "2026-04-16T14:53:58.491710",
+  "timestamp": "2026-04-17T12:50:59.121814",
   "dataset": "Option B (infection-only)",
   "n_train": 2530,
   "n_test": 633,
@@ -48,5 +48,5 @@
     "significant": false,
     "direction": "CatBoost better"
   },
-  "runtime_minutes": 40.84952633778254
+  "runtime_minutes": 40.89799168109894
 }

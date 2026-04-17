@@ -1,0 +1,11 @@
+{
+  "ensemble_auroc": 0.9851470218647902,
+  "catboost_auroc": 0.9867931641115858,
+  "z_statistic": -0.8636290738047909,
+  "p_value": 0.387791687466855,
+  "significant": false,
+  "direction": "CatBoost better",
+  "vs_ftt_z": 3.2143988113632993,
+  "vs_ftt_p": 0.0013071797846850863,
+  "vs_ftt_sig": true
+}

@@ -417,7 +417,7 @@ def main():
 
     for fold_idx, (train_idx, val_idx) in enumerate(skf.split(X_train_df, y_train)):
         fold_start = time.time()
-        log.info(f"  Fold {fold_idx + 1}/{CV_FOLDS} ─────────────────────────────")
+        log.info(f"  Fold {fold_idx + 1}/{CV_FOLDS} -----------------------------")
 
         X_tr_df  = X_train_df.iloc[train_idx]
         X_val_df = X_train_df.iloc[val_idx]
@@ -485,7 +485,7 @@ def main():
         "oof_fttransformer": oof_ftt,
     })
     oof_df.to_csv(RESULTS_DIR / "phase7_oof_probs.csv", index=False)
-    log.info(f"  OOF probs saved → {RESULTS_DIR / 'phase7_oof_probs.csv'}")
+    log.info(f"  OOF probs saved -> {RESULTS_DIR / 'phase7_oof_probs.csv'}")
 
     # ══════════════════════════════════════════════════════════════════════════
     # 5.6 TRAIN META-LEARNER
@@ -512,7 +512,7 @@ def main():
     # Save meta-learner
     with open(MODELS_DIR / "phase7_meta_learner.pkl", "wb") as f:
         pickle.dump(meta_learner, f)
-    log.info(f"  Meta-learner saved → {MODELS_DIR / 'phase7_meta_learner.pkl'}")
+    log.info(f"  Meta-learner saved -> {MODELS_DIR / 'phase7_meta_learner.pkl'}")
 
     # Save coefficients
     coef_dict = {
@@ -655,7 +655,7 @@ def main():
     }
     with open(RESULTS_DIR / "phase7_metrics.json", "w") as f:
         json.dump(full_metrics, f, indent=2)
-    log.info(f"\n  Full metrics saved → {RESULTS_DIR / 'phase7_metrics.json'}")
+    log.info(f"\n  Full metrics saved -> {RESULTS_DIR / 'phase7_metrics.json'}")
 
     # ══════════════════════════════════════════════════════════════════════════
     # 5.8 FIGURES
@@ -715,7 +715,7 @@ def main():
     plt.savefig(FIGURES_DIR / "phase7_roc_pr.png", dpi=150, bbox_inches="tight")
     plt.savefig(FIGURES_DIR / "phase7_roc_pr.pdf", dpi=150, bbox_inches="tight")
     plt.close()
-    log.info("  Saved → phase7_roc_pr.png")
+    log.info("  Saved -> phase7_roc_pr.png")
 
     # ── Figure 2: Calibration ─────────────────────────────────────────────────
     fig, ax = plt.subplots(figsize=(7, 6))
@@ -727,7 +727,7 @@ def main():
         (ftt_test_probs, f"FT-T (Brier={brier_score_loss(y_test, ftt_test_probs):.4f})",
                          COLORS["ftt"]),
     ]:
-        prob_true_, prob_pred_ = calibration_curve(probs, y_test, n_bins=10)
+        prob_true_, prob_pred_ = calibration_curve(y_test, probs, n_bins=10)
         ax.plot(prob_pred_, prob_true_, "o-", color=color, lw=2, label=label)
 
     ax.plot([0, 1], [0, 1], "--", color="gray", label="Perfect calibration")
@@ -740,7 +740,7 @@ def main():
     plt.savefig(FIGURES_DIR / "phase7_calibration.png", dpi=150, bbox_inches="tight")
     plt.savefig(FIGURES_DIR / "phase7_calibration.pdf", dpi=150, bbox_inches="tight")
     plt.close()
-    log.info("  Saved → phase7_calibration.png")
+    log.info("  Saved -> phase7_calibration.png")
 
     # ── Figure 3: Confusion matrix ────────────────────────────────────────────
     y_pred_ens = (ensemble_probs >= metrics["threshold"]).astype(int)
@@ -767,7 +767,7 @@ def main():
     plt.savefig(FIGURES_DIR / "phase7_confusion_matrix.png", dpi=150, bbox_inches="tight")
     plt.savefig(FIGURES_DIR / "phase7_confusion_matrix.pdf", dpi=150, bbox_inches="tight")
     plt.close()
-    log.info("  Saved → phase7_confusion_matrix.png")
+    log.info("  Saved -> phase7_confusion_matrix.png")
 
     # ── Figure 4: Threshold sensitivity ───────────────────────────────────────
     fig, axes = plt.subplots(1, 3, figsize=(16, 5))
@@ -806,7 +806,7 @@ def main():
     plt.savefig(FIGURES_DIR / "phase7_threshold_sensitivity.png", dpi=150, bbox_inches="tight")
     plt.savefig(FIGURES_DIR / "phase7_threshold_sensitivity.pdf", dpi=150, bbox_inches="tight")
     plt.close()
-    log.info("  Saved → phase7_threshold_sensitivity.png")
+    log.info("  Saved -> phase7_threshold_sensitivity.png")
 
     # ══════════════════════════════════════════════════════════════════════════
     # 5.9 FINAL SUMMARY
@@ -824,12 +824,12 @@ def main():
     log.info(f"  F1         : {metrics['f1']:.4f}")
     log.info(f"  DeLong vs CatBoost: z={z_stat:.4f}, p={p_val:.4f} "
              f"({'sig' if p_val < 0.05 else 'not sig'})")
-    log.info(f"  Meta weights → CatBoost: {coef[0]:.4f} | FT-T: {coef[1]:.4f}")
+    log.info(f"  Meta weights -> CatBoost: {coef[0]:.4f} | FT-T: {coef[1]:.4f}")
     log.info(f"  Runtime    : {runtime:.1f} min")
-    log.info(f"\n  Models  → {MODELS_DIR}")
-    log.info(f"  Results → {RESULTS_DIR}")
-    log.info(f"  Figures → {FIGURES_DIR}")
-    log.info(f"  Log     → {log_path}")
+    log.info(f"\n  Models  -> {MODELS_DIR}")
+    log.info(f"  Results -> {RESULTS_DIR}")
+    log.info(f"  Figures -> {FIGURES_DIR}")
+    log.info(f"  Log     -> {log_path}")
     log.info("\n  Next step: federated learning (Phase 8)")
     log.info("=" * 70)
 

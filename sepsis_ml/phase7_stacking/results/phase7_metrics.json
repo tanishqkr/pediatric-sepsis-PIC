@@ -1,0 +1,49 @@
+{
+  "model": "Stacking Ensemble (CatBoost + FT-Transformer)",
+  "phase": "Phase 7",
+  "timestamp": "2026-04-17T11:41:34.561487",
+  "dataset": "Option B (infection-only)",
+  "n_train": 2530,
+  "n_test": 633,
+  "n_features": 225,
+  "cv_folds": 5,
+  "oof_auroc_catboost": 0.9774085991804834,
+  "oof_auroc_fttransformer": 0.9624127187981263,
+  "test_metrics": {
+    "auroc": 0.9851470218647902,
+    "auprc": 0.9658442734609602,
+    "brier_score": 0.042809505987011366,
+    "f1": 0.8939828080229226,
+    "sensitivity": 0.9017341040462428,
+    "specificity": 0.9565217391304348,
+    "ppv": 0.8863636363636364,
+    "npv": 0.962800875273523,
+    "threshold": 0.18815665050319397,
+    "tp": 156,
+    "fp": 20,
+    "tn": 440,
+    "fn": 17,
+    "auroc_ci_low": 0.9769916361388256,
+    "auroc_ci_high": 0.9921367793673772,
+    "auprc_ci_low": 0.9464282381726874,
+    "auprc_ci_high": 0.9821773806872602
+  },
+  "meta_learner": {
+    "catboost_coefficient": 5.972913120310575,
+    "fttransformer_coefficient": 1.673473581383027,
+    "intercept": -4.13012087609281,
+    "note": "Higher coefficient = meta-learner trusts this model more"
+  },
+  "delong": {
+    "ensemble_auroc": 0.9851470218647902,
+    "catboost_auroc": 0.9867931641115858,
+    "z_statistic": -0.8636290738047909,
+    "p_value": 0.387791687466855,
+    "significant": false,
+    "direction": "CatBoost better",
+    "vs_ftt_z": 3.2143988113632993,
+    "vs_ftt_p": 0.0013071797846850863,
+    "vs_ftt_sig": true
+  },
+  "runtime_minutes": 2.4672406911849976
+}
