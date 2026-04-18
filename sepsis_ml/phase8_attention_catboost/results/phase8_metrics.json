@@ -1,0 +1,98 @@
+{
+  "model": "Attention-Augmented CatBoost (Phase 8)",
+  "phase": "Phase 8",
+  "timestamp": "2026-04-18T11:09:55.241490",
+  "dataset": "Option B (infection-only)",
+  "n_train": 2530,
+  "n_test": 633,
+  "n_original_features": 225,
+  "n_attention_features": 225,
+  "n_total_features": 450,
+  "ftt_config": {
+    "n_blocks": 2,
+    "d_block": 256,
+    "n_heads": 8,
+    "frozen": true,
+    "weights_from": "Phase 6"
+  },
+  "top_attention_features": [
+    {
+      "rank": 1,
+      "feature": "calcium_max",
+      "mean_attention": 0.09206981956958771
+    },
+    {
+      "rank": 2,
+      "feature": "pao2_max",
+      "mean_attention": 0.05631863325834274
+    },
+    {
+      "rank": 3,
+      "feature": "care_unit_SICU",
+      "mean_attention": 0.04953986778855324
+    },
+    {
+      "rank": 4,
+      "feature": "lactate_max",
+      "mean_attention": 0.042203839868307114
+    },
+    {
+      "rank": 5,
+      "feature": "platelets_min",
+      "mean_attention": 0.039887476712465286
+    },
+    {
+      "rank": 6,
+      "feature": "bicarbonate_first",
+      "mean_attention": 0.027509482577443123
+    },
+    {
+      "rank": 7,
+      "feature": "lactate_trend",
+      "mean_attention": 0.025886904448270798
+    },
+    {
+      "rank": 8,
+      "feature": "pt_max",
+      "mean_attention": 0.02446828782558441
+    },
+    {
+      "rank": 9,
+      "feature": "temperature_max",
+      "mean_attention": 0.02404082752764225
+    },
+    {
+      "rank": 10,
+      "feature": "ddimer_max",
+      "mean_attention": 0.023353533819317818
+    }
+  ],
+  "test_metrics": {
+    "auroc": 0.965669766272933,
+    "auprc": 0.9268339092572861,
+    "brier_score": 0.09782502205103248,
+    "f1": 0.8478260869565217,
+    "sensitivity": 0.9017341040462428,
+    "specificity": 0.9152173913043479,
+    "ppv": 0.8,
+    "npv": 0.9611872146118722,
+    "threshold": 0.43385666946059637,
+    "tp": 156,
+    "fp": 39,
+    "tn": 421,
+    "fn": 17,
+    "auroc_ci_low": 0.9506774492947675,
+    "auroc_ci_high": 0.9783911554140426,
+    "auprc_ci_low": 0.8965470923898166,
+    "auprc_ci_high": 0.9530528944818657
+  },
+  "delong_vs_tuned_catboost": {
+    "aug_catboost_auroc": 0.9656697662729329,
+    "tuned_catboost_auroc": 0.9867931641115858,
+    "z_statistic": -2.4510345511786893,
+    "p_value": 0.01424462793521064,
+    "significant": true,
+    "direction": "Tuned-CatBoost better"
+  },
+  "runtime_minutes": 0.05251006682713826
+}

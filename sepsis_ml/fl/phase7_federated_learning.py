@@ -83,7 +83,7 @@ warnings.filterwarnings("ignore")
 # ══════════════════════════════════════════════════════════════════════
 SCRIPT_DIR   = Path(__file__).resolve().parent          # sepsis_ml/fl/
 PROJECT_ROOT = SCRIPT_DIR.parent                         # sepsis_ml/
-DATA_DIR     = PROJECT_ROOT / "model_datasets"
+DATA_DIR     = PROJECT_ROOT.parent / "model_datasets"
 FL_DIR       = SCRIPT_DIR
 
 # Output subfolders — created once, never duplicated

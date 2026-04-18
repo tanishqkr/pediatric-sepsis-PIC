@@ -1,0 +1,55 @@
+{
+  "phase": "Phase 7",
+  "timestamp": "2026-04-18T11:23:54.536600",
+  "centralised_catboost_auroc": 0.9868,
+  "centralised_ftt_auroc": 0.9577,
+  "fedavg_auroc": 0.9506785624528776,
+  "fedprox_auroc": 0.9483538577532045,
+  "fedavg_auprc": 0.8870432028122875,
+  "fedprox_auprc": 0.8847734304720473,
+  "fedavg_vs_centralised_ftt_gap": -0.007021437547122367,
+  "fedprox_vs_centralised_ftt_gap": -0.00934614224679553,
+  "winner": "FedAvg",
+  "delong_tests": {
+    "fedavg_vs_catboost": {
+      "fedavg_auroc": 0.9506785624528776,
+      "catboost_auroc": 0.9867931641115858,
+      "z_statistic": -1.6936539570693394,
+      "p_value": 0.09033105848985024,
+      "significant": false,
+      "direction": "CatBoost better"
+    },
+    "fedprox_vs_catboost": {
+      "fedprox_auroc": 0.9483538577532044,
+      "catboost_auroc": 0.9867931641115858,
+      "z_statistic": -1.812484559967131,
+      "p_value": 0.06991135752750322,
+      "significant": false,
+      "direction": "CatBoost better"
+    },
+    "fedavg_vs_centralised_ftt": {
+      "fedavg_auroc": 0.9506785624528776,
+      "centralised_ftt_auroc": 0.957728072379995,
+      "z_statistic": -0.30848265537965425,
+      "p_value": 0.7577150961599681,
+      "significant": false,
+      "direction": "Centralised FTT better"
+    },
+    "fedprox_vs_centralised_ftt": {
+      "fedprox_auroc": 0.9483538577532044,
+      "centralised_ftt_auroc": 0.957728072379995,
+      "z_statistic": -0.4094634802580137,
+      "p_value": 0.682199562022265,
+      "significant": false,
+      "direction": "Centralised FTT better"
+    },
+    "fedavg_vs_fedprox": {
+      "fedavg_auroc": 0.9506785624528776,
+      "fedprox_auroc": 0.9483538577532044,
+      "z_statistic": 0.10620452231025446,
+      "p_value": 0.9154200829576042,
+      "significant": false,
+      "direction": "FedAvg better"
+    }
+  }
+}
