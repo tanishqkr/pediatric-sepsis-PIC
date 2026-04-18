@@ -73,18 +73,41 @@ for d in [MODEL_DIR, RESULTS_DIR, FIGURES_DIR, LOGS_DIR, OPTUNA_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 # ─────────────────────────────────────────────
-# 1. LOGGING
+# 1. LOGGING (FINAL CLEAN VERSION)
 # ─────────────────────────────────────────────
 log_path = LOGS_DIR / "phase6_fttransformer.log"
+
+# Single shared file handle
+log_file = open(log_path, "w", buffering=1)
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
     handlers=[
-        logging.FileHandler(log_path, mode="w"),
+        logging.StreamHandler(log_file),
         logging.StreamHandler(sys.stdout)
     ]
 )
+
+# Redirect ALL stdout/stderr
+class Tee:
+    def __init__(self, *files):
+        self.files = files
+
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush()
+
+    def flush(self):
+        for f in self.files:
+            f.flush()
+
+sys.stdout = Tee(sys.stdout, log_file)
+sys.stderr = Tee(sys.stderr, log_file)
+
 log = logging.getLogger(__name__)
+
 log.info("=" * 70)
 log.info("PHASE 6 — FT-TRANSFORMER (FIXED — rtdl_revisiting_models)")
 log.info(f"Started : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")

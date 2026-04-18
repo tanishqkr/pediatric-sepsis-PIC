@@ -1,0 +1,6 @@
+{
+  "catboost_coefficient": 5.972913120310575,
+  "fttransformer_coefficient": 1.673473581383027,
+  "intercept": -4.13012087609281,
+  "note": "Higher coefficient = meta-learner trusts this model more"
+}
