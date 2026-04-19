@@ -1,0 +1,8 @@
+{
+  "aug_catboost_auroc": 0.9656697662729329,
+  "tuned_catboost_auroc": 0.9867931641115858,
+  "z_statistic": -2.4510345511786893,
+  "p_value": 0.01424462793521064,
+  "significant": true,
+  "direction": "Tuned-CatBoost better"
+}
