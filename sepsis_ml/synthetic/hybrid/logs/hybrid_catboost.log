@@ -1,0 +1,90 @@
+2026-04-20 17:04:43,257  =================================================================
+2026-04-20 17:04:43,258  EXPERIMENT C — CATBOOST TUNING ON HYBRID DATA (Real + Synthetic)
+2026-04-20 17:04:43,258  Started: 2026-04-20T17:04:43
+2026-04-20 17:04:43,258  Trials: 5  |  CV folds: 5  |  Metric: AUPRC
+2026-04-20 17:04:43,258  =================================================================
+2026-04-20 17:04:43,258  
+Device detection:
+2026-04-20 17:04:43,801    Apple Silicon MPS detected.
+2026-04-20 17:04:43,801    CatBoost does NOT support MPS. Using CPU (still fast).
+2026-04-20 17:04:43,801  
+Loading datasets...
+2026-04-20 17:04:43,955    Hybrid train  : (12530, 226) | Sepsis: 27.3% (3422 / 12530)
+2026-04-20 17:04:43,955      ↳ Real rows   : 2,530
+2026-04-20 17:04:43,955      ↳ Synth rows  : 10,000
+2026-04-20 17:04:43,955    Real test     : (633, 226)  | Sepsis: 27.3%
+2026-04-20 17:04:43,955    Features      : 225
+2026-04-20 17:04:43,955  
+2026-04-20 17:04:43,955    IMPORTANT: CV runs on HYBRID data; eval is on REAL test set only.
+2026-04-20 17:04:43,955  
+Loading comparison baselines...
+2026-04-20 17:04:44,032    Real-trained  : AUROC=0.9868  AUPRC=0.9691
+2026-04-20 17:04:44,036    Synth-trained : AUROC=0.5652  AUPRC=0.3677
+2026-04-20 17:04:44,036  
+Starting Optuna study (5 trials)...
+2026-04-20 17:05:04,448    Trial  0 NEW BEST: AUPRC=0.9876  params={'iterations': 687, 'learning_rate': 0.2536999076681772, 'depth': 9, 'l2_leaf_reg': 6.387926357773329, 'bagging_temperature': 0.15601864044243652, 'random_strength': 0.3119890406724053, 'border_count': 45, 'class_weight_pos': 4.531616510212273}
+2026-04-20 17:05:23,590    Trial  1 NEW BEST: AUPRC=0.9909  params={'iterations': 982, 'learning_rate': 0.11114989443094977, 'depth': 4, 'l2_leaf_reg': 9.72918866945795, 'bagging_temperature': 0.8324426408004217, 'random_strength': 0.4246782213565523, 'border_count': 72, 'class_weight_pos': 2.1419157844870185}
+2026-04-20 17:05:58,579    Trial  2: AUPRC=0.9901  (best: 0.9909)
+2026-04-20 17:06:20,075    Trial  3: AUPRC=0.9907  (best: 0.9909)
+2026-04-20 17:07:24,403    Trial  4: AUPRC=0.9881  (best: 0.9909)
+2026-04-20 17:07:24,403  
+  Optuna complete.
+2026-04-20 17:07:24,403    Best CV AUPRC : 0.9909
+2026-04-20 17:07:24,404    Best params   : {'iterations': 982, 'learning_rate': 0.11114989443094977, 'depth': 4, 'l2_leaf_reg': 9.72918866945795, 'bagging_temperature': 0.8324426408004217, 'random_strength': 0.4246782213565523, 'border_count': 72, 'class_weight_pos': 2.1419157844870185}
+2026-04-20 17:07:24,410  
+Training final tuned CatBoost on full hybrid training set...
+2026-04-20 17:07:25,806  
+Evaluating on real held-out test set (n=633)...
+2026-04-20 17:07:26,729  
+  =======================================================
+2026-04-20 17:07:26,729    HYBRID-TRAINED TUNED CATBOOST — TEST SET RESULTS
+2026-04-20 17:07:26,729    =======================================================
+2026-04-20 17:07:26,729    AUROC : 0.9659 [0.9522–0.9779]
+2026-04-20 17:07:26,729    AUPRC : 0.9238 [0.8911–0.9503]
+2026-04-20 17:07:26,729    Sens  : 0.9017  Spec: 0.8935  F1: 0.8254
+2026-04-20 17:07:26,729    PPV   : 0.7610  NPV: 0.9603  Brier: 0.0630
+2026-04-20 17:07:26,729    TP=156  FP=49  TN=411  FN=17
+2026-04-20 17:07:26,729  
+  Comparison vs Real-Trained (Phase 2):
+2026-04-20 17:07:26,729      AUROC: 0.9868 → 0.9659 (Δ=-0.0209)
+2026-04-20 17:07:26,729      AUPRC: 0.9691 → 0.9238 (Δ=-0.0452)
+2026-04-20 17:07:26,729  
+  DeLong test (hybrid vs real-trained):
+2026-04-20 17:07:26,732      Hybrid AUROC     : 0.9659
+2026-04-20 17:07:26,732      Real AUROC       : 0.9868
+2026-04-20 17:07:26,732      Z-statistic      : -4.3691
+2026-04-20 17:07:26,732      P-value          : 0.0000
+2026-04-20 17:07:26,732      Significant      : YES (p<0.05)
+2026-04-20 17:07:26,732  
+  Comparison vs Synth-Trained (Exp B):
+2026-04-20 17:07:26,732      AUPRC: 0.3677 → 0.9238 (Δ=+0.5561)
+2026-04-20 17:07:26,734  
+  Model saved   → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/synthetic/hybrid/models/hybrid_catboost_tuned.cbm
+2026-04-20 17:07:26,734    Metrics saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/synthetic/hybrid/results/hybrid_catboost_metrics.json
+2026-04-20 17:07:26,734  
+--- Generating figures ---
+2026-04-20 17:07:27,175    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/synthetic/hybrid/figures/hybrid_optuna_optimization_history.png
+2026-04-20 17:07:27,443    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/synthetic/hybrid/figures/hybrid_three_way_roc_pr.png
+2026-04-20 17:07:27,584    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/synthetic/hybrid/figures/hybrid_cm.png
+2026-04-20 17:07:27,931    Saved threshold analysis → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/synthetic/hybrid/figures/hybrid_threshold_sensitivity_analysis.png
+2026-04-20 17:07:27,931  
+  Threshold sensitivity analysis:
+2026-04-20 17:07:27,931      Target   Thresh    Sens    Spec     PPV     NPV      F1    TP    FP    FN
+2026-04-20 17:07:27,931    ---------------------------------------------------------------------------
+2026-04-20 17:07:27,931        0.80   0.5522  0.8092  0.9543  0.8696  0.9301  0.8383   140    21    33
+2026-04-20 17:07:27,931        0.82   0.5237  0.8208  0.9500  0.8606  0.9338  0.8402   142    23    31
+2026-04-20 17:07:27,931        0.85   0.4429  0.8555  0.9413  0.8457  0.9454  0.8506   148    27    25
+2026-04-20 17:07:27,931        0.87   0.4212  0.8786  0.9304  0.8261  0.9532  0.8515   152    32    21
+2026-04-20 17:07:27,931        0.90   0.2903  0.9017  0.8935  0.7610  0.9603  0.8254   156    49    17
+2026-04-20 17:07:27,931        0.92   0.2555  0.9249  0.8761  0.7373  0.9688  0.8205   160    57    13
+2026-04-20 17:07:27,931        0.95   0.1990  0.9538  0.8435  0.6962  0.9798  0.8049   165    72     8
+2026-04-20 17:07:27,932  
+=================================================================
+2026-04-20 17:07:27,932  EXPERIMENT C — HYBRID CATBOOST COMPLETE
+2026-04-20 17:07:27,932  =================================================================
+2026-04-20 17:07:27,932    Test AUROC : 0.9659 [0.9522–0.9779]
+2026-04-20 17:07:27,932    Test AUPRC : 0.9238 [0.8911–0.9503]
+2026-04-20 17:07:27,932    Sensitivity: 0.9017
+2026-04-20 17:07:27,932    Specificity: 0.8935
+2026-04-20 17:07:27,932    Δ AUPRC vs Real: -0.0452
+2026-04-20 17:07:27,932    Runtime    : 2.7 min

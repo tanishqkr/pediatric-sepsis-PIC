@@ -103,7 +103,7 @@ SEPSIS_ML    = SYNTHETIC_ML.parent                      # sepsis_ml/
 PROJECT_ROOT = SEPSIS_ML.parent                         # pediatric_sepsis_prediction_PIC_XAI/
 
 MODEL_DATA_DIR   = PROJECT_ROOT / "model_datasets"
-SYNTH_TRAIN_FILE = MODEL_DATA_DIR / "synthetic" / "B_synthetic_train_v3.csv"
+SYNTH_TRAIN_FILE = MODEL_DATA_DIR / "synthetic" / "B_synthetic_train_vFinal.csv"
 REAL_TEST_FILE   = MODEL_DATA_DIR / "B_test_model_ready.csv"
 
 # Real-trained Phase 2 model (for comparison baseline)

@@ -1,0 +1,16 @@
+{
+  "best_cv_auprc": 0.9908990906623284,
+  "best_params": {
+    "iterations": 982,
+    "learning_rate": 0.11114989443094977,
+    "depth": 4,
+    "l2_leaf_reg": 9.72918866945795,
+    "bagging_temperature": 0.8324426408004217,
+    "random_strength": 0.4246782213565523,
+    "border_count": 72,
+    "class_weight_pos": 2.1419157844870185
+  },
+  "n_trials": 5,
+  "timestamp": "2026-04-20T17:07:24",
+  "note": "5-trial Optuna on hybrid (real+synthetic) data"
+}

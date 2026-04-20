@@ -1,0 +1,36 @@
+=================================================================
+EXPERIMENT C — CATBOOST ON HYBRID DATA (Real + Synthetic)
+Generated: 2026-04-20 17:07:27
+=================================================================
+
+SETUP
+  Real train rows: 2,530
+  Synth train rows: 10,000
+  Total hybrid   : 12,530
+  Optuna trials  : 5
+  CV folds       : 5
+  Optimising     : AUPRC (5-fold CV mean)
+
+OPTUNA RESULT
+  Best CV AUPRC  : 0.9909
+  Best params    : {'iterations': 982, 'learning_rate': 0.11114989443094977, 'depth': 4, 'l2_leaf_reg': 9.72918866945795, 'bagging_temperature': 0.8324426408004217, 'random_strength': 0.4246782213565523, 'border_count': 72, 'class_weight_pos': 2.1419157844870185}
+
+TEST SET RESULTS (on real patients)
+  AUROC : 0.9659 [0.9522–0.9779]
+  AUPRC : 0.9238 [0.8911–0.9503]
+  Brier : 0.0630
+  Sens  : 0.9017
+  Spec  : 0.8935
+  PPV   : 0.7610
+  NPV   : 0.9603
+  F1    : 0.8254
+
+COMPARISON SUMMARY
+  Exp A (Real only)   AUPRC: 0.9691
+  Exp B (Synth only)  AUPRC: 0.3677
+  Exp C (Hybrid)      AUPRC: 0.9238
+  Δ Hybrid vs Real         : -0.0452
+  DeLong p (vs Real)       : 1.2478417310255411e-05
+
+Runtime : 2.7 min
+=================================================================
