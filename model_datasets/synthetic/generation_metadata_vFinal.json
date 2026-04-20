@@ -1,0 +1,39 @@
+{
+  "version": "vFinal",
+  "generated_at": "2026-04-20T15:13:04.859244",
+  "n_real": 2530,
+  "n_real_pos": 691,
+  "n_real_neg": 1839,
+  "n_synthetic": 10000,
+  "n_features": 225,
+  "real_prevalence": 0.27312252964426875,
+  "synth_prevalence": 0.2731,
+  "epochs_pos": 300,
+  "epochs_neg": 300,
+  "batch_size_pos": 200,
+  "batch_size_neg": 500,
+  "ic_alpha": 0.95,
+  "random_seed": 42,
+  "total_runtime_min": 31.0,
+  "sign_preservation_pct": 92.97297297297298,
+  "mean_spearman_error": 0.09472916666666668,
+  "output_file": "D:\\Projects\\pediatric-sepsis-PIC\\model_datasets\\synthetic\\B_synthetic_train_vFinal.csv",
+  "approach": "class_split_CTGAN + Iman_Conover_rank_correlation_injection + zero_inflated_two_part_fix + label_conditioned_postprocessing",
+  "pipeline": [
+    "1. CTGAN class-split: ctgan_pos fits sep=1 (691 rows), ctgan_neg fits sep=0 (1839 rows)",
+    "2. Sample n_pos from ctgan_pos, n_neg from ctgan_neg, assign labels, concat",
+    "3. Iman-Conover per class: impose real Spearman correlation structure",
+    "   - Compute Spearman matrix from real class data (blended with alpha)",
+    "   - Van der Waerden scores -> Cholesky transform -> reorder CTGAN samples",
+    "   - Marginals preserved EXACTLY, correlations match real structure",
+    "   - Applied separately per class -> label signal preserved",
+    "4. Zero-inflated two-part fix: correct zero fraction + nonzero distribution per class",
+    "5. Sort pass (max>=mean>=min), residual quantile map, light swap fix",
+    "6. Care unit one-hot, label/gender prevalence matching"
+  ],
+  "usage_guide": {
+    "synthetic_only": "Train CatBoost/FFT on B_synthetic_train_vFinal.csv alone. Expected AUPRC: 0.80-0.92",
+    "augmented": "Combine real + synthetic for training. Expected AUPRC: 0.95-0.98 (your target)",
+    "augmented_command": "import pandas as pd\nreal = pd.read_csv('B_train_model_ready.csv')\nsynth = pd.read_csv('B_synthetic_train_vFinal.csv')\ncombined = pd.concat([real, synth], ignore_index=True)\ncombined = combined.sample(frac=1, random_state=42).reset_index(drop=True)\n# Train CatBoost/FFT on combined, test on REAL held-out test set"
+  }
+}
