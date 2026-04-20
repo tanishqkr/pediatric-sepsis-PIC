@@ -1,0 +1,25 @@
+{
+  "version": "v2",
+  "generated_at": "2026-04-20T10:26:33.206152",
+  "n_real_train": 2530,
+  "n_synthetic": 10000,
+  "n_features": 225,
+  "real_prevalence": 0.27312252964426875,
+  "synth_prevalence": 0.2731,
+  "prevalence_diff_pp": 0.002252964426874282,
+  "ctgan_epochs": 300,
+  "ctgan_batch_size": 500,
+  "random_seed": 42,
+  "ks_threshold_used": 0.1,
+  "n_columns_ks_corrected": 173,
+  "total_runtime_min": 18.75,
+  "output_file": "D:\\pediatric-sepsis-PIC\\model_datasets\\synthetic\\B_synthetic_train_v2.csv",
+  "fixes_applied": [
+    "max_mean_min_ordering",
+    "care_unit_onehot_exclusivity",
+    "distributional_drift_bootstrap_correction",
+    "label_prevalence_matching",
+    "gender_prevalence_matching"
+  ],
+  "note": "v2 adds five post-processing fixes over v1: (1) max>=mean>=min ordering enforced for all lab/vital groups, (2) care unit one-hot exclusivity enforced, (3) bootstrap correction for columns with KS > 0.1, (4) label prevalence matched to real, (5) gender prevalence matched to real."
+}

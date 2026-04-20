@@ -1,0 +1,271 @@
+2026-04-20 10:07:48,421 | INFO | ======================================================================
+2026-04-20 10:07:48,421 | INFO | SYNTHETIC DATA GENERATION v2 — CTGAN + POST-PROCESSING FIXES
+2026-04-20 10:07:48,421 | INFO | Started : 2026-04-20 10:07:48
+2026-04-20 10:07:48,421 | INFO | ======================================================================
+2026-04-20 10:07:48,421 | INFO | 
+============================================================
+2026-04-20 10:07:48,421 | INFO | STEP 1 — Loading real training data
+2026-04-20 10:07:48,421 | INFO | ============================================================
+2026-04-20 10:07:48,459 | INFO |   Loaded : (2530, 226)
+2026-04-20 10:07:48,459 | INFO |   Sepsis prevalence : 0.273
+2026-04-20 10:07:48,480 | INFO |   Discrete columns  : 41 (binary + label)
+2026-04-20 10:07:48,480 | INFO | 
+============================================================
+2026-04-20 10:07:48,480 | INFO | STEP 2 — Training CTGAN
+2026-04-20 10:07:48,480 | INFO | ============================================================
+2026-04-20 10:07:53,011 | INFO |   CTGAN imported from ctgan package.
+2026-04-20 10:07:53,590 | INFO | Guidance: There are no missing values in column age_years. Extra column not created.
+2026-04-20 10:07:55,240 | INFO | Guidance: There are no missing values in column lactate_max. Extra column not created.
+2026-04-20 10:07:55,352 | INFO | Guidance: There are no missing values in column lactate_min. Extra column not created.
+2026-04-20 10:07:55,455 | INFO | Guidance: There are no missing values in column lactate_mean. Extra column not created.
+2026-04-20 10:07:55,556 | INFO | Guidance: There are no missing values in column lactate_first. Extra column not created.
+2026-04-20 10:07:55,658 | INFO | Guidance: There are no missing values in column platelets_max. Extra column not created.
+2026-04-20 10:07:55,759 | INFO | Guidance: There are no missing values in column platelets_min. Extra column not created.
+2026-04-20 10:07:55,861 | INFO | Guidance: There are no missing values in column platelets_mean. Extra column not created.
+2026-04-20 10:07:55,964 | INFO | Guidance: There are no missing values in column platelets_first. Extra column not created.
+2026-04-20 10:07:56,065 | INFO | Guidance: There are no missing values in column inr_max. Extra column not created.
+2026-04-20 10:07:56,166 | INFO | Guidance: There are no missing values in column inr_min. Extra column not created.
+2026-04-20 10:07:56,275 | INFO | Guidance: There are no missing values in column inr_mean. Extra column not created.
+2026-04-20 10:07:56,389 | INFO | Guidance: There are no missing values in column inr_first. Extra column not created.
+2026-04-20 10:07:56,496 | INFO | Guidance: There are no missing values in column ddimer_max. Extra column not created.
+2026-04-20 10:07:56,581 | INFO | Guidance: There are no missing values in column ddimer_min. Extra column not created.
+2026-04-20 10:07:56,675 | INFO | Guidance: There are no missing values in column ddimer_mean. Extra column not created.
+2026-04-20 10:07:56,737 | INFO | Guidance: There are no missing values in column ddimer_first. Extra column not created.
+2026-04-20 10:07:56,839 | INFO | Guidance: There are no missing values in column fibrinogen_max. Extra column not created.
+2026-04-20 10:07:56,946 | INFO | Guidance: There are no missing values in column fibrinogen_min. Extra column not created.
+2026-04-20 10:07:57,057 | INFO | Guidance: There are no missing values in column fibrinogen_mean. Extra column not created.
+2026-04-20 10:07:57,167 | INFO | Guidance: There are no missing values in column fibrinogen_first. Extra column not created.
+2026-04-20 10:07:57,278 | INFO | Guidance: There are no missing values in column creatinine_max. Extra column not created.
+2026-04-20 10:07:57,381 | INFO | Guidance: There are no missing values in column creatinine_min. Extra column not created.
+2026-04-20 10:07:57,482 | INFO | Guidance: There are no missing values in column creatinine_mean. Extra column not created.
+2026-04-20 10:07:57,597 | INFO | Guidance: There are no missing values in column creatinine_first. Extra column not created.
+2026-04-20 10:07:57,709 | INFO | Guidance: There are no missing values in column bilirubin_max. Extra column not created.
+2026-04-20 10:07:57,793 | INFO | Guidance: There are no missing values in column bilirubin_min. Extra column not created.
+2026-04-20 10:07:57,900 | INFO | Guidance: There are no missing values in column bilirubin_mean. Extra column not created.
+2026-04-20 10:07:58,005 | INFO | Guidance: There are no missing values in column bilirubin_first. Extra column not created.
+2026-04-20 10:07:58,108 | INFO | Guidance: There are no missing values in column alt_max. Extra column not created.
+2026-04-20 10:07:58,163 | INFO | Guidance: There are no missing values in column alt_min. Extra column not created.
+2026-04-20 10:07:58,228 | INFO | Guidance: There are no missing values in column alt_mean. Extra column not created.
+2026-04-20 10:07:58,302 | INFO | Guidance: There are no missing values in column alt_first. Extra column not created.
+2026-04-20 10:07:58,413 | INFO | Guidance: There are no missing values in column ast_max. Extra column not created.
+2026-04-20 10:07:58,456 | INFO | Guidance: There are no missing values in column ast_min. Extra column not created.
+2026-04-20 10:07:58,525 | INFO | Guidance: There are no missing values in column ast_mean. Extra column not created.
+2026-04-20 10:07:58,575 | INFO | Guidance: There are no missing values in column ast_first. Extra column not created.
+2026-04-20 10:07:58,625 | INFO | Guidance: There are no missing values in column glucose_max. Extra column not created.
+2026-04-20 10:07:58,733 | INFO | Guidance: There are no missing values in column glucose_min. Extra column not created.
+2026-04-20 10:07:58,834 | INFO | Guidance: There are no missing values in column glucose_mean. Extra column not created.
+2026-04-20 10:07:58,937 | INFO | Guidance: There are no missing values in column glucose_first. Extra column not created.
+2026-04-20 10:07:59,038 | INFO | Guidance: There are no missing values in column anc_max. Extra column not created.
+2026-04-20 10:07:59,151 | INFO | Guidance: There are no missing values in column anc_min. Extra column not created.
+2026-04-20 10:07:59,263 | INFO | Guidance: There are no missing values in column anc_mean. Extra column not created.
+2026-04-20 10:07:59,368 | INFO | Guidance: There are no missing values in column anc_first. Extra column not created.
+2026-04-20 10:07:59,471 | INFO | Guidance: There are no missing values in column alc_max. Extra column not created.
+2026-04-20 10:07:59,576 | INFO | Guidance: There are no missing values in column alc_min. Extra column not created.
+2026-04-20 10:07:59,678 | INFO | Guidance: There are no missing values in column alc_mean. Extra column not created.
+2026-04-20 10:07:59,781 | INFO | Guidance: There are no missing values in column alc_first. Extra column not created.
+2026-04-20 10:07:59,884 | INFO | Guidance: There are no missing values in column wbc_max. Extra column not created.
+2026-04-20 10:07:59,994 | INFO | Guidance: There are no missing values in column wbc_min. Extra column not created.
+2026-04-20 10:08:00,096 | INFO | Guidance: There are no missing values in column wbc_mean. Extra column not created.
+2026-04-20 10:08:00,199 | INFO | Guidance: There are no missing values in column wbc_first. Extra column not created.
+2026-04-20 10:08:00,309 | INFO | Guidance: There are no missing values in column ph_max. Extra column not created.
+2026-04-20 10:08:00,413 | INFO | Guidance: There are no missing values in column ph_min. Extra column not created.
+2026-04-20 10:08:00,521 | INFO | Guidance: There are no missing values in column ph_mean. Extra column not created.
+2026-04-20 10:08:00,632 | INFO | Guidance: There are no missing values in column ph_first. Extra column not created.
+2026-04-20 10:08:00,735 | INFO | Guidance: There are no missing values in column pco2_max. Extra column not created.
+2026-04-20 10:08:00,837 | INFO | Guidance: There are no missing values in column pco2_min. Extra column not created.
+2026-04-20 10:08:00,989 | INFO | Guidance: There are no missing values in column pco2_mean. Extra column not created.
+2026-04-20 10:08:01,103 | INFO | Guidance: There are no missing values in column pco2_first. Extra column not created.
+2026-04-20 10:08:01,204 | INFO | Guidance: There are no missing values in column pao2_max. Extra column not created.
+2026-04-20 10:08:01,307 | INFO | Guidance: There are no missing values in column pao2_min. Extra column not created.
+2026-04-20 10:08:01,407 | INFO | Guidance: There are no missing values in column pao2_mean. Extra column not created.
+2026-04-20 10:08:01,509 | INFO | Guidance: There are no missing values in column pao2_first. Extra column not created.
+2026-04-20 10:08:01,611 | INFO | Guidance: There are no missing values in column base_excess_max. Extra column not created.
+2026-04-20 10:08:01,715 | INFO | Guidance: There are no missing values in column base_excess_min. Extra column not created.
+2026-04-20 10:08:01,819 | INFO | Guidance: There are no missing values in column base_excess_mean. Extra column not created.
+2026-04-20 10:08:01,922 | INFO | Guidance: There are no missing values in column base_excess_first. Extra column not created.
+2026-04-20 10:08:02,023 | INFO | Guidance: There are no missing values in column bicarbonate_max. Extra column not created.
+2026-04-20 10:08:02,125 | INFO | Guidance: There are no missing values in column bicarbonate_min. Extra column not created.
+2026-04-20 10:08:02,228 | INFO | Guidance: There are no missing values in column bicarbonate_mean. Extra column not created.
+2026-04-20 10:08:02,330 | INFO | Guidance: There are no missing values in column bicarbonate_first. Extra column not created.
+2026-04-20 10:08:02,439 | INFO | Guidance: There are no missing values in column anion_gap_max. Extra column not created.
+2026-04-20 10:08:02,542 | INFO | Guidance: There are no missing values in column anion_gap_min. Extra column not created.
+2026-04-20 10:08:02,643 | INFO | Guidance: There are no missing values in column anion_gap_mean. Extra column not created.
+2026-04-20 10:08:02,746 | INFO | Guidance: There are no missing values in column anion_gap_first. Extra column not created.
+2026-04-20 10:08:02,850 | INFO | Guidance: There are no missing values in column spo2_lab_max. Extra column not created.
+2026-04-20 10:08:02,938 | INFO | Guidance: There are no missing values in column spo2_lab_min. Extra column not created.
+2026-04-20 10:08:03,044 | INFO | Guidance: There are no missing values in column spo2_lab_mean. Extra column not created.
+2026-04-20 10:08:03,155 | INFO | Guidance: There are no missing values in column spo2_lab_first. Extra column not created.
+2026-04-20 10:08:03,265 | INFO | Guidance: There are no missing values in column hemoglobin_max. Extra column not created.
+2026-04-20 10:08:03,365 | INFO | Guidance: There are no missing values in column hemoglobin_min. Extra column not created.
+2026-04-20 10:08:03,474 | INFO | Guidance: There are no missing values in column hemoglobin_mean. Extra column not created.
+2026-04-20 10:08:03,576 | INFO | Guidance: There are no missing values in column hemoglobin_first. Extra column not created.
+2026-04-20 10:08:03,685 | INFO | Guidance: There are no missing values in column hematocrit_max. Extra column not created.
+2026-04-20 10:08:03,784 | INFO | Guidance: There are no missing values in column hematocrit_min. Extra column not created.
+2026-04-20 10:08:03,890 | INFO | Guidance: There are no missing values in column hematocrit_mean. Extra column not created.
+2026-04-20 10:08:03,994 | INFO | Guidance: There are no missing values in column hematocrit_first. Extra column not created.
+2026-04-20 10:08:04,099 | INFO | Guidance: There are no missing values in column pt_max. Extra column not created.
+2026-04-20 10:08:04,204 | INFO | Guidance: There are no missing values in column pt_min. Extra column not created.
+2026-04-20 10:08:04,307 | INFO | Guidance: There are no missing values in column pt_mean. Extra column not created.
+2026-04-20 10:08:04,415 | INFO | Guidance: There are no missing values in column pt_first. Extra column not created.
+2026-04-20 10:08:04,519 | INFO | Guidance: There are no missing values in column ptt_max. Extra column not created.
+2026-04-20 10:08:04,628 | INFO | Guidance: There are no missing values in column ptt_min. Extra column not created.
+2026-04-20 10:08:04,738 | INFO | Guidance: There are no missing values in column ptt_mean. Extra column not created.
+2026-04-20 10:08:04,843 | INFO | Guidance: There are no missing values in column ptt_first. Extra column not created.
+2026-04-20 10:08:04,953 | INFO | Guidance: There are no missing values in column sodium_max. Extra column not created.
+2026-04-20 10:08:05,059 | INFO | Guidance: There are no missing values in column sodium_min. Extra column not created.
+2026-04-20 10:08:05,162 | INFO | Guidance: There are no missing values in column sodium_mean. Extra column not created.
+2026-04-20 10:08:05,263 | INFO | Guidance: There are no missing values in column sodium_first. Extra column not created.
+2026-04-20 10:08:05,364 | INFO | Guidance: There are no missing values in column potassium_max. Extra column not created.
+2026-04-20 10:08:05,465 | INFO | Guidance: There are no missing values in column potassium_min. Extra column not created.
+2026-04-20 10:08:05,568 | INFO | Guidance: There are no missing values in column potassium_mean. Extra column not created.
+2026-04-20 10:08:05,670 | INFO | Guidance: There are no missing values in column potassium_first. Extra column not created.
+2026-04-20 10:08:05,782 | INFO | Guidance: There are no missing values in column calcium_max. Extra column not created.
+2026-04-20 10:08:05,886 | INFO | Guidance: There are no missing values in column calcium_min. Extra column not created.
+2026-04-20 10:08:05,993 | INFO | Guidance: There are no missing values in column calcium_mean. Extra column not created.
+2026-04-20 10:08:06,094 | INFO | Guidance: There are no missing values in column calcium_first. Extra column not created.
+2026-04-20 10:08:06,197 | INFO | Guidance: There are no missing values in column albumin_max. Extra column not created.
+2026-04-20 10:08:06,303 | INFO | Guidance: There are no missing values in column albumin_min. Extra column not created.
+2026-04-20 10:08:06,410 | INFO | Guidance: There are no missing values in column albumin_mean. Extra column not created.
+2026-04-20 10:08:06,516 | INFO | Guidance: There are no missing values in column albumin_first. Extra column not created.
+2026-04-20 10:08:06,622 | INFO | Guidance: There are no missing values in column crp_max. Extra column not created.
+2026-04-20 10:08:06,732 | INFO | Guidance: There are no missing values in column crp_min. Extra column not created.
+2026-04-20 10:08:06,834 | INFO | Guidance: There are no missing values in column crp_mean. Extra column not created.
+2026-04-20 10:08:06,941 | INFO | Guidance: There are no missing values in column crp_first. Extra column not created.
+2026-04-20 10:08:07,051 | INFO | Guidance: There are no missing values in column ldh_max. Extra column not created.
+2026-04-20 10:08:07,152 | INFO | Guidance: There are no missing values in column ldh_min. Extra column not created.
+2026-04-20 10:08:07,257 | INFO | Guidance: There are no missing values in column ldh_mean. Extra column not created.
+2026-04-20 10:08:07,359 | INFO | Guidance: There are no missing values in column ldh_first. Extra column not created.
+2026-04-20 10:08:07,460 | INFO | Guidance: There are no missing values in column urea_max. Extra column not created.
+2026-04-20 10:08:07,562 | INFO | Guidance: There are no missing values in column urea_min. Extra column not created.
+2026-04-20 10:08:07,663 | INFO | Guidance: There are no missing values in column urea_mean. Extra column not created.
+2026-04-20 10:08:07,762 | INFO | Guidance: There are no missing values in column urea_first. Extra column not created.
+2026-04-20 10:08:07,879 | INFO | Guidance: There are no missing values in column uric_acid_max. Extra column not created.
+2026-04-20 10:08:07,984 | INFO | Guidance: There are no missing values in column uric_acid_min. Extra column not created.
+2026-04-20 10:08:08,095 | INFO | Guidance: There are no missing values in column uric_acid_mean. Extra column not created.
+2026-04-20 10:08:08,198 | INFO | Guidance: There are no missing values in column uric_acid_first. Extra column not created.
+2026-04-20 10:08:08,311 | INFO | Guidance: There are no missing values in column ck_max. Extra column not created.
+2026-04-20 10:08:08,369 | INFO | Guidance: There are no missing values in column ck_min. Extra column not created.
+2026-04-20 10:08:08,427 | INFO | Guidance: There are no missing values in column ck_mean. Extra column not created.
+2026-04-20 10:08:08,492 | INFO | Guidance: There are no missing values in column ck_first. Extra column not created.
+2026-04-20 10:08:08,546 | INFO | Guidance: There are no missing values in column spo2_max. Extra column not created.
+2026-04-20 10:08:08,573 | INFO | Guidance: There are no missing values in column spo2_min. Extra column not created.
+2026-04-20 10:08:08,610 | INFO | Guidance: There are no missing values in column spo2_mean. Extra column not created.
+2026-04-20 10:08:08,683 | INFO | Guidance: There are no missing values in column spo2_first. Extra column not created.
+2026-04-20 10:08:08,767 | INFO | Guidance: There are no missing values in column systolic_bp_max. Extra column not created.
+2026-04-20 10:08:08,873 | INFO | Guidance: There are no missing values in column systolic_bp_min. Extra column not created.
+2026-04-20 10:08:08,984 | INFO | Guidance: There are no missing values in column systolic_bp_mean. Extra column not created.
+2026-04-20 10:08:09,094 | INFO | Guidance: There are no missing values in column systolic_bp_first. Extra column not created.
+2026-04-20 10:08:09,201 | INFO | Guidance: There are no missing values in column diastolic_bp_max. Extra column not created.
+2026-04-20 10:08:09,312 | INFO | Guidance: There are no missing values in column diastolic_bp_min. Extra column not created.
+2026-04-20 10:08:09,421 | INFO | Guidance: There are no missing values in column diastolic_bp_mean. Extra column not created.
+2026-04-20 10:08:09,530 | INFO | Guidance: There are no missing values in column diastolic_bp_first. Extra column not created.
+2026-04-20 10:08:09,639 | INFO | Guidance: There are no missing values in column heart_rate_max. Extra column not created.
+2026-04-20 10:08:09,747 | INFO | Guidance: There are no missing values in column heart_rate_min. Extra column not created.
+2026-04-20 10:08:09,856 | INFO | Guidance: There are no missing values in column heart_rate_mean. Extra column not created.
+2026-04-20 10:08:09,967 | INFO | Guidance: There are no missing values in column heart_rate_first. Extra column not created.
+2026-04-20 10:08:10,075 | INFO | Guidance: There are no missing values in column resp_rate_max. Extra column not created.
+2026-04-20 10:08:10,193 | INFO | Guidance: There are no missing values in column resp_rate_min. Extra column not created.
+2026-04-20 10:08:10,298 | INFO | Guidance: There are no missing values in column resp_rate_mean. Extra column not created.
+2026-04-20 10:08:10,407 | INFO | Guidance: There are no missing values in column resp_rate_first. Extra column not created.
+2026-04-20 10:08:10,519 | INFO | Guidance: There are no missing values in column temperature_max. Extra column not created.
+2026-04-20 10:08:10,628 | INFO | Guidance: There are no missing values in column temperature_min. Extra column not created.
+2026-04-20 10:08:10,738 | INFO | Guidance: There are no missing values in column temperature_mean. Extra column not created.
+2026-04-20 10:08:10,847 | INFO | Guidance: There are no missing values in column temperature_first. Extra column not created.
+2026-04-20 10:08:10,955 | INFO | Guidance: There are no missing values in column map_max. Extra column not created.
+2026-04-20 10:08:11,062 | INFO | Guidance: There are no missing values in column map_min. Extra column not created.
+2026-04-20 10:08:11,171 | INFO | Guidance: There are no missing values in column map_mean. Extra column not created.
+2026-04-20 10:08:11,277 | INFO | Guidance: There are no missing values in column map_first. Extra column not created.
+2026-04-20 10:08:11,390 | INFO | Guidance: There are no missing values in column shock_index. Extra column not created.
+2026-04-20 10:08:11,502 | INFO | Guidance: There are no missing values in column lactate_trend. Extra column not created.
+2026-04-20 10:08:11,603 | INFO | Guidance: There are no missing values in column platelets_trend. Extra column not created.
+2026-04-20 10:08:11,715 | INFO | Guidance: There are no missing values in column creatinine_trend. Extra column not created.
+2026-04-20 10:08:11,805 | INFO | Guidance: There are no missing values in column bilirubin_trend. Extra column not created.
+2026-04-20 10:08:11,915 | INFO | Guidance: There are no missing values in column inr_trend. Extra column not created.
+2026-04-20 10:08:12,030 | INFO | Guidance: There are no missing values in column wbc_trend. Extra column not created.
+2026-04-20 10:08:12,135 | INFO | Guidance: There are no missing values in column hemoglobin_trend. Extra column not created.
+2026-04-20 10:08:12,242 | INFO | Guidance: There are no missing values in column glucose_trend. Extra column not created.
+2026-04-20 10:08:12,347 | INFO | Guidance: There are no missing values in column ph_trend. Extra column not created.
+2026-04-20 10:08:12,451 | INFO | Guidance: There are no missing values in column base_excess_trend. Extra column not created.
+2026-04-20 10:08:12,551 | INFO | Guidance: There are no missing values in column sodium_trend. Extra column not created.
+2026-04-20 10:08:12,656 | INFO | Guidance: There are no missing values in column potassium_trend. Extra column not created.
+2026-04-20 10:08:12,757 | INFO | Guidance: There are no missing values in column heart_rate_trend. Extra column not created.
+2026-04-20 10:08:12,863 | INFO | Guidance: There are no missing values in column resp_rate_trend. Extra column not created.
+2026-04-20 10:08:12,969 | INFO | Guidance: There are no missing values in column temperature_trend. Extra column not created.
+2026-04-20 10:08:13,079 | INFO | Guidance: There are no missing values in column spo2_trend. Extra column not created.
+2026-04-20 10:08:13,135 | INFO | Guidance: There are no missing values in column urine_output_total_ml. Extra column not created.
+2026-04-20 10:08:13,170 | INFO | Guidance: There are no missing values in column urine_output_per_hour. Extra column not created.
+2026-04-20 10:08:13,210 | INFO | Guidance: There are no missing values in column fluid_input_total_ml. Extra column not created.
+2026-04-20 10:08:13,325 | INFO | Guidance: There are no missing values in column fluid_balance_ml. Extra column not created.
+2026-04-20 10:08:13,439 | INFO | Guidance: There are no missing values in column n_antibiotics_24h. Extra column not created.
+2026-04-20 10:08:13,504 | INFO | Guidance: There are no missing values in column n_cultures_24h. Extra column not created.
+2026-04-20 10:08:13,580 | INFO | Guidance: There are no missing values in column n_positive_cultures. Extra column not created.
+2026-04-20 10:25:04,980 | INFO | 
+  CTGAN training complete in 17.2 minutes
+2026-04-20 10:25:05,099 | INFO |   Model saved -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\ctgan_model.pkl
+2026-04-20 10:25:05,099 | INFO | 
+============================================================
+2026-04-20 10:25:05,099 | INFO | STEP 3 — Generating raw synthetic patients
+2026-04-20 10:25:05,099 | INFO | ============================================================
+2026-04-20 10:25:07,688 | INFO |   Generated 10,000 rows in 0.0 min
+2026-04-20 10:25:07,835 | INFO | 
+  Raw synthetic prevalence : 0.156 (real: 0.273)
+2026-04-20 10:25:07,835 | INFO | 
+============================================================
+2026-04-20 10:25:07,835 | INFO | STEP 4 — Post-processing: applying 5 quality fixes
+2026-04-20 10:25:07,835 | INFO | ============================================================
+2026-04-20 10:25:07,835 | INFO | 
+[Fix 1] Enforcing max >= mean >= min ordering...
+2026-04-20 10:25:07,838 | INFO |   Pre-fix violations: 122969 across 40 groups
+2026-04-20 10:25:07,907 | INFO |   fix_max_mean_min_ordering: processed 40 groups.
+2026-04-20 10:25:07,916 | INFO | 
+[Fix 2] Enforcing care unit one-hot exclusivity...
+2026-04-20 10:25:07,930 | INFO |   fix_care_unit_onehot: fixed 3090 multi-unit rows.
+2026-04-20 10:25:09,355 | INFO |   fix_care_unit_onehot: fixed 2372 zero-unit rows.
+2026-04-20 10:25:09,359 | INFO | 
+[Fix 3] Correcting distributional drift (KS threshold: 0.1)...
+2026-04-20 10:25:54,937 | INFO |   fix_distributional_drift: corrected 173 columns (KS > 0.1).
+2026-04-20 10:25:54,937 | INFO |   Columns corrected: 173
+2026-04-20 10:25:54,937 | INFO |   Top 10 corrected (by original KS):
+2026-04-20 10:25:54,937 | INFO |     age_years                                original KS=0.4656
+2026-04-20 10:25:54,937 | INFO |     lactate_max                              original KS=0.4318
+2026-04-20 10:25:54,937 | INFO |     lactate_min                              original KS=0.341
+2026-04-20 10:25:54,937 | INFO |     lactate_mean                             original KS=0.1988
+2026-04-20 10:25:54,937 | INFO |     lactate_first                            original KS=0.2754
+2026-04-20 10:25:54,937 | INFO |     platelets_max                            original KS=0.2987
+2026-04-20 10:25:54,937 | INFO |     platelets_min                            original KS=0.4789
+2026-04-20 10:25:54,937 | INFO |     platelets_mean                           original KS=0.1435
+2026-04-20 10:25:54,937 | INFO |     inr_max                                  original KS=0.708
+2026-04-20 10:25:54,937 | INFO |     inr_min                                  original KS=0.3861
+2026-04-20 10:25:54,937 | INFO | 
+[Fix 4] Correcting label prevalence...
+2026-04-20 10:25:54,967 | INFO | 
+[Fix 5] Correcting gender distribution...
+2026-04-20 10:25:55,018 | INFO |   fix_max_mean_min_ordering: processed 40 groups.
+2026-04-20 10:25:55,085 | INFO | 
+============================================================
+2026-04-20 10:25:55,085 | INFO | STEP 5 — Saving synthetic dataset
+2026-04-20 10:25:55,085 | INFO | ============================================================
+2026-04-20 10:25:56,366 | INFO |   Saved -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\B_synthetic_train_v2.csv  ((10000, 226))
+2026-04-20 10:25:56,366 | INFO | 
+============================================================
+2026-04-20 10:25:56,366 | INFO | STEP 6 — Validation (post-fix KS tests)
+2026-04-20 10:25:56,366 | INFO | ============================================================
+2026-04-20 10:26:27,553 | INFO | 
+  KS SUMMARY (continuous, post all fixes):
+2026-04-20 10:26:27,559 | INFO |     KS 0.05–0.10 (ok)   : 15 (8%)
+2026-04-20 10:26:27,559 | INFO |     KS > 0.10 (concern) : 168 (91%)
+2026-04-20 10:26:27,560 | INFO |     Mean KS             : 0.2733
+2026-04-20 10:26:27,564 | INFO |   Label prevalence  : 0.2731 (real: 0.2731) [diff: 0.00pp]
+2026-04-20 10:26:27,564 | INFO |   Gender male rate  : 0.5929 (real: 0.5929)
+2026-04-20 10:26:32,700 | INFO |   Saved -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\figures_v2\distribution_comparison_key_features.png
+2026-04-20 10:26:33,049 | INFO |   Saved -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\figures_v2\ks_statistic_summary_v2.png
+2026-04-20 10:26:33,206 | INFO | 
+  Metadata saved -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\generation_metadata_v2.json
+2026-04-20 10:26:33,206 | INFO | 
+======================================================================
+2026-04-20 10:26:33,206 | INFO | SYNTHETIC DATA GENERATION v2 COMPLETE
+2026-04-20 10:26:33,206 | INFO | ======================================================================
+2026-04-20 10:26:33,206 | INFO |   Output : D:\pediatric-sepsis-PIC\model_datasets\synthetic\B_synthetic_train_v2.csv
+2026-04-20 10:26:33,206 | INFO |   Shape  : (10000, 226)
+2026-04-20 10:26:33,206 | INFO |   Time   : 18.7 min
+2026-04-20 10:26:33,206 | INFO | ======================================================================

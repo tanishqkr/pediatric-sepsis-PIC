@@ -1,0 +1,16 @@
+{
+  "best_cv_auprc": 0.28821125381678075,
+  "best_params": {
+    "iterations": 780,
+    "learning_rate": 0.22244160373768265,
+    "depth": 4,
+    "l2_leaf_reg": 6.402170482762474,
+    "bagging_temperature": 0.828308758930784,
+    "random_strength": 0.27606269832787406,
+    "border_count": 49,
+    "class_weight_pos": 1.8814596909182377
+  },
+  "n_trials": 100,
+  "timestamp": "2026-04-20T11:26:17",
+  "note": "Tuned on CTGAN synthetic data, same search space as Phase 2"
+}

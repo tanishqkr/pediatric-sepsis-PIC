@@ -103,7 +103,7 @@ SEPSIS_ML    = SYNTHETIC_ML.parent                      # sepsis_ml/
 PROJECT_ROOT = SEPSIS_ML.parent                         # pediatric_sepsis_prediction_PIC_XAI/
 
 MODEL_DATA_DIR   = PROJECT_ROOT / "model_datasets"
-SYNTH_TRAIN_FILE = MODEL_DATA_DIR / "synthetic" / "B_synthetic_train.csv"
+SYNTH_TRAIN_FILE = MODEL_DATA_DIR / "synthetic" / "B_synthetic_train_v3.csv"
 REAL_TEST_FILE   = MODEL_DATA_DIR / "B_test_model_ready.csv"
 
 # Real-trained Phase 2 model (for comparison baseline)
@@ -319,7 +319,8 @@ def objective(trial, X_df: pd.DataFrame, y: np.ndarray,
         "random_strength"    : trial.suggest_float("random_strength", 0.0, 2.0),
         "border_count"       : trial.suggest_int("border_count", 32, 255),
         "class_weights"      : [1.0, trial.suggest_float("class_weight_pos", 1.5, 5.0)],
-        "eval_metric"        : "AUC",
+        "eval_metric": "Logloss",
+        "custom_metric": ["AUC"],
         "random_seed"        : RANDOM_SEED,
         "verbose"            : 0,
         "early_stopping_rounds": 50,
@@ -679,9 +680,14 @@ def main():
             log.info(f"  Trial {trial.number:>3} NEW BEST: "
                      f"AUPRC={trial.value:.4f}  params={trial.params}")
         elif trial.number % 10 == 0:
+            if trial.value is not None:
+                val_str = f"{trial.value:.4f}"
+            else:
+                val_str = "pruned"
+
             log.info(f"  Trial {trial.number:>3}: "
-                     f"AUPRC={trial.value:.4f if trial.value else 'pruned'}  "
-                     f"(best so far: {best_so_far:.4f})")
+                    f"AUPRC={val_str}  "
+                    f"(best so far: {best_so_far:.4f})")
 
     study.optimize(
         lambda trial: objective(trial, X_synth_df, y_synth, task_type, devices),
@@ -730,9 +736,11 @@ def main():
         random_strength      = best["random_strength"],
         border_count         = best["border_count"],
         class_weights        = [1.0, best["class_weight_pos"]],
-        eval_metric          = "AUC",
+        eval_metric = "Logloss",
+        custom_metric = ["AUC"],
         random_seed          = RANDOM_SEED,
-        verbose              = 100,
+        verbose              = False,
+        allow_writing_files  = False,
         early_stopping_rounds= 50,
         task_type            = task_type,
     )

@@ -1,0 +1,1963 @@
+2026-04-20 11:38:59,315 | INFO | ======================================================================
+2026-04-20 11:38:59,315 | INFO | SYNTHETIC DATA GENERATION v4 -- CLASS-SPLIT CTGAN
+2026-04-20 11:38:59,315 | INFO | Started: 2026-04-20 11:38:59
+2026-04-20 11:38:59,315 | INFO | ======================================================================
+2026-04-20 11:38:59,315 | INFO | 
+============================================================
+2026-04-20 11:38:59,315 | INFO | STEP 1 -- Loading real training data
+2026-04-20 11:38:59,315 | INFO | ============================================================
+2026-04-20 11:38:59,354 | INFO |   Shape       : (2530, 226)
+2026-04-20 11:38:59,354 | INFO |   Total rows  : 2,530
+2026-04-20 11:38:59,354 | INFO |   Pos (sep=1) : 691 (27.3%)
+2026-04-20 11:38:59,354 | INFO |   Neg (sep=0) : 1,839 (72.7%)
+2026-04-20 11:38:59,372 | INFO |   Discrete feature cols: 40
+2026-04-20 11:38:59,372 | INFO |   Continuous feature cols: 185
+2026-04-20 11:38:59,381 | INFO | 
+============================================================
+2026-04-20 11:38:59,381 | INFO | STEP 2 -- Training TWO CTGAN models (class-split)
+2026-04-20 11:38:59,381 | INFO | ============================================================
+2026-04-20 11:39:06,857 | INFO |   Using SDV CTGANSynthesizer.
+2026-04-20 11:39:06,857 | INFO | 
+[Model A — Positive class, n=691]
+2026-04-20 11:39:06,857 | INFO |   epochs=300, batch_size=200
+2026-04-20 11:39:06,857 | INFO |   NOTE: Small dataset (691 rows). batch_size_pos=200 prevents 
+2026-04-20 11:39:06,857 | INFO |   CTGAN training on batches larger than the dataset.
+2026-04-20 11:39:06,857 | INFO |   [POS] Fitting on 691 rows, 300 epochs, batch_size=200
+2026-04-20 11:39:06,940 | INFO | Detected metadata:
+2026-04-20 11:39:06,941 | INFO | {
+    "columns": {
+        "age_years": {
+            "sdtype": "numerical"
+        },
+        "gender": {
+            "sdtype": "categorical"
+        },
+        "lactate_max": {
+            "sdtype": "numerical"
+        },
+        "lactate_min": {
+            "sdtype": "numerical"
+        },
+        "lactate_mean": {
+            "sdtype": "numerical"
+        },
+        "lactate_first": {
+            "sdtype": "numerical"
+        },
+        "platelets_max": {
+            "sdtype": "numerical"
+        },
+        "platelets_min": {
+            "sdtype": "numerical"
+        },
+        "platelets_mean": {
+            "sdtype": "numerical"
+        },
+        "platelets_first": {
+            "sdtype": "numerical"
+        },
+        "inr_max": {
+            "sdtype": "numerical"
+        },
+        "inr_min": {
+            "sdtype": "numerical"
+        },
+        "inr_mean": {
+            "sdtype": "numerical"
+        },
+        "inr_first": {
+            "sdtype": "numerical"
+        },
+        "ddimer_max": {
+            "sdtype": "numerical"
+        },
+        "ddimer_min": {
+            "sdtype": "numerical"
+        },
+        "ddimer_mean": {
+            "sdtype": "numerical"
+        },
+        "ddimer_first": {
+            "sdtype": "numerical"
+        },
+        "fibrinogen_max": {
+            "sdtype": "numerical"
+        },
+        "fibrinogen_min": {
+            "sdtype": "numerical"
+        },
+        "fibrinogen_mean": {
+            "sdtype": "numerical"
+        },
+        "fibrinogen_first": {
+            "sdtype": "numerical"
+        },
+        "creatinine_max": {
+            "sdtype": "numerical"
+        },
+        "creatinine_min": {
+            "sdtype": "numerical"
+        },
+        "creatinine_mean": {
+            "sdtype": "numerical"
+        },
+        "creatinine_first": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_max": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_min": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_mean": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_first": {
+            "sdtype": "numerical"
+        },
+        "alt_max": {
+            "sdtype": "numerical"
+        },
+        "alt_min": {
+            "sdtype": "numerical"
+        },
+        "alt_mean": {
+            "sdtype": "numerical"
+        },
+        "alt_first": {
+            "sdtype": "numerical"
+        },
+        "ast_max": {
+            "sdtype": "numerical"
+        },
+        "ast_min": {
+            "sdtype": "numerical"
+        },
+        "ast_mean": {
+            "sdtype": "numerical"
+        },
+        "ast_first": {
+            "sdtype": "numerical"
+        },
+        "glucose_max": {
+            "sdtype": "numerical"
+        },
+        "glucose_min": {
+            "sdtype": "numerical"
+        },
+        "glucose_mean": {
+            "sdtype": "numerical"
+        },
+        "glucose_first": {
+            "sdtype": "numerical"
+        },
+        "anc_max": {
+            "sdtype": "numerical"
+        },
+        "anc_min": {
+            "sdtype": "numerical"
+        },
+        "anc_mean": {
+            "sdtype": "numerical"
+        },
+        "anc_first": {
+            "sdtype": "numerical"
+        },
+        "alc_max": {
+            "sdtype": "numerical"
+        },
+        "alc_min": {
+            "sdtype": "numerical"
+        },
+        "alc_mean": {
+            "sdtype": "numerical"
+        },
+        "alc_first": {
+            "sdtype": "numerical"
+        },
+        "wbc_max": {
+            "sdtype": "numerical"
+        },
+        "wbc_min": {
+            "sdtype": "numerical"
+        },
+        "wbc_mean": {
+            "sdtype": "numerical"
+        },
+        "wbc_first": {
+            "sdtype": "numerical"
+        },
+        "ph_max": {
+            "sdtype": "numerical"
+        },
+        "ph_min": {
+            "sdtype": "numerical"
+        },
+        "ph_mean": {
+            "sdtype": "numerical"
+        },
+        "ph_first": {
+            "sdtype": "numerical"
+        },
+        "pco2_max": {
+            "sdtype": "numerical"
+        },
+        "pco2_min": {
+            "sdtype": "numerical"
+        },
+        "pco2_mean": {
+            "sdtype": "numerical"
+        },
+        "pco2_first": {
+            "sdtype": "numerical"
+        },
+        "pao2_max": {
+            "sdtype": "numerical"
+        },
+        "pao2_min": {
+            "sdtype": "numerical"
+        },
+        "pao2_mean": {
+            "sdtype": "numerical"
+        },
+        "pao2_first": {
+            "sdtype": "numerical"
+        },
+        "base_excess_max": {
+            "sdtype": "numerical"
+        },
+        "base_excess_min": {
+            "sdtype": "numerical"
+        },
+        "base_excess_mean": {
+            "sdtype": "numerical"
+        },
+        "base_excess_first": {
+            "sdtype": "numerical"
+        },
+        "bicarbonate_max": {
+            "sdtype": "numerical"
+        },
+        "bicarbonate_min": {
+            "sdtype": "numerical"
+        },
+        "bicarbonate_mean": {
+            "sdtype": "numerical"
+        },
+        "bicarbonate_first": {
+            "sdtype": "numerical"
+        },
+        "anion_gap_max": {
+            "sdtype": "numerical"
+        },
+        "anion_gap_min": {
+            "sdtype": "numerical"
+        },
+        "anion_gap_mean": {
+            "sdtype": "numerical"
+        },
+        "anion_gap_first": {
+            "sdtype": "numerical"
+        },
+        "spo2_lab_max": {
+            "sdtype": "numerical"
+        },
+        "spo2_lab_min": {
+            "sdtype": "numerical"
+        },
+        "spo2_lab_mean": {
+            "sdtype": "numerical"
+        },
+        "spo2_lab_first": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_max": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_min": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_mean": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_first": {
+            "sdtype": "numerical"
+        },
+        "hematocrit_max": {
+            "sdtype": "numerical"
+        },
+        "hematocrit_min": {
+            "sdtype": "numerical"
+        },
+        "hematocrit_mean": {
+            "sdtype": "numerical"
+        },
+        "hematocrit_first": {
+            "sdtype": "numerical"
+        },
+        "pt_max": {
+            "sdtype": "numerical"
+        },
+        "pt_min": {
+            "sdtype": "numerical"
+        },
+        "pt_mean": {
+            "sdtype": "numerical"
+        },
+        "pt_first": {
+            "sdtype": "numerical"
+        },
+        "ptt_max": {
+            "sdtype": "numerical"
+        },
+        "ptt_min": {
+            "sdtype": "numerical"
+        },
+        "ptt_mean": {
+            "sdtype": "numerical"
+        },
+        "ptt_first": {
+            "sdtype": "numerical"
+        },
+        "sodium_max": {
+            "sdtype": "numerical"
+        },
+        "sodium_min": {
+            "sdtype": "numerical"
+        },
+        "sodium_mean": {
+            "sdtype": "numerical"
+        },
+        "sodium_first": {
+            "sdtype": "numerical"
+        },
+        "potassium_max": {
+            "sdtype": "numerical"
+        },
+        "potassium_min": {
+            "sdtype": "numerical"
+        },
+        "potassium_mean": {
+            "sdtype": "numerical"
+        },
+        "potassium_first": {
+            "sdtype": "numerical"
+        },
+        "calcium_max": {
+            "sdtype": "numerical"
+        },
+        "calcium_min": {
+            "sdtype": "numerical"
+        },
+        "calcium_mean": {
+            "sdtype": "numerical"
+        },
+        "calcium_first": {
+            "sdtype": "numerical"
+        },
+        "albumin_max": {
+            "sdtype": "numerical"
+        },
+        "albumin_min": {
+            "sdtype": "numerical"
+        },
+        "albumin_mean": {
+            "sdtype": "numerical"
+        },
+        "albumin_first": {
+            "sdtype": "numerical"
+        },
+        "crp_max": {
+            "sdtype": "numerical"
+        },
+        "crp_min": {
+            "sdtype": "numerical"
+        },
+        "crp_mean": {
+            "sdtype": "numerical"
+        },
+        "crp_first": {
+            "sdtype": "numerical"
+        },
+        "ldh_max": {
+            "sdtype": "numerical"
+        },
+        "ldh_min": {
+            "sdtype": "numerical"
+        },
+        "ldh_mean": {
+            "sdtype": "numerical"
+        },
+        "ldh_first": {
+            "sdtype": "numerical"
+        },
+        "urea_max": {
+            "sdtype": "numerical"
+        },
+        "urea_min": {
+            "sdtype": "numerical"
+        },
+        "urea_mean": {
+            "sdtype": "numerical"
+        },
+        "urea_first": {
+            "sdtype": "numerical"
+        },
+        "uric_acid_max": {
+            "sdtype": "numerical"
+        },
+        "uric_acid_min": {
+            "sdtype": "numerical"
+        },
+        "uric_acid_mean": {
+            "sdtype": "numerical"
+        },
+        "uric_acid_first": {
+            "sdtype": "numerical"
+        },
+        "ck_max": {
+            "sdtype": "numerical"
+        },
+        "ck_min": {
+            "sdtype": "numerical"
+        },
+        "ck_mean": {
+            "sdtype": "numerical"
+        },
+        "ck_first": {
+            "sdtype": "numerical"
+        },
+        "spo2_max": {
+            "sdtype": "categorical"
+        },
+        "spo2_min": {
+            "sdtype": "categorical"
+        },
+        "spo2_mean": {
+            "sdtype": "numerical"
+        },
+        "spo2_first": {
+            "sdtype": "categorical"
+        },
+        "systolic_bp_max": {
+            "sdtype": "numerical"
+        },
+        "systolic_bp_min": {
+            "sdtype": "numerical"
+        },
+        "systolic_bp_mean": {
+            "sdtype": "numerical"
+        },
+        "systolic_bp_first": {
+            "sdtype": "numerical"
+        },
+        "diastolic_bp_max": {
+            "sdtype": "numerical"
+        },
+        "diastolic_bp_min": {
+            "sdtype": "numerical"
+        },
+        "diastolic_bp_mean": {
+            "sdtype": "numerical"
+        },
+        "diastolic_bp_first": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_max": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_min": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_mean": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_first": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_max": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_min": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_mean": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_first": {
+            "sdtype": "numerical"
+        },
+        "temperature_max": {
+            "sdtype": "numerical"
+        },
+        "temperature_min": {
+            "sdtype": "numerical"
+        },
+        "temperature_mean": {
+            "sdtype": "numerical"
+        },
+        "temperature_first": {
+            "sdtype": "numerical"
+        },
+        "map_max": {
+            "sdtype": "numerical"
+        },
+        "map_min": {
+            "sdtype": "numerical"
+        },
+        "map_mean": {
+            "sdtype": "numerical"
+        },
+        "map_first": {
+            "sdtype": "numerical"
+        },
+        "shock_index": {
+            "sdtype": "numerical"
+        },
+        "lactate_trend": {
+            "sdtype": "numerical"
+        },
+        "platelets_trend": {
+            "sdtype": "numerical"
+        },
+        "creatinine_trend": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_trend": {
+            "sdtype": "numerical"
+        },
+        "inr_trend": {
+            "sdtype": "numerical"
+        },
+        "wbc_trend": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_trend": {
+            "sdtype": "numerical"
+        },
+        "glucose_trend": {
+            "sdtype": "numerical"
+        },
+        "ph_trend": {
+            "sdtype": "numerical"
+        },
+        "base_excess_trend": {
+            "sdtype": "numerical"
+        },
+        "sodium_trend": {
+            "sdtype": "numerical"
+        },
+        "potassium_trend": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_trend": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_trend": {
+            "sdtype": "numerical"
+        },
+        "temperature_trend": {
+            "sdtype": "numerical"
+        },
+        "spo2_trend": {
+            "sdtype": "numerical"
+        },
+        "hr_abnormal_for_age": {
+            "sdtype": "categorical"
+        },
+        "rr_abnormal_for_age": {
+            "sdtype": "categorical"
+        },
+        "sbp_abnormal_for_age": {
+            "sdtype": "categorical"
+        },
+        "urine_output_total_ml": {
+            "sdtype": "categorical"
+        },
+        "urine_output_per_hour": {
+            "sdtype": "numerical"
+        },
+        "fluid_input_total_ml": {
+            "sdtype": "numerical"
+        },
+        "fluid_balance_ml": {
+            "sdtype": "numerical"
+        },
+        "n_antibiotics_24h": {
+            "sdtype": "numerical"
+        },
+        "n_cultures_24h": {
+            "sdtype": "numerical"
+        },
+        "n_positive_cultures": {
+            "sdtype": "numerical"
+        },
+        "symptom_fever": {
+            "sdtype": "categorical"
+        },
+        "symptom_cough": {
+            "sdtype": "categorical"
+        },
+        "symptom_rale": {
+            "sdtype": "categorical"
+        },
+        "symptom_twitching": {
+            "sdtype": "categorical"
+        },
+        "symptom_cyanosis": {
+            "sdtype": "categorical"
+        },
+        "symptom_anhelation": {
+            "sdtype": "categorical"
+        },
+        "symptom_listless": {
+            "sdtype": "categorical"
+        },
+        "symptom_cool_extremities": {
+            "sdtype": "categorical"
+        },
+        "symptom_warm_extremities": {
+            "sdtype": "categorical"
+        },
+        "symptom_edema": {
+            "sdtype": "categorical"
+        },
+        "symptom_hemorrhage": {
+            "sdtype": "categorical"
+        },
+        "symptom_dysphoria": {
+            "sdtype": "categorical"
+        },
+        "symptom_diarrhea": {
+            "sdtype": "categorical"
+        },
+        "symptom_skin_jaundice": {
+            "sdtype": "categorical"
+        },
+        "symptom_arrhythmia": {
+            "sdtype": "categorical"
+        },
+        "symptom_vomiting": {
+            "sdtype": "categorical"
+        },
+        "symptom_swelling": {
+            "sdtype": "categorical"
+        },
+        "symptom_tenderness": {
+            "sdtype": "categorical"
+        },
+        "symptom_phlegm_sound": {
+            "sdtype": "categorical"
+        },
+        "symptom_three_depressions_sign": {
+            "sdtype": "categorical"
+        },
+        "symptom_abdominal_distension": {
+            "sdtype": "categorical"
+        },
+        "symptom_erythra": {
+            "sdtype": "categorical"
+        },
+        "symptom_moist_rale": {
+            "sdtype": "categorical"
+        },
+        "symptom_dry_and_moist_rales": {
+            "sdtype": "categorical"
+        },
+        "symptom_pharyngeal_red": {
+            "sdtype": "categorical"
+        },
+        "symptom_headache": {
+            "sdtype": "categorical"
+        },
+        "symptom_chest_tightness": {
+            "sdtype": "categorical"
+        },
+        "symptom_rebound_tenderness": {
+            "sdtype": "categorical"
+        },
+        "symptom_abdominal_tenderness": {
+            "sdtype": "categorical"
+        },
+        "had_surgery_flag": {
+            "sdtype": "categorical"
+        },
+        "had_cardiac_surgery_flag": {
+            "sdtype": "categorical"
+        },
+        "care_unit_CICU": {
+            "sdtype": "categorical"
+        },
+        "care_unit_General ICU": {
+            "sdtype": "categorical"
+        },
+        "care_unit_NICU": {
+            "sdtype": "categorical"
+        },
+        "care_unit_PICU": {
+            "sdtype": "categorical"
+        },
+        "care_unit_SICU": {
+            "sdtype": "categorical"
+        }
+    },
+    "METADATA_SPEC_VERSION": "SINGLE_TABLE_V1"
+}
+2026-04-20 11:39:06,949 | INFO | {'EVENT': 'Instance', 'TIMESTAMP': datetime.datetime(2026, 4, 20, 11, 39, 6, 949357), 'SYNTHESIZER CLASS NAME': 'CTGANSynthesizer', 'SYNTHESIZER ID': 'CTGANSynthesizer_1.36.0_b5a10a30feb84f36830cebb58c5148c9'}
+2026-04-20 11:39:06,950 | INFO | {'EVENT': 'Fit', 'TIMESTAMP': datetime.datetime(2026, 4, 20, 11, 39, 6, 950356), 'SYNTHESIZER CLASS NAME': 'CTGANSynthesizer', 'SYNTHESIZER ID': 'CTGANSynthesizer_1.36.0_b5a10a30feb84f36830cebb58c5148c9', 'TOTAL NUMBER OF TABLES': 1, 'TOTAL NUMBER OF ROWS': 691, 'TOTAL NUMBER OF COLUMNS': 225}
+2026-04-20 11:39:06,984 | INFO | Fitting table  metadata
+2026-04-20 11:39:06,984 | INFO | Fitting formatters for table 
+2026-04-20 11:39:06,998 | INFO | No rounding scheme detected for column 'creatinine_max'. Data will not be rounded.
+2026-04-20 11:39:06,998 | INFO | No rounding scheme detected for column 'creatinine_min'. Data will not be rounded.
+2026-04-20 11:39:07,006 | INFO | No rounding scheme detected for column 'creatinine_first'. Data will not be rounded.
+2026-04-20 11:39:07,007 | INFO | No rounding scheme detected for column 'bilirubin_max'. Data will not be rounded.
+2026-04-20 11:39:07,008 | INFO | No rounding scheme detected for column 'bilirubin_min'. Data will not be rounded.
+2026-04-20 11:39:07,008 | INFO | No rounding scheme detected for column 'bilirubin_first'. Data will not be rounded.
+2026-04-20 11:39:07,011 | INFO | No rounding scheme detected for column 'glucose_max'. Data will not be rounded.
+2026-04-20 11:39:07,011 | INFO | No rounding scheme detected for column 'glucose_min'. Data will not be rounded.
+2026-04-20 11:39:07,012 | INFO | No rounding scheme detected for column 'glucose_first'. Data will not be rounded.
+2026-04-20 11:39:07,016 | INFO | No rounding scheme detected for column 'ph_max'. Data will not be rounded.
+2026-04-20 11:39:07,017 | INFO | No rounding scheme detected for column 'ph_min'. Data will not be rounded.
+2026-04-20 11:39:07,018 | INFO | No rounding scheme detected for column 'ph_first'. Data will not be rounded.
+2026-04-20 11:39:07,023 | INFO | No rounding scheme detected for column 'hemoglobin_max'. Data will not be rounded.
+2026-04-20 11:39:07,023 | INFO | No rounding scheme detected for column 'hemoglobin_min'. Data will not be rounded.
+2026-04-20 11:39:07,026 | INFO | No rounding scheme detected for column 'hemoglobin_first'. Data will not be rounded.
+2026-04-20 11:39:07,050 | INFO | Setting the configuration for the ``HyperTransformer`` for table 
+2026-04-20 11:39:07,071 | INFO | Fitting HyperTransformer for table 
+2026-04-20 11:39:07,117 | INFO | No rounding scheme detected for column 'creatinine_max'. Data will not be rounded.
+2026-04-20 11:39:07,117 | INFO | No rounding scheme detected for column 'creatinine_min'. Data will not be rounded.
+2026-04-20 11:39:07,134 | INFO | No rounding scheme detected for column 'creatinine_first'. Data will not be rounded.
+2026-04-20 11:39:07,137 | INFO | No rounding scheme detected for column 'bilirubin_max'. Data will not be rounded.
+2026-04-20 11:39:07,137 | INFO | No rounding scheme detected for column 'bilirubin_min'. Data will not be rounded.
+2026-04-20 11:39:07,137 | INFO | No rounding scheme detected for column 'bilirubin_first'. Data will not be rounded.
+2026-04-20 11:39:07,149 | INFO | No rounding scheme detected for column 'glucose_max'. Data will not be rounded.
+2026-04-20 11:39:07,164 | INFO | No rounding scheme detected for column 'glucose_min'. Data will not be rounded.
+2026-04-20 11:39:07,169 | INFO | No rounding scheme detected for column 'glucose_first'. Data will not be rounded.
+2026-04-20 11:39:07,197 | INFO | No rounding scheme detected for column 'ph_max'. Data will not be rounded.
+2026-04-20 11:39:07,200 | INFO | No rounding scheme detected for column 'ph_min'. Data will not be rounded.
+2026-04-20 11:39:07,204 | INFO | No rounding scheme detected for column 'ph_first'. Data will not be rounded.
+2026-04-20 11:39:07,249 | INFO | No rounding scheme detected for column 'hemoglobin_max'. Data will not be rounded.
+2026-04-20 11:39:07,249 | INFO | No rounding scheme detected for column 'hemoglobin_min'. Data will not be rounded.
+2026-04-20 11:39:07,264 | INFO | No rounding scheme detected for column 'hemoglobin_first'. Data will not be rounded.
+2026-04-20 11:39:07,690 | INFO | {'EVENT': 'Fit processed data', 'TIMESTAMP': datetime.datetime(2026, 4, 20, 11, 39, 7, 690575), 'SYNTHESIZER CLASS NAME': 'CTGANSynthesizer', 'SYNTHESIZER ID': 'CTGANSynthesizer_1.36.0_b5a10a30feb84f36830cebb58c5148c9', 'TOTAL NUMBER OF TABLES': 1, 'TOTAL NUMBER OF ROWS': 691, 'TOTAL NUMBER OF COLUMNS': 225}
+2026-04-20 11:39:07,690 | INFO | Guidance: There are no missing values in column age_years. Extra column not created.
+2026-04-20 11:39:09,305 | INFO | Guidance: There are no missing values in column lactate_max. Extra column not created.
+2026-04-20 11:39:09,362 | INFO | Guidance: There are no missing values in column lactate_min. Extra column not created.
+2026-04-20 11:39:09,395 | INFO | Guidance: There are no missing values in column lactate_mean. Extra column not created.
+2026-04-20 11:39:09,467 | INFO | Guidance: There are no missing values in column lactate_first. Extra column not created.
+2026-04-20 11:39:09,532 | INFO | Guidance: There are no missing values in column platelets_max. Extra column not created.
+2026-04-20 11:39:09,584 | INFO | Guidance: There are no missing values in column platelets_min. Extra column not created.
+2026-04-20 11:39:09,636 | INFO | Guidance: There are no missing values in column platelets_mean. Extra column not created.
+2026-04-20 11:39:09,686 | INFO | Guidance: There are no missing values in column platelets_first. Extra column not created.
+2026-04-20 11:39:09,739 | INFO | Guidance: There are no missing values in column inr_max. Extra column not created.
+2026-04-20 11:39:09,773 | INFO | Guidance: There are no missing values in column inr_min. Extra column not created.
+2026-04-20 11:39:09,813 | INFO | Guidance: There are no missing values in column inr_mean. Extra column not created.
+2026-04-20 11:39:09,860 | INFO | Guidance: There are no missing values in column inr_first. Extra column not created.
+2026-04-20 11:39:09,910 | INFO | Guidance: There are no missing values in column ddimer_max. Extra column not created.
+2026-04-20 11:39:09,977 | INFO | Guidance: There are no missing values in column ddimer_min. Extra column not created.
+2026-04-20 11:39:10,040 | INFO | Guidance: There are no missing values in column ddimer_mean. Extra column not created.
+2026-04-20 11:39:10,088 | INFO | Guidance: There are no missing values in column ddimer_first. Extra column not created.
+2026-04-20 11:39:10,131 | INFO | Guidance: There are no missing values in column fibrinogen_max. Extra column not created.
+2026-04-20 11:39:10,181 | INFO | Guidance: There are no missing values in column fibrinogen_min. Extra column not created.
+2026-04-20 11:39:10,250 | INFO | Guidance: There are no missing values in column fibrinogen_mean. Extra column not created.
+2026-04-20 11:39:10,302 | INFO | Guidance: There are no missing values in column fibrinogen_first. Extra column not created.
+2026-04-20 11:39:10,347 | INFO | Guidance: There are no missing values in column creatinine_max. Extra column not created.
+2026-04-20 11:39:10,386 | INFO | Guidance: There are no missing values in column creatinine_min. Extra column not created.
+2026-04-20 11:39:10,439 | INFO | Guidance: There are no missing values in column creatinine_mean. Extra column not created.
+2026-04-20 11:39:10,465 | INFO | Guidance: There are no missing values in column creatinine_first. Extra column not created.
+2026-04-20 11:39:10,496 | INFO | Guidance: There are no missing values in column bilirubin_max. Extra column not created.
+2026-04-20 11:39:10,564 | INFO | Guidance: There are no missing values in column bilirubin_min. Extra column not created.
+2026-04-20 11:39:10,601 | INFO | Guidance: There are no missing values in column bilirubin_mean. Extra column not created.
+2026-04-20 11:39:10,655 | INFO | Guidance: There are no missing values in column bilirubin_first. Extra column not created.
+2026-04-20 11:39:10,725 | INFO | Guidance: There are no missing values in column alt_max. Extra column not created.
+2026-04-20 11:39:10,775 | INFO | Guidance: There are no missing values in column alt_min. Extra column not created.
+2026-04-20 11:39:10,814 | INFO | Guidance: There are no missing values in column alt_mean. Extra column not created.
+2026-04-20 11:39:10,858 | INFO | Guidance: There are no missing values in column alt_first. Extra column not created.
+2026-04-20 11:39:10,888 | INFO | Guidance: There are no missing values in column ast_max. Extra column not created.
+2026-04-20 11:39:10,910 | INFO | Guidance: There are no missing values in column ast_min. Extra column not created.
+2026-04-20 11:39:10,932 | INFO | Guidance: There are no missing values in column ast_mean. Extra column not created.
+2026-04-20 11:39:10,957 | INFO | Guidance: There are no missing values in column ast_first. Extra column not created.
+2026-04-20 11:39:10,977 | INFO | Guidance: There are no missing values in column glucose_max. Extra column not created.
+2026-04-20 11:39:11,029 | INFO | Guidance: There are no missing values in column glucose_min. Extra column not created.
+2026-04-20 11:39:11,081 | INFO | Guidance: There are no missing values in column glucose_mean. Extra column not created.
+2026-04-20 11:39:11,135 | INFO | Guidance: There are no missing values in column glucose_first. Extra column not created.
+2026-04-20 11:39:11,186 | INFO | Guidance: There are no missing values in column anc_max. Extra column not created.
+2026-04-20 11:39:11,237 | INFO | Guidance: There are no missing values in column anc_min. Extra column not created.
+2026-04-20 11:39:11,287 | INFO | Guidance: There are no missing values in column anc_mean. Extra column not created.
+2026-04-20 11:39:11,338 | INFO | Guidance: There are no missing values in column anc_first. Extra column not created.
+2026-04-20 11:39:11,404 | INFO | Guidance: There are no missing values in column alc_max. Extra column not created.
+2026-04-20 11:39:11,456 | INFO | Guidance: There are no missing values in column alc_min. Extra column not created.
+2026-04-20 11:39:11,525 | INFO | Guidance: There are no missing values in column alc_mean. Extra column not created.
+2026-04-20 11:39:11,587 | INFO | Guidance: There are no missing values in column alc_first. Extra column not created.
+2026-04-20 11:39:11,640 | INFO | Guidance: There are no missing values in column wbc_max. Extra column not created.
+2026-04-20 11:39:11,710 | INFO | Guidance: There are no missing values in column wbc_min. Extra column not created.
+2026-04-20 11:39:11,762 | INFO | Guidance: There are no missing values in column wbc_mean. Extra column not created.
+2026-04-20 11:39:11,815 | INFO | Guidance: There are no missing values in column wbc_first. Extra column not created.
+2026-04-20 11:39:11,878 | INFO | Guidance: There are no missing values in column ph_max. Extra column not created.
+2026-04-20 11:39:11,939 | INFO | Guidance: There are no missing values in column ph_min. Extra column not created.
+2026-04-20 11:39:11,991 | INFO | Guidance: There are no missing values in column ph_mean. Extra column not created.
+2026-04-20 11:39:12,042 | INFO | Guidance: There are no missing values in column ph_first. Extra column not created.
+2026-04-20 11:39:12,098 | INFO | Guidance: There are no missing values in column pco2_max. Extra column not created.
+2026-04-20 11:39:12,150 | INFO | Guidance: There are no missing values in column pco2_min. Extra column not created.
+2026-04-20 11:39:12,200 | INFO | Guidance: There are no missing values in column pco2_mean. Extra column not created.
+2026-04-20 11:39:12,250 | INFO | Guidance: There are no missing values in column pco2_first. Extra column not created.
+2026-04-20 11:39:12,300 | INFO | Guidance: There are no missing values in column pao2_max. Extra column not created.
+2026-04-20 11:39:12,357 | INFO | Guidance: There are no missing values in column pao2_min. Extra column not created.
+2026-04-20 11:39:12,408 | INFO | Guidance: There are no missing values in column pao2_mean. Extra column not created.
+2026-04-20 11:39:12,461 | INFO | Guidance: There are no missing values in column pao2_first. Extra column not created.
+2026-04-20 11:39:12,512 | INFO | Guidance: There are no missing values in column base_excess_max. Extra column not created.
+2026-04-20 11:39:12,565 | INFO | Guidance: There are no missing values in column base_excess_min. Extra column not created.
+2026-04-20 11:39:12,615 | INFO | Guidance: There are no missing values in column base_excess_mean. Extra column not created.
+2026-04-20 11:39:12,668 | INFO | Guidance: There are no missing values in column base_excess_first. Extra column not created.
+2026-04-20 11:39:12,720 | INFO | Guidance: There are no missing values in column bicarbonate_max. Extra column not created.
+2026-04-20 11:39:12,789 | INFO | Guidance: There are no missing values in column bicarbonate_min. Extra column not created.
+2026-04-20 11:39:12,857 | INFO | Guidance: There are no missing values in column bicarbonate_mean. Extra column not created.
+2026-04-20 11:39:12,909 | INFO | Guidance: There are no missing values in column bicarbonate_first. Extra column not created.
+2026-04-20 11:39:12,960 | INFO | Guidance: There are no missing values in column anion_gap_max. Extra column not created.
+2026-04-20 11:39:13,010 | INFO | Guidance: There are no missing values in column anion_gap_min. Extra column not created.
+2026-04-20 11:39:13,062 | INFO | Guidance: There are no missing values in column anion_gap_mean. Extra column not created.
+2026-04-20 11:39:13,116 | INFO | Guidance: There are no missing values in column anion_gap_first. Extra column not created.
+2026-04-20 11:39:13,185 | INFO | Guidance: There are no missing values in column spo2_lab_max. Extra column not created.
+2026-04-20 11:39:13,223 | INFO | Guidance: There are no missing values in column spo2_lab_min. Extra column not created.
+2026-04-20 11:39:13,294 | INFO | Guidance: There are no missing values in column spo2_lab_mean. Extra column not created.
+2026-04-20 11:39:13,332 | INFO | Guidance: There are no missing values in column spo2_lab_first. Extra column not created.
+2026-04-20 11:39:13,374 | INFO | Guidance: There are no missing values in column hemoglobin_max. Extra column not created.
+2026-04-20 11:39:13,427 | INFO | Guidance: There are no missing values in column hemoglobin_min. Extra column not created.
+2026-04-20 11:39:13,480 | INFO | Guidance: There are no missing values in column hemoglobin_mean. Extra column not created.
+2026-04-20 11:39:13,535 | INFO | Guidance: There are no missing values in column hemoglobin_first. Extra column not created.
+2026-04-20 11:39:13,606 | INFO | Guidance: There are no missing values in column hematocrit_max. Extra column not created.
+2026-04-20 11:39:13,675 | INFO | Guidance: There are no missing values in column hematocrit_min. Extra column not created.
+2026-04-20 11:39:13,728 | INFO | Guidance: There are no missing values in column hematocrit_mean. Extra column not created.
+2026-04-20 11:39:13,778 | INFO | Guidance: There are no missing values in column hematocrit_first. Extra column not created.
+2026-04-20 11:39:13,829 | INFO | Guidance: There are no missing values in column pt_max. Extra column not created.
+2026-04-20 11:39:13,883 | INFO | Guidance: There are no missing values in column pt_min. Extra column not created.
+2026-04-20 11:39:13,936 | INFO | Guidance: There are no missing values in column pt_mean. Extra column not created.
+2026-04-20 11:39:13,981 | INFO | Guidance: There are no missing values in column pt_first. Extra column not created.
+2026-04-20 11:39:14,034 | INFO | Guidance: There are no missing values in column ptt_max. Extra column not created.
+2026-04-20 11:39:14,087 | INFO | Guidance: There are no missing values in column ptt_min. Extra column not created.
+2026-04-20 11:39:14,139 | INFO | Guidance: There are no missing values in column ptt_mean. Extra column not created.
+2026-04-20 11:39:14,210 | INFO | Guidance: There are no missing values in column ptt_first. Extra column not created.
+2026-04-20 11:39:14,264 | INFO | Guidance: There are no missing values in column sodium_max. Extra column not created.
+2026-04-20 11:39:14,315 | INFO | Guidance: There are no missing values in column sodium_min. Extra column not created.
+2026-04-20 11:39:14,383 | INFO | Guidance: There are no missing values in column sodium_mean. Extra column not created.
+2026-04-20 11:39:14,435 | INFO | Guidance: There are no missing values in column sodium_first. Extra column not created.
+2026-04-20 11:39:14,486 | INFO | Guidance: There are no missing values in column potassium_max. Extra column not created.
+2026-04-20 11:39:14,537 | INFO | Guidance: There are no missing values in column potassium_min. Extra column not created.
+2026-04-20 11:39:14,588 | INFO | Guidance: There are no missing values in column potassium_mean. Extra column not created.
+2026-04-20 11:39:14,642 | INFO | Guidance: There are no missing values in column potassium_first. Extra column not created.
+2026-04-20 11:39:14,704 | INFO | Guidance: There are no missing values in column calcium_max. Extra column not created.
+2026-04-20 11:39:14,766 | INFO | Guidance: There are no missing values in column calcium_min. Extra column not created.
+2026-04-20 11:39:14,835 | INFO | Guidance: There are no missing values in column calcium_mean. Extra column not created.
+2026-04-20 11:39:14,907 | INFO | Guidance: There are no missing values in column calcium_first. Extra column not created.
+2026-04-20 11:39:14,966 | INFO | Guidance: There are no missing values in column albumin_max. Extra column not created.
+2026-04-20 11:39:15,034 | INFO | Guidance: There are no missing values in column albumin_min. Extra column not created.
+2026-04-20 11:39:15,105 | INFO | Guidance: There are no missing values in column albumin_mean. Extra column not created.
+2026-04-20 11:39:15,157 | INFO | Guidance: There are no missing values in column albumin_first. Extra column not created.
+2026-04-20 11:39:15,225 | INFO | Guidance: There are no missing values in column crp_max. Extra column not created.
+2026-04-20 11:39:15,298 | INFO | Guidance: There are no missing values in column crp_min. Extra column not created.
+2026-04-20 11:39:15,350 | INFO | Guidance: There are no missing values in column crp_mean. Extra column not created.
+2026-04-20 11:39:15,405 | INFO | Guidance: There are no missing values in column crp_first. Extra column not created.
+2026-04-20 11:39:15,457 | INFO | Guidance: There are no missing values in column ldh_max. Extra column not created.
+2026-04-20 11:39:15,510 | INFO | Guidance: There are no missing values in column ldh_min. Extra column not created.
+2026-04-20 11:39:15,564 | INFO | Guidance: There are no missing values in column ldh_mean. Extra column not created.
+2026-04-20 11:39:15,623 | INFO | Guidance: There are no missing values in column ldh_first. Extra column not created.
+2026-04-20 11:39:15,669 | INFO | Guidance: There are no missing values in column urea_max. Extra column not created.
+2026-04-20 11:39:15,723 | INFO | Guidance: There are no missing values in column urea_min. Extra column not created.
+2026-04-20 11:39:15,793 | INFO | Guidance: There are no missing values in column urea_mean. Extra column not created.
+2026-04-20 11:39:15,866 | INFO | Guidance: There are no missing values in column urea_first. Extra column not created.
+2026-04-20 11:39:15,941 | INFO | Guidance: There are no missing values in column uric_acid_max. Extra column not created.
+2026-04-20 11:39:15,982 | INFO | Guidance: There are no missing values in column uric_acid_min. Extra column not created.
+2026-04-20 11:39:16,053 | INFO | Guidance: There are no missing values in column uric_acid_mean. Extra column not created.
+2026-04-20 11:39:16,118 | INFO | Guidance: There are no missing values in column uric_acid_first. Extra column not created.
+2026-04-20 11:39:16,175 | INFO | Guidance: There are no missing values in column ck_max. Extra column not created.
+2026-04-20 11:39:16,207 | INFO | Guidance: There are no missing values in column ck_min. Extra column not created.
+2026-04-20 11:39:16,241 | INFO | Guidance: There are no missing values in column ck_mean. Extra column not created.
+2026-04-20 11:39:16,267 | INFO | Guidance: There are no missing values in column ck_first. Extra column not created.
+2026-04-20 11:39:16,291 | INFO | Guidance: There are no missing values in column spo2_mean. Extra column not created.
+2026-04-20 11:39:16,323 | INFO | Guidance: There are no missing values in column systolic_bp_max. Extra column not created.
+2026-04-20 11:39:16,379 | INFO | Guidance: There are no missing values in column systolic_bp_min. Extra column not created.
+2026-04-20 11:39:16,434 | INFO | Guidance: There are no missing values in column systolic_bp_mean. Extra column not created.
+2026-04-20 11:39:16,495 | INFO | Guidance: There are no missing values in column systolic_bp_first. Extra column not created.
+2026-04-20 11:39:16,572 | INFO | Guidance: There are no missing values in column diastolic_bp_max. Extra column not created.
+2026-04-20 11:39:16,646 | INFO | Guidance: There are no missing values in column diastolic_bp_min. Extra column not created.
+2026-04-20 11:39:16,722 | INFO | Guidance: There are no missing values in column diastolic_bp_mean. Extra column not created.
+2026-04-20 11:39:16,797 | INFO | Guidance: There are no missing values in column diastolic_bp_first. Extra column not created.
+2026-04-20 11:39:16,873 | INFO | Guidance: There are no missing values in column heart_rate_max. Extra column not created.
+2026-04-20 11:39:16,930 | INFO | Guidance: There are no missing values in column heart_rate_min. Extra column not created.
+2026-04-20 11:39:16,988 | INFO | Guidance: There are no missing values in column heart_rate_mean. Extra column not created.
+2026-04-20 11:39:17,063 | INFO | Guidance: There are no missing values in column heart_rate_first. Extra column not created.
+2026-04-20 11:39:17,117 | INFO | Guidance: There are no missing values in column resp_rate_max. Extra column not created.
+2026-04-20 11:39:17,189 | INFO | Guidance: There are no missing values in column resp_rate_min. Extra column not created.
+2026-04-20 11:39:17,230 | INFO | Guidance: There are no missing values in column resp_rate_mean. Extra column not created.
+2026-04-20 11:39:17,301 | INFO | Guidance: There are no missing values in column resp_rate_first. Extra column not created.
+2026-04-20 11:39:17,373 | INFO | Guidance: There are no missing values in column temperature_max. Extra column not created.
+2026-04-20 11:39:17,439 | INFO | Guidance: There are no missing values in column temperature_min. Extra column not created.
+2026-04-20 11:39:17,493 | INFO | Guidance: There are no missing values in column temperature_mean. Extra column not created.
+2026-04-20 11:39:17,561 | INFO | Guidance: There are no missing values in column temperature_first. Extra column not created.
+2026-04-20 11:39:17,636 | INFO | Guidance: There are no missing values in column map_max. Extra column not created.
+2026-04-20 11:39:17,711 | INFO | Guidance: There are no missing values in column map_min. Extra column not created.
+2026-04-20 11:39:17,753 | INFO | Guidance: There are no missing values in column map_mean. Extra column not created.
+2026-04-20 11:39:17,828 | INFO | Guidance: There are no missing values in column map_first. Extra column not created.
+2026-04-20 11:39:17,869 | INFO | Guidance: There are no missing values in column shock_index. Extra column not created.
+2026-04-20 11:39:17,928 | INFO | Guidance: There are no missing values in column lactate_trend. Extra column not created.
+2026-04-20 11:39:18,001 | INFO | Guidance: There are no missing values in column platelets_trend. Extra column not created.
+2026-04-20 11:39:18,072 | INFO | Guidance: There are no missing values in column creatinine_trend. Extra column not created.
+2026-04-20 11:39:18,143 | INFO | Guidance: There are no missing values in column bilirubin_trend. Extra column not created.
+2026-04-20 11:39:18,216 | INFO | Guidance: There are no missing values in column inr_trend. Extra column not created.
+2026-04-20 11:39:18,288 | INFO | Guidance: There are no missing values in column wbc_trend. Extra column not created.
+2026-04-20 11:39:18,341 | INFO | Guidance: There are no missing values in column hemoglobin_trend. Extra column not created.
+2026-04-20 11:39:18,405 | INFO | Guidance: There are no missing values in column glucose_trend. Extra column not created.
+2026-04-20 11:39:18,456 | INFO | Guidance: There are no missing values in column ph_trend. Extra column not created.
+2026-04-20 11:39:18,526 | INFO | Guidance: There are no missing values in column base_excess_trend. Extra column not created.
+2026-04-20 11:39:18,581 | INFO | Guidance: There are no missing values in column sodium_trend. Extra column not created.
+2026-04-20 11:39:18,652 | INFO | Guidance: There are no missing values in column potassium_trend. Extra column not created.
+2026-04-20 11:39:18,710 | INFO | Guidance: There are no missing values in column heart_rate_trend. Extra column not created.
+2026-04-20 11:39:18,787 | INFO | Guidance: There are no missing values in column resp_rate_trend. Extra column not created.
+2026-04-20 11:39:18,858 | INFO | Guidance: There are no missing values in column temperature_trend. Extra column not created.
+2026-04-20 11:39:18,913 | INFO | Guidance: There are no missing values in column spo2_trend. Extra column not created.
+2026-04-20 11:39:18,958 | INFO | Guidance: There are no missing values in column urine_output_per_hour. Extra column not created.
+2026-04-20 11:39:18,977 | INFO | Guidance: There are no missing values in column fluid_input_total_ml. Extra column not created.
+2026-04-20 11:39:19,011 | INFO | Guidance: There are no missing values in column fluid_balance_ml. Extra column not created.
+2026-04-20 11:39:19,056 | INFO | Guidance: There are no missing values in column n_antibiotics_24h. Extra column not created.
+2026-04-20 11:39:19,099 | INFO | Guidance: There are no missing values in column n_cultures_24h. Extra column not created.
+2026-04-20 11:39:19,133 | INFO | Guidance: There are no missing values in column n_positive_cultures. Extra column not created.
+2026-04-20 11:46:14,704 | INFO | 
+[Model B — Negative class, n=1,839]
+2026-04-20 11:46:14,704 | INFO |   epochs=300, batch_size=500
+2026-04-20 11:46:14,704 | INFO |   [NEG] Fitting on 1,839 rows, 300 epochs, batch_size=500
+2026-04-20 11:46:14,777 | INFO | Detected metadata:
+2026-04-20 11:46:14,778 | INFO | {
+    "columns": {
+        "age_years": {
+            "sdtype": "numerical"
+        },
+        "gender": {
+            "sdtype": "categorical"
+        },
+        "lactate_max": {
+            "sdtype": "numerical"
+        },
+        "lactate_min": {
+            "sdtype": "numerical"
+        },
+        "lactate_mean": {
+            "sdtype": "numerical"
+        },
+        "lactate_first": {
+            "sdtype": "numerical"
+        },
+        "platelets_max": {
+            "sdtype": "numerical"
+        },
+        "platelets_min": {
+            "sdtype": "numerical"
+        },
+        "platelets_mean": {
+            "sdtype": "numerical"
+        },
+        "platelets_first": {
+            "sdtype": "numerical"
+        },
+        "inr_max": {
+            "sdtype": "numerical"
+        },
+        "inr_min": {
+            "sdtype": "numerical"
+        },
+        "inr_mean": {
+            "sdtype": "numerical"
+        },
+        "inr_first": {
+            "sdtype": "numerical"
+        },
+        "ddimer_max": {
+            "sdtype": "numerical"
+        },
+        "ddimer_min": {
+            "sdtype": "numerical"
+        },
+        "ddimer_mean": {
+            "sdtype": "numerical"
+        },
+        "ddimer_first": {
+            "sdtype": "numerical"
+        },
+        "fibrinogen_max": {
+            "sdtype": "numerical"
+        },
+        "fibrinogen_min": {
+            "sdtype": "numerical"
+        },
+        "fibrinogen_mean": {
+            "sdtype": "numerical"
+        },
+        "fibrinogen_first": {
+            "sdtype": "numerical"
+        },
+        "creatinine_max": {
+            "sdtype": "numerical"
+        },
+        "creatinine_min": {
+            "sdtype": "numerical"
+        },
+        "creatinine_mean": {
+            "sdtype": "numerical"
+        },
+        "creatinine_first": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_max": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_min": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_mean": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_first": {
+            "sdtype": "numerical"
+        },
+        "alt_max": {
+            "sdtype": "numerical"
+        },
+        "alt_min": {
+            "sdtype": "numerical"
+        },
+        "alt_mean": {
+            "sdtype": "numerical"
+        },
+        "alt_first": {
+            "sdtype": "numerical"
+        },
+        "ast_max": {
+            "sdtype": "numerical"
+        },
+        "ast_min": {
+            "sdtype": "numerical"
+        },
+        "ast_mean": {
+            "sdtype": "numerical"
+        },
+        "ast_first": {
+            "sdtype": "numerical"
+        },
+        "glucose_max": {
+            "sdtype": "numerical"
+        },
+        "glucose_min": {
+            "sdtype": "numerical"
+        },
+        "glucose_mean": {
+            "sdtype": "numerical"
+        },
+        "glucose_first": {
+            "sdtype": "numerical"
+        },
+        "anc_max": {
+            "sdtype": "numerical"
+        },
+        "anc_min": {
+            "sdtype": "numerical"
+        },
+        "anc_mean": {
+            "sdtype": "numerical"
+        },
+        "anc_first": {
+            "sdtype": "numerical"
+        },
+        "alc_max": {
+            "sdtype": "numerical"
+        },
+        "alc_min": {
+            "sdtype": "numerical"
+        },
+        "alc_mean": {
+            "sdtype": "numerical"
+        },
+        "alc_first": {
+            "sdtype": "numerical"
+        },
+        "wbc_max": {
+            "sdtype": "numerical"
+        },
+        "wbc_min": {
+            "sdtype": "numerical"
+        },
+        "wbc_mean": {
+            "sdtype": "numerical"
+        },
+        "wbc_first": {
+            "sdtype": "numerical"
+        },
+        "ph_max": {
+            "sdtype": "numerical"
+        },
+        "ph_min": {
+            "sdtype": "numerical"
+        },
+        "ph_mean": {
+            "sdtype": "numerical"
+        },
+        "ph_first": {
+            "sdtype": "numerical"
+        },
+        "pco2_max": {
+            "sdtype": "numerical"
+        },
+        "pco2_min": {
+            "sdtype": "numerical"
+        },
+        "pco2_mean": {
+            "sdtype": "numerical"
+        },
+        "pco2_first": {
+            "sdtype": "numerical"
+        },
+        "pao2_max": {
+            "sdtype": "numerical"
+        },
+        "pao2_min": {
+            "sdtype": "numerical"
+        },
+        "pao2_mean": {
+            "sdtype": "numerical"
+        },
+        "pao2_first": {
+            "sdtype": "numerical"
+        },
+        "base_excess_max": {
+            "sdtype": "numerical"
+        },
+        "base_excess_min": {
+            "sdtype": "numerical"
+        },
+        "base_excess_mean": {
+            "sdtype": "numerical"
+        },
+        "base_excess_first": {
+            "sdtype": "numerical"
+        },
+        "bicarbonate_max": {
+            "sdtype": "numerical"
+        },
+        "bicarbonate_min": {
+            "sdtype": "numerical"
+        },
+        "bicarbonate_mean": {
+            "sdtype": "numerical"
+        },
+        "bicarbonate_first": {
+            "sdtype": "numerical"
+        },
+        "anion_gap_max": {
+            "sdtype": "numerical"
+        },
+        "anion_gap_min": {
+            "sdtype": "numerical"
+        },
+        "anion_gap_mean": {
+            "sdtype": "numerical"
+        },
+        "anion_gap_first": {
+            "sdtype": "numerical"
+        },
+        "spo2_lab_max": {
+            "sdtype": "numerical"
+        },
+        "spo2_lab_min": {
+            "sdtype": "numerical"
+        },
+        "spo2_lab_mean": {
+            "sdtype": "numerical"
+        },
+        "spo2_lab_first": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_max": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_min": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_mean": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_first": {
+            "sdtype": "numerical"
+        },
+        "hematocrit_max": {
+            "sdtype": "numerical"
+        },
+        "hematocrit_min": {
+            "sdtype": "numerical"
+        },
+        "hematocrit_mean": {
+            "sdtype": "numerical"
+        },
+        "hematocrit_first": {
+            "sdtype": "numerical"
+        },
+        "pt_max": {
+            "sdtype": "numerical"
+        },
+        "pt_min": {
+            "sdtype": "numerical"
+        },
+        "pt_mean": {
+            "sdtype": "numerical"
+        },
+        "pt_first": {
+            "sdtype": "numerical"
+        },
+        "ptt_max": {
+            "sdtype": "numerical"
+        },
+        "ptt_min": {
+            "sdtype": "numerical"
+        },
+        "ptt_mean": {
+            "sdtype": "numerical"
+        },
+        "ptt_first": {
+            "sdtype": "numerical"
+        },
+        "sodium_max": {
+            "sdtype": "numerical"
+        },
+        "sodium_min": {
+            "sdtype": "numerical"
+        },
+        "sodium_mean": {
+            "sdtype": "numerical"
+        },
+        "sodium_first": {
+            "sdtype": "numerical"
+        },
+        "potassium_max": {
+            "sdtype": "numerical"
+        },
+        "potassium_min": {
+            "sdtype": "numerical"
+        },
+        "potassium_mean": {
+            "sdtype": "numerical"
+        },
+        "potassium_first": {
+            "sdtype": "numerical"
+        },
+        "calcium_max": {
+            "sdtype": "numerical"
+        },
+        "calcium_min": {
+            "sdtype": "numerical"
+        },
+        "calcium_mean": {
+            "sdtype": "numerical"
+        },
+        "calcium_first": {
+            "sdtype": "numerical"
+        },
+        "albumin_max": {
+            "sdtype": "numerical"
+        },
+        "albumin_min": {
+            "sdtype": "numerical"
+        },
+        "albumin_mean": {
+            "sdtype": "numerical"
+        },
+        "albumin_first": {
+            "sdtype": "numerical"
+        },
+        "crp_max": {
+            "sdtype": "numerical"
+        },
+        "crp_min": {
+            "sdtype": "numerical"
+        },
+        "crp_mean": {
+            "sdtype": "numerical"
+        },
+        "crp_first": {
+            "sdtype": "numerical"
+        },
+        "ldh_max": {
+            "sdtype": "numerical"
+        },
+        "ldh_min": {
+            "sdtype": "numerical"
+        },
+        "ldh_mean": {
+            "sdtype": "numerical"
+        },
+        "ldh_first": {
+            "sdtype": "numerical"
+        },
+        "urea_max": {
+            "sdtype": "numerical"
+        },
+        "urea_min": {
+            "sdtype": "numerical"
+        },
+        "urea_mean": {
+            "sdtype": "numerical"
+        },
+        "urea_first": {
+            "sdtype": "numerical"
+        },
+        "uric_acid_max": {
+            "sdtype": "numerical"
+        },
+        "uric_acid_min": {
+            "sdtype": "numerical"
+        },
+        "uric_acid_mean": {
+            "sdtype": "numerical"
+        },
+        "uric_acid_first": {
+            "sdtype": "numerical"
+        },
+        "ck_max": {
+            "sdtype": "numerical"
+        },
+        "ck_min": {
+            "sdtype": "numerical"
+        },
+        "ck_mean": {
+            "sdtype": "numerical"
+        },
+        "ck_first": {
+            "sdtype": "numerical"
+        },
+        "spo2_max": {
+            "sdtype": "numerical"
+        },
+        "spo2_min": {
+            "sdtype": "numerical"
+        },
+        "spo2_mean": {
+            "sdtype": "numerical"
+        },
+        "spo2_first": {
+            "sdtype": "numerical"
+        },
+        "systolic_bp_max": {
+            "sdtype": "numerical"
+        },
+        "systolic_bp_min": {
+            "sdtype": "numerical"
+        },
+        "systolic_bp_mean": {
+            "sdtype": "numerical"
+        },
+        "systolic_bp_first": {
+            "sdtype": "numerical"
+        },
+        "diastolic_bp_max": {
+            "sdtype": "numerical"
+        },
+        "diastolic_bp_min": {
+            "sdtype": "numerical"
+        },
+        "diastolic_bp_mean": {
+            "sdtype": "numerical"
+        },
+        "diastolic_bp_first": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_max": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_min": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_mean": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_first": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_max": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_min": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_mean": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_first": {
+            "sdtype": "numerical"
+        },
+        "temperature_max": {
+            "sdtype": "numerical"
+        },
+        "temperature_min": {
+            "sdtype": "numerical"
+        },
+        "temperature_mean": {
+            "sdtype": "numerical"
+        },
+        "temperature_first": {
+            "sdtype": "numerical"
+        },
+        "map_max": {
+            "sdtype": "numerical"
+        },
+        "map_min": {
+            "sdtype": "numerical"
+        },
+        "map_mean": {
+            "sdtype": "numerical"
+        },
+        "map_first": {
+            "sdtype": "numerical"
+        },
+        "shock_index": {
+            "sdtype": "numerical"
+        },
+        "lactate_trend": {
+            "sdtype": "numerical"
+        },
+        "platelets_trend": {
+            "sdtype": "numerical"
+        },
+        "creatinine_trend": {
+            "sdtype": "numerical"
+        },
+        "bilirubin_trend": {
+            "sdtype": "numerical"
+        },
+        "inr_trend": {
+            "sdtype": "numerical"
+        },
+        "wbc_trend": {
+            "sdtype": "numerical"
+        },
+        "hemoglobin_trend": {
+            "sdtype": "numerical"
+        },
+        "glucose_trend": {
+            "sdtype": "numerical"
+        },
+        "ph_trend": {
+            "sdtype": "numerical"
+        },
+        "base_excess_trend": {
+            "sdtype": "numerical"
+        },
+        "sodium_trend": {
+            "sdtype": "numerical"
+        },
+        "potassium_trend": {
+            "sdtype": "numerical"
+        },
+        "heart_rate_trend": {
+            "sdtype": "numerical"
+        },
+        "resp_rate_trend": {
+            "sdtype": "numerical"
+        },
+        "temperature_trend": {
+            "sdtype": "numerical"
+        },
+        "spo2_trend": {
+            "sdtype": "numerical"
+        },
+        "hr_abnormal_for_age": {
+            "sdtype": "categorical"
+        },
+        "rr_abnormal_for_age": {
+            "sdtype": "categorical"
+        },
+        "sbp_abnormal_for_age": {
+            "sdtype": "categorical"
+        },
+        "urine_output_total_ml": {
+            "sdtype": "numerical"
+        },
+        "urine_output_per_hour": {
+            "sdtype": "numerical"
+        },
+        "fluid_input_total_ml": {
+            "sdtype": "numerical"
+        },
+        "fluid_balance_ml": {
+            "sdtype": "numerical"
+        },
+        "n_antibiotics_24h": {
+            "sdtype": "numerical"
+        },
+        "n_cultures_24h": {
+            "sdtype": "numerical"
+        },
+        "n_positive_cultures": {
+            "sdtype": "numerical"
+        },
+        "symptom_fever": {
+            "sdtype": "categorical"
+        },
+        "symptom_cough": {
+            "sdtype": "categorical"
+        },
+        "symptom_rale": {
+            "sdtype": "categorical"
+        },
+        "symptom_twitching": {
+            "sdtype": "categorical"
+        },
+        "symptom_cyanosis": {
+            "sdtype": "categorical"
+        },
+        "symptom_anhelation": {
+            "sdtype": "categorical"
+        },
+        "symptom_listless": {
+            "sdtype": "categorical"
+        },
+        "symptom_cool_extremities": {
+            "sdtype": "categorical"
+        },
+        "symptom_warm_extremities": {
+            "sdtype": "categorical"
+        },
+        "symptom_edema": {
+            "sdtype": "categorical"
+        },
+        "symptom_hemorrhage": {
+            "sdtype": "categorical"
+        },
+        "symptom_dysphoria": {
+            "sdtype": "categorical"
+        },
+        "symptom_diarrhea": {
+            "sdtype": "categorical"
+        },
+        "symptom_skin_jaundice": {
+            "sdtype": "categorical"
+        },
+        "symptom_arrhythmia": {
+            "sdtype": "categorical"
+        },
+        "symptom_vomiting": {
+            "sdtype": "categorical"
+        },
+        "symptom_swelling": {
+            "sdtype": "categorical"
+        },
+        "symptom_tenderness": {
+            "sdtype": "categorical"
+        },
+        "symptom_phlegm_sound": {
+            "sdtype": "categorical"
+        },
+        "symptom_three_depressions_sign": {
+            "sdtype": "categorical"
+        },
+        "symptom_abdominal_distension": {
+            "sdtype": "categorical"
+        },
+        "symptom_erythra": {
+            "sdtype": "categorical"
+        },
+        "symptom_moist_rale": {
+            "sdtype": "categorical"
+        },
+        "symptom_dry_and_moist_rales": {
+            "sdtype": "categorical"
+        },
+        "symptom_pharyngeal_red": {
+            "sdtype": "categorical"
+        },
+        "symptom_headache": {
+            "sdtype": "categorical"
+        },
+        "symptom_chest_tightness": {
+            "sdtype": "categorical"
+        },
+        "symptom_rebound_tenderness": {
+            "sdtype": "categorical"
+        },
+        "symptom_abdominal_tenderness": {
+            "sdtype": "categorical"
+        },
+        "had_surgery_flag": {
+            "sdtype": "categorical"
+        },
+        "had_cardiac_surgery_flag": {
+            "sdtype": "categorical"
+        },
+        "care_unit_CICU": {
+            "sdtype": "categorical"
+        },
+        "care_unit_General ICU": {
+            "sdtype": "categorical"
+        },
+        "care_unit_NICU": {
+            "sdtype": "categorical"
+        },
+        "care_unit_PICU": {
+            "sdtype": "categorical"
+        },
+        "care_unit_SICU": {
+            "sdtype": "categorical"
+        }
+    },
+    "METADATA_SPEC_VERSION": "SINGLE_TABLE_V1"
+}
+2026-04-20 11:46:14,785 | INFO | {'EVENT': 'Instance', 'TIMESTAMP': datetime.datetime(2026, 4, 20, 11, 46, 14, 785961), 'SYNTHESIZER CLASS NAME': 'CTGANSynthesizer', 'SYNTHESIZER ID': 'CTGANSynthesizer_1.36.0_9e2657b77b564787bbb079896e69d0e1'}
+2026-04-20 11:46:14,785 | INFO | {'EVENT': 'Fit', 'TIMESTAMP': datetime.datetime(2026, 4, 20, 11, 46, 14, 785961), 'SYNTHESIZER CLASS NAME': 'CTGANSynthesizer', 'SYNTHESIZER ID': 'CTGANSynthesizer_1.36.0_9e2657b77b564787bbb079896e69d0e1', 'TOTAL NUMBER OF TABLES': 1, 'TOTAL NUMBER OF ROWS': 1839, 'TOTAL NUMBER OF COLUMNS': 225}
+2026-04-20 11:46:14,873 | INFO | Fitting table  metadata
+2026-04-20 11:46:14,873 | INFO | Fitting formatters for table 
+2026-04-20 11:46:14,892 | INFO | No rounding scheme detected for column 'creatinine_max'. Data will not be rounded.
+2026-04-20 11:46:14,892 | INFO | No rounding scheme detected for column 'creatinine_min'. Data will not be rounded.
+2026-04-20 11:46:14,894 | INFO | No rounding scheme detected for column 'creatinine_first'. Data will not be rounded.
+2026-04-20 11:46:14,894 | INFO | No rounding scheme detected for column 'bilirubin_max'. Data will not be rounded.
+2026-04-20 11:46:14,895 | INFO | No rounding scheme detected for column 'bilirubin_min'. Data will not be rounded.
+2026-04-20 11:46:14,895 | INFO | No rounding scheme detected for column 'bilirubin_first'. Data will not be rounded.
+2026-04-20 11:46:14,895 | INFO | No rounding scheme detected for column 'glucose_max'. Data will not be rounded.
+2026-04-20 11:46:14,895 | INFO | No rounding scheme detected for column 'glucose_min'. Data will not be rounded.
+2026-04-20 11:46:14,899 | INFO | No rounding scheme detected for column 'glucose_first'. Data will not be rounded.
+2026-04-20 11:46:14,904 | INFO | No rounding scheme detected for column 'ph_max'. Data will not be rounded.
+2026-04-20 11:46:14,904 | INFO | No rounding scheme detected for column 'ph_min'. Data will not be rounded.
+2026-04-20 11:46:14,905 | INFO | No rounding scheme detected for column 'ph_first'. Data will not be rounded.
+2026-04-20 11:46:14,910 | INFO | No rounding scheme detected for column 'hemoglobin_max'. Data will not be rounded.
+2026-04-20 11:46:14,910 | INFO | No rounding scheme detected for column 'hemoglobin_min'. Data will not be rounded.
+2026-04-20 11:46:14,914 | INFO | No rounding scheme detected for column 'hemoglobin_first'. Data will not be rounded.
+2026-04-20 11:46:14,941 | INFO | Setting the configuration for the ``HyperTransformer`` for table 
+2026-04-20 11:46:14,962 | INFO | Fitting HyperTransformer for table 
+2026-04-20 11:46:15,089 | INFO | No rounding scheme detected for column 'creatinine_max'. Data will not be rounded.
+2026-04-20 11:46:15,089 | INFO | No rounding scheme detected for column 'creatinine_min'. Data will not be rounded.
+2026-04-20 11:46:15,107 | INFO | No rounding scheme detected for column 'creatinine_first'. Data will not be rounded.
+2026-04-20 11:46:15,122 | INFO | No rounding scheme detected for column 'bilirubin_max'. Data will not be rounded.
+2026-04-20 11:46:15,123 | INFO | No rounding scheme detected for column 'bilirubin_min'. Data will not be rounded.
+2026-04-20 11:46:15,140 | INFO | No rounding scheme detected for column 'bilirubin_first'. Data will not be rounded.
+2026-04-20 11:46:15,192 | INFO | No rounding scheme detected for column 'glucose_max'. Data will not be rounded.
+2026-04-20 11:46:15,192 | INFO | No rounding scheme detected for column 'glucose_min'. Data will not be rounded.
+2026-04-20 11:46:15,210 | INFO | No rounding scheme detected for column 'glucose_first'. Data will not be rounded.
+2026-04-20 11:46:15,294 | INFO | No rounding scheme detected for column 'ph_max'. Data will not be rounded.
+2026-04-20 11:46:15,300 | INFO | No rounding scheme detected for column 'ph_min'. Data will not be rounded.
+2026-04-20 11:46:15,307 | INFO | No rounding scheme detected for column 'ph_first'. Data will not be rounded.
+2026-04-20 11:46:15,456 | INFO | No rounding scheme detected for column 'hemoglobin_max'. Data will not be rounded.
+2026-04-20 11:46:15,456 | INFO | No rounding scheme detected for column 'hemoglobin_min'. Data will not be rounded.
+2026-04-20 11:46:15,473 | INFO | No rounding scheme detected for column 'hemoglobin_first'. Data will not be rounded.
+2026-04-20 11:46:16,888 | INFO | {'EVENT': 'Fit processed data', 'TIMESTAMP': datetime.datetime(2026, 4, 20, 11, 46, 16, 888257), 'SYNTHESIZER CLASS NAME': 'CTGANSynthesizer', 'SYNTHESIZER ID': 'CTGANSynthesizer_1.36.0_9e2657b77b564787bbb079896e69d0e1', 'TOTAL NUMBER OF TABLES': 1, 'TOTAL NUMBER OF ROWS': 1839, 'TOTAL NUMBER OF COLUMNS': 225}
+2026-04-20 11:46:16,888 | INFO | Guidance: There are no missing values in column age_years. Extra column not created.
+2026-04-20 11:46:17,003 | INFO | Guidance: There are no missing values in column lactate_max. Extra column not created.
+2026-04-20 11:46:17,101 | INFO | Guidance: There are no missing values in column lactate_min. Extra column not created.
+2026-04-20 11:46:17,190 | INFO | Guidance: There are no missing values in column lactate_mean. Extra column not created.
+2026-04-20 11:46:17,280 | INFO | Guidance: There are no missing values in column lactate_first. Extra column not created.
+2026-04-20 11:46:17,368 | INFO | Guidance: There are no missing values in column platelets_max. Extra column not created.
+2026-04-20 11:46:17,455 | INFO | Guidance: There are no missing values in column platelets_min. Extra column not created.
+2026-04-20 11:46:17,548 | INFO | Guidance: There are no missing values in column platelets_mean. Extra column not created.
+2026-04-20 11:46:17,635 | INFO | Guidance: There are no missing values in column platelets_first. Extra column not created.
+2026-04-20 11:46:17,728 | INFO | Guidance: There are no missing values in column inr_max. Extra column not created.
+2026-04-20 11:46:17,805 | INFO | Guidance: There are no missing values in column inr_min. Extra column not created.
+2026-04-20 11:46:17,901 | INFO | Guidance: There are no missing values in column inr_mean. Extra column not created.
+2026-04-20 11:46:17,993 | INFO | Guidance: There are no missing values in column inr_first. Extra column not created.
+2026-04-20 11:46:18,086 | INFO | Guidance: There are no missing values in column ddimer_max. Extra column not created.
+2026-04-20 11:46:18,182 | INFO | Guidance: There are no missing values in column ddimer_min. Extra column not created.
+2026-04-20 11:46:18,260 | INFO | Guidance: There are no missing values in column ddimer_mean. Extra column not created.
+2026-04-20 11:46:18,355 | INFO | Guidance: There are no missing values in column ddimer_first. Extra column not created.
+2026-04-20 11:46:18,452 | INFO | Guidance: There are no missing values in column fibrinogen_max. Extra column not created.
+2026-04-20 11:46:18,547 | INFO | Guidance: There are no missing values in column fibrinogen_min. Extra column not created.
+2026-04-20 11:46:18,644 | INFO | Guidance: There are no missing values in column fibrinogen_mean. Extra column not created.
+2026-04-20 11:46:18,744 | INFO | Guidance: There are no missing values in column fibrinogen_first. Extra column not created.
+2026-04-20 11:46:18,843 | INFO | Guidance: There are no missing values in column creatinine_max. Extra column not created.
+2026-04-20 11:46:18,931 | INFO | Guidance: There are no missing values in column creatinine_min. Extra column not created.
+2026-04-20 11:46:19,020 | INFO | Guidance: There are no missing values in column creatinine_mean. Extra column not created.
+2026-04-20 11:46:19,115 | INFO | Guidance: There are no missing values in column creatinine_first. Extra column not created.
+2026-04-20 11:46:19,203 | INFO | Guidance: There are no missing values in column bilirubin_max. Extra column not created.
+2026-04-20 11:46:19,293 | INFO | Guidance: There are no missing values in column bilirubin_min. Extra column not created.
+2026-04-20 11:46:19,385 | INFO | Guidance: There are no missing values in column bilirubin_mean. Extra column not created.
+2026-04-20 11:46:19,474 | INFO | Guidance: There are no missing values in column bilirubin_first. Extra column not created.
+2026-04-20 11:46:19,556 | INFO | Guidance: There are no missing values in column alt_max. Extra column not created.
+2026-04-20 11:46:19,606 | INFO | Guidance: There are no missing values in column alt_min. Extra column not created.
+2026-04-20 11:46:19,650 | INFO | Guidance: There are no missing values in column alt_mean. Extra column not created.
+2026-04-20 11:46:19,701 | INFO | Guidance: There are no missing values in column alt_first. Extra column not created.
+2026-04-20 11:46:19,754 | INFO | Guidance: There are no missing values in column ast_max. Extra column not created.
+2026-04-20 11:46:19,822 | INFO | Guidance: There are no missing values in column ast_min. Extra column not created.
+2026-04-20 11:46:19,882 | INFO | Guidance: There are no missing values in column ast_mean. Extra column not created.
+2026-04-20 11:46:19,915 | INFO | Guidance: There are no missing values in column ast_first. Extra column not created.
+2026-04-20 11:46:19,969 | INFO | Guidance: There are no missing values in column glucose_max. Extra column not created.
+2026-04-20 11:46:20,055 | INFO | Guidance: There are no missing values in column glucose_min. Extra column not created.
+2026-04-20 11:46:20,142 | INFO | Guidance: There are no missing values in column glucose_mean. Extra column not created.
+2026-04-20 11:46:20,232 | INFO | Guidance: There are no missing values in column glucose_first. Extra column not created.
+2026-04-20 11:46:20,320 | INFO | Guidance: There are no missing values in column anc_max. Extra column not created.
+2026-04-20 11:46:20,413 | INFO | Guidance: There are no missing values in column anc_min. Extra column not created.
+2026-04-20 11:46:20,497 | INFO | Guidance: There are no missing values in column anc_mean. Extra column not created.
+2026-04-20 11:46:20,591 | INFO | Guidance: There are no missing values in column anc_first. Extra column not created.
+2026-04-20 11:46:20,681 | INFO | Guidance: There are no missing values in column alc_max. Extra column not created.
+2026-04-20 11:46:20,771 | INFO | Guidance: There are no missing values in column alc_min. Extra column not created.
+2026-04-20 11:46:20,855 | INFO | Guidance: There are no missing values in column alc_mean. Extra column not created.
+2026-04-20 11:46:20,939 | INFO | Guidance: There are no missing values in column alc_first. Extra column not created.
+2026-04-20 11:46:21,035 | INFO | Guidance: There are no missing values in column wbc_max. Extra column not created.
+2026-04-20 11:46:21,129 | INFO | Guidance: There are no missing values in column wbc_min. Extra column not created.
+2026-04-20 11:46:21,216 | INFO | Guidance: There are no missing values in column wbc_mean. Extra column not created.
+2026-04-20 11:46:21,313 | INFO | Guidance: There are no missing values in column wbc_first. Extra column not created.
+2026-04-20 11:46:21,407 | INFO | Guidance: There are no missing values in column ph_max. Extra column not created.
+2026-04-20 11:46:21,493 | INFO | Guidance: There are no missing values in column ph_min. Extra column not created.
+2026-04-20 11:46:21,589 | INFO | Guidance: There are no missing values in column ph_mean. Extra column not created.
+2026-04-20 11:46:21,673 | INFO | Guidance: There are no missing values in column ph_first. Extra column not created.
+2026-04-20 11:46:21,766 | INFO | Guidance: There are no missing values in column pco2_max. Extra column not created.
+2026-04-20 11:46:21,854 | INFO | Guidance: There are no missing values in column pco2_min. Extra column not created.
+2026-04-20 11:46:21,943 | INFO | Guidance: There are no missing values in column pco2_mean. Extra column not created.
+2026-04-20 11:46:22,032 | INFO | Guidance: There are no missing values in column pco2_first. Extra column not created.
+2026-04-20 11:46:22,125 | INFO | Guidance: There are no missing values in column pao2_max. Extra column not created.
+2026-04-20 11:46:22,213 | INFO | Guidance: There are no missing values in column pao2_min. Extra column not created.
+2026-04-20 11:46:22,300 | INFO | Guidance: There are no missing values in column pao2_mean. Extra column not created.
+2026-04-20 11:46:22,390 | INFO | Guidance: There are no missing values in column pao2_first. Extra column not created.
+2026-04-20 11:46:22,473 | INFO | Guidance: There are no missing values in column base_excess_max. Extra column not created.
+2026-04-20 11:46:22,577 | INFO | Guidance: There are no missing values in column base_excess_min. Extra column not created.
+2026-04-20 11:46:22,659 | INFO | Guidance: There are no missing values in column base_excess_mean. Extra column not created.
+2026-04-20 11:46:22,753 | INFO | Guidance: There are no missing values in column base_excess_first. Extra column not created.
+2026-04-20 11:46:22,842 | INFO | Guidance: There are no missing values in column bicarbonate_max. Extra column not created.
+2026-04-20 11:46:22,932 | INFO | Guidance: There are no missing values in column bicarbonate_min. Extra column not created.
+2026-04-20 11:46:23,010 | INFO | Guidance: There are no missing values in column bicarbonate_mean. Extra column not created.
+2026-04-20 11:46:23,110 | INFO | Guidance: There are no missing values in column bicarbonate_first. Extra column not created.
+2026-04-20 11:46:23,202 | INFO | Guidance: There are no missing values in column anion_gap_max. Extra column not created.
+2026-04-20 11:46:23,290 | INFO | Guidance: There are no missing values in column anion_gap_min. Extra column not created.
+2026-04-20 11:46:23,372 | INFO | Guidance: There are no missing values in column anion_gap_mean. Extra column not created.
+2026-04-20 11:46:23,466 | INFO | Guidance: There are no missing values in column anion_gap_first. Extra column not created.
+2026-04-20 11:46:23,554 | INFO | Guidance: There are no missing values in column spo2_lab_max. Extra column not created.
+2026-04-20 11:46:23,644 | INFO | Guidance: There are no missing values in column spo2_lab_min. Extra column not created.
+2026-04-20 11:46:23,738 | INFO | Guidance: There are no missing values in column spo2_lab_mean. Extra column not created.
+2026-04-20 11:46:23,832 | INFO | Guidance: There are no missing values in column spo2_lab_first. Extra column not created.
+2026-04-20 11:46:23,925 | INFO | Guidance: There are no missing values in column hemoglobin_max. Extra column not created.
+2026-04-20 11:46:24,010 | INFO | Guidance: There are no missing values in column hemoglobin_min. Extra column not created.
+2026-04-20 11:46:24,103 | INFO | Guidance: There are no missing values in column hemoglobin_mean. Extra column not created.
+2026-04-20 11:46:24,196 | INFO | Guidance: There are no missing values in column hemoglobin_first. Extra column not created.
+2026-04-20 11:46:24,281 | INFO | Guidance: There are no missing values in column hematocrit_max. Extra column not created.
+2026-04-20 11:46:24,377 | INFO | Guidance: There are no missing values in column hematocrit_min. Extra column not created.
+2026-04-20 11:46:24,464 | INFO | Guidance: There are no missing values in column hematocrit_mean. Extra column not created.
+2026-04-20 11:46:24,550 | INFO | Guidance: There are no missing values in column hematocrit_first. Extra column not created.
+2026-04-20 11:46:24,642 | INFO | Guidance: There are no missing values in column pt_max. Extra column not created.
+2026-04-20 11:46:24,738 | INFO | Guidance: There are no missing values in column pt_min. Extra column not created.
+2026-04-20 11:46:24,829 | INFO | Guidance: There are no missing values in column pt_mean. Extra column not created.
+2026-04-20 11:46:24,918 | INFO | Guidance: There are no missing values in column pt_first. Extra column not created.
+2026-04-20 11:46:25,011 | INFO | Guidance: There are no missing values in column ptt_max. Extra column not created.
+2026-04-20 11:46:25,105 | INFO | Guidance: There are no missing values in column ptt_min. Extra column not created.
+2026-04-20 11:46:25,189 | INFO | Guidance: There are no missing values in column ptt_mean. Extra column not created.
+2026-04-20 11:46:25,288 | INFO | Guidance: There are no missing values in column ptt_first. Extra column not created.
+2026-04-20 11:46:25,377 | INFO | Guidance: There are no missing values in column sodium_max. Extra column not created.
+2026-04-20 11:46:25,466 | INFO | Guidance: There are no missing values in column sodium_min. Extra column not created.
+2026-04-20 11:46:25,559 | INFO | Guidance: There are no missing values in column sodium_mean. Extra column not created.
+2026-04-20 11:46:25,647 | INFO | Guidance: There are no missing values in column sodium_first. Extra column not created.
+2026-04-20 11:46:25,739 | INFO | Guidance: There are no missing values in column potassium_max. Extra column not created.
+2026-04-20 11:46:25,827 | INFO | Guidance: There are no missing values in column potassium_min. Extra column not created.
+2026-04-20 11:46:25,908 | INFO | Guidance: There are no missing values in column potassium_mean. Extra column not created.
+2026-04-20 11:46:25,995 | INFO | Guidance: There are no missing values in column potassium_first. Extra column not created.
+2026-04-20 11:46:26,090 | INFO | Guidance: There are no missing values in column calcium_max. Extra column not created.
+2026-04-20 11:46:26,184 | INFO | Guidance: There are no missing values in column calcium_min. Extra column not created.
+2026-04-20 11:46:26,275 | INFO | Guidance: There are no missing values in column calcium_mean. Extra column not created.
+2026-04-20 11:46:26,364 | INFO | Guidance: There are no missing values in column calcium_first. Extra column not created.
+2026-04-20 11:46:26,452 | INFO | Guidance: There are no missing values in column albumin_max. Extra column not created.
+2026-04-20 11:46:26,549 | INFO | Guidance: There are no missing values in column albumin_min. Extra column not created.
+2026-04-20 11:46:26,639 | INFO | Guidance: There are no missing values in column albumin_mean. Extra column not created.
+2026-04-20 11:46:26,732 | INFO | Guidance: There are no missing values in column albumin_first. Extra column not created.
+2026-04-20 11:46:26,825 | INFO | Guidance: There are no missing values in column crp_max. Extra column not created.
+2026-04-20 11:46:26,916 | INFO | Guidance: There are no missing values in column crp_min. Extra column not created.
+2026-04-20 11:46:26,989 | INFO | Guidance: There are no missing values in column crp_mean. Extra column not created.
+2026-04-20 11:46:27,081 | INFO | Guidance: There are no missing values in column crp_first. Extra column not created.
+2026-04-20 11:46:27,165 | INFO | Guidance: There are no missing values in column ldh_max. Extra column not created.
+2026-04-20 11:46:27,262 | INFO | Guidance: There are no missing values in column ldh_min. Extra column not created.
+2026-04-20 11:46:27,328 | INFO | Guidance: There are no missing values in column ldh_mean. Extra column not created.
+2026-04-20 11:46:27,407 | INFO | Guidance: There are no missing values in column ldh_first. Extra column not created.
+2026-04-20 11:46:27,483 | INFO | Guidance: There are no missing values in column urea_max. Extra column not created.
+2026-04-20 11:46:27,572 | INFO | Guidance: There are no missing values in column urea_min. Extra column not created.
+2026-04-20 11:46:27,665 | INFO | Guidance: There are no missing values in column urea_mean. Extra column not created.
+2026-04-20 11:46:27,758 | INFO | Guidance: There are no missing values in column urea_first. Extra column not created.
+2026-04-20 11:46:27,832 | INFO | Guidance: There are no missing values in column uric_acid_max. Extra column not created.
+2026-04-20 11:46:27,927 | INFO | Guidance: There are no missing values in column uric_acid_min. Extra column not created.
+2026-04-20 11:46:28,016 | INFO | Guidance: There are no missing values in column uric_acid_mean. Extra column not created.
+2026-04-20 11:46:28,104 | INFO | Guidance: There are no missing values in column uric_acid_first. Extra column not created.
+2026-04-20 11:46:28,193 | INFO | Guidance: There are no missing values in column ck_max. Extra column not created.
+2026-04-20 11:46:28,242 | INFO | Guidance: There are no missing values in column ck_min. Extra column not created.
+2026-04-20 11:46:28,303 | INFO | Guidance: There are no missing values in column ck_mean. Extra column not created.
+2026-04-20 11:46:28,340 | INFO | Guidance: There are no missing values in column ck_first. Extra column not created.
+2026-04-20 11:46:28,401 | INFO | Guidance: There are no missing values in column spo2_max. Extra column not created.
+2026-04-20 11:46:28,451 | INFO | Guidance: There are no missing values in column spo2_min. Extra column not created.
+2026-04-20 11:46:28,532 | INFO | Guidance: There are no missing values in column spo2_mean. Extra column not created.
+2026-04-20 11:46:28,577 | INFO | Guidance: There are no missing values in column spo2_first. Extra column not created.
+2026-04-20 11:46:28,623 | INFO | Guidance: There are no missing values in column systolic_bp_max. Extra column not created.
+2026-04-20 11:46:28,714 | INFO | Guidance: There are no missing values in column systolic_bp_min. Extra column not created.
+2026-04-20 11:46:28,810 | INFO | Guidance: There are no missing values in column systolic_bp_mean. Extra column not created.
+2026-04-20 11:46:28,903 | INFO | Guidance: There are no missing values in column systolic_bp_first. Extra column not created.
+2026-04-20 11:46:28,997 | INFO | Guidance: There are no missing values in column diastolic_bp_max. Extra column not created.
+2026-04-20 11:46:29,090 | INFO | Guidance: There are no missing values in column diastolic_bp_min. Extra column not created.
+2026-04-20 11:46:29,188 | INFO | Guidance: There are no missing values in column diastolic_bp_mean. Extra column not created.
+2026-04-20 11:46:29,283 | INFO | Guidance: There are no missing values in column diastolic_bp_first. Extra column not created.
+2026-04-20 11:46:29,377 | INFO | Guidance: There are no missing values in column heart_rate_max. Extra column not created.
+2026-04-20 11:46:29,471 | INFO | Guidance: There are no missing values in column heart_rate_min. Extra column not created.
+2026-04-20 11:46:29,564 | INFO | Guidance: There are no missing values in column heart_rate_mean. Extra column not created.
+2026-04-20 11:46:29,658 | INFO | Guidance: There are no missing values in column heart_rate_first. Extra column not created.
+2026-04-20 11:46:29,755 | INFO | Guidance: There are no missing values in column resp_rate_max. Extra column not created.
+2026-04-20 11:46:29,844 | INFO | Guidance: There are no missing values in column resp_rate_min. Extra column not created.
+2026-04-20 11:46:29,938 | INFO | Guidance: There are no missing values in column resp_rate_mean. Extra column not created.
+2026-04-20 11:46:30,026 | INFO | Guidance: There are no missing values in column resp_rate_first. Extra column not created.
+2026-04-20 11:46:30,111 | INFO | Guidance: There are no missing values in column temperature_max. Extra column not created.
+2026-04-20 11:46:30,201 | INFO | Guidance: There are no missing values in column temperature_min. Extra column not created.
+2026-04-20 11:46:30,286 | INFO | Guidance: There are no missing values in column temperature_mean. Extra column not created.
+2026-04-20 11:46:30,381 | INFO | Guidance: There are no missing values in column temperature_first. Extra column not created.
+2026-04-20 11:46:30,475 | INFO | Guidance: There are no missing values in column map_max. Extra column not created.
+2026-04-20 11:46:30,571 | INFO | Guidance: There are no missing values in column map_min. Extra column not created.
+2026-04-20 11:46:30,662 | INFO | Guidance: There are no missing values in column map_mean. Extra column not created.
+2026-04-20 11:46:30,756 | INFO | Guidance: There are no missing values in column map_first. Extra column not created.
+2026-04-20 11:46:30,854 | INFO | Guidance: There are no missing values in column shock_index. Extra column not created.
+2026-04-20 11:46:30,949 | INFO | Guidance: There are no missing values in column lactate_trend. Extra column not created.
+2026-04-20 11:46:31,039 | INFO | Guidance: There are no missing values in column platelets_trend. Extra column not created.
+2026-04-20 11:46:31,132 | INFO | Guidance: There are no missing values in column creatinine_trend. Extra column not created.
+2026-04-20 11:46:31,197 | INFO | Guidance: There are no missing values in column bilirubin_trend. Extra column not created.
+2026-04-20 11:46:31,289 | INFO | Guidance: There are no missing values in column inr_trend. Extra column not created.
+2026-04-20 11:46:31,341 | INFO | Guidance: There are no missing values in column wbc_trend. Extra column not created.
+2026-04-20 11:46:31,431 | INFO | Guidance: There are no missing values in column hemoglobin_trend. Extra column not created.
+2026-04-20 11:46:31,526 | INFO | Guidance: There are no missing values in column glucose_trend. Extra column not created.
+2026-04-20 11:46:31,617 | INFO | Guidance: There are no missing values in column ph_trend. Extra column not created.
+2026-04-20 11:46:31,713 | INFO | Guidance: There are no missing values in column base_excess_trend. Extra column not created.
+2026-04-20 11:46:31,805 | INFO | Guidance: There are no missing values in column sodium_trend. Extra column not created.
+2026-04-20 11:46:31,896 | INFO | Guidance: There are no missing values in column potassium_trend. Extra column not created.
+2026-04-20 11:46:32,005 | INFO | Guidance: There are no missing values in column heart_rate_trend. Extra column not created.
+2026-04-20 11:46:32,103 | INFO | Guidance: There are no missing values in column resp_rate_trend. Extra column not created.
+2026-04-20 11:46:32,196 | INFO | Guidance: There are no missing values in column temperature_trend. Extra column not created.
+2026-04-20 11:46:32,290 | INFO | Guidance: There are no missing values in column spo2_trend. Extra column not created.
+2026-04-20 11:46:32,328 | INFO | Guidance: There are no missing values in column urine_output_total_ml. Extra column not created.
+2026-04-20 11:46:32,356 | INFO | Guidance: There are no missing values in column urine_output_per_hour. Extra column not created.
+2026-04-20 11:46:32,389 | INFO | Guidance: There are no missing values in column fluid_input_total_ml. Extra column not created.
+2026-04-20 11:46:32,443 | INFO | Guidance: There are no missing values in column fluid_balance_ml. Extra column not created.
+2026-04-20 11:46:32,525 | INFO | Guidance: There are no missing values in column n_antibiotics_24h. Extra column not created.
+2026-04-20 11:46:32,557 | INFO | Guidance: There are no missing values in column n_cultures_24h. Extra column not created.
+2026-04-20 11:46:32,591 | INFO | Guidance: There are no missing values in column n_positive_cultures. Extra column not created.
+2026-04-20 11:54:40,739 | INFO | 
+  Both models trained in 15.6 min
+2026-04-20 11:54:40,915 | INFO |   Models saved -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\ctgan_model_v4_pos.pkl, D:\pediatric-sepsis-PIC\model_datasets\synthetic\ctgan_model_v4_neg.pkl
+2026-04-20 11:54:40,915 | INFO | 
+============================================================
+2026-04-20 11:54:40,915 | INFO | STEP 3 -- Sampling from class-split models
+2026-04-20 11:54:40,915 | INFO | ============================================================
+2026-04-20 11:54:40,915 | INFO |   Sampling 2,731 positive rows from ctgan_pos...
+2026-04-20 11:54:43,036 | INFO | {'EVENT': 'Sample', 'TIMESTAMP': datetime.datetime(2026, 4, 20, 11, 54, 40, 915181), 'SYNTHESIZER CLASS NAME': 'CTGANSynthesizer', 'SYNTHESIZER ID': 'CTGANSynthesizer_1.36.0_b5a10a30feb84f36830cebb58c5148c9', 'TOTAL NUMBER OF TABLES': 1, 'TOTAL NUMBER OF ROWS': 2731, 'TOTAL NUMBER OF COLUMNS': 225}
+2026-04-20 11:54:43,036 | INFO |   Sampling 7,269 negative rows from ctgan_neg...
+2026-04-20 11:54:47,641 | INFO | {'EVENT': 'Sample', 'TIMESTAMP': datetime.datetime(2026, 4, 20, 11, 54, 43, 36033), 'SYNTHESIZER CLASS NAME': 'CTGANSynthesizer', 'SYNTHESIZER ID': 'CTGANSynthesizer_1.36.0_9e2657b77b564787bbb079896e69d0e1', 'TOTAL NUMBER OF TABLES': 1, 'TOTAL NUMBER OF ROWS': 7269, 'TOTAL NUMBER OF COLUMNS': 225}
+2026-04-20 11:54:47,641 | INFO |   Sampling complete in 0.1 min
+2026-04-20 11:54:47,767 | INFO |   Combined shape: (10000, 226)
+2026-04-20 11:54:47,767 | INFO |   Prevalence after sampling: 0.2731 (target: 0.2731)
+2026-04-20 11:54:47,767 | INFO | 
+  [SIGNAL CHECK — before post-processing]
+2026-04-20 11:54:47,789 | INFO |     lactate_max                Real sep0=2.223 sep1=5.784 diff=+3.560 | Synth sep0=1.435 sep1=7.346 diff=+5.911
+2026-04-20 11:54:47,799 | INFO |     platelets_min              Real sep0=283.978 sep1=176.836 diff=-107.141 | Synth sep0=280.623 sep1=63.435 diff=-217.188
+2026-04-20 11:54:47,802 | INFO |     inr_max                    Real sep0=1.081 sep1=1.502 diff=+0.421 | Synth sep0=1.055 sep1=1.086 diff=+0.031
+2026-04-20 11:54:47,819 | INFO |     bicarbonate_min            Real sep0=20.075 sep1=17.267 diff=-2.808 | Synth sep0=19.738 sep1=10.838 diff=-8.901
+2026-04-20 11:54:47,819 | INFO | 
+============================================================
+2026-04-20 11:54:47,819 | INFO | STEP 4 -- Label-conditioned post-processing
+2026-04-20 11:54:47,819 | INFO | ============================================================
+2026-04-20 11:54:47,819 | INFO | 
+[Step A] Label-conditioned joint group resampling (KS threshold per class: 0.1)...
+2026-04-20 11:55:01,100 | INFO |   joint_resample_conditioned: corrected 80 group×class combinations.
+2026-04-20 11:55:01,100 | INFO | 
+[Step B] Sort pass (max >= mean >= min)...
+2026-04-20 11:55:01,152 | INFO |   sort_max_mean_min: done. Remaining violations: 0
+2026-04-20 11:55:01,153 | INFO | 
+[Step C] Label-conditioned quantile mapping (KS threshold per class: 0.1)...
+2026-04-20 11:55:07,831 | INFO |   quantile_map_conditioned: mapped 199 col×class combinations (KS > 0.1).
+2026-04-20 11:55:07,831 | INFO | 
+[Step D] Light swap fix...
+2026-04-20 11:55:07,910 | INFO |   light_swap_fix: swapped 24432 pairs. Remaining violations: 0
+2026-04-20 11:55:07,912 | INFO | 
+[Step E] Standalone continuous resample (KS threshold: 0.1)...
+2026-04-20 11:55:07,955 | INFO |   resample_standalone_conditioned: corrected 0 col×class combinations.
+2026-04-20 11:55:07,955 | INFO | 
+[Fix] Care unit one-hot exclusivity...
+2026-04-20 11:55:07,955 | INFO |   care_unit_onehot: fixed 2205 multi-unit rows.
+2026-04-20 11:55:08,932 | INFO |   care_unit_onehot: fixed 3475 zero-unit rows.
+2026-04-20 11:55:08,932 | INFO |   care_unit_onehot: 0 violations remain.
+2026-04-20 11:55:08,932 | INFO | 
+[Fix] Label prevalence matching...
+2026-04-20 11:55:08,954 | INFO |   label_prevalence: within tolerance (0.2731). No change.
+2026-04-20 11:55:08,954 | INFO | 
+[Fix] Gender prevalence matching (per class)...
+2026-04-20 11:55:08,981 | INFO |   gender: sep0=0.6046 sep1=0.5613
+2026-04-20 11:55:09,054 | INFO | 
+============================================================
+2026-04-20 11:55:09,054 | INFO | STEP 5 -- Saving synthetic dataset
+2026-04-20 11:55:09,055 | INFO | ============================================================
+2026-04-20 11:55:09,704 | INFO |   Saved -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\B_synthetic_train_v4.csv  (10000, 226)
+2026-04-20 11:55:09,704 | INFO | 
+============================================================
+2026-04-20 11:55:09,704 | INFO | STEP 6 -- Validation
+2026-04-20 11:55:09,704 | INFO | ============================================================
+2026-04-20 11:55:10,337 | INFO | 
+  [6A] OVERALL MARGINAL KS (structural check):
+2026-04-20 11:55:10,337 | INFO |     KS <= 0.05 : 178 (96%)
+2026-04-20 11:55:10,337 | INFO |     KS 0.05-0.10:   7 (4%)
+2026-04-20 11:55:10,337 | INFO |     KS > 0.10  :   0 (0%)
+2026-04-20 11:55:10,337 | INFO |     Mean KS    : 0.0194
+2026-04-20 11:55:10,337 | INFO |     Median KS  : 0.0188
+2026-04-20 11:55:12,368 | INFO | 
+  [6B] WITHIN-CLASS KS (v3-collapse detector):
+2026-04-20 11:55:12,368 | INFO |     Mean within-class KS : 0.0231
+2026-04-20 11:55:12,368 | INFO |     col×class > 0.10     : 1 / 370
+2026-04-20 11:55:12,368 | INFO |     Top offenders:
+2026-04-20 11:55:12,368 | INFO |       urea_max                            class=1  KS=0.1008
+2026-04-20 11:55:12,368 | INFO |       bilirubin_mean                      class=1  KS=0.0969
+2026-04-20 11:55:12,368 | INFO |       crp_min                             class=1  KS=0.0939
+2026-04-20 11:55:12,368 | INFO |       glucose_trend                       class=1  KS=0.0935
+2026-04-20 11:55:12,368 | INFO |       creatinine_max                      class=1  KS=0.0914
+2026-04-20 11:55:12,368 | INFO |       crp_mean                            class=1  KS=0.0902
+2026-04-20 11:55:12,368 | INFO |       crp_first                           class=1  KS=0.0897
+2026-04-20 11:55:12,368 | INFO |       crp_max                             class=1  KS=0.0890
+2026-04-20 11:55:12,368 | INFO |       alt_first                           class=1  KS=0.0882
+2026-04-20 11:55:12,368 | INFO |       n_antibiotics_24h                   class=0  KS=0.0839
+2026-04-20 11:55:13,704 | INFO | 
+  [6C] LABEL SIGNAL PRESERVATION (PRIMARY METRIC):
+2026-04-20 11:55:13,704 | INFO |     Sign preserved : 179/185 (96.8%)
+2026-04-20 11:55:13,704 | INFO |     Median ratio (synth_diff/real_diff) for top features: 0.975
+2026-04-20 11:55:13,704 | INFO |     (Target: sign=100%, ratio close to 1.0)
+2026-04-20 11:55:13,704 | INFO | 
+  Top 15 discriminative features — signal check:
+2026-04-20 11:55:13,704 | INFO |   Feature                              Real diff Synth diff   Ratio  Sign OK
+2026-04-20 11:55:13,704 | INFO |   ---------------------------------------------------------------------------
+2026-04-20 11:55:13,704 | INFO |   ck_max                                 482.017    407.319   0.845      YES
+2026-04-20 11:55:13,704 | INFO |   ck_first                               479.360    322.301   0.672      YES
+2026-04-20 11:55:13,704 | INFO |   ck_mean                                449.470    305.581   0.680      YES
+2026-04-20 11:55:13,704 | INFO |   ldh_max                                437.883    427.073   0.975      YES
+2026-04-20 11:55:13,704 | INFO |   ldh_first                              434.073    415.277   0.957      YES
+2026-04-20 11:55:13,704 | INFO |   ldh_mean                               420.305    401.928   0.956      YES
+2026-04-20 11:55:13,704 | INFO |   ck_min                                 417.837    272.202   0.651      YES
+2026-04-20 11:55:13,704 | INFO |   ldh_min                                401.136    376.316   0.938      YES
+2026-04-20 11:55:13,704 | INFO |   ast_max                                257.538    244.424   0.949      YES
+2026-04-20 11:55:13,704 | INFO |   ast_first                              248.126    229.984   0.927      YES
+2026-04-20 11:55:13,704 | INFO |   ast_mean                               246.767    224.253   0.909      YES
+2026-04-20 11:55:13,704 | INFO |   ast_min                                235.934    206.708   0.876      YES
+2026-04-20 11:55:13,704 | INFO |   alt_max                                138.196    129.544   0.937      YES
+2026-04-20 11:55:13,704 | INFO |   alt_first                              119.606    113.983   0.953      YES
+2026-04-20 11:55:13,704 | INFO |   alt_mean                               117.203    110.026   0.939      YES
+2026-04-20 11:55:13,720 | INFO | 
+  [6D] Structural integrity: PASS (0 violations)
+2026-04-20 11:55:13,720 | INFO | 
+  Label prevalence : 0.2731 (real: 0.2731)
+2026-04-20 11:55:13,721 | INFO |   Gender male rate : 0.5928 (real: 0.5929)
+2026-04-20 11:55:13,936 | INFO |   Saved label signal plot -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\figures_v4\label_signal_v4.png
+2026-04-20 11:55:17,299 | INFO |   Saved class distribution plot -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\figures_v4\class_distributions_v4.png
+2026-04-20 11:55:17,502 | INFO |   Saved KS bar -> D:\pediatric-sepsis-PIC\model_datasets\synthetic\figures_v4\ks_bar_overall_v4.png
+2026-04-20 11:55:17,503 | INFO | 
+  Validation files saved:
+2026-04-20 11:55:17,503 | INFO |     D:\pediatric-sepsis-PIC\model_datasets\synthetic\ks_validation_results_v4.csv
+2026-04-20 11:55:17,503 | INFO |     D:\pediatric-sepsis-PIC\model_datasets\synthetic\ks_within_class_v4.csv
+2026-04-20 11:55:17,503 | INFO |     D:\pediatric-sepsis-PIC\model_datasets\synthetic\label_signal_v4.csv
+2026-04-20 11:55:19,021 | INFO | 
+======================================================================
+2026-04-20 11:55:19,022 | INFO | SYNTHETIC DATA GENERATION v4 COMPLETE
+2026-04-20 11:55:19,022 | INFO | ======================================================================
+2026-04-20 11:55:19,022 | INFO |   Output : D:\pediatric-sepsis-PIC\model_datasets\synthetic\B_synthetic_train_v4.csv
+2026-04-20 11:55:19,022 | INFO |   Shape  : (10000, 226)
+2026-04-20 11:55:19,022 | INFO |   Time   : 16.3 min
+2026-04-20 11:55:19,022 | INFO |   Sign preservation: 96.8%
+2026-04-20 11:55:19,022 | INFO | ======================================================================
+2026-04-20 11:55:19,022 | INFO | 
+2026-04-20 11:55:19,023 | INFO | NEXT STEP: train CatBoost on B_synthetic_train_v4.csv
+2026-04-20 11:55:19,023 | INFO | Expected AUPRC range: 0.60-0.80 (vs v3's 0.28)
+2026-04-20 11:55:19,023 | INFO | If AUPRC < 0.50, check label_signal_v4.csv sign_preserved column
+2026-04-20 11:55:19,023 | INFO | ======================================================================

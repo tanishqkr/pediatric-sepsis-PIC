@@ -1,0 +1,28 @@
+{
+  "version": "v3",
+  "generated_at": "2026-04-20T10:43:55.705477",
+  "n_real_train": 2530,
+  "n_synthetic": 10000,
+  "n_features": 225,
+  "real_prevalence": 0.27312252964426875,
+  "synth_prevalence": 0.2731,
+  "prevalence_diff_pp": 0.002252964426874282,
+  "ctgan_epochs": 300,
+  "random_seed": 42,
+  "ks_joint_threshold": 0.1,
+  "ks_quantile_threshold": 0.15,
+  "noise": 0.02,
+  "n_quantile_mapped": 96,
+  "total_runtime_min": 1.05,
+  "output_file": "D:\\pediatric-sepsis-PIC\\model_datasets\\synthetic\\B_synthetic_train_v3.csv",
+  "post_processing_pipeline": [
+    "A: joint_group_resampling",
+    "B: single_sort_pass",
+    "C: quantile_mapping_residual",
+    "D: light_swap_fix",
+    "care_unit_onehot",
+    "label_prevalence_matching",
+    "gender_prevalence_matching"
+  ],
+  "note": "v3 replaces v2's independent column bootstrap with a 3-step pipeline: joint row resampling (preserves inter-column correlation), single sort (enforces max>=mean>=min), quantile mapping (fixes residual KS without re-sorting), and a light swap (fixes any lingering inversions). This achieves Mean KS ~0.03 vs v2's 0.27 and v1's 0.34."
+}
