@@ -1,0 +1,149 @@
+2026-03-23 14:50:01,187  ============================================================
+2026-03-23 14:50:01,187  PHASE 1 — BASELINE TRAINING (All 6 Models, Option B)
+2026-03-23 14:50:01,187  Started:   2026-03-23T14:50:01
+2026-03-23 14:50:01,187  Models dir: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_003
+2026-03-23 14:50:01,187  Figs dir:   /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003
+2026-03-23 14:50:01,187  ============================================================
+2026-03-23 14:50:01,187  
+Loading model-ready datasets...
+2026-03-23 14:50:01,225    Train: (2530, 226)  |  Test: (633, 226)
+2026-03-23 14:50:01,227    Features: 225
+2026-03-23 14:50:01,227    Train — sepsis: 691  non-sepsis: 1839
+2026-03-23 14:50:01,227    Test  — sepsis: 173   non-sepsis: 460
+2026-03-23 14:50:01,359  
+==================================================
+2026-03-23 14:50:01,359    MODEL: CATBOOST
+2026-03-23 14:50:01,359  ==================================================
+2026-03-23 14:50:01,359    Running 5-fold stratified CV...
+2026-03-23 14:50:04,338      Fold 1: AUROC=0.9721  AUPRC=0.9502  Sens=0.8561  Spec=0.9619
+2026-03-23 14:50:07,578      Fold 2: AUROC=0.9701  AUPRC=0.9437  Sens=0.8696  Spec=0.9728
+2026-03-23 14:50:10,934      Fold 3: AUROC=0.9717  AUPRC=0.9378  Sens=0.8623  Spec=0.9755
+2026-03-23 14:50:13,859      Fold 4: AUROC=0.9798  AUPRC=0.9591  Sens=0.8551  Spec=0.9891
+2026-03-23 14:50:17,144      Fold 5: AUROC=0.9812  AUPRC=0.9600  Sens=0.8551  Spec=0.9674
+2026-03-23 14:50:17,145      CV mean: AUROC=0.9750±0.0045  AUPRC=0.9502±0.0086
+2026-03-23 14:50:17,145    Fitting on full training set...
+2026-03-23 14:50:21,556    Test AUROC : 0.9863 [0.9795–0.9922]
+2026-03-23 14:50:21,556    Test AUPRC : 0.9684 [0.9515–0.9822]
+2026-03-23 14:50:21,556    Test Sens  : 0.8555  Spec: 0.9674  F1: 0.8810  PPV: 0.9080  NPV: 0.9468
+2026-03-23 14:50:21,556    Threshold  : 0.4830 (at ~85% sensitivity)
+2026-03-23 14:50:21,556    TP=148  FP=15  TN=445  FN=25
+2026-03-23 14:50:21,846    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003/phase1_cm_catboost.png
+2026-03-23 14:50:21,847    Saved model → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_003/catboost.cbm
+2026-03-23 14:50:21,849  
+==================================================
+2026-03-23 14:50:21,849    MODEL: XGBOOST
+2026-03-23 14:50:21,849  ==================================================
+2026-03-23 14:50:21,849    Running 5-fold stratified CV...
+2026-03-23 14:50:23,665      Fold 1: AUROC=0.9695  AUPRC=0.9436  Sens=0.8561  Spec=0.9591
+2026-03-23 14:50:25,417      Fold 2: AUROC=0.9713  AUPRC=0.9422  Sens=0.8551  Spec=0.9647
+2026-03-23 14:50:27,143      Fold 3: AUROC=0.9658  AUPRC=0.9247  Sens=0.8551  Spec=0.9457
+2026-03-23 14:50:28,917      Fold 4: AUROC=0.9762  AUPRC=0.9520  Sens=0.8551  Spec=0.9620
+2026-03-23 14:50:30,703      Fold 5: AUROC=0.9809  AUPRC=0.9605  Sens=0.8623  Spec=0.9810
+2026-03-23 14:50:30,703      CV mean: AUROC=0.9727±0.0053  AUPRC=0.9446±0.0119
+2026-03-23 14:50:30,704    Fitting on full training set...
+2026-03-23 14:50:33,510    Test AUROC : 0.9780 [0.9674–0.9875]
+2026-03-23 14:50:33,510    Test AUPRC : 0.9512 [0.9248–0.9719]
+2026-03-23 14:50:33,510    Test Sens  : 0.8671  Spec: 0.9630  F1: 0.8824  PPV: 0.8982  NPV: 0.9506
+2026-03-23 14:50:33,510    Threshold  : 0.4312 (at ~85% sensitivity)
+2026-03-23 14:50:33,510    TP=150  FP=17  TN=443  FN=23
+2026-03-23 14:50:33,614    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003/phase1_cm_xgboost.png
+2026-03-23 14:50:33,617    Saved model → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_003/xgboost.pkl
+2026-03-23 14:50:33,618  
+==================================================
+2026-03-23 14:50:33,618    MODEL: LIGHTGBM
+2026-03-23 14:50:33,618  ==================================================
+2026-03-23 14:50:33,618    Running 5-fold stratified CV...
+2026-03-23 14:50:36,555      Fold 1: AUROC=0.9689  AUPRC=0.9455  Sens=0.8561  Spec=0.9782
+2026-03-23 14:50:39,247      Fold 2: AUROC=0.9668  AUPRC=0.9339  Sens=0.8551  Spec=0.9592
+2026-03-23 14:50:42,042      Fold 3: AUROC=0.9600  AUPRC=0.9218  Sens=0.8696  Spec=0.9293
+2026-03-23 14:50:44,743      Fold 4: AUROC=0.9755  AUPRC=0.9518  Sens=0.8551  Spec=0.9620
+2026-03-23 14:50:47,427      Fold 5: AUROC=0.9815  AUPRC=0.9607  Sens=0.8551  Spec=0.9674
+2026-03-23 14:50:47,428      CV mean: AUROC=0.9705±0.0074  AUPRC=0.9427±0.0136
+2026-03-23 14:50:47,428    Fitting on full training set...
+2026-03-23 14:50:51,073    Test AUROC : 0.9806 [0.9715–0.9885]
+2026-03-23 14:50:51,073    Test AUPRC : 0.9570 [0.9351–0.9741]
+2026-03-23 14:50:51,073    Test Sens  : 0.8555  Spec: 0.9630  F1: 0.8757  PPV: 0.8970  NPV: 0.9466
+2026-03-23 14:50:51,073    Threshold  : 0.3624 (at ~85% sensitivity)
+2026-03-23 14:50:51,073    TP=148  FP=17  TN=443  FN=25
+2026-03-23 14:50:51,177    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003/phase1_cm_lightgbm.png
+2026-03-23 14:50:51,185    Saved model → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_003/lightgbm.pkl
+2026-03-23 14:50:51,187  
+==================================================
+2026-03-23 14:50:51,187    MODEL: RANDOM_FOREST
+2026-03-23 14:50:51,187  ==================================================
+2026-03-23 14:50:51,187    Running 5-fold stratified CV...
+2026-03-23 14:50:52,036      Fold 1: AUROC=0.9554  AUPRC=0.9155  Sens=0.8561  Spec=0.9237
+2026-03-23 14:50:52,842      Fold 2: AUROC=0.9534  AUPRC=0.8986  Sens=0.8551  Spec=0.9130
+2026-03-23 14:50:53,605      Fold 3: AUROC=0.9609  AUPRC=0.9123  Sens=0.8551  Spec=0.9185
+2026-03-23 14:50:54,348      Fold 4: AUROC=0.9694  AUPRC=0.9394  Sens=0.8551  Spec=0.9429
+2026-03-23 14:50:55,138      Fold 5: AUROC=0.9626  AUPRC=0.9105  Sens=0.8551  Spec=0.9321
+2026-03-23 14:50:55,138      CV mean: AUROC=0.9604±0.0057  AUPRC=0.9153±0.0134
+2026-03-23 14:50:55,139    Fitting on full training set...
+2026-03-23 14:50:56,761    Test AUROC : 0.9656 [0.9514–0.9769]
+2026-03-23 14:50:56,761    Test AUPRC : 0.9222 [0.8901–0.9478]
+2026-03-23 14:50:56,761    Test Sens  : 0.8555  Spec: 0.9283  F1: 0.8362  PPV: 0.8177  NPV: 0.9447
+2026-03-23 14:50:56,761    Threshold  : 0.3560 (at ~85% sensitivity)
+2026-03-23 14:50:56,761    TP=148  FP=33  TN=427  FN=25
+2026-03-23 14:50:56,871    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003/phase1_cm_random_forest.png
+2026-03-23 14:50:56,884    Saved model → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_003/random_forest.pkl
+2026-03-23 14:50:56,886  
+==================================================
+2026-03-23 14:50:56,886    MODEL: LOGISTIC_REGRESSION
+2026-03-23 14:50:56,886  ==================================================
+2026-03-23 14:50:56,886    Running 5-fold stratified CV...
+2026-03-23 14:50:56,950      Fold 1: AUROC=0.9156  AUPRC=0.8519  Sens=0.8561  Spec=0.8093
+2026-03-23 14:50:57,005      Fold 2: AUROC=0.9213  AUPRC=0.8408  Sens=0.8551  Spec=0.8098
+2026-03-23 14:50:57,062      Fold 3: AUROC=0.8807  AUPRC=0.7890  Sens=0.8551  Spec=0.7853
+2026-03-23 14:50:57,117      Fold 4: AUROC=0.9165  AUPRC=0.8192  Sens=0.8551  Spec=0.8207
+2026-03-23 14:50:57,175      Fold 5: AUROC=0.8955  AUPRC=0.8210  Sens=0.8551  Spec=0.7989
+2026-03-23 14:50:57,176      CV mean: AUROC=0.9059±0.0154  AUPRC=0.8244±0.0215
+2026-03-23 14:50:57,176    Fitting on full training set...
+2026-03-23 14:50:58,000    Test AUROC : 0.9152 [0.8850–0.9401]
+2026-03-23 14:50:58,001    Test AUPRC : 0.8477 [0.7953–0.8876]
+2026-03-23 14:50:58,001    Test Sens  : 0.8555  Spec: 0.8326  F1: 0.7437  PPV: 0.6578  NPV: 0.9387
+2026-03-23 14:50:58,001    Threshold  : 0.3510 (at ~85% sensitivity)
+2026-03-23 14:50:58,001    TP=148  FP=77  TN=383  FN=25
+2026-03-23 14:50:58,117    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003/phase1_cm_logistic_regression.png
+2026-03-23 14:50:58,117    Saved model → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_003/logistic_regression.pkl
+2026-03-23 14:50:58,119  
+==================================================
+2026-03-23 14:50:58,119    MODEL: MLP
+2026-03-23 14:50:58,119  ==================================================
+2026-03-23 14:50:58,119    Running 5-fold stratified CV...
+2026-03-23 14:50:58,542      Fold 1: AUROC=0.9202  AUPRC=0.8615  Sens=0.8561  Spec=0.8420
+2026-03-23 14:50:58,856      Fold 2: AUROC=0.9260  AUPRC=0.8468  Sens=0.8623  Spec=0.8288
+2026-03-23 14:50:59,236      Fold 3: AUROC=0.8956  AUPRC=0.8126  Sens=0.8551  Spec=0.8207
+2026-03-23 14:50:59,487      Fold 4: AUROC=0.9227  AUPRC=0.8417  Sens=0.8623  Spec=0.8641
+2026-03-23 14:50:59,699      Fold 5: AUROC=0.9103  AUPRC=0.8359  Sens=0.8551  Spec=0.7473
+2026-03-23 14:50:59,699      CV mean: AUROC=0.9150±0.0110  AUPRC=0.8397±0.0160
+2026-03-23 14:50:59,699    Fitting on full training set...
+2026-03-23 14:51:00,872    Test AUROC : 0.9212 [0.8935–0.9453]
+2026-03-23 14:51:00,873    Test AUPRC : 0.8635 [0.8192–0.8995]
+2026-03-23 14:51:00,873    Test Sens  : 0.8555  Spec: 0.8630  F1: 0.7708  PPV: 0.7014  NPV: 0.9408
+2026-03-23 14:51:00,873    Threshold  : 0.0376 (at ~85% sensitivity)
+2026-03-23 14:51:00,873    TP=148  FP=63  TN=397  FN=25
+2026-03-23 14:51:00,973    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003/phase1_cm_mlp.png
+2026-03-23 14:51:00,974    Saved model → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_003/mlp.pkl
+2026-03-23 14:51:00,976  
+--- Generating combined figures ---
+2026-03-23 14:51:01,197    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003/phase1_roc_pr_all_models.png
+2026-03-23 14:51:01,327    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003/phase1_calibration_all_models.png
+2026-03-23 14:51:01,648    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003/phase1_metrics_comparison.png
+2026-03-23 14:51:01,649  
+--- RESULTS SUMMARY TABLE (Test Set) ---
+2026-03-23 14:51:01,649  Model                    AUROC 95% CI             AUPRC     F1   Sens   Spec    PPV    NPV   Brier
+2026-03-23 14:51:01,649  ----------------------------------------------------------------------------------------------------
+2026-03-23 14:51:01,649  catboost                0.9863 [0.979-0.992]     0.9684 0.8810 0.8555 0.9674 0.9080 0.9468  0.0400
+2026-03-23 14:51:01,649  xgboost                 0.9780 [0.967-0.987]     0.9512 0.8824 0.8671 0.9630 0.8982 0.9506  0.0505
+2026-03-23 14:51:01,649  lightgbm                0.9806 [0.971-0.989]     0.9570 0.8757 0.8555 0.9630 0.8970 0.9466  0.0521
+2026-03-23 14:51:01,649  random_forest           0.9656 [0.951-0.977]     0.9222 0.8362 0.8555 0.9283 0.8177 0.9447  0.0712
+2026-03-23 14:51:01,649  logistic_regression     0.9152 [0.885-0.940]     0.8477 0.7437 0.8555 0.8326 0.6578 0.9387  0.1038
+2026-03-23 14:51:01,649  mlp                     0.9212 [0.893-0.945]     0.8635 0.7708 0.8555 0.8630 0.7014 0.9408  0.1045
+2026-03-23 14:51:01,649  
+  Run folder (models): /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_003
+2026-03-23 14:51:01,649    Run folder (figs):   /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase1_baseline/run_003
+2026-03-23 14:51:01,649    Experiment log:      results/experiment_log.json
+2026-03-23 14:51:01,649    Results CSV:         results/results_summary.csv
+2026-03-23 14:51:01,649  
+Phase 1 complete.
+2026-03-23 14:51:01,649  Next step: python sepsis_ml/phase2_tune_catboost.py

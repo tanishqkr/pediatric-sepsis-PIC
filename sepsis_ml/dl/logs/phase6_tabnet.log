@@ -1,0 +1,70 @@
+2026-04-14 16:00:13,456 | INFO | ======================================================================
+2026-04-14 16:00:13,456 | INFO | PHASE 6 — TABNET (FIXED)
+2026-04-14 16:00:13,456 | INFO | Started : 2026-04-14 16:00:13
+2026-04-14 16:00:13,456 | INFO | ======================================================================
+2026-04-14 16:00:13,456 | INFO | Device : CPU (pytorch-tabnet, MPS support limited)
+2026-04-14 16:00:13,456 | INFO | --------------------------------------------------
+2026-04-14 16:00:13,456 | INFO | Loading datasets...
+2026-04-14 16:00:13,498 | INFO | Train shape : (2530, 225) | Sepsis: 27.3%
+2026-04-14 16:00:13,498 | INFO | Test shape  : (633, 225)       | Sepsis: 27.3%
+2026-04-14 16:00:13,498 | INFO | Features    : 225
+2026-04-14 16:00:13,501 | INFO | Train split : 2024 | Val split: 506
+2026-04-14 16:00:13,521 | INFO | Numerical features to scale : 185
+2026-04-14 16:00:13,521 | INFO | Binary features (no scaling): 40
+2026-04-14 16:00:13,567 | INFO | Scaler saved.
+2026-04-14 16:00:13,567 | INFO | Class weights : {0: 1.0, 1: 2.6600361663652805}
+2026-04-14 16:00:13,567 | INFO | ==================================================
+2026-04-14 16:00:13,567 | INFO | Starting Optuna: 100 trials (TabNet)
+2026-04-14 16:00:13,567 | INFO | ==================================================
+2026-04-14 18:16:23,747 | INFO | Optuna finished in 136.2 min
+2026-04-14 18:16:23,748 | INFO | Best CV AUPRC : 0.9049
+2026-04-14 18:16:23,748 | INFO | Best params   : {'n_d': 64, 'n_a': 16, 'n_steps': 4, 'gamma': 1.0819496044865418, 'lambda_sparse': 0.0024060669002724223, 'lr': 0.007886484303209868, 'momentum': 0.2211943480509406, 'mask_type': 'entmax', 'batch_size': 128, 'virtual_batch_size': 64}
+2026-04-14 18:16:23,749 | INFO | --------------------------------------------------
+2026-04-14 18:16:23,749 | INFO | Retraining best model on full training set...
+2026-04-14 18:18:26,824 | INFO | Final model saved to /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/dl/models/run_phase6_tabnet/tabnet_best.zip
+2026-04-14 18:18:26,824 | INFO | --------------------------------------------------
+2026-04-14 18:18:26,824 | INFO | Evaluating on test set...
+2026-04-14 18:18:27,733 | INFO | AUROC : 0.9306 [0.9088–0.9497]
+2026-04-14 18:18:27,733 | INFO | AUPRC : 0.8657 [0.8225–0.9016]
+2026-04-14 18:18:27,740 | INFO | 
+Primary threshold (90% sens): 0.003
+2026-04-14 18:18:27,740 | INFO | Sensitivity : 0.9075
+2026-04-14 18:18:27,740 | INFO | Specificity : 0.7696
+2026-04-14 18:18:27,740 | INFO | PPV         : 0.5970
+2026-04-14 18:18:27,740 | INFO | NPV         : 0.9568
+2026-04-14 18:18:27,740 | INFO | F1          : 0.7202
+2026-04-14 18:18:27,740 | INFO | Brier Score : 0.1076
+2026-04-14 18:18:27,740 | INFO | Extracting TabNet feature importances...
+2026-04-14 18:18:27,742 | INFO | Top 10 features:
+2026-04-14 18:18:27,742 | INFO |   ddimer_first                             0.1143
+2026-04-14 18:18:27,742 | INFO |   hematocrit_mean                          0.0922
+2026-04-14 18:18:27,742 | INFO |   lactate_max                              0.0598
+2026-04-14 18:18:27,742 | INFO |   pt_min                                   0.0591
+2026-04-14 18:18:27,742 | INFO |   platelets_min                            0.0473
+2026-04-14 18:18:27,742 | INFO |   alc_max                                  0.0391
+2026-04-14 18:18:27,742 | INFO |   pt_first                                 0.0390
+2026-04-14 18:18:27,742 | INFO |   ddimer_mean                              0.0351
+2026-04-14 18:18:27,742 | INFO |   had_surgery_flag                         0.0237
+2026-04-14 18:18:27,742 | INFO |   potassium_min                            0.0225
+2026-04-14 18:18:27,754 | INFO | 
+DeLong vs CatBoost: z=-2.4637, p=0.0137
+2026-04-14 18:18:27,754 | INFO | Significant: True | CatBoost better
+2026-04-14 18:18:27,755 | INFO | Results saved.
+2026-04-14 18:18:27,755 | INFO | Generating figures...
+2026-04-14 18:18:29,305 | INFO | All figures saved.
+2026-04-14 18:18:29,305 | INFO | ======================================================================
+2026-04-14 18:18:29,305 | INFO | PHASE 6 TABNET — COMPLETE
+2026-04-14 18:18:29,305 | INFO | ======================================================================
+2026-04-14 18:18:29,305 | INFO | AUROC  : 0.9306 [0.9088–0.9497]
+2026-04-14 18:18:29,305 | INFO | AUPRC  : 0.8657 [0.8225–0.9016]
+2026-04-14 18:18:29,305 | INFO | Brier  : 0.1076
+2026-04-14 18:18:29,305 | INFO | Sens   : 0.9075 @ threshold 0.003
+2026-04-14 18:18:29,305 | INFO | Spec   : 0.7696
+2026-04-14 18:18:29,305 | INFO | F1     : 0.7202
+2026-04-14 18:18:29,306 | INFO | Runtime: 136.2 min
+2026-04-14 18:18:29,306 | INFO | ----------------------------------------------------------------------
+2026-04-14 18:18:29,306 | INFO |   Model   : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/dl/models/run_phase6_tabnet
+2026-04-14 18:18:29,306 | INFO |   Results : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/dl/results
+2026-04-14 18:18:29,306 | INFO |   Figures : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/dl/figures
+2026-04-14 18:18:29,306 | INFO |   Log     : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/dl/logs/phase6_tabnet.log
+2026-04-14 18:18:29,306 | INFO | ======================================================================

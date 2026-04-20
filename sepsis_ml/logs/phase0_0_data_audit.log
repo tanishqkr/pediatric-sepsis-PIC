@@ -1,0 +1,202 @@
+2026-03-21 17:11:57,810  ============================================================
+2026-03-21 17:11:57,810  PHASE 0.0 — DATA AUDIT
+2026-03-21 17:11:57,810  Started: 2026-03-21T17:11:57
+2026-03-21 17:11:57,810  No assumptions. Verify everything before modelling.
+2026-03-21 17:11:57,810  ============================================================
+2026-03-21 17:11:57,810  
+Verifying input file paths...
+2026-03-21 17:11:57,810    [OK] A_train: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/paediatric-intensive-care-database-1.1.0/output2/option_A_train.csv
+2026-03-21 17:11:57,810    [OK] A_test: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/paediatric-intensive-care-database-1.1.0/output2/option_A_test.csv
+2026-03-21 17:11:57,810    [OK] B_train: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/paediatric-intensive-care-database-1.1.0/output2/option_B_train.csv
+2026-03-21 17:11:57,810    [OK] B_test: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/paediatric-intensive-care-database-1.1.0/output2/option_B_test.csv
+2026-03-21 17:11:57,810    [OK] A_meta: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/paediatric-intensive-care-database-1.1.0/output2/option_A_meta_train.csv
+2026-03-21 17:11:57,810    [OK] B_meta: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/paediatric-intensive-care-database-1.1.0/output2/option_B_meta_train.csv
+2026-03-21 17:11:58,091  
+============================================================
+2026-03-21 17:11:58,091  AUDITING: Option A — Full cohort
+2026-03-21 17:11:58,091  ============================================================
+2026-03-21 17:11:58,091    Train shape: (9957, 383)
+2026-03-21 17:11:58,091    Test shape:  (2490, 383)
+2026-03-21 17:11:58,091  
+  Column count match train/test: YES
+2026-03-21 17:11:58,094  
+  Target column 'sepsis_label' in train:
+2026-03-21 17:11:58,094      0: 9,266  (93.1%)
+2026-03-21 17:11:58,094      1: 691  (6.9%)
+2026-03-21 17:11:58,094  
+  Dtype breakdown (train):
+2026-03-21 17:11:58,094      int64           194 columns
+2026-03-21 17:11:58,094      float64         184 columns
+2026-03-21 17:11:58,095      object          5 columns
+2026-03-21 17:11:58,095  
+  Running per-column audit on 383 columns...
+2026-03-21 17:11:58,294    Full column report saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_audit/audit_column_report_A.csv
+2026-03-21 17:11:58,294  
+  Flagged columns requiring review: 20
+2026-03-21 17:11:58,294      expire_flag                                         flags: possible_label_leakage
+2026-03-21 17:11:58,295      hosp_expire                                         flags: possible_label_leakage
+2026-03-21 17:11:58,295      diagnosis                                           flags: possible_free_text
+2026-03-21 17:11:58,295      icd10                                               flags: possible_free_text
+2026-03-21 17:11:58,295      uric_acid_max                                       flags: possible_id_column
+2026-03-21 17:11:58,295      uric_acid_max_was_measured                          flags: possible_id_column
+2026-03-21 17:11:58,295      uric_acid_min                                       flags: possible_id_column
+2026-03-21 17:11:58,295      uric_acid_min_was_measured                          flags: possible_id_column
+2026-03-21 17:11:58,295      uric_acid_mean                                      flags: possible_id_column
+2026-03-21 17:11:58,295      uric_acid_mean_was_measured                         flags: possible_id_column
+2026-03-21 17:11:58,295      uric_acid_first                                     flags: possible_id_column
+2026-03-21 17:11:58,295      uric_acid_first_was_measured                        flags: possible_id_column
+2026-03-21 17:11:58,295      uric_acid_count                                     flags: possible_id_column
+2026-03-21 17:11:58,295      fluid_input_total_ml                                flags: possible_id_column
+2026-03-21 17:11:58,295      fluid_balance_ml                                    flags: possible_id_column
+2026-03-21 17:11:58,295      vaso_vasopressin                                    flags: constant_column|zero_variance
+2026-03-21 17:11:58,295      symptom_anhelation_and_cyanosis                     flags: constant_column|zero_variance
+2026-03-21 17:11:58,295      phoenix_core_score                                  flags: possible_label_leakage
+2026-03-21 17:11:58,295      phoenix_8_score                                     flags: possible_label_leakage
+2026-03-21 17:11:58,295      sepsis_label                                        flags: possible_label_leakage
+2026-03-21 17:11:58,296  
+  Non-numeric columns (5):
+2026-03-21 17:11:58,296      gender                                    dtype=object  unique=2  missing=0.0%
+2026-03-21 17:11:58,296        top values: {'M': 5698, 'F': 4259}
+2026-03-21 17:11:58,296      care_unit                                 dtype=object  unique=5  missing=0.0%
+2026-03-21 17:11:58,297        top values: {'NICU': 2447, 'General ICU': 2105, 'SICU': 1950, 'CICU': 1926, 'PICU': 1529}
+2026-03-21 17:11:58,297      diagnosis                                 dtype=object  unique=917  missing=0.53%
+2026-03-21 17:11:58,297        top values: {'早产儿': 727, '肺炎': 580, '室间隔缺损': 530, '先天性心脏病': 432, '房间隔缺损': 319, '心脏病': 225, '特指肾盂积水': 220, '惊厥': 175, '新生儿窒息': 140, '
+2026-03-21 17:11:58,297      icd10                                     dtype=object  unique=916  missing=0.54%
+2026-03-21 17:11:58,297        top values: {'P07.302': 727, 'J69.101': 580, 'Q21.000': 530, 'Q24.900': 432, 'Q21.100': 319, 'I51.904': 225, 'N13.300': 220, 'R56.80
+2026-03-21 17:11:58,297      ethnicity                                 dtype=object  unique=7  missing=0.0%
+2026-03-21 17:11:58,297        top values: {'Han ethnic': 9839, 'Others': 44, 'Miao ethnic': 33, 'Buyei ethnic': 16, 'Tujia ethnic': 12, 'Yi ethnic': 9, 'Hui ethni
+2026-03-21 17:11:58,297  
+  Zero-variance numeric columns (2): ['vaso_vasopressin', 'symptom_anhelation_and_cyanosis']
+2026-03-21 17:11:58,297    Constant columns (1 unique value) (2): ['vaso_vasopressin', 'symptom_anhelation_and_cyanosis']
+2026-03-21 17:11:58,298  
+  Columns with >20% missing (0):
+2026-03-21 17:11:58,298  
+  Possible label leakage columns (5):
+2026-03-21 17:11:58,298      expire_flag
+2026-03-21 17:11:58,298      hosp_expire
+2026-03-21 17:11:58,298      phoenix_core_score
+2026-03-21 17:11:58,298      phoenix_8_score
+2026-03-21 17:11:58,298      sepsis_label
+2026-03-21 17:11:58,302  
+============================================================
+2026-03-21 17:11:58,302  AUDITING: Option B — Infection-only
+2026-03-21 17:11:58,302  ============================================================
+2026-03-21 17:11:58,302    Train shape: (2530, 380)
+2026-03-21 17:11:58,302    Test shape:  (633, 380)
+2026-03-21 17:11:58,302  
+  Column count match train/test: YES
+2026-03-21 17:11:58,303  
+  Target column 'sepsis_label' in train:
+2026-03-21 17:11:58,303      0: 1,839  (72.7%)
+2026-03-21 17:11:58,303      1: 691  (27.3%)
+2026-03-21 17:11:58,303  
+  Dtype breakdown (train):
+2026-03-21 17:11:58,303      int64           191 columns
+2026-03-21 17:11:58,303      float64         184 columns
+2026-03-21 17:11:58,303      object          5 columns
+2026-03-21 17:11:58,303  
+  Running per-column audit on 380 columns...
+2026-03-21 17:11:58,431    Full column report saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_audit/audit_column_report_B.csv
+2026-03-21 17:11:58,431  
+  Flagged columns requiring review: 21
+2026-03-21 17:11:58,432      expire_flag                                         flags: possible_label_leakage
+2026-03-21 17:11:58,432      hosp_expire                                         flags: possible_label_leakage
+2026-03-21 17:11:58,432      diagnosis                                           flags: possible_free_text
+2026-03-21 17:11:58,432      icd10                                               flags: possible_free_text
+2026-03-21 17:11:58,432      uric_acid_max                                       flags: possible_id_column
+2026-03-21 17:11:58,432      uric_acid_max_was_measured                          flags: possible_id_column
+2026-03-21 17:11:58,432      uric_acid_min                                       flags: possible_id_column
+2026-03-21 17:11:58,432      uric_acid_min_was_measured                          flags: possible_id_column
+2026-03-21 17:11:58,432      uric_acid_mean                                      flags: possible_id_column
+2026-03-21 17:11:58,432      uric_acid_mean_was_measured                         flags: possible_id_column
+2026-03-21 17:11:58,432      uric_acid_first                                     flags: possible_id_column
+2026-03-21 17:11:58,432      uric_acid_first_was_measured                        flags: possible_id_column
+2026-03-21 17:11:58,432      uric_acid_count                                     flags: possible_id_column
+2026-03-21 17:11:58,432      fluid_input_total_ml                                flags: possible_id_column
+2026-03-21 17:11:58,432      fluid_balance_ml                                    flags: possible_id_column
+2026-03-21 17:11:58,432      vaso_vasopressin                                    flags: constant_column|zero_variance
+2026-03-21 17:11:58,432      suspected_infection                                 flags: constant_column|zero_variance
+2026-03-21 17:11:58,432      symptom_anhelation_and_cyanosis                     flags: constant_column|zero_variance
+2026-03-21 17:11:58,432      phoenix_core_score                                  flags: possible_label_leakage
+2026-03-21 17:11:58,432      phoenix_8_score                                     flags: possible_label_leakage
+2026-03-21 17:11:58,432      sepsis_label                                        flags: possible_label_leakage
+2026-03-21 17:11:58,433  
+  Non-numeric columns (5):
+2026-03-21 17:11:58,433      gender                                    dtype=object  unique=2  missing=0.0%
+2026-03-21 17:11:58,433        top values: {'M': 1500, 'F': 1030}
+2026-03-21 17:11:58,433      care_unit                                 dtype=object  unique=5  missing=0.0%
+2026-03-21 17:11:58,433        top values: {'General ICU': 1251, 'SICU': 501, 'NICU': 421, 'PICU': 213, 'CICU': 144}
+2026-03-21 17:11:58,433      diagnosis                                 dtype=object  unique=488  missing=0.08%
+2026-03-21 17:11:58,433        top values: {'特指肾盂积水': 203, '肺炎': 194, '早产儿': 113, '白血病': 70, '败血症': 57, '颅内占位性病变': 53, '先天性心脏病': 51, '溺水': 49, '惊厥': 46, '喘憋性肺炎': 4
+2026-03-21 17:11:58,433      icd10                                     dtype=object  unique=487  missing=0.12%
+2026-03-21 17:11:58,433        top values: {'N13.300': 203, 'J69.101': 194, 'P07.302': 113, 'M98000/3': 70, 'T80.202': 57, 'R90.000': 53, 'Q24.900': 51, 'T75.101':
+2026-03-21 17:11:58,433      ethnicity                                 dtype=object  unique=7  missing=0.0%
+2026-03-21 17:11:58,433        top values: {'Han ethnic': 2488, 'Others': 14, 'Miao ethnic': 11, 'Buyei ethnic': 6, 'Yi ethnic': 5, 'Tujia ethnic': 4, 'Hui ethnic'
+2026-03-21 17:11:58,434  
+  Zero-variance numeric columns (3): ['vaso_vasopressin', 'suspected_infection', 'symptom_anhelation_and_cyanosis']
+2026-03-21 17:11:58,434    Constant columns (1 unique value) (3): ['vaso_vasopressin', 'suspected_infection', 'symptom_anhelation_and_cyanosis']
+2026-03-21 17:11:58,434  
+  Columns with >20% missing (0):
+2026-03-21 17:11:58,434  
+  Possible label leakage columns (5):
+2026-03-21 17:11:58,434      expire_flag
+2026-03-21 17:11:58,434      hosp_expire
+2026-03-21 17:11:58,434      phoenix_core_score
+2026-03-21 17:11:58,434      phoenix_8_score
+2026-03-21 17:11:58,434      sepsis_label
+2026-03-21 17:11:58,436  
+============================================================
+2026-03-21 17:11:58,436  CROSS-DATASET COMPARISON
+2026-03-21 17:11:58,436  ============================================================
+2026-03-21 17:11:58,436    Shared columns:          380
+2026-03-21 17:11:58,436    Only in Option A:        3  → ['lactate_trend_was_measured', 'potassium_trend_was_measured', 'sodium_trend_was_measured']
+2026-03-21 17:11:58,436    Only in Option B:        0  → []
+2026-03-21 17:11:58,436  
+============================================================
+2026-03-21 17:11:58,436  PATIENT OVERLAP CHECK (train vs test leakage)
+2026-03-21 17:11:58,436  ============================================================
+2026-03-21 17:11:58,436    Option A: subject_id not found — cannot verify patient overlap
+2026-03-21 17:11:58,436    Option B: subject_id not found — cannot verify patient overlap
+2026-03-21 17:11:58,436  
+============================================================
+2026-03-21 17:11:58,436  RECOMMENDED ACTIONS BEFORE MODELLING
+2026-03-21 17:11:58,436  ============================================================
+2026-03-21 17:11:58,436  
+  1. DROP these non-numeric columns before modelling
+2026-03-21 17:11:58,436       (encode or drop — cannot pass raw strings to any ML model):
+2026-03-21 17:11:58,436       - icd10
+2026-03-21 17:11:58,436       - gender
+2026-03-21 17:11:58,436       - diagnosis
+2026-03-21 17:11:58,436       - care_unit
+2026-03-21 17:11:58,436       - ethnicity
+2026-03-21 17:11:58,436  
+  2. DROP these zero-variance / constant columns:
+2026-03-21 17:11:58,436       - symptom_anhelation_and_cyanosis
+2026-03-21 17:11:58,436       - suspected_infection
+2026-03-21 17:11:58,436       - vaso_vasopressin
+2026-03-21 17:11:58,436       - symptom_anhelation_and_cyanosis
+2026-03-21 17:11:58,436       - suspected_infection
+2026-03-21 17:11:58,436       - vaso_vasopressin
+2026-03-21 17:11:58,436  
+  3. REVIEW these potential label leakage columns
+2026-03-21 17:11:58,436       (confirm they are NOT derived from the outcome):
+2026-03-21 17:11:58,436       - phoenix_core_score
+2026-03-21 17:11:58,436       - sepsis_label
+2026-03-21 17:11:58,436       - expire_flag
+2026-03-21 17:11:58,436       - hosp_expire
+2026-03-21 17:11:58,436       - phoenix_8_score
+2026-03-21 17:11:58,436  
+  4. Non-numeric columns to handle:
+2026-03-21 17:11:58,436       - gender     → binary encode (M=1, F=0) or drop
+2026-03-21 17:11:58,436       - care_unit  → one-hot encode (NICU/PICU/General etc.)
+2026-03-21 17:11:58,436       - ethnicity  → one-hot encode or drop (low clinical signal)
+2026-03-21 17:11:58,437       - diagnosis  → DROP (free text, too high cardinality)
+2026-03-21 17:11:58,437       - icd10      → DROP or group into broad categories
+2026-03-21 17:11:58,437  
+  Full audit summary → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_audit/audit_summary.json
+2026-03-21 17:11:58,437    Column reports     → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_audit/audit_column_report_A.csv
+2026-03-21 17:11:58,437                         /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_audit/audit_column_report_B.csv
+2026-03-21 17:11:58,437    Full log           → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/logs/phase0_0_data_audit.log
+2026-03-21 17:11:58,437  
+Phase 0.0 complete. Review recommendations above, then run:
+2026-03-21 17:11:58,437    python sepsis_ml/phase0_diagnostics.py

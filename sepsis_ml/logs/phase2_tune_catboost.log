@@ -1,0 +1,97 @@
+2026-03-23 15:19:05,152  =================================================================
+2026-03-23 15:19:05,152  PHASE 2A — CATBOOST OPTUNA TUNING
+2026-03-23 15:19:05,152  Started: 2026-03-23T15:19:05
+2026-03-23 15:19:05,152  Trials: 100  |  CV folds: 5  |  Metric: AUPRC
+2026-03-23 15:19:05,152  =================================================================
+2026-03-23 15:19:05,152  
+Loading model-ready datasets...
+2026-03-23 15:19:05,198    Train: (2530, 226)  |  Test: (633, 226)  |  Features: 225
+2026-03-23 15:19:05,272  
+  Baseline CatBoost: AUROC=0.9863  AUPRC=0.9684
+2026-03-23 15:19:05,272  
+Starting Optuna study (100 trials)...
+2026-03-23 15:19:05,272  This will take approximately 20-40 minutes.
+2026-03-23 15:19:05,272  Progress printed every 10 trials.
+
+2026-03-23 15:19:21,089    Trial   0 NEW BEST: AUPRC=0.9478  params={'iterations': 687, 'learning_rate': 0.2536999076681771, 'depth': 9, 'l2_leaf_reg': 6.387926357773329, 'bagging_temperature': 0.15601864044243652, 'random_strength': 0.3119890406724053, 'border_count': 45, 'class_weight_pos': 4.531616510212273}
+2026-03-23 15:19:26,568    Trial   2 NEW BEST: AUPRC=0.9497  params={'iterations': 595, 'learning_rate': 0.05958389350068958, 'depth': 7, 'l2_leaf_reg': 3.6210622617823773, 'bagging_temperature': 0.6118528947223795, 'random_strength': 0.27898772130408367, 'border_count': 97, 'class_weight_pos': 2.7822664515279207}
+2026-03-23 15:19:28,859    Trial   3 NEW BEST: AUPRC=0.9545  params={'iterations': 793, 'learning_rate': 0.14447746112718687, 'depth': 5, 'l2_leaf_reg': 5.628109945722504, 'bagging_temperature': 0.5924145688620425, 'random_strength': 0.09290082543999545, 'border_count': 168, 'class_weight_pos': 2.09683443290552}
+2026-03-23 15:22:40,730    Trial  10: AUPRC=0.9493  (best so far: 0.9545)
+2026-03-23 15:22:44,223    Trial  11 NEW BEST: AUPRC=0.9557  params={'iterations': 1219, 'learning_rate': 0.12995292919665938, 'depth': 6, 'l2_leaf_reg': 6.026722577013612, 'bagging_temperature': 0.7164711866855948, 'random_strength': 0.07370259411874255, 'border_count': 135, 'class_weight_pos': 1.5547761219958913}
+2026-03-23 15:24:04,342    Trial  20: AUPRC=0.9439  (best so far: 0.9557)
+2026-03-23 15:25:01,428    Trial  30: AUPRC=0.9487  (best so far: 0.9557)
+2026-03-23 15:25:13,236    Trial  33 NEW BEST: AUPRC=0.9561  params={'iterations': 678, 'learning_rate': 0.04961610555908421, 'depth': 6, 'l2_leaf_reg': 9.454659630497707, 'bagging_temperature': 0.7625953469239479, 'random_strength': 0.14776810413679853, 'border_count': 100, 'class_weight_pos': 1.6720164595945581}
+2026-03-23 15:25:37,344    Trial  37 NEW BEST: AUPRC=0.9572  params={'iterations': 706, 'learning_rate': 0.03405413423378624, 'depth': 7, 'l2_leaf_reg': 7.551364334708664, 'bagging_temperature': 0.3280506287493185, 'random_strength': 0.11948445826386966, 'border_count': 164, 'class_weight_pos': 2.2571381567073057}
+2026-03-23 15:26:47,548    Trial  40: AUPRC=0.9513  (best so far: 0.9572)
+2026-03-23 15:28:51,033    Trial  50: AUPRC=0.9512  (best so far: 0.9572)
+2026-03-23 15:30:38,535    Trial  60: AUPRC=0.9491  (best so far: 0.9572)
+2026-03-23 15:33:02,701    Trial  70: AUPRC=0.9528  (best so far: 0.9572)
+2026-03-23 15:37:14,221    Trial  80: AUPRC=0.9548  (best so far: 0.9572)
+2026-03-23 15:38:26,603    Trial  86 NEW BEST: AUPRC=0.9572  params={'iterations': 568, 'learning_rate': 0.026899968466816436, 'depth': 7, 'l2_leaf_reg': 2.694362358828508, 'bagging_temperature': 0.9968650871049325, 'random_strength': 0.004115578562859712, 'border_count': 235, 'class_weight_pos': 1.7526697404966836}
+2026-03-23 15:39:15,374    Trial  90 NEW BEST: AUPRC=0.9580  params={'iterations': 510, 'learning_rate': 0.0342126811945316, 'depth': 7, 'l2_leaf_reg': 3.75413216350802, 'bagging_temperature': 0.975213186261175, 'random_strength': 0.049648019417157636, 'border_count': 233, 'class_weight_pos': 1.82036056079318}
+2026-03-23 15:41:08,691  
+  Optuna complete.
+2026-03-23 15:41:08,691    Best CV AUPRC: 0.9580
+2026-03-23 15:41:08,691    Best params:   {'iterations': 510, 'learning_rate': 0.0342126811945316, 'depth': 7, 'l2_leaf_reg': 3.75413216350802, 'bagging_temperature': 0.975213186261175, 'random_strength': 0.049648019417157636, 'border_count': 233, 'class_weight_pos': 1.82036056079318}
+2026-03-23 15:41:08,693  
+  Optuna study saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/results/optuna_study.pkl
+2026-03-23 15:41:08,693    Best params saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/results/best_params.json
+2026-03-23 15:41:08,703    All trials saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/results/tuning_trials.csv
+2026-03-23 15:41:08,703  
+Training final tuned CatBoost on full training set...
+2026-03-23 15:41:13,776  
+Evaluating tuned model on test set...
+2026-03-23 15:41:14,641  
+  =======================================================
+2026-03-23 15:41:14,641    TUNED CATBOOST — TEST SET RESULTS
+2026-03-23 15:41:14,641    =======================================================
+2026-03-23 15:41:14,641    AUROC : 0.9868 [0.9794–0.9931]
+2026-03-23 15:41:14,641    AUPRC : 0.9691 [0.9499–0.9839]
+2026-03-23 15:41:14,641    Sens  : 0.8671  Spec: 0.9804  F1: 0.9036
+2026-03-23 15:41:14,641    PPV   : 0.9434  NPV: 0.9515  Brier: 0.0385
+2026-03-23 15:41:14,642    TP=150  FP=9  TN=451  FN=23
+2026-03-23 15:41:14,642  
+  Improvement over baseline:
+2026-03-23 15:41:14,642      AUROC: 0.9863 → 0.9868 (Δ=+0.0005)
+2026-03-23 15:41:14,642      AUPRC: 0.9684 → 0.9691 (Δ=+0.0006)
+2026-03-23 15:41:14,642  
+  DeLong test (tuned vs baseline AUROC):
+2026-03-23 15:41:14,645      Tuned AUROC:   0.9868
+2026-03-23 15:41:14,645      Baseline AUROC:0.9863
+2026-03-23 15:41:14,645      Z-statistic:   0.4975
+2026-03-23 15:41:14,645      P-value:       0.6189
+2026-03-23 15:41:14,645      Significant:   NO (p>=0.05)
+2026-03-23 15:41:14,647  
+  Tuned model saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_tuned/catboost_tuned.cbm
+2026-03-23 15:41:14,649  
+--- Generating figures ---
+2026-03-23 15:41:15,104    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/optuna_optimization_history.png
+2026-03-23 15:41:15,358    Param importance plot skipped: name 'optuna' is not defined
+2026-03-23 15:41:15,676    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/tuned_vs_baseline_roc_pr.png
+2026-03-23 15:41:15,834    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/tuned_cm.png
+2026-03-23 15:41:16,285    Saved threshold analysis → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/threshold_sensitivity_analysis.png
+2026-03-23 15:41:16,285  
+  Threshold sensitivity analysis:
+2026-03-23 15:41:16,285      Target   Thresh    Sens    Spec     PPV     NPV      F1    TP    FP    FN
+2026-03-23 15:41:16,285    ---------------------------------------------------------------------------
+2026-03-23 15:41:16,285        0.80   0.5773  0.8150  0.9935  0.9792  0.9346  0.8896   141     3    32
+2026-03-23 15:41:16,285        0.82   0.5396  0.8382  0.9913  0.9732  0.9421  0.9006   145     4    28
+2026-03-23 15:41:16,285        0.85   0.4465  0.8671  0.9804  0.9434  0.9515  0.9036   150     9    23
+2026-03-23 15:41:16,285        0.87   0.4121  0.8786  0.9739  0.9268  0.9552  0.9021   152    12    21
+2026-03-23 15:41:16,285        0.90   0.3650  0.9017  0.9630  0.9017  0.9630  0.9017   156    17    17
+2026-03-23 15:41:16,285        0.92   0.2758  0.9249  0.9435  0.8602  0.9709  0.8914   160    26    13
+2026-03-23 15:41:16,286        0.95   0.2132  0.9538  0.9304  0.8376  0.9817  0.8919   165    32     8
+2026-03-23 15:41:16,286  
+=================================================================
+2026-03-23 15:41:16,286  PHASE 2A COMPLETE
+2026-03-23 15:41:16,286  =================================================================
+2026-03-23 15:41:16,286    Best CV AUPRC (Optuna):  0.9580
+2026-03-23 15:41:16,286    Test AUROC:              0.9868 [0.9794–0.9931]
+2026-03-23 15:41:16,286    Test AUPRC:              0.9691 [0.9499–0.9839]
+2026-03-23 15:41:16,286    Sensitivity:             0.8671
+2026-03-23 15:41:16,286    Specificity:             0.9804
+2026-03-23 15:41:16,286    Tuned model:             /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_tuned/catboost_tuned.cbm
+2026-03-23 15:41:16,286    Figures:                 /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/
+2026-03-23 15:41:16,286    Log:                     /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/logs/phase2_tune_catboost.log
+2026-03-23 15:41:16,286  
+  Next step: python sepsis_ml/phase2b_evaluate_tuned.py

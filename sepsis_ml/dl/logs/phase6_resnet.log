@@ -1,0 +1,59 @@
+2026-04-14 12:17:30,109 | INFO | ======================================================================
+2026-04-14 12:17:30,109 | INFO | PHASE 6 — TABULAR RESNET
+2026-04-14 12:17:30,109 | INFO | Started : 2026-04-14 12:17:30
+2026-04-14 12:17:30,109 | INFO | ======================================================================
+2026-04-14 12:17:30,124 | INFO | Device : Apple MPS (M1 Pro)
+2026-04-14 12:17:30,125 | INFO | --------------------------------------------------
+2026-04-14 12:17:30,125 | INFO | Loading datasets...
+2026-04-14 12:17:30,168 | INFO | Train shape : (2530, 225) | Sepsis: 27.3%
+2026-04-14 12:17:30,169 | INFO | Test shape  : (633, 225)       | Sepsis: 27.3%
+2026-04-14 12:17:30,169 | INFO | Features    : 225
+2026-04-14 12:17:30,171 | INFO | Train split : 2024 | Val split: 506
+2026-04-14 12:17:30,192 | INFO | Numerical features to scale : 185
+2026-04-14 12:17:30,192 | INFO | Binary features (no scaling): 40
+2026-04-14 12:17:30,240 | INFO | Scaler saved.
+2026-04-14 12:17:30,249 | INFO | pos_weight : 2.660
+2026-04-14 12:17:30,249 | INFO | ==================================================
+2026-04-14 12:17:30,249 | INFO | Starting Optuna: 100 trials (ResNet)
+2026-04-14 12:17:30,249 | INFO | ==================================================
+2026-04-14 12:46:20,584 | INFO | Optuna finished in 28.8 min
+2026-04-14 12:46:20,584 | INFO | Best CV AUPRC : 0.8594
+2026-04-14 12:46:20,585 | INFO | Best params   : {'n_blocks': 8, 'd_main': 512, 'd_hidden': 512, 'dropout_first': 0.2035559528057898, 'dropout_second': 0.443735760539045, 'lr': 0.0001593197097729997, 'weight_decay': 1.6682060845143364e-06, 'batch_size': 64}
+2026-04-14 12:46:20,585 | INFO | --------------------------------------------------
+2026-04-14 12:46:20,585 | INFO | Retraining best model on full training set...
+2026-04-14 12:48:02,097 | INFO | Final model saved.
+2026-04-14 12:48:02,097 | INFO | --------------------------------------------------
+2026-04-14 12:48:02,097 | INFO | Evaluating on test set...
+2026-04-14 12:48:02,981 | INFO | AUROC : 0.9311 [0.9046–0.9538]
+2026-04-14 12:48:02,981 | INFO | AUPRC : 0.8744 [0.8295–0.9132]
+2026-04-14 12:48:02,991 | INFO | 
+Primary threshold (90% sens): 0.005
+2026-04-14 12:48:02,991 | INFO | Sensitivity : 0.9017
+2026-04-14 12:48:02,991 | INFO | Specificity : 0.8130
+2026-04-14 12:48:02,991 | INFO | PPV         : 0.6446
+2026-04-14 12:48:02,991 | INFO | NPV         : 0.9565
+2026-04-14 12:48:02,991 | INFO | F1          : 0.7518
+2026-04-14 12:48:02,991 | INFO | Brier Score : 0.0945
+2026-04-14 12:48:03,003 | INFO | 
+DeLong vs CatBoost: z=-2.3566, p=0.0184
+2026-04-14 12:48:03,003 | INFO | Significant: True | CatBoost better
+2026-04-14 12:48:03,004 | INFO | Results saved.
+2026-04-14 12:48:03,004 | INFO | Generating figures...
+2026-04-14 12:48:04,351 | INFO | All figures saved.
+2026-04-14 12:48:04,351 | INFO | ======================================================================
+2026-04-14 12:48:04,351 | INFO | PHASE 6 RESNET — COMPLETE
+2026-04-14 12:48:04,351 | INFO | ======================================================================
+2026-04-14 12:48:04,351 | INFO | AUROC  : 0.9311 [0.9046–0.9538]
+2026-04-14 12:48:04,351 | INFO | AUPRC  : 0.8744 [0.8295–0.9132]
+2026-04-14 12:48:04,352 | INFO | Brier  : 0.0945
+2026-04-14 12:48:04,352 | INFO | Sens   : 0.9017 @ threshold 0.005
+2026-04-14 12:48:04,352 | INFO | Spec   : 0.8130
+2026-04-14 12:48:04,352 | INFO | F1     : 0.7518
+2026-04-14 12:48:04,352 | INFO | Runtime: 28.8 min
+2026-04-14 12:48:04,352 | INFO | ----------------------------------------------------------------------
+2026-04-14 12:48:04,352 | INFO | Outputs saved to:
+2026-04-14 12:48:04,352 | INFO |   Model   : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/dl/models/run_phase6_resnet
+2026-04-14 12:48:04,352 | INFO |   Results : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/dl/results
+2026-04-14 12:48:04,352 | INFO |   Figures : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/dl/figures
+2026-04-14 12:48:04,352 | INFO |   Log     : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/dl/logs/phase6_resnet.log
+2026-04-14 12:48:04,352 | INFO | ======================================================================

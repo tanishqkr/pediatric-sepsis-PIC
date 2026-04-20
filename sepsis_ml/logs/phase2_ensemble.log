@@ -1,0 +1,105 @@
+2026-04-01 16:57:11,807  =================================================================
+2026-04-01 16:57:11,807  PHASE 2 — ENSEMBLE (Feature Interactions + Stacking)
+2026-04-01 16:57:11,807  Started: 2026-04-01T16:57:11
+2026-04-01 16:57:11,807  =================================================================
+2026-04-01 16:57:11,845  
+Loaded: train=(2530, 226), test=(633, 226), features=225
+2026-04-01 16:57:11,845    Loaded Optuna best params: {'iterations': 510, 'learning_rate': 0.0342126811945316, 'depth': 7, 'l2_leaf_reg': 3.75413216350802, 'bagging_temperature': 0.975213186261175, 'random_strength': 0.049648019417157636, 'border_count': 233, 'class_weight_pos': 1.82036056079318}
+2026-04-01 16:57:11,845  
+=======================================================
+2026-04-01 16:57:11,845  PART A — Feature Interaction Engineering
+2026-04-01 16:57:11,845  =======================================================
+2026-04-01 16:57:11,848    Created 10 interaction features:
+2026-04-01 16:57:11,848      ix_lactate_x_platelets
+2026-04-01 16:57:11,848      ix_ddimer_x_inr
+2026-04-01 16:57:11,848      ix_base_excess_ph_ratio
+2026-04-01 16:57:11,848      ix_pt_x_inr
+2026-04-01 16:57:11,848      ix_shock_coagulopathy
+2026-04-01 16:57:11,848      ix_glucose_range
+2026-04-01 16:57:11,848      ix_anion_gap_x_base_excess
+2026-04-01 16:57:11,848      ix_pt_x_ptt
+2026-04-01 16:57:11,848      ix_lactate_relative_change
+2026-04-01 16:57:11,848      ix_crp_x_ddimer
+2026-04-01 16:57:11,850  
+  Interaction feature correlations with sepsis label:
+2026-04-01 16:57:11,850      ix_ddimer_x_inr                               |r|=0.3429
+2026-04-01 16:57:11,850      ix_base_excess_ph_ratio                       |r|=0.3250
+2026-04-01 16:57:11,850      ix_anion_gap_x_base_excess                    |r|=0.3247
+2026-04-01 16:57:11,851      ix_pt_x_ptt                                   |r|=0.2916
+2026-04-01 16:57:11,851      ix_glucose_range                              |r|=0.2817
+2026-04-01 16:57:11,851      ix_crp_x_ddimer                               |r|=0.2432
+2026-04-01 16:57:11,851      ix_pt_x_inr                                   |r|=0.2201
+2026-04-01 16:57:11,851      ix_shock_coagulopathy                         |r|=0.0330
+2026-04-01 16:57:11,851      ix_lactate_x_platelets                        |r|=0.0329
+2026-04-01 16:57:11,851      ix_lactate_relative_change                    |r|=0.0028
+2026-04-01 16:57:11,851  
+  Key parent feature correlations for context:
+2026-04-01 16:57:11,851      lactate_max                                   |r|=0.4717
+2026-04-01 16:57:11,851      ddimer_max                                    |r|=0.3474
+2026-04-01 16:57:11,851      platelets_min                                 |r|=0.3163
+2026-04-01 16:57:11,851      inr_max                                       |r|=0.2874
+2026-04-01 16:57:11,852      pt_mean                                       |r|=0.3490
+2026-04-01 16:57:12,247  
+  Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/interaction_feature_correlations.png
+2026-04-01 16:57:12,455    Saved augmented datasets to model_datasets/
+2026-04-01 16:57:12,455  
+=======================================================
+2026-04-01 16:57:12,455  PART B — Stacking Ensemble
+2026-04-01 16:57:12,455  =======================================================
+2026-04-01 16:57:12,455  Base learners: Tuned CatBoost + XGBoost + LightGBM
+2026-04-01 16:57:12,455  Meta-learner:  Logistic Regression on OOF probabilities
+2026-04-01 16:57:12,455  Features:      Original 225 + 10 interaction features = 235
+2026-04-01 16:57:13,362  
+  Generating OOF predictions (5 folds × 3 models)...
+2026-04-01 16:57:23,886      Fold 1: catboost_tuned=0.9734  xgboost=0.9693  lightgbm=0.9679
+2026-04-01 16:57:33,789      Fold 2: catboost_tuned=0.9728  xgboost=0.9682  lightgbm=0.9651
+2026-04-01 16:57:43,746      Fold 3: catboost_tuned=0.9707  xgboost=0.9638  lightgbm=0.9621
+2026-04-01 16:57:53,705      Fold 4: catboost_tuned=0.9826  xgboost=0.9761  lightgbm=0.9765
+2026-04-01 16:58:03,587      Fold 5: catboost_tuned=0.9832  xgboost=0.9811  lightgbm=0.9798
+2026-04-01 16:58:03,587  
+  OOF AUROC per model:
+2026-04-01 16:58:03,588      catboost_tuned       OOF AUROC = 0.9764
+2026-04-01 16:58:03,589      xgboost              OOF AUROC = 0.9715
+2026-04-01 16:58:03,590      lightgbm             OOF AUROC = 0.9697
+2026-04-01 16:58:03,606  
+  Meta-learner trained on OOF probs shape: (2530, 3)
+2026-04-01 16:58:03,606    Meta-learner coefficients: [ 3.04361592  0.23315346 -0.5481988 ]
+2026-04-01 16:58:03,606  
+  Retraining base models on full training set...
+2026-04-01 16:58:08,929      catboost_tuned       test AUROC = 0.9862
+2026-04-01 16:58:11,148      xgboost              test AUROC = 0.9775
+2026-04-01 16:58:13,974      lightgbm             test AUROC = 0.9789
+2026-04-01 16:58:14,749  
+  =======================================================
+2026-04-01 16:58:14,750    STACKING ENSEMBLE — TEST SET RESULTS
+2026-04-01 16:58:14,750    =======================================================
+2026-04-01 16:58:14,750    AUROC : 0.9851 [0.9761–0.9923]
+2026-04-01 16:58:14,750    AUPRC : 0.9680 [0.9508–0.9829]
+2026-04-01 16:58:14,750    Sens  : 0.8555  Spec: 0.9783  F1: 0.8943
+2026-04-01 16:58:14,750    PPV   : 0.9367  NPV: 0.9474  Brier: 0.0422
+2026-04-01 16:58:14,750    TP=148  FP=10  TN=450  FN=25
+2026-04-01 16:58:14,763  
+  DeLong test (ensemble vs tuned CatBoost):
+2026-04-01 16:58:14,763      Ensemble AUROC:     0.9851
+2026-04-01 16:58:14,763      Tuned CatBoost:     0.9868
+2026-04-01 16:58:14,763      Z-statistic:        -0.9160
+2026-04-01 16:58:14,763      P-value:            0.3597
+2026-04-01 16:58:14,763      Significant:        NO (p>=0.05)
+2026-04-01 16:58:14,778  
+  Models saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/models/run_ensemble
+2026-04-01 16:58:14,781  
+--- Generating figures ---
+2026-04-01 16:58:15,076    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/ensemble_roc_pr.png
+2026-04-01 16:58:15,223    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/ensemble_cm.png
+2026-04-01 16:58:15,665    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/all_models_final_comparison.png
+2026-04-01 16:58:15,665  
+=================================================================
+2026-04-01 16:58:15,665  PHASE 2 ENSEMBLE COMPLETE
+2026-04-01 16:58:15,665  =================================================================
+2026-04-01 16:58:15,665    Interaction features added: 10
+2026-04-01 16:58:15,665    Total features used:        235
+2026-04-01 16:58:15,665    Ensemble AUROC: 0.9851 [0.9761–0.9923]
+2026-04-01 16:58:15,665    Ensemble AUPRC: 0.9680 [0.9508–0.9829]
+2026-04-01 16:58:15,665    vs Tuned CatBoost: AUROC=0.9868  DeLong p=0.3597
+2026-04-01 16:58:15,665    Figures → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/
+2026-04-01 16:58:15,665    Log     → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/logs/phase2_ensemble.log

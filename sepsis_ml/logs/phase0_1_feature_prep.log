@@ -1,0 +1,70 @@
+2026-03-23 14:49:52,122  =================================================================
+2026-03-23 14:49:52,122  PHASE 0.1 — FEATURE PREPARATION (Option B, v2 — leakage-clean)
+2026-03-23 14:49:52,122  Started: 2026-03-23T14:49:52
+2026-03-23 14:49:52,122  Dropping: _count, _was_measured, vaso, los_hours + standard drops
+2026-03-23 14:49:52,122  =================================================================
+2026-03-23 14:49:52,122  
+Loading Option B train and test...
+2026-03-23 14:49:52,187    Raw train: (2530, 380)
+2026-03-23 14:49:52,187    Raw test:  (633, 380)
+2026-03-23 14:49:52,187  
+--- Preparing TRAIN ---
+2026-03-23 14:49:52,187  
+  [B_train] Starting shape: (2530, 380)
+2026-03-23 14:49:52,191    Dropped leakage:          ['expire_flag', 'hosp_expire', 'los_hours']
+2026-03-23 14:49:52,192    Dropped zero-variance:    ['vaso_vasopressin', 'suspected_infection', 'symptom_anhelation_and_cyanosis', 'symptom_infection']
+2026-03-23 14:49:52,193    Dropped free text:        ['diagnosis', 'icd10']
+2026-03-23 14:49:52,194    Dropped no-variance:      ['ethnicity']
+2026-03-23 14:49:52,195    Dropped duplicates:       ['age_months']
+2026-03-23 14:49:52,196    Dropped reference:        ['phoenix_core_score', 'phoenix_8_score']
+2026-03-23 14:49:52,197    Dropped vaso (leakage):   ['n_vasoactives_24h', 'vaso_dopamine', 'vaso_epinephrine', 'vaso_norepinephrine', 'vaso_dobutamine', 'vaso_milrinone']
+2026-03-23 14:49:52,198    Dropped _count columns:   40 columns
+2026-03-23 14:49:52,199    Dropped _was_measured:    99 columns
+2026-03-23 14:49:52,200    Encoded gender: M=1, F=0
+2026-03-23 14:49:52,203    One-hot encoded care_unit: ['care_unit_CICU', 'care_unit_General ICU', 'care_unit_NICU', 'care_unit_PICU', 'care_unit_SICU']
+2026-03-23 14:49:52,206    [B_train] Final shape: (2530, 226)  (features: 225, target: 1)
+2026-03-23 14:49:52,206    Missing values: 0 ✓
+2026-03-23 14:49:52,206  
+--- Preparing TEST ---
+2026-03-23 14:49:52,206  
+  [B_test] Starting shape: (633, 380)
+2026-03-23 14:49:52,206    Dropped leakage:          ['expire_flag', 'hosp_expire', 'los_hours']
+2026-03-23 14:49:52,207    Dropped zero-variance:    ['vaso_vasopressin', 'suspected_infection', 'symptom_anhelation_and_cyanosis', 'symptom_infection']
+2026-03-23 14:49:52,207    Dropped free text:        ['diagnosis', 'icd10']
+2026-03-23 14:49:52,207    Dropped no-variance:      ['ethnicity']
+2026-03-23 14:49:52,208    Dropped duplicates:       ['age_months']
+2026-03-23 14:49:52,208    Dropped reference:        ['phoenix_core_score', 'phoenix_8_score']
+2026-03-23 14:49:52,208    Dropped vaso (leakage):   ['n_vasoactives_24h', 'vaso_dopamine', 'vaso_epinephrine', 'vaso_norepinephrine', 'vaso_dobutamine', 'vaso_milrinone']
+2026-03-23 14:49:52,208    Dropped _count columns:   40 columns
+2026-03-23 14:49:52,209    Dropped _was_measured:    99 columns
+2026-03-23 14:49:52,209    Encoded gender: M=1, F=0
+2026-03-23 14:49:52,210    One-hot encoded care_unit: ['care_unit_CICU', 'care_unit_General ICU', 'care_unit_NICU', 'care_unit_PICU', 'care_unit_SICU']
+2026-03-23 14:49:52,210    [B_test] Final shape: (633, 226)  (features: 225, target: 1)
+2026-03-23 14:49:52,210    Missing values: 0 ✓
+2026-03-23 14:49:52,210  
+--- Column consistency check ---
+2026-03-23 14:49:52,210    Train/test columns match exactly ✓  (226 columns)
+2026-03-23 14:49:52,211  
+--- Class distribution ---
+2026-03-23 14:49:52,212    Train: non-sepsis=1,839 (72.7%)  sepsis=691 (27.3%)  ratio=2.7:1
+2026-03-23 14:49:52,212    Test: non-sepsis=460 (72.7%)  sepsis=173 (27.3%)  ratio=2.7:1
+2026-03-23 14:49:52,212  
+--- Saving outputs ---
+2026-03-23 14:49:52,397    Train → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/model_datasets/B_train_model_ready.csv
+2026-03-23 14:49:52,397    Test  → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/model_datasets/B_test_model_ready.csv
+2026-03-23 14:49:52,397    Feature list (225 features) → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/model_datasets/feature_list.json
+2026-03-23 14:49:52,397    Prep report → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/model_datasets/prep_report.json
+2026-03-23 14:49:52,398  
+=================================================================
+2026-03-23 14:49:52,398  PHASE 0.1 COMPLETE (v2 leakage-clean)
+2026-03-23 14:49:52,398  =================================================================
+2026-03-23 14:49:52,398    Features:       225
+2026-03-23 14:49:52,398    Train rows:     2530
+2026-03-23 14:49:52,398    Test rows:      633
+2026-03-23 14:49:52,398    Missing values: 0 ✓
+2026-03-23 14:49:52,398    Output folder:  /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/model_datasets
+2026-03-23 14:49:52,398  
+  Dropped vs previous version:
+2026-03-23 14:49:52,398      Previous: 305 features (leakage confirmed)
+2026-03-23 14:49:52,398      Current:  225 features (leakage-clean)
+2026-03-23 14:49:52,398      Removed:  80 columns

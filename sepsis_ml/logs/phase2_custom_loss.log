@@ -1,0 +1,76 @@
+2026-04-02 11:03:44,869  =================================================================
+2026-04-02 11:03:44,869  PHASE 2 — CUSTOM PHOENIX-AWARE LOSS (Option 2)
+2026-04-02 11:03:44,869  Started: 2026-04-02T11:03:44
+2026-04-02 11:03:44,869  Trials: 50  |  CV folds: 5  |  Metric: AUPRC
+2026-04-02 11:03:44,869  =================================================================
+2026-04-02 11:03:44,910  
+Loaded: train=(2530, 226), test=(633, 226)
+2026-04-02 11:03:44,910  
+=======================================================
+2026-04-02 11:03:44,910  Computing clinical severity scores...
+2026-04-02 11:03:44,910  =======================================================
+2026-04-02 11:03:44,910  Severity variables used: ['lactate_max', 'platelets_min', 'inr_max', 'ddimer_max', 'base_excess_min', 'pt_mean', 'ptt_max']
+2026-04-02 11:03:44,911  
+  Train severity stats:
+2026-04-02 11:03:44,911      Mean (sepsis):     0.2612
+2026-04-02 11:03:44,911      Mean (non-sepsis): 0.1243
+2026-04-02 11:03:44,911      Max severity:      1.0000
+2026-04-02 11:03:44,911      Min severity:      0.0000
+2026-04-02 11:03:44,913      t-test (sepsis vs non-sepsis): t=32.3167, p=4.37e-192
+2026-04-02 11:03:44,913      ✓ Severity score separates classes
+2026-04-02 11:03:45,211    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/severity_distribution.png
+2026-04-02 11:03:45,211  
+=======================================================
+2026-04-02 11:03:45,211  Optuna study with custom loss (50 trials)...
+2026-04-02 11:03:45,211  =======================================================
+2026-04-02 11:04:15,278    Trial   0 NEW BEST: AUPRC=0.9191  alpha=1.186  base_weight=4.828
+2026-04-02 11:10:40,192    Trial  10: AUPRC=0.8369  (best: 0.9191)
+2026-04-02 11:15:31,253    Trial  20: AUPRC=0.8343  (best: 0.9191)
+2026-04-02 11:16:37,843    Trial  24 NEW BEST: AUPRC=0.9194  alpha=2.061  base_weight=4.438
+2026-04-02 11:17:04,419    Trial  26 NEW BEST: AUPRC=0.9281  alpha=2.831  base_weight=4.467
+2026-04-02 11:17:52,745    Trial  30: AUPRC=0.9012  (best: 0.9281)
+2026-04-02 11:19:23,705    Trial  40: AUPRC=0.8317  (best: 0.9281)
+2026-04-02 11:20:36,351  
+  Custom loss tuning complete.
+2026-04-02 11:20:36,351    Best CV AUPRC: 0.9281
+2026-04-02 11:20:36,351    Best params:   {'alpha': 2.8312651973888303, 'base_weight': 4.467040717091945, 'iterations': 438, 'learning_rate': 0.02108068073497902, 'depth': 4, 'l2_leaf_reg': 1.1819239407237159}
+2026-04-02 11:20:36,352  
+Training final custom loss model on full training set...
+2026-04-02 11:20:38,622  
+  =======================================================
+2026-04-02 11:20:38,622    CUSTOM LOSS CATBOOST — TEST SET RESULTS
+2026-04-02 11:20:38,622    =======================================================
+2026-04-02 11:20:38,622    AUROC : 0.9674 [0.9541–0.9794]
+2026-04-02 11:20:38,622    AUPRC : 0.9313 [0.9041–0.9545]
+2026-04-02 11:20:38,622    Sens  : 0.8555  Spec: 0.9304  F1: 0.8385
+2026-04-02 11:20:38,622    PPV   : 0.8222  NPV: 0.9448  Brier: 0.1005
+2026-04-02 11:20:38,622    TP=148  FP=32  TN=428  FN=25
+2026-04-02 11:20:38,632  
+  Comparison vs Tuned CatBoost:
+2026-04-02 11:20:38,632      Custom loss AUROC: 0.9674  vs Tuned: 0.9868  (Δ=-0.0194)
+2026-04-02 11:20:38,632      Custom loss AUPRC: 0.9313  vs Tuned: 0.9691  (Δ=-0.0378)
+2026-04-02 11:20:38,632      Custom loss Sens:  0.8555  vs Tuned: 0.8671  (Δ=-0.0116)
+2026-04-02 11:20:38,634  
+  DeLong test (custom loss vs tuned CatBoost):
+2026-04-02 11:20:38,634      Z=-3.3674  p=0.0008  Significant (p<0.05)
+2026-04-02 11:20:38,637  
+--- Generating figures ---
+2026-04-02 11:20:38,894    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/custom_loss_roc_pr.png
+2026-04-02 11:20:39,025    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase2_tuning/custom_loss_cm.png
+2026-04-02 11:20:39,025  
+=================================================================
+2026-04-02 11:20:39,025  PHASE 2 CUSTOM LOSS COMPLETE
+2026-04-02 11:20:39,025  =================================================================
+2026-04-02 11:20:39,025    Best alpha:      2.8313
+2026-04-02 11:20:39,025    Best base_weight:4.4670
+2026-04-02 11:20:39,025    Test AUROC:      0.9674 [0.9541–0.9794]
+2026-04-02 11:20:39,025    Test AUPRC:      0.9313 [0.9041–0.9545]
+2026-04-02 11:20:39,025    Sensitivity:     0.8555
+2026-04-02 11:20:39,025    DeLong p:        0.0008
+2026-04-02 11:20:39,025  
+  Now compare all three approaches:
+2026-04-02 11:20:39,025      Tuned CatBoost:  AUROC=0.9868
+2026-04-02 11:20:39,025      Custom loss:     AUROC=0.9674
+2026-04-02 11:20:39,025      Run ensemble script to get stacking result
+2026-04-02 11:20:39,025  
+  Log → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/logs/phase2_custom_loss.log

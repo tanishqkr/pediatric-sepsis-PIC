@@ -1,0 +1,181 @@
+2026-03-21 17:15:54,624  ============================================================
+2026-03-21 17:15:54,625  PHASE 0 — DIAGNOSTICS
+2026-03-21 17:15:54,625  Started: 2026-03-21T17:15:54
+2026-03-21 17:15:54,625  ============================================================
+2026-03-21 17:15:54,813  Loaded Option A: train=(9957, 383), test=(2490, 383)
+2026-03-21 17:15:54,870  Loaded Option B: train=(2530, 380), test=(633, 380)
+2026-03-21 17:15:54,870  
+============================================================
+2026-03-21 17:15:54,870  DIAGNOSTIC 1: Class Distribution
+2026-03-21 17:15:54,870  ============================================================
+2026-03-21 17:15:54,888      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:15:54,888  
+  [Option A — Full cohort] Class distribution:
+2026-03-21 17:15:54,888      Negative (0): 9,266  (93.1%)
+2026-03-21 17:15:54,888      Positive (1): 691  (6.9%)
+2026-03-21 17:15:54,888      Imbalance ratio (neg:pos): 13.4:1
+2026-03-21 17:15:54,891      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:15:54,892  
+  [Option B — Infection-only] Class distribution:
+2026-03-21 17:15:54,892      Negative (0): 1,839  (72.7%)
+2026-03-21 17:15:54,892      Positive (1): 691  (27.3%)
+2026-03-21 17:15:54,892      Imbalance ratio (neg:pos): 2.7:1
+2026-03-21 17:15:55,112    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase0_diagnostics/diag1_class_distribution.pdf
+2026-03-21 17:15:55,112  
+============================================================
+2026-03-21 17:15:55,112  DIAGNOSTIC 2: Missingness Summary
+2026-03-21 17:15:55,112  ============================================================
+2026-03-21 17:15:55,116      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:15:55,137  
+  [Option A — Full cohort]
+2026-03-21 17:15:55,137      Total features:              380
+2026-03-21 17:15:55,137      Features with any missing:   2
+2026-03-21 17:15:55,137      Features >50% missing:       0
+2026-03-21 17:15:55,137      Zero-variance features:      2
+2026-03-21 17:15:55,137      Top 10 highest missing %:
+2026-03-21 17:15:55,137        icd10                                         0.5%
+2026-03-21 17:15:55,137        diagnosis                                     0.5%
+2026-03-21 17:15:55,137        age_years                                     0.0%
+2026-03-21 17:15:55,137        systolic_bp_first                             0.0%
+2026-03-21 17:15:55,137        diastolic_bp_first                            0.0%
+2026-03-21 17:15:55,137        diastolic_bp_mean_was_measured                0.0%
+2026-03-21 17:15:55,137        diastolic_bp_mean                             0.0%
+2026-03-21 17:15:55,137        diastolic_bp_min_was_measured                 0.0%
+2026-03-21 17:15:55,137        diastolic_bp_min                              0.0%
+2026-03-21 17:15:55,137        diastolic_bp_max_was_measured                 0.0%
+2026-03-21 17:15:55,140      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:15:55,147  
+  [Option B — Infection-only]
+2026-03-21 17:15:55,148      Total features:              377
+2026-03-21 17:15:55,148      Features with any missing:   2
+2026-03-21 17:15:55,148      Features >50% missing:       0
+2026-03-21 17:15:55,148      Zero-variance features:      3
+2026-03-21 17:15:55,148      Top 10 highest missing %:
+2026-03-21 17:15:55,148        icd10                                         0.1%
+2026-03-21 17:15:55,148        diagnosis                                     0.1%
+2026-03-21 17:15:55,148        age_years                                     0.0%
+2026-03-21 17:15:55,148        systolic_bp_mean_was_measured                 0.0%
+2026-03-21 17:15:55,148        diastolic_bp_mean_was_measured                0.0%
+2026-03-21 17:15:55,148        diastolic_bp_mean                             0.0%
+2026-03-21 17:15:55,148        diastolic_bp_min_was_measured                 0.0%
+2026-03-21 17:15:55,148        diastolic_bp_min                              0.0%
+2026-03-21 17:15:55,148        diastolic_bp_max_was_measured                 0.0%
+2026-03-21 17:15:55,148        diastolic_bp_max                              0.0%
+2026-03-21 17:15:55,149  
+============================================================
+2026-03-21 17:15:55,149  DIAGNOSTIC 3: Correlation / Redundancy Analysis
+2026-03-21 17:15:55,149  ============================================================
+2026-03-21 17:15:55,153      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:15:57,673  
+  [Option A — Full cohort] Near-perfect correlations (|r|>0.98): 385
+2026-03-21 17:15:57,673      age_months                               ↔  age_years                                 r=1.0
+2026-03-21 17:15:57,673      hosp_expire                              ↔  expire_flag                               r=0.9949
+2026-03-21 17:15:57,673      inr_min_was_measured                     ↔  inr_max_was_measured                      r=1.0
+2026-03-21 17:15:57,673      inr_mean_was_measured                    ↔  inr_max_was_measured                      r=1.0
+2026-03-21 17:15:57,673      inr_mean_was_measured                    ↔  inr_min_was_measured                      r=1.0
+2026-03-21 17:15:57,673      inr_first_was_measured                   ↔  inr_max_was_measured                      r=1.0
+2026-03-21 17:15:57,673      inr_first_was_measured                   ↔  inr_min_was_measured                      r=1.0
+2026-03-21 17:15:57,673      inr_first_was_measured                   ↔  inr_mean_was_measured                     r=1.0
+2026-03-21 17:15:57,673      ddimer_min_was_measured                  ↔  ddimer_max_was_measured                   r=1.0
+2026-03-21 17:15:57,673      ddimer_mean                              ↔  ddimer_max                                r=0.9893
+2026-03-21 17:15:57,673      ddimer_mean                              ↔  ddimer_min                                r=0.9875
+2026-03-21 17:15:57,673      ddimer_mean_was_measured                 ↔  ddimer_max_was_measured                   r=1.0
+2026-03-21 17:15:57,673      ddimer_mean_was_measured                 ↔  ddimer_min_was_measured                   r=1.0
+2026-03-21 17:15:57,673      ddimer_first                             ↔  ddimer_mean                               r=0.9886
+2026-03-21 17:15:57,673      ddimer_first_was_measured                ↔  ddimer_max_was_measured                   r=1.0
+2026-03-21 17:15:57,673      ddimer_first_was_measured                ↔  ddimer_min_was_measured                   r=1.0
+2026-03-21 17:15:57,673      ddimer_first_was_measured                ↔  ddimer_mean_was_measured                  r=1.0
+2026-03-21 17:15:57,673      fibrinogen_min_was_measured              ↔  fibrinogen_max_was_measured               r=1.0
+2026-03-21 17:15:57,673      fibrinogen_mean                          ↔  fibrinogen_max                            r=0.9911
+2026-03-21 17:15:57,673      fibrinogen_mean                          ↔  fibrinogen_min                            r=0.9918
+2026-03-21 17:15:58,235    Saved heatmap → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase0_diagnostics/diag3_correlation_heatmap_A.pdf
+2026-03-21 17:15:58,237      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:15:59,409  
+  [Option B — Infection-only] Near-perfect correlations (|r|>0.98): 360
+2026-03-21 17:15:59,409      age_months                               ↔  age_years                                 r=1.0
+2026-03-21 17:15:59,409      hosp_expire                              ↔  expire_flag                               r=0.995
+2026-03-21 17:15:59,409      inr_min_was_measured                     ↔  inr_max_was_measured                      r=1.0
+2026-03-21 17:15:59,409      inr_mean_was_measured                    ↔  inr_max_was_measured                      r=1.0
+2026-03-21 17:15:59,409      inr_mean_was_measured                    ↔  inr_min_was_measured                      r=1.0
+2026-03-21 17:15:59,409      inr_first_was_measured                   ↔  inr_max_was_measured                      r=1.0
+2026-03-21 17:15:59,409      inr_first_was_measured                   ↔  inr_min_was_measured                      r=1.0
+2026-03-21 17:15:59,409      inr_first_was_measured                   ↔  inr_mean_was_measured                     r=1.0
+2026-03-21 17:15:59,409      ddimer_min_was_measured                  ↔  ddimer_max_was_measured                   r=1.0
+2026-03-21 17:15:59,409      ddimer_mean                              ↔  ddimer_max                                r=0.9911
+2026-03-21 17:15:59,409      ddimer_mean                              ↔  ddimer_min                                r=0.9902
+2026-03-21 17:15:59,409      ddimer_mean_was_measured                 ↔  ddimer_max_was_measured                   r=1.0
+2026-03-21 17:15:59,409      ddimer_mean_was_measured                 ↔  ddimer_min_was_measured                   r=1.0
+2026-03-21 17:15:59,409      ddimer_first                             ↔  ddimer_max                                r=0.9832
+2026-03-21 17:15:59,409      ddimer_first                             ↔  ddimer_mean                               r=0.9904
+2026-03-21 17:15:59,409      ddimer_first_was_measured                ↔  ddimer_max_was_measured                   r=1.0
+2026-03-21 17:15:59,409      ddimer_first_was_measured                ↔  ddimer_min_was_measured                   r=1.0
+2026-03-21 17:15:59,409      ddimer_first_was_measured                ↔  ddimer_mean_was_measured                  r=1.0
+2026-03-21 17:15:59,409      fibrinogen_min_was_measured              ↔  fibrinogen_max_was_measured               r=1.0
+2026-03-21 17:15:59,409      fibrinogen_mean                          ↔  fibrinogen_max                            r=0.989
+2026-03-21 17:15:59,966    Saved heatmap → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase0_diagnostics/diag3_correlation_heatmap_B.pdf
+2026-03-21 17:15:59,967  
+============================================================
+2026-03-21 17:15:59,967  DIAGNOSTIC 4: Feature-Space Overlap (t-SNE)
+2026-03-21 17:15:59,967  ============================================================
+2026-03-21 17:16:00,363      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:16:00,372  
+  [Option A — Full cohort] Running t-SNE on 2000 samples (691 sepsis, 1309 non-sepsis)...
+2026-03-21 17:16:05,568    Saved t-SNE → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase0_diagnostics/diag4_tsne_A.pdf
+2026-03-21 17:16:05,569    *** Inspect diag4_tsne_A.png to decide on SMOTE ***
+2026-03-21 17:16:05,569        Well-separated clusters → SMOTE safe to test
+2026-03-21 17:16:05,569        Heavy overlap            → use class_weights only
+2026-03-21 17:16:05,570      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:16:05,575  
+  [Option B — Infection-only] Running t-SNE on 2000 samples (691 sepsis, 1309 non-sepsis)...
+2026-03-21 17:16:10,400    Saved t-SNE → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase0_diagnostics/diag4_tsne_B.pdf
+2026-03-21 17:16:10,400    *** Inspect diag4_tsne_B.png to decide on SMOTE ***
+2026-03-21 17:16:10,400        Well-separated clusters → SMOTE safe to test
+2026-03-21 17:16:10,400        Heavy overlap            → use class_weights only
+2026-03-21 17:16:10,401  
+============================================================
+2026-03-21 17:16:10,401  DIAGNOSTIC 5: Zero / Near-Zero Variance Features
+2026-03-21 17:16:10,401  ============================================================
+2026-03-21 17:16:10,407      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:16:10,441  
+  [Option A — Full cohort]
+2026-03-21 17:16:10,441      Zero-variance features (2):  ['vaso_vasopressin', 'symptom_anhelation_and_cyanosis']
+2026-03-21 17:16:10,441      Near-zero-var features (2): ['vaso_vasopressin', 'symptom_anhelation_and_cyanosis']
+2026-03-21 17:16:10,441    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_diagnostics/diag5_drop_candidates_A.json
+2026-03-21 17:16:10,442      Non-numeric columns present (kept as-is): ['gender', 'care_unit', 'diagnosis', 'icd10', 'ethnicity']
+2026-03-21 17:16:10,451  
+  [Option B — Infection-only]
+2026-03-21 17:16:10,451      Zero-variance features (3):  ['vaso_vasopressin', 'suspected_infection', 'symptom_anhelation_and_cyanosis']
+2026-03-21 17:16:10,451      Near-zero-var features (3): ['vaso_vasopressin', 'suspected_infection', 'symptom_anhelation_and_cyanosis']
+2026-03-21 17:16:10,452    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_diagnostics/diag5_drop_candidates_B.json
+2026-03-21 17:16:10,452  
+============================================================
+2026-03-21 17:16:10,452  DIAGNOSTIC 6: Key Variable Distributions (sepsis vs non-sepsis)
+2026-03-21 17:16:10,452  ============================================================
+2026-03-21 17:16:11,659    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase0_diagnostics/diag6_key_distributions_A.pdf
+2026-03-21 17:16:12,782    Saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase0_diagnostics/diag6_key_distributions_B.pdf
+2026-03-21 17:16:12,782  
+============================================================
+2026-03-21 17:16:12,782  DECISION GUIDANCE — READ BEFORE PROCEEDING TO PHASE 1
+2026-03-21 17:16:12,783  ============================================================
+2026-03-21 17:16:12,783  
+  Dataset A: imbalance ratio = 13.4:1
+2026-03-21 17:16:12,783      → Severe imbalance. class_weights REQUIRED.
+2026-03-21 17:16:12,783      → SMOTE: only if t-SNE shows clear separation (check diag4_tsne_A.png)
+2026-03-21 17:16:12,783  
+  Dataset B: imbalance ratio = 2.7:1
+2026-03-21 17:16:12,783      → Moderate imbalance. class_weights recommended.
+2026-03-21 17:16:12,783      → SMOTE: reasonable to test (check t-SNE first)
+2026-03-21 17:16:12,783  
+  Zero-variance features to drop before modelling:
+2026-03-21 17:16:12,783      Dataset A: 2 zero-variance features (see diag5_drop_candidates_A.json)
+2026-03-21 17:16:12,783      Dataset B: 3 zero-variance features (see diag5_drop_candidates_B.json)
+2026-03-21 17:16:12,783  
+  Near-perfect correlations (|r|>0.98):
+2026-03-21 17:16:12,783      Dataset A: 385 pairs (see diag3_high_corr_pairs_A.csv)
+2026-03-21 17:16:12,783      Dataset B: 360 pairs (see diag3_high_corr_pairs_B.csv)
+2026-03-21 17:16:12,783  
+  Full summary → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_diagnostics/phase0_summary.json
+2026-03-21 17:16:12,783    All figures  → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase0_diagnostics/
+2026-03-21 17:16:12,783    Full log     → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/logs/phase0_diagnostics.log
+2026-03-21 17:16:12,783  
+Phase 0 complete. Review outputs before running phase1_train_all_models.py

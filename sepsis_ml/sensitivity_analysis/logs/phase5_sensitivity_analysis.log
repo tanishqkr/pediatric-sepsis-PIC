@@ -1,0 +1,141 @@
+2026-04-11 15:07:45,683 | INFO | ======================================================================
+2026-04-11 15:07:45,683 | INFO | PHASE 5 — SENSITIVITY ANALYSIS (Option A — Full Cohort)
+2026-04-11 15:07:45,683 | INFO | Run timestamp : 2026-04-11 15:07:45
+2026-04-11 15:07:45,683 | INFO | Base dir      : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI
+2026-04-11 15:07:45,683 | INFO | ======================================================================
+2026-04-11 15:07:45,683 | INFO | 
+2026-04-11 15:07:45,683 | INFO | ============================================================
+2026-04-11 15:07:45,683 | INFO | SECTION 1 — Feature Preparation (Option A)
+2026-04-11 15:07:45,683 | INFO | ============================================================
+2026-04-11 15:07:45,892 | INFO | Raw Option A train: (9957, 383)
+2026-04-11 15:07:45,892 | INFO | Raw Option A test:  (2490, 383)
+2026-04-11 15:07:45,892 | INFO | Sepsis prevalence  — train: 6.9%, test: 6.9%
+2026-04-11 15:07:45,895 | INFO |   [A_train] Input shape: (9957, 383)
+2026-04-11 15:07:45,899 | INFO |   [A_train] Dropped leakage: ['expire_flag', 'hosp_expire', 'los_hours']
+2026-04-11 15:07:45,919 | INFO |   [A_train] Dropped vaso: 6 columns
+2026-04-11 15:07:45,922 | INFO |   [A_train] Dropped _count: 40 columns
+2026-04-11 15:07:45,924 | INFO |   [A_train] Dropped _was_measured: 102 columns
+2026-04-11 15:07:45,932 | INFO |   [A_train] care_unit one-hot: ['care_unit_CICU', 'care_unit_General ICU', 'care_unit_NICU', 'care_unit_PICU', 'care_unit_SICU']
+2026-04-11 15:07:45,937 | INFO |   [A_train] Final shape: (9957, 226) (features: 225, missing: 0)
+2026-04-11 15:07:45,938 | INFO |   [A_test] Input shape: (2490, 383)
+2026-04-11 15:07:45,939 | INFO |   [A_test] Dropped leakage: ['expire_flag', 'hosp_expire', 'los_hours']
+2026-04-11 15:07:45,946 | INFO |   [A_test] Dropped vaso: 6 columns
+2026-04-11 15:07:45,946 | INFO |   [A_test] Dropped _count: 40 columns
+2026-04-11 15:07:45,947 | INFO |   [A_test] Dropped _was_measured: 102 columns
+2026-04-11 15:07:45,950 | INFO |   [A_test] care_unit one-hot: ['care_unit_CICU', 'care_unit_General ICU', 'care_unit_NICU', 'care_unit_PICU', 'care_unit_SICU']
+2026-04-11 15:07:45,952 | INFO |   [A_test] Final shape: (2490, 226) (features: 225, missing: 0)
+2026-04-11 15:07:45,953 | INFO | Column consistency: PASS — 226 columns match exactly
+2026-04-11 15:07:45,953 | INFO | Feature alignment vs Option B:
+2026-04-11 15:07:45,953 | INFO |   Common features:       225
+2026-04-11 15:07:45,953 | INFO |   Extra in Option A:     0 
+2026-04-11 15:07:45,953 | INFO |   Missing from Option A: 0 
+2026-04-11 15:07:45,956 | INFO |   Aligned to Option B feature set: 225 features
+2026-04-11 15:07:46,710 | INFO | Prepared datasets saved to /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/sensitivity_analysis/results
+2026-04-11 15:07:46,713 | INFO | Final — Train: (9957, 225), Test: (2490, 225)
+2026-04-11 15:07:46,713 | INFO | Sepsis — Train: 691 (6.9%), Test: 173 (6.9%)
+2026-04-11 15:07:46,713 | INFO | 
+2026-04-11 15:07:46,713 | INFO | ============================================================
+2026-04-11 15:07:46,713 | INFO | SECTION 2 — Training CatBoost (fixed tuned params, Option A)
+2026-04-11 15:07:46,713 | INFO | ============================================================
+2026-04-11 15:07:46,713 | INFO | NOTE: Hyperparameters held FIXED from Phase 2A (Option B tuning).
+2026-04-11 15:07:46,713 | INFO | Only class_weights updated for Option A prevalence (1:13.4).
+2026-04-11 15:07:46,713 | INFO | Tuned params: {'iterations': 510, 'learning_rate': 0.0342, 'depth': 7, 'l2_leaf_reg': 3.754, 'bagging_temperature': 0.975, 'random_strength': 0.05, 'border_count': 233, 'class_weights': [1.0, 13.4], 'eval_metric': 'AUC', 'random_seed': 42, 'verbose': 100, 'early_stopping_rounds': 50}
+2026-04-11 15:07:54,045 | INFO | Model saved: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/sensitivity_analysis/models/catboost_A_tuned.cbm
+2026-04-11 15:07:54,045 | INFO | 
+2026-04-11 15:07:54,045 | INFO | ============================================================
+2026-04-11 15:07:54,045 | INFO | SECTION 3 — Evaluation
+2026-04-11 15:07:54,045 | INFO | ============================================================
+2026-04-11 15:07:55,635 | INFO | AUROC : 0.9968 [0.9950–0.9982]
+2026-04-11 15:07:55,635 | INFO | AUPRC : 0.9644 [0.9453–0.9795]
+2026-04-11 15:07:55,635 | INFO | Brier : 0.0164
+2026-04-11 15:07:55,635 | INFO | 
+Metrics at clinical thresholds:
+2026-04-11 15:07:55,637 | INFO |   80% Sens | thresh=0.577 | Sens=0.948 | Spec=0.985 | PPV=0.824 | NPV=0.996 | F1=0.882 | TP=164 FP=35 TN=2282 FN=9
+2026-04-11 15:07:55,638 | INFO |   85% Sens | thresh=0.447 | Sens=0.965 | Spec=0.974 | PPV=0.732 | NPV=0.997 | F1=0.833 | TP=167 FP=61 TN=2256 FN=6
+2026-04-11 15:07:55,638 | INFO |   90% Sens (recommended) | thresh=0.365 | Sens=0.983 | Spec=0.968 | PPV=0.700 | NPV=0.999 | F1=0.817 | TP=170 FP=73 TN=2244 FN=3
+2026-04-11 15:07:55,639 | INFO |   92% Sens | thresh=0.276 | Sens=0.983 | Spec=0.957 | PPV=0.632 | NPV=0.999 | F1=0.769 | TP=170 FP=99 TN=2218 FN=3
+2026-04-11 15:07:55,640 | INFO |   95% Sens | thresh=0.213 | Sens=0.994 | Spec=0.951 | PPV=0.601 | NPV=1.000 | F1=0.749 | TP=172 FP=114 TN=2203 FN=1
+2026-04-11 15:07:55,642 | INFO | 
+2026-04-11 15:07:55,642 | INFO | ============================================================
+2026-04-11 15:07:55,642 | INFO | SECTION 4 — Option A vs Option B Comparison
+2026-04-11 15:07:55,642 | INFO | ============================================================
+2026-04-11 15:07:55,643 | INFO | Option A vs Option B:
+2026-04-11 15:07:55,643 | INFO |   Metric                           Option B     Option A      Delta
+2026-04-11 15:07:55,643 | INFO |   ----------------------------------------------------------------
+2026-04-11 15:07:55,643 | INFO |   AUROC                              0.9868       0.9968    +0.0100
+2026-04-11 15:07:55,643 | INFO |   AUPRC                              0.9691       0.9644    -0.0047
+2026-04-11 15:07:55,643 | INFO |   Sensitivity (0.365)                0.8960       0.9827    +0.0867
+2026-04-11 15:07:55,643 | INFO |   Specificity (0.365)                0.9630       0.9685    +0.0055
+2026-04-11 15:07:55,643 | INFO |   PPV (0.365)                        0.9010       0.6996    -0.2014
+2026-04-11 15:07:55,643 | INFO |   NPV (0.365)                        0.9610       0.9987    +0.0377
+2026-04-11 15:07:55,643 | INFO |   F1 (0.365)                         0.8990       0.8173    -0.0817
+2026-04-11 15:07:55,643 | INFO |   Brier Score                        0.0385       0.0164    -0.0221
+2026-04-11 15:07:55,643 | INFO |   N Train                              2530         9957
+2026-04-11 15:07:55,644 | INFO |   N Test                                633         2490
+2026-04-11 15:07:55,644 | INFO |   Sepsis Prevalence                   27.3%         6.9%
+2026-04-11 15:07:55,644 | INFO | 
+2026-04-11 15:07:55,644 | INFO | ============================================================
+2026-04-11 15:07:55,644 | INFO | SECTION 5 — SHAP Feature Importance (Option A)
+2026-04-11 15:07:55,644 | INFO | ============================================================
+2026-04-11 15:07:56,225 | INFO | Top 20 features by mean |SHAP| — Option A:
+2026-04-11 15:07:56,226 | INFO |    1. n_antibiotics_24h                   5.28347
+2026-04-11 15:07:56,226 | INFO |    2. lactate_max                         0.95573
+2026-04-11 15:07:56,226 | INFO |    3. platelets_min                       0.56846
+2026-04-11 15:07:56,226 | INFO |    4. ddimer_max                          0.53442
+2026-04-11 15:07:56,226 | INFO |    5. inr_max                             0.52911
+2026-04-11 15:07:56,226 | INFO |    6. n_cultures_24h                      0.44575
+2026-04-11 15:07:56,226 | INFO |    7. ddimer_mean                         0.37909
+2026-04-11 15:07:56,226 | INFO |    8. glucose_max                         0.12840
+2026-04-11 15:07:56,226 | INFO |    9. pt_max                              0.12398
+2026-04-11 15:07:56,226 | INFO |   10. platelets_mean                      0.11879
+2026-04-11 15:07:56,226 | INFO |   11. calcium_max                         0.11615
+2026-04-11 15:07:56,226 | INFO |   12. ph_min                              0.11263
+2026-04-11 15:07:56,226 | INFO |   13. care_unit_CICU                      0.10991
+2026-04-11 15:07:56,226 | INFO |   14. platelets_first                     0.10442
+2026-04-11 15:07:56,226 | INFO |   15. pao2_max                            0.09760
+2026-04-11 15:07:56,226 | INFO |   16. potassium_min                       0.07948
+2026-04-11 15:07:56,226 | INFO |   17. fibrinogen_min                      0.07713
+2026-04-11 15:07:56,226 | INFO |   18. calcium_mean                        0.07633
+2026-04-11 15:07:56,227 | INFO |   19. hematocrit_min                      0.07502
+2026-04-11 15:07:56,227 | INFO |   20. pco2_max                            0.07225
+2026-04-11 15:07:56,227 | INFO | 
+2026-04-11 15:07:56,227 | INFO | ============================================================
+2026-04-11 15:07:56,227 | INFO | Generating figures...
+2026-04-11 15:07:56,227 | INFO | ============================================================
+2026-04-11 15:07:56,418 | INFO | Figure 1 saved: phase5_fig1_roc_pr_A.png
+2026-04-11 15:07:56,594 | INFO | Figure 2 saved: phase5_fig2_A_vs_B_comparison.png
+2026-04-11 15:07:56,732 | INFO | Figure 3 saved: phase5_fig3_shap_A_vs_B.png
+2026-04-11 15:07:56,973 | INFO | Figure 4 saved: phase5_fig4_summary_dashboard.png
+2026-04-11 15:07:56,973 | INFO | 
+2026-04-11 15:07:56,973 | INFO | ============================================================
+2026-04-11 15:07:56,973 | INFO | Saving results...
+2026-04-11 15:07:56,973 | INFO | ============================================================
+2026-04-11 15:07:56,975 | INFO | Results saved: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/sensitivity_analysis/results/phase5_results.json
+2026-04-11 15:07:56,975 | INFO | 
+2026-04-11 15:07:56,975 | INFO | ======================================================================
+2026-04-11 15:07:56,975 | INFO | PHASE 5 COMPLETE — SENSITIVITY ANALYSIS SUMMARY
+2026-04-11 15:07:56,975 | INFO | ======================================================================
+2026-04-11 15:07:56,975 | INFO | Metric                             Option B     Option A      Delta
+2026-04-11 15:07:56,975 | INFO | ------------------------------------------------------------------
+2026-04-11 15:07:56,975 | INFO | AUROC                                0.9868       0.9968    +0.0100
+2026-04-11 15:07:56,975 | INFO | AUPRC                                0.9691       0.9644    -0.0047
+2026-04-11 15:07:56,975 | INFO | Sensitivity (0.365)                   0.896        0.983     +0.087
+2026-04-11 15:07:56,975 | INFO | Specificity (0.365)                   0.963        0.968     +0.005
+2026-04-11 15:07:56,975 | INFO | Brier Score                          0.0385       0.0164    -0.0221
+2026-04-11 15:07:56,975 | INFO | N Train                                2530         9957
+2026-04-11 15:07:56,975 | INFO | N Test                                  633         2490
+2026-04-11 15:07:56,975 | INFO | Prevalence                            27.3%         6.9%
+2026-04-11 15:07:56,975 | INFO | 
+2026-04-11 15:07:56,975 | INFO | All outputs saved to: /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/sensitivity_analysis
+2026-04-11 15:07:56,975 | INFO |   Models   : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/sensitivity_analysis/models
+2026-04-11 15:07:56,975 | INFO |   Figures  : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/sensitivity_analysis/figures
+2026-04-11 15:07:56,975 | INFO |   Results  : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/sensitivity_analysis/results
+2026-04-11 15:07:56,975 | INFO |   Logs     : /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/sensitivity_analysis/logs
+2026-04-11 15:07:56,975 | INFO | 
+2026-04-11 15:07:56,975 | INFO | Interpretation guidance:
+2026-04-11 15:07:56,975 | INFO |   AUROC within 0.02 of Option B → results generalise ✓
+2026-04-11 15:07:56,975 | INFO |   AUPRC drop expected (6.9% vs 27.3% prevalence) → use AUROC for comparison
+2026-04-11 15:07:56,975 | INFO |   Top SHAP features should remain lactate, D-dimer, platelets → validates signal
+2026-04-11 15:07:56,975 | INFO | 
+2026-04-11 15:07:56,975 | INFO | Next steps: Phase 6 — TabNet + improved ANN
+2026-04-11 15:07:56,975 | INFO | ======================================================================

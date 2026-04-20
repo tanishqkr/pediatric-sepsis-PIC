@@ -1,0 +1,185 @@
+2026-03-21 18:12:01,772  =================================================================
+2026-03-21 18:12:01,772  PHASE 0.2 — LEAKAGE INVESTIGATION
+2026-03-21 18:12:01,772  Started: 2026-03-21T18:12:01
+2026-03-21 18:12:01,772  CatBoost AUROC=1.000 is impossible — finding the cause.
+2026-03-21 18:12:01,772  =================================================================
+2026-03-21 18:12:01,832  
+Loaded: train=(2530, 306), test=(633, 306)
+2026-03-21 18:12:01,832  Features: 305
+2026-03-21 18:12:01,832  
+=======================================================
+2026-03-21 18:12:01,832  SUSPECT 1: _count columns
+2026-03-21 18:12:01,832  Hypothesis: measurement frequency is circular with Phoenix labeling.
+2026-03-21 18:12:01,832  =======================================================
+2026-03-21 18:12:01,832    Found 40 _count columns
+2026-03-21 18:12:01,838    Top 10 _count correlations with label:
+2026-03-21 18:12:01,838      calcium_count                                 r=0.4509
+2026-03-21 18:12:01,838      sodium_count                                  r=0.4404
+2026-03-21 18:12:01,838      base_excess_count                             r=0.4400
+2026-03-21 18:12:01,838      potassium_count                               r=0.4400
+2026-03-21 18:12:01,838      bicarbonate_count                             r=0.4388
+2026-03-21 18:12:01,838      anion_gap_count                               r=0.4353
+2026-03-21 18:12:01,838      lactate_count                                 r=0.4351
+2026-03-21 18:12:01,839      hematocrit_count                              r=0.4225
+2026-03-21 18:12:01,839      hemoglobin_count                              r=0.4190
+2026-03-21 18:12:01,839      spo2_lab_count                                r=0.4139
+2026-03-21 18:12:01,839  
+  Isolation test — CatBoost trained on COUNT COLUMNS ONLY:
+2026-03-21 18:12:02,064      Count cols only: Test AUROC=0.8782  AUPRC=0.7745
+2026-03-21 18:12:02,064    VERDICT: LEAKAGE CONFIRMED (isolation AUROC=0.8782)
+2026-03-21 18:12:02,064  
+=======================================================
+2026-03-21 18:12:02,064  SUSPECT 2: n_vasoactives_24h + individual vaso flags
+2026-03-21 18:12:02,064  Hypothesis: vasoactives are part of Phoenix cardiovascular score.
+2026-03-21 18:12:02,064  =======================================================
+2026-03-21 18:12:02,064    Found 6 vasoactive columns: ['n_vasoactives_24h', 'vaso_dopamine', 'vaso_epinephrine', 'vaso_norepinephrine', 'vaso_dobutamine', 'vaso_milrinone']
+2026-03-21 18:12:02,065      n_vasoactives_24h                             r=0.5439
+2026-03-21 18:12:02,065      vaso_dopamine                                 r=0.4736
+2026-03-21 18:12:02,065      vaso_epinephrine                              r=0.3766
+2026-03-21 18:12:02,065      vaso_dobutamine                               r=0.3692
+2026-03-21 18:12:02,065      vaso_milrinone                                r=0.2968
+2026-03-21 18:12:02,065      vaso_norepinephrine                           r=0.2293
+2026-03-21 18:12:02,066  
+  % with n_vasoactives_24h > 0:
+2026-03-21 18:12:02,066      Sepsis:     73.5%
+2026-03-21 18:12:02,066      Non-sepsis: 23.7%
+2026-03-21 18:12:02,066  
+  Isolation test — CatBoost trained on VASO COLUMNS ONLY:
+2026-03-21 18:12:02,092      Vaso cols only: Test AUROC=0.8628  AUPRC=0.7313
+2026-03-21 18:12:02,092    VERDICT: LEAKAGE CONFIRMED (isolation AUROC=0.8628)
+2026-03-21 18:12:02,092  
+=======================================================
+2026-03-21 18:12:02,092  SUSPECT 3: _trend columns (last - first delta)
+2026-03-21 18:12:02,092  Hypothesis: deterioration trajectory encodes severity = outcome.
+2026-03-21 18:12:02,092  =======================================================
+2026-03-21 18:12:02,092    Found 16 _trend columns
+2026-03-21 18:12:02,093    Top 10 _trend correlations with label:
+2026-03-21 18:12:02,094      sodium_trend                                  r=0.1590
+2026-03-21 18:12:02,094      base_excess_trend                             r=0.1438
+2026-03-21 18:12:02,094      lactate_trend                                 r=0.1063
+2026-03-21 18:12:02,094      hemoglobin_trend                              r=0.0704
+2026-03-21 18:12:02,094      wbc_trend                                     r=0.0541
+2026-03-21 18:12:02,094      glucose_trend                                 r=0.0530
+2026-03-21 18:12:02,094      inr_trend                                     r=0.0455
+2026-03-21 18:12:02,094      platelets_trend                               r=0.0451
+2026-03-21 18:12:02,094      resp_rate_trend                               r=0.0449
+2026-03-21 18:12:02,094      potassium_trend                               r=0.0356
+2026-03-21 18:12:02,094  
+  Isolation test — CatBoost trained on TREND COLUMNS ONLY:
+2026-03-21 18:12:02,139      Trend cols only: Test AUROC=0.8482  AUPRC=0.7366
+2026-03-21 18:12:02,140    VERDICT: ACCEPTABLE (isolation AUROC=0.8482)
+2026-03-21 18:12:02,140  
+=======================================================
+2026-03-21 18:12:02,140  SUSPECT 4: fluid_input_total_ml / urine_output_total_ml
+2026-03-21 18:12:02,140  Hypothesis: large resuscitation volumes = treatment for septic shock.
+2026-03-21 18:12:02,140  =======================================================
+2026-03-21 18:12:02,140    Found 4 fluid/urine columns: ['urine_output_total_ml', 'urine_output_per_hour', 'fluid_input_total_ml', 'fluid_balance_ml']
+2026-03-21 18:12:02,141      fluid_input_total_ml                          r=0.1119
+2026-03-21 18:12:02,141      fluid_balance_ml                              r=0.1096
+2026-03-21 18:12:02,141      urine_output_per_hour                         r=0.0068
+2026-03-21 18:12:02,141      urine_output_total_ml                         r=0.0023
+2026-03-21 18:12:02,176      Fluid cols only: Test AUROC=0.6093  AUPRC=0.3664
+2026-03-21 18:12:02,176    VERDICT: ACCEPTABLE (isolation AUROC=0.6093)
+2026-03-21 18:12:02,176  
+=======================================================
+2026-03-21 18:12:02,176  SUSPECT 5: Train/test patient overlap
+2026-03-21 18:12:02,176  Hypothesis: split was row-level not patient-level — same patient in both.
+2026-03-21 18:12:02,176  =======================================================
+2026-03-21 18:12:02,177    Meta train columns: ['subject_id', 'hadm_id', 'icustay_id', 'sepsis_label', 'phoenix_core_score', 'phoenix_8_score']
+2026-03-21 18:12:02,194    subject_id not in test file — checking raw option_B files
+2026-03-21 18:12:02,195    VERDICT: CANNOT VERIFY
+2026-03-21 18:12:02,195  
+=======================================================
+2026-03-21 18:12:02,195  SUSPECT 6: Imputation leakage
+2026-03-21 18:12:02,195  Hypothesis: medians computed on full dataset, not train-only.
+2026-03-21 18:12:02,195  =======================================================
+2026-03-21 18:12:02,222    Max median difference (train vs full): 4.165000
+2026-03-21 18:12:02,222    Mean median difference:                0.013947
+2026-03-21 18:12:02,222    Columns with diff > 0.001:             2
+2026-03-21 18:12:02,222    VERDICT: INVESTIGATE — some medians differ significantly
+2026-03-21 18:12:02,222  
+=======================================================
+2026-03-21 18:12:02,222  ALL FEATURES — Correlation with label (top 40)
+2026-03-21 18:12:02,222  =======================================================
+2026-03-21 18:12:02,538  
+  Feature                                          |r|  Type
+2026-03-21 18:12:02,538    ------------------------------------------------------------
+2026-03-21 18:12:02,538    n_vasoactives_24h                             0.5439  vaso *** SUSPECT
+2026-03-21 18:12:02,538    vaso_dopamine                                 0.4736  vaso *** SUSPECT
+2026-03-21 18:12:02,538    lactate_max                                   0.4717  clinical
+2026-03-21 18:12:02,538    calcium_count                                 0.4509  count *** SUSPECT
+2026-03-21 18:12:02,538    sodium_count                                  0.4404  count *** SUSPECT
+2026-03-21 18:12:02,538    base_excess_count                             0.4400  count *** SUSPECT
+2026-03-21 18:12:02,538    potassium_count                               0.4400  count *** SUSPECT
+2026-03-21 18:12:02,538    bicarbonate_count                             0.4388  count *** SUSPECT
+2026-03-21 18:12:02,538    anion_gap_count                               0.4353  count *** SUSPECT
+2026-03-21 18:12:02,538    lactate_count                                 0.4351  count *** SUSPECT
+2026-03-21 18:12:02,538    hematocrit_count                              0.4225  count *** SUSPECT
+2026-03-21 18:12:02,538    hemoglobin_count                              0.4190  count *** SUSPECT
+2026-03-21 18:12:02,538    lactate_mean                                  0.4168  clinical
+2026-03-21 18:12:02,538    lactate_first                                 0.4148  clinical
+2026-03-21 18:12:02,538    spo2_lab_count                                0.4139  count *** SUSPECT
+2026-03-21 18:12:02,538    glucose_count                                 0.4114  count *** SUSPECT
+2026-03-21 18:12:02,538    pao2_count                                    0.3878  count *** SUSPECT
+2026-03-21 18:12:02,539    pco2_count                                    0.3869  count *** SUSPECT
+2026-03-21 18:12:02,539    ph_count                                      0.3867  count *** SUSPECT
+2026-03-21 18:12:02,539    inr_trend_was_measured                        0.3826  clinical
+2026-03-21 18:12:02,539    fibrinogen_max_was_measured                   0.3780  clinical
+2026-03-21 18:12:02,539    vaso_epinephrine                              0.3766  vaso *** SUSPECT
+2026-03-21 18:12:02,539    pt_count                                      0.3748  count *** SUSPECT
+2026-03-21 18:12:02,539    inr_count                                     0.3744  count *** SUSPECT
+2026-03-21 18:12:02,539    fibrinogen_count                              0.3735  count *** SUSPECT
+2026-03-21 18:12:02,539    vaso_dobutamine                               0.3692  vaso *** SUSPECT
+2026-03-21 18:12:02,539    ddimer_max_was_measured                       0.3641  clinical
+2026-03-21 18:12:02,539    ptt_count                                     0.3637  count *** SUSPECT
+2026-03-21 18:12:02,539    ddimer_count                                  0.3613  count *** SUSPECT
+2026-03-21 18:12:02,539    pt_mean                                       0.3490  clinical
+2026-03-21 18:12:02,539    ddimer_max                                    0.3474  clinical
+2026-03-21 18:12:02,539    ddimer_mean                                   0.3457  clinical
+2026-03-21 18:12:02,539    ddimer_first                                  0.3393  clinical
+2026-03-21 18:12:02,539    ddimer_min                                    0.3378  clinical
+2026-03-21 18:12:02,539    pt_max                                        0.3359  clinical
+2026-03-21 18:12:02,539    pt_first                                      0.3234  clinical
+2026-03-21 18:12:02,539    inr_mean                                      0.3206  clinical
+2026-03-21 18:12:02,539    base_excess_min                               0.3197  clinical
+2026-03-21 18:12:02,539    platelets_min                                 0.3163  clinical
+2026-03-21 18:12:02,539    pt_min                                        0.3113  clinical
+2026-03-21 18:12:02,543  
+  Full correlation table → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_leakage/feature_correlations.csv
+2026-03-21 18:12:02,543  
+=======================================================
+2026-03-21 18:12:02,543  ISOLATION TEST — Clinical features only (no count/vaso/trend/fluid)
+2026-03-21 18:12:02,543  =======================================================
+2026-03-21 18:12:02,543    Clinical-only features: 236
+2026-03-21 18:12:02,543    Removed: 69 suspect columns
+2026-03-21 18:12:02,832      Clinical cols only: Test AUROC=0.9777  AUPRC=0.9496
+2026-03-21 18:12:02,835  
+  Clinical-only AUROC=0.9777
+2026-03-21 18:12:02,835    Still high — leakage may exist in clinical columns too
+2026-03-21 18:12:03,095  
+  Saved isolation test plot → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase0_leakage/isolation_test_aurocs.png
+2026-03-21 18:12:03,095  
+=================================================================
+2026-03-21 18:12:03,095  FINAL VERDICT SUMMARY
+2026-03-21 18:12:03,095  =================================================================
+2026-03-21 18:12:03,095    suspect_1_count_cols                → LEAKAGE  (auroc/overlap=0.8781540588087459)
+2026-03-21 18:12:03,095    suspect_2_vaso_cols                 → LEAKAGE  (auroc/overlap=0.862848705704951)
+2026-03-21 18:12:03,095    suspect_3_trend_cols                → ACCEPTABLE  (auroc/overlap=0.8482407640110581)
+2026-03-21 18:12:03,095    suspect_4_fluid_cols                → ACCEPTABLE  (auroc/overlap=0.6093365167127419)
+2026-03-21 18:12:03,095    suspect_5_patient_overlap           → CANNOT VERIFY  (auroc/overlap=-1)
+2026-03-21 18:12:03,095    suspect_6_imputation                → INVESTIGATE  (auroc/overlap=?)
+2026-03-21 18:12:03,095    clinical_only_test                  → ?  (auroc/overlap=0.9776765518974616)
+2026-03-21 18:12:03,095  
+  Clinical-only AUROC: 0.9777
+2026-03-21 18:12:03,095    This is the realistic model performance after removing suspect columns.
+2026-03-21 18:12:03,095  
+  RECOMMENDED ACTION:
+2026-03-21 18:12:03,095    1. DROP all _count columns (40 columns)
+2026-03-21 18:12:03,095    2. DROP n_vasoactives_24h + individual vaso flags (6 columns)
+2026-03-21 18:12:03,095    5. Retrain all models on cleaned features
+2026-03-21 18:12:03,095    6. Expected realistic AUROC range: 0.978 (clinical-only test)
+2026-03-21 18:12:03,096  
+  Report saved → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/diagnostics/phase0_leakage/leakage_report.json
+2026-03-21 18:12:03,096    Log saved    → /Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/logs/phase0_2_leakage_investigation.log
+2026-03-21 18:12:03,096  
+Phase 0.2 complete.
