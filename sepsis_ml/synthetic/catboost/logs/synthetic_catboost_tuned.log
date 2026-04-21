@@ -1,28 +1,75 @@
-2026-04-20 16:25:05,393  =================================================================
-2026-04-20 16:25:05,393  EXPERIMENT B â€” CATBOOST OPTUNA TUNING ON SYNTHETIC DATA
-2026-04-20 16:25:05,393  Started: 2026-04-20T16:25:05
-2026-04-20 16:25:05,393  Trials: 100  |  CV folds: 5  |  Metric: AUPRC
-2026-04-20 16:25:05,393  =================================================================
-2026-04-20 16:25:05,393  
+2026-04-22 00:52:23,992  =================================================================
+2026-04-22 00:52:23,993  EXPERIMENT B — CATBOOST OPTUNA TUNING ON SYNTHETIC DATA
+2026-04-22 00:52:23,993  Started: 2026-04-22T00:52:23
+2026-04-22 00:52:23,994  Trials: 50  |  CV folds: 5  |  Metric: AUPRC
+2026-04-22 00:52:23,994  =================================================================
+2026-04-22 00:52:23,994  
 Device detection:
-2026-04-20 16:25:05,988    Apple Silicon MPS detected.
-2026-04-20 16:25:05,988    CatBoost does NOT support MPS. Using CPU (still fast).
-2026-04-20 16:25:05,989  
+2026-04-22 00:52:42,329    Device: CPU
+2026-04-22 00:52:42,330  
 Loading datasets...
-2026-04-20 16:25:06,131    Synthetic train : (10000, 226) | Sepsis: 27.3%
-2026-04-20 16:25:06,131    Real test       : (633, 226)  | Sepsis: 27.3%
-2026-04-20 16:25:06,131    Features        : 225
-2026-04-20 16:25:06,131  
-2026-04-20 16:25:06,131    IMPORTANT: Training and tuning on SYNTHETIC data only.
-2026-04-20 16:25:06,131    Evaluation on REAL held-out test set (never synthesised).
-2026-04-20 16:25:06,131  
+2026-04-22 00:52:43,009    Synthetic train : (10000, 226) | Sepsis: 27.3%
+2026-04-22 00:52:43,009    Real test       : (633, 226)  | Sepsis: 27.3%
+2026-04-22 00:52:43,010    Features        : 225
+2026-04-22 00:52:43,010  
+2026-04-22 00:52:43,010    IMPORTANT: Training and tuning on SYNTHETIC data only.
+2026-04-22 00:52:43,010    Evaluation on REAL held-out test set (never synthesised).
+2026-04-22 00:52:43,010  
 Loading real-trained CatBoost for comparison...
-2026-04-20 16:25:06,202    Real-trained CatBoost: AUROC=0.9868  AUPRC=0.9691
-2026-04-20 16:25:06,202  
-Starting Optuna study (100 trials)...
-2026-04-20 16:25:06,202  Searching identical space to Phase 2 (real-data tuning).
-2026-04-20 16:25:06,202  Progress printed on every new best and every 10 trials.
+2026-04-22 00:52:46,277    Real-trained CatBoost: AUROC=0.9868  AUPRC=0.9691
+2026-04-22 00:52:46,278  
+Starting Optuna study (50 trials)...
+2026-04-22 00:52:46,278  Searching identical space to Phase 2 (real-data tuning).
+2026-04-22 00:52:46,278  Progress printed on every new best and every 10 trials.
 
-2026-04-20 16:25:27,582    Trial   0 NEW BEST: AUPRC=0.9988  params={'iterations': 687, 'learning_rate': 0.2536999076681772, 'depth': 9, 'l2_leaf_reg': 6.387926357773329, 'bagging_temperature': 0.15601864044243652, 'random_strength': 0.3119890406724053, 'border_count': 45, 'class_weight_pos': 4.531616510212273}
-2026-04-20 16:25:40,109    Trial   1 NEW BEST: AUPRC=0.9996  params={'iterations': 982, 'learning_rate': 0.11114989443094977, 'depth': 4, 'l2_leaf_reg': 9.72918866945795, 'bagging_temperature': 0.8324426408004217, 'random_strength': 0.4246782213565523, 'border_count': 72, 'class_weight_pos': 2.1419157844870185}
-2026-04-20 16:26:18,613    Trial   3 NEW BEST: AUPRC=0.9997  params={'iterations': 793, 'learning_rate': 0.14447746112718687, 'depth': 5, 'l2_leaf_reg': 5.628109945722504, 'bagging_temperature': 0.5924145688620425, 'random_strength': 0.09290082543999545, 'border_count': 168, 'class_weight_pos': 2.0968344329055206}
+2026-04-22 00:53:53,587    Trial   0 NEW BEST: AUPRC=0.9989  params={'iterations': 687, 'learning_rate': 0.2536999076681772, 'depth': 9, 'l2_leaf_reg': 6.387926357773329, 'bagging_temperature': 0.15601864044243652, 'random_strength': 0.3119890406724053, 'border_count': 45, 'class_weight_pos': 4.531616510212273}
+2026-04-22 00:54:25,731    Trial   1 NEW BEST: AUPRC=0.9997  params={'iterations': 982, 'learning_rate': 0.11114989443094977, 'depth': 4, 'l2_leaf_reg': 9.72918866945795, 'bagging_temperature': 0.8324426408004217, 'random_strength': 0.4246782213565523, 'border_count': 72, 'class_weight_pos': 2.1419157844870185}
+2026-04-22 00:56:11,025    Trial   3 NEW BEST: AUPRC=0.9997  params={'iterations': 793, 'learning_rate': 0.14447746112718687, 'depth': 5, 'l2_leaf_reg': 5.628109945722504, 'bagging_temperature': 0.5924145688620425, 'random_strength': 0.09290082543999545, 'border_count': 168, 'class_weight_pos': 2.0968344329055206}
+2026-04-22 01:19:52,682    Trial  10: AUPRC=0.9991  (best so far: 0.9997)
+2026-04-22 01:20:58,643    Trial  12 NEW BEST: AUPRC=0.9998  params={'iterations': 1125, 'learning_rate': 0.10781135193503111, 'depth': 5, 'l2_leaf_reg': 1.6117912659935838, 'bagging_temperature': 0.7212825694076663, 'random_strength': 0.015515366664302949, 'border_count': 136, 'class_weight_pos': 2.338889757980909}
+2026-04-22 01:21:45,733    Trial  13 NEW BEST: AUPRC=0.9998  params={'iterations': 1251, 'learning_rate': 0.09719442732457283, 'depth': 6, 'l2_leaf_reg': 1.1649560268417756, 'bagging_temperature': 0.6510158031715946, 'random_strength': 0.005903789775888471, 'border_count': 150, 'class_weight_pos': 2.479968413446066}
+2026-04-22 01:26:55,978    Trial  17 NEW BEST: AUPRC=0.9998  params={'iterations': 1180, 'learning_rate': 0.08850818956967794, 'depth': 5, 'l2_leaf_reg': 2.298135492731724, 'bagging_temperature': 0.7219454805607028, 'random_strength': 1.4539295035760889, 'border_count': 159, 'class_weight_pos': 2.4658844435339122}
+2026-04-22 01:36:01,641    Trial  20: AUPRC=0.9998  (best so far: 0.9998)
+2026-04-22 01:45:28,950    Trial  30: AUPRC=0.9997  (best so far: 0.9998)
+2026-04-22 01:52:40,293    Trial  39 NEW BEST: AUPRC=0.9998  params={'iterations': 1180, 'learning_rate': 0.08880179490508538, 'depth': 6, 'l2_leaf_reg': 1.047455990283008, 'bagging_temperature': 0.11701807267787595, 'random_strength': 0.1348206729636483, 'border_count': 127, 'class_weight_pos': 2.224939296299578}
+2026-04-22 01:53:15,223    Trial  40: AUPRC=0.9996  (best so far: 0.9998)
+2026-04-22 01:54:58,545    Trial  42 NEW BEST: AUPRC=0.9998  params={'iterations': 1306, 'learning_rate': 0.10423710086491393, 'depth': 6, 'l2_leaf_reg': 1.4869835140711294, 'bagging_temperature': 0.001983553921253156, 'random_strength': 0.02167555262025646, 'border_count': 114, 'class_weight_pos': 2.4164762707307212}
+2026-04-22 02:08:09,074  
+  Optuna complete.
+2026-04-22 02:08:09,074    Best CV AUPRC: 0.9998
+2026-04-22 02:08:09,075    Best params:   {'iterations': 1306, 'learning_rate': 0.10423710086491393, 'depth': 6, 'l2_leaf_reg': 1.4869835140711294, 'bagging_temperature': 0.001983553921253156, 'random_strength': 0.02167555262025646, 'border_count': 114, 'class_weight_pos': 2.4164762707307212}
+2026-04-22 02:08:09,366  
+Training final tuned CatBoost on full synthetic training set...
+2026-04-22 02:08:10,491  
+Evaluating on real held-out test set (n=633)...
+2026-04-22 02:08:13,883  
+  =======================================================
+2026-04-22 02:08:13,884    SYNTHETIC-TRAINED TUNED CATBOOST — TEST SET RESULTS
+2026-04-22 02:08:13,884    =======================================================
+2026-04-22 02:08:13,885    AUROC : 0.9290 [0.9025–0.9486]
+2026-04-22 02:08:13,885    AUPRC : 0.8693 [0.8260–0.9047]
+2026-04-22 02:08:13,885    Sens  : 0.9017  Spec: 0.7587  F1: 0.7091
+2026-04-22 02:08:13,885    PPV   : 0.5843  NPV: 0.9536  Brier: 0.0885
+2026-04-22 02:08:13,886    TP=156  FP=111  TN=349  FN=17
+2026-04-22 02:08:13,886  
+  Comparison vs Real-Trained CatBoost (Phase 2):
+2026-04-22 02:08:13,892  
+  DeLong test (synthetic-trained vs real-trained):
+2026-04-22 02:08:14,304      Synth-trained AUROC: 0.9290
+2026-04-22 02:08:14,304      Real-trained AUROC : 0.9868
+2026-04-22 02:08:14,305      Z-statistic        : -5.5518
+2026-04-22 02:08:14,305      P-value            : 0.0000
+2026-04-22 02:08:14,306      Significant        : YES (p<0.05)
+2026-04-22 02:08:14,366  
+--- Generating figures ---
+2026-04-22 02:08:26,796  
+  Threshold sensitivity analysis:
+2026-04-22 02:08:26,796      Target   Thresh    Sens    Spec     PPV     NPV      F1    TP    FP    FN
+2026-04-22 02:08:26,796    ---------------------------------------------------------------------------
+2026-04-22 02:08:26,797        0.80   0.4405  0.8092  0.9261  0.8046  0.9281  0.8069   140    34    33
+2026-04-22 02:08:26,798        0.82   0.4272  0.8208  0.9174  0.7889  0.9316  0.8045   142    38    31
+2026-04-22 02:08:26,798        0.85   0.3614  0.8555  0.8826  0.7327  0.9420  0.7893   148    54    25
+2026-04-22 02:08:26,798        0.87   0.2958  0.8728  0.8435  0.6771  0.9463  0.7626   151    72    22
+2026-04-22 02:08:26,799        0.90   0.2291  0.9017  0.7587  0.5843  0.9536  0.7091   156   111    17
+2026-04-22 02:08:26,799        0.92   0.1991  0.9249  0.6957  0.5333  0.9610  0.6765   160   140    13
+2026-04-22 02:08:26,800        0.95   0.1396  0.9538  0.5870  0.4648  0.9712  0.6250   165   190     8
