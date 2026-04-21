@@ -1,0 +1,17 @@
+{
+  "best_cv_auprc": 0.9892614944131047,
+  "best_params": {
+    "iterations": 793,
+    "learning_rate": 0.14447746112718687,
+    "depth": 5,
+    "l2_leaf_reg": 5.628109945722504,
+    "bagging_temperature": 0.5924145688620425,
+    "random_strength": 0.09290082543999545,
+    "border_count": 168,
+    "class_weight_pos": 2.0968344329055206
+  },
+  "n_trials": 5,
+  "real_sample_weight": 4.5,
+  "synth_sample_weight": 1.0,
+  "timestamp": "2026-04-22T00:30:48"
+}

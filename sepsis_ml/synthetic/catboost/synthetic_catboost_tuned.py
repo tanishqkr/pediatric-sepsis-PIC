@@ -128,7 +128,7 @@ CV_FOLDS             = 5
 TARGET_COL           = "sepsis_label"
 TARGET_SENSITIVITY   = 0.90
 BOOTSTRAP_ITERATIONS = 1000
-OPTUNA_TRIALS        = 100
+OPTUNA_TRIALS        = 50
 
 np.random.seed(RANDOM_SEED)
 
