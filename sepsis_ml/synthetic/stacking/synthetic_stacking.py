@@ -1,74 +1,66 @@
 """
 synthetic_stacking.py
-──────────────────────────────────────────────────────────────────────────────
-Experiment B — Stacking Ensemble (CatBoost + FT-Transformer) trained on
-100% Synthetic Data. Mirrors phase7_stack_catboost_ftt.py exactly.
+─────────────────────────────────────────────────────────────────────────────
+Stacking Ensemble — Weighted Hybrid Data
+CatBoost (Exp D) + FT-Transformer (hybrid weighted)
+Meta-learner: Logistic Regression trained on out-of-fold (OOF) probabilities
 
-What is identical to Phase 7:
-  - 5-fold stratified CV for OOF generation
-  - CatBoost folds use the Optuna best params from synthetic tuning
-    (synthetic_best_params.json) with early_stopping_rounds=50 + eval_set
-  - FT-Transformer folds: exact same architecture, patience=15, max_epochs=100,
-    AUPRC-based early stopping, cosine LR scheduler, BCEWithLogitsLoss with
-    per-fold pos_weight, gradient clipping max_norm=1.0
-  - FT-T scaling: fit StandardScaler on SYNTHETIC numerical columns each fold
-    (Phase 7 used the Phase 6 scaler pre-fitted on real data; here we fit fresh
-    on synthetic because there is no Phase 6 equivalent for synthetic)
-  - Meta-learner: LogisticRegression(C=1.0, solver='lbfgs', max_iter=1000)
-    trained on the n_synth x 2 OOF matrix
-  - Test inference: retrain both base models on full synthetic training set,
-    get test probs, stack through meta-learner
-  - DeLong tests: ensemble vs synthetic CatBoost; ensemble vs FT-T;
-    synthetic ensemble vs real Phase 7 ensemble; synthetic ensemble vs real CB
-  - Threshold sensitivity table: same 7 targets [0.80-0.95]
-  - Bootstrap CIs: 1000 iterations, same seed
-  - All 4 figures: ROC+PR, calibration, confusion matrix, threshold sensitivity
-  - multiprocessing.freeze_support() guard for Windows
-  - Module-level DEVICE constant (not re-detected per call)
+This is the direct hybrid-data equivalent of phase7_stack_catboost_ftt.py
+which stacked on real-only Option B data. Architecture, OOF pipeline,
+meta-learner design, evaluation suite, and figure set are identical.
 
-What differs from Phase 7:
-  - Training data: synthetic CTGAN patients (not real 2530)
-  - CatBoost best params: loaded from synthetic_best_params.json
-    (not sepsis_ml/results/best_params.json)
-  - FT-T scaler: fit fresh on synthetic training data each fold
-  - Output folder: sepsis_ml/synthetic/stacking/
-  - File prefix: synthetic_ instead of phase7_
+Prerequisites (must run first):
+  1. weighted_hybrid_catboost.py  -> whybrid/results/whybrid_catboost_test_probs.npy
+  2. hybrid_fttransformer.py      -> ft/results/hybrid_ftt_predictions.npz
+
+Weighting — consistent at every level of the pipeline:
+  - CatBoost OOF folds   : Pool(weight=sw) real=4.0, synth=1.0
+  - FT-T OOF folds       : WeightedRandomSampler real=4.0, synth=1.0
+  - Meta-learner fit      : sample_weight=sw (real=4.0, synth=1.0)
+  This ensures real patient signal dominates at every layer, matching
+  Exp D philosophy end-to-end. Justifiable in paper as consistent pipeline.
 
 Research question:
-  Can a stacking ensemble trained only on synthetic data generalise to
-  real held-out patients? Does it match Phase 7 real-trained performance?
+  Does a stacking layer on top of weighted-hybrid base models close the
+  remaining DELTA-AUPRC gap vs real-only Exp A?
 
-DEVICE SUPPORT (identical detection to Phase 7):
-  FT-Transformer: CUDA > MPS (Apple Silicon) > CPU
-  CatBoost:       CUDA > CPU (MPS is not supported by CatBoost)
+DeLong tests:
+  - Ensemble vs Exp D CatBoost (did stacking improve over best hybrid CB?)
+  - Ensemble vs Hybrid FT-T (did stacking improve over hybrid FT-T?)
+  - Ensemble vs Exp A real-only (key scientific question — gap closed?)
 
-  Estimated runtimes for 10,000 synthetic patients:
-  CUDA (NVIDIA): ~20-45 min total
-  MPS (Apple Silicon): ~35-65 min total
-  CPU: ~50-110 min total
+Mac (Apple M1 Pro) notes:
+  - CatBoost falls back to CPU on MPS (expected)
+  - FT-T uses MPS if available, else CPU
+  - num_workers=0 in all DataLoaders
 
-OUTPUTS (all under sepsis_ml/synthetic/stacking/):
-  models/   - synthetic_meta_learner.pkl, synthetic_catboost_fold{1-5}.cbm,
-              synthetic_fttransformer_full.pt, synthetic_catboost_full.cbm
-  results/  - synthetic_oof_probs.csv, synthetic_test_probs.csv,
-              synthetic_meta_coefficients.json, synthetic_stacking_metrics.json,
-              synthetic_delong_results.json, synthetic_threshold_table.csv
-  figures/  - synthetic_stacking_roc_pr.png, synthetic_stacking_calibration.png,
-              synthetic_stacking_confusion_matrix.png,
-              synthetic_stacking_threshold_sensitivity.png
-  logs/     - synthetic_stacking.log
+Windows (Uzair — RTX 4500 Ada) notes:
+  - multiprocessing.freeze_support() at top
+  - num_workers=0 in all DataLoaders
+  - CUDA 12.1 build required
+  - Use ASCII (-> not unicode arrows) if cp1252 console errors
 
-Run from project root:
-  conda activate sepsis_ml
+Folder outputs (all under sepsis_ml/synthetic/stacking/):
+  models/   — stacking_meta_learner.pkl
+              stacking_meta_coefficients.json
+  results/  — stacking_oof_probs.csv
+              stacking_test_probs.csv
+              stacking_predictions.npz
+              stacking_metrics.json
+              stacking_delong_results.json
+              stacking_threshold_table.csv
+  figures/  — stacking_roc_pr.png/.pdf
+              stacking_calibration.png/.pdf
+              stacking_confusion_matrix.png/.pdf
+              stacking_threshold_sensitivity.png/.pdf
+              stacking_experiment_comparison.png/.pdf
+  logs/     — synthetic_stacking.log
+
+Run from: pediatric_sepsis_prediction_PIC_XAI/
   python sepsis_ml/synthetic/stacking/synthetic_stacking.py
-
-Prerequisites:
-  1. generate_synthetic_data.py must have been run
-  2. synthetic_catboost_tuned.py must have been run
-     (produces synthetic_best_params.json and synthetic_catboost_tuned.cbm)
 """
 
-# Windows multiprocessing guard
+# ── Windows multiprocessing guard ────────────────────────────────────────────
 if __name__ == "__main__":
     import multiprocessing
     multiprocessing.freeze_support()
@@ -88,13 +80,13 @@ import pandas as pd
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader, TensorDataset
+from torch.utils.data import DataLoader, TensorDataset, WeightedRandomSampler
 
-from catboost import CatBoostClassifier
+from catboost import CatBoostClassifier, Pool
 from rtdl_revisiting_models import FTTransformer
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import StratifiedKFold, train_test_split
+from sklearn.model_selection import StratifiedKFold
 from sklearn.calibration import calibration_curve
 from sklearn.metrics import (
     roc_auc_score, average_precision_score, brier_score_loss,
@@ -108,95 +100,82 @@ import matplotlib.pyplot as plt
 
 warnings.filterwarnings("ignore")
 
-# =============================================================================
+# ══════════════════════════════════════════════════════════════════════════════
 # 0. PATHS
-# =============================================================================
+# ══════════════════════════════════════════════════════════════════════════════
 
 SCRIPT_DIR   = Path(__file__).resolve().parent          # sepsis_ml/synthetic/stacking/
-SYNTHETIC_ML = SCRIPT_DIR.parent                        # sepsis_ml/synthetic/
-SEPSIS_ML    = SYNTHETIC_ML.parent                      # sepsis_ml/
+SYNTHETIC    = SCRIPT_DIR.parent                        # sepsis_ml/synthetic/
+SEPSIS_ML    = SYNTHETIC.parent                         # sepsis_ml/
 PROJECT_ROOT = SEPSIS_ML.parent                         # pediatric_sepsis_prediction_PIC_XAI/
 
-MODEL_DATA_DIR   = PROJECT_ROOT / "model_datasets"
-SYNTH_TRAIN_FILE = MODEL_DATA_DIR / "synthetic" / "B_synthetic_train.csv"
-REAL_TEST_FILE   = MODEL_DATA_DIR / "B_test_model_ready.csv"
+# ── Input data ────────────────────────────────────────────────────────────────
+MODEL_DATA_DIR  = PROJECT_ROOT / "model_datasets"
+REAL_TRAIN_FILE = MODEL_DATA_DIR / "B_train_model_ready.csv"
+REAL_TEST_FILE  = MODEL_DATA_DIR / "B_test_model_ready.csv"
+HYBRID_FILE     = MODEL_DATA_DIR / "synthetic" / "C_hybrid_train.csv"
 
-# Synthetic CatBoost best params (from synthetic_catboost_tuned.py)
-SYNTH_CB_BEST_PARAMS_PATH = (
-    SEPSIS_ML / "synthetic" / "catboost" / "results" / "synthetic_best_params.json"
-)
+# ── Prerequisites — must exist before running ─────────────────────────────────
+WHYBRID_CB_PROBS_PATH  = SYNTHETIC / "whybrid" / "results" / "whybrid_catboost_test_probs.npy"
+WHYBRID_CB_PARAMS_PATH = SYNTHETIC / "whybrid" / "results" / "whybrid_best_params.json"
+HYBRID_FTT_PROBS_PATH  = SYNTHETIC / "ft" / "results" / "hybrid_ftt_predictions.npz"
+HYBRID_FTT_PARAMS_PATH = SYNTHETIC / "ft" / "models" / "hybrid_ftt_best_params_final.json"
+HYBRID_FTT_SCALER_PATH = SYNTHETIC / "ft" / "models" / "hybrid_ftt_scaler.pkl"
+EXPA_CB_PROBS_PATH     = SEPSIS_ML / "results" / "catboost_test_probs.npy"
 
-# FT-Transformer hyperparams (Phase 6 architecture is reused as-is)
-FTT_PARAMS_PATH = (
-    SEPSIS_ML / "dl" / "models" / "run_phase6_fttransformer" / "best_params_final.json"
-)
-
-# Real Phase 7 ensemble test probs (for DeLong comparison)
-PHASE7_TEST_PROBS_CSV = (
-    SEPSIS_ML / "phase7_stacking" / "results" / "phase7_test_probs.csv"
-)
-
-# Real Phase 2 CatBoost test probs (for DeLong comparison)
-REAL_CB_PROBS_PATH = SEPSIS_ML / "results" / "catboost_test_probs.npy"
-
-# Output folders
+# ── Output folders ────────────────────────────────────────────────────────────
 MODELS_DIR  = SCRIPT_DIR / "models"
 RESULTS_DIR = SCRIPT_DIR / "results"
 FIGURES_DIR = SCRIPT_DIR / "figures"
 LOGS_DIR    = SCRIPT_DIR / "logs"
-OUTPUTS_DIR = SCRIPT_DIR / "outputs"
 
-for d in [MODELS_DIR, RESULTS_DIR, FIGURES_DIR, LOGS_DIR, OUTPUTS_DIR]:
+for d in [MODELS_DIR, RESULTS_DIR, FIGURES_DIR, LOGS_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
-# =============================================================================
+# ══════════════════════════════════════════════════════════════════════════════
 # 1. LOGGING
-# =============================================================================
+# ══════════════════════════════════════════════════════════════════════════════
 
 log_path = LOGS_DIR / "synthetic_stacking.log"
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s",
     handlers=[
-        logging.FileHandler(log_path, mode="w"),
+        logging.FileHandler(log_path, mode="w", encoding="utf-8"),
         logging.StreamHandler(sys.stdout),
     ],
 )
 log = logging.getLogger(__name__)
 
-# =============================================================================
-# 2. CONSTANTS  (identical to phase7_stack_catboost_ftt.py)
-# =============================================================================
+# ══════════════════════════════════════════════════════════════════════════════
+# 2. CONSTANTS
+# ══════════════════════════════════════════════════════════════════════════════
 
 RANDOM_SEED        = 42
 CV_FOLDS           = 5
 TARGET_COL         = "sepsis_label"
 TARGET_SENSITIVITY = 0.90
+REAL_SAMPLE_WEIGHT  = 4.0
+SYNTH_SAMPLE_WEIGHT = 1.0
 
 torch.manual_seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
 
-# Module-level DEVICE constant — identical pattern to Phase 7
 if torch.cuda.is_available():
     DEVICE   = torch.device("cuda")
     gpu_name = torch.cuda.get_device_name(0)
     vram_gb  = torch.cuda.get_device_properties(0).total_memory / 1e9
-    log.info(f"Device : CUDA -- {gpu_name} ({vram_gb:.1f} GB VRAM)")
+    log.info(f"Device : CUDA - {gpu_name} ({vram_gb:.1f} GB VRAM)")
 elif torch.backends.mps.is_available():
     DEVICE = torch.device("mps")
-    log.info("Device : MPS (Apple Silicon)")
-    log.info("         CatBoost will use CPU (MPS unsupported by CatBoost -- expected)")
+    log.info("Device : Apple MPS (M1/M2)")
 else:
     DEVICE = torch.device("cpu")
     log.info("Device : CPU")
 
-# CatBoost task type derived from DEVICE
-CB_TASK_TYPE = "GPU" if DEVICE.type == "cuda" else "CPU"
-CB_DEVICES   = "0"   if DEVICE.type == "cuda" else None
-
-# =============================================================================
-# 3. METRIC HELPERS  (identical to phase7_stack_catboost_ftt.py)
-# =============================================================================
+# ══════════════════════════════════════════════════════════════════════════════
+# 3. METRIC HELPERS
+# ══════════════════════════════════════════════════════════════════════════════
 
 def find_threshold_at_sensitivity(y_true, y_prob, target=TARGET_SENSITIVITY):
     fpr, tpr, thresholds = roc_curve(y_true, y_prob)
@@ -228,20 +207,20 @@ def compute_metrics(y_true, y_prob, threshold=None):
 
 
 def bootstrap_ci(y_true, y_prob, metric_fn, n_iter=1000, seed=RANDOM_SEED):
-    rng    = np.random.RandomState(seed)
+    rng = np.random.RandomState(seed)
     scores = []
     for _ in range(n_iter):
         idx = rng.choice(len(y_true), len(y_true), replace=True)
+        if y_true[idx].sum() == 0 or y_true[idx].sum() == len(y_true[idx]):
+            continue
         try:
-            s = metric_fn(y_true[idx], y_prob[idx])
-            scores.append(s)
+            scores.append(metric_fn(y_true[idx], y_prob[idx]))
         except Exception:
             pass
     return float(np.percentile(scores, 2.5)), float(np.percentile(scores, 97.5))
 
 
 def delong_test(y_true, probs_a, probs_b):
-    """DeLong test -- identical to phase7_stack_catboost_ftt.py."""
     def compute_midrank(x):
         J = np.argsort(x); Z = x[J]; N = len(x)
         T = np.zeros(N); i = 0
@@ -266,19 +245,19 @@ def delong_test(y_true, probs_a, probs_b):
     yt = np.array(y_true); pa = np.array(probs_a); pb = np.array(probs_b)
     auc_a, var_a, v10_a, v01_a = fast_delong(yt, pa)
     auc_b, var_b, v10_b, v01_b = fast_delong(yt, pb)
-    m = int(yt.sum()); n = len(yt) - m
+    m   = int(yt.sum()); n = len(yt) - m
     cov = (np.cov(v10_a, v10_b, ddof=1)[0, 1] / m +
            np.cov(v01_a, v01_b, ddof=1)[0, 1] / n)
     z = (auc_a - auc_b) / np.sqrt(max(var_a + var_b - 2 * cov, 1e-12))
     p = 2 * (1 - stats.norm.cdf(abs(z)))
     return float(auc_a), float(auc_b), float(z), float(p)
 
-# =============================================================================
-# 4. FT-TRANSFORMER HELPERS  (identical to phase7_stack_catboost_ftt.py)
-# =============================================================================
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 4. FT-TRANSFORMER HELPERS
+# ══════════════════════════════════════════════════════════════════════════════
 
 def build_fttransformer(params, n_features):
-    """Identical to Phase 7 including the head-divisibility fix."""
     d_block = params["d_block"]
     n_heads = params.get("actual_attention_n_heads", params["attention_n_heads"])
     while d_block % n_heads != 0:
@@ -286,7 +265,7 @@ def build_fttransformer(params, n_features):
         if n_heads < 1:
             n_heads = 1
             break
-    model = FTTransformer(
+    return FTTransformer(
         n_cont_features         = n_features,
         cat_cardinalities       = None,
         d_out                   = 1,
@@ -298,11 +277,9 @@ def build_fttransformer(params, n_features):
         ffn_dropout             = params["ffn_dropout"],
         residual_dropout        = params["residual_dropout"],
     )
-    return model
 
 
-def make_loader(X, y, batch_size, shuffle=True):
-    """Identical to Phase 7 -- num_workers=0, pin_memory=False."""
+def make_loader_simple(X, y, batch_size, shuffle=True):
     ds = TensorDataset(
         torch.tensor(X, dtype=torch.float32),
         torch.tensor(y, dtype=torch.float32),
@@ -311,10 +288,23 @@ def make_loader(X, y, batch_size, shuffle=True):
                       num_workers=0, pin_memory=False)
 
 
+def make_loader_weighted(X, y, weights, batch_size):
+    ds = TensorDataset(
+        torch.tensor(X, dtype=torch.float32),
+        torch.tensor(y, dtype=torch.float32),
+    )
+    sampler = WeightedRandomSampler(
+        weights     = torch.tensor(weights, dtype=torch.float32),
+        num_samples = len(ds),
+        replacement = True,
+    )
+    return DataLoader(ds, batch_size=batch_size, sampler=sampler,
+                      num_workers=0, pin_memory=False)
+
+
 def train_epoch_ftt(model, loader, optimizer, criterion):
-    """Identical to Phase 7."""
     model.train()
-    total_loss = 0.0
+    total_loss = 0.0; n_samples = 0
     for X_b, y_b in loader:
         X_b, y_b = X_b.to(DEVICE), y_b.to(DEVICE)
         optimizer.zero_grad()
@@ -323,50 +313,42 @@ def train_epoch_ftt(model, loader, optimizer, criterion):
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
-        total_loss += loss.item() * len(y_b)
-    return total_loss / len(loader.dataset)
+        total_loss += loss.item() * len(y_b); n_samples += len(y_b)
+    return total_loss / max(n_samples, 1)
 
 
 @torch.no_grad()
 def get_probs_ftt(model, loader):
-    """Identical to Phase 7."""
     model.eval()
     all_probs = []
     for X_b, _ in loader:
-        X_b    = X_b.to(DEVICE)
-        logits = model(X_b, None).squeeze(-1)
-        probs  = torch.sigmoid(logits).cpu().numpy()
-        all_probs.append(probs)
+        logits = model(X_b.to(DEVICE), None).squeeze(-1)
+        all_probs.append(torch.sigmoid(logits).cpu().numpy())
     return np.concatenate(all_probs)
 
 
-def train_ftt_fold(X_tr_s, y_tr, X_val_s, y_val, params,
-                   patience=15, max_epochs=100):
+def train_ftt_fold(X_tr_s, y_tr, sw_tr, X_val_s, y_val,
+                   params, patience=15, max_epochs=100):
     """
-    Train one FT-T fold. Identical to Phase 7:
-      BCEWithLogitsLoss with per-fold pos_weight, AdamW + CosineAnnealingLR,
-      AUPRC-based early stopping patience=15, best weights restored.
+    Train one FT-T CV fold.
+    Train loader: WeightedRandomSampler — real rows 4x influence.
+    Val loader  : unweighted — clean unbiased AUPRC signal.
     """
-    n_features = X_tr_s.shape[1]
-    model      = build_fttransformer(params, n_features).to(DEVICE)
-    pos_weight = torch.tensor(
-        [(y_tr == 0).sum() / max((y_tr == 1).sum(), 1)],
-        dtype=torch.float32
-    ).to(DEVICE)
-    criterion  = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
-    optimizer  = optim.AdamW(model.parameters(),
-                             lr=params["lr"],
-                             weight_decay=params["weight_decay"])
-    scheduler  = optim.lr_scheduler.CosineAnnealingLR(
+    model     = build_fttransformer(params, X_tr_s.shape[1]).to(DEVICE)
+    pw        = float((y_tr == 0).sum()) / max(float((y_tr == 1).sum()), 1.0)
+    criterion = nn.BCEWithLogitsLoss(
+        pos_weight=torch.tensor([pw], dtype=torch.float32).to(DEVICE)
+    )
+    optimizer = optim.AdamW(model.parameters(),
+                            lr=params["lr"], weight_decay=params["weight_decay"])
+    scheduler = optim.lr_scheduler.CosineAnnealingLR(
         optimizer, T_max=max_epochs, eta_min=1e-6
     )
-    batch_size = params["batch_size"]
-    tr_loader  = make_loader(X_tr_s, y_tr.astype(np.float32), batch_size, shuffle=True)
-    val_loader = make_loader(X_val_s, y_val.astype(np.float32), batch_size, shuffle=False)
-
-    best_auprc   = 0.0
-    best_weights = None
-    no_improve   = 0
+    tr_loader  = make_loader_weighted(X_tr_s, y_tr.astype(np.float32),
+                                      sw_tr, params["batch_size"])
+    val_loader = make_loader_simple(X_val_s, y_val.astype(np.float32),
+                                    params["batch_size"], shuffle=False)
+    best_auprc = 0.0; best_weights = None; no_improve = 0
 
     for epoch in range(max_epochs):
         train_epoch_ftt(model, tr_loader, optimizer, criterion)
@@ -390,335 +372,236 @@ def train_ftt_fold(X_tr_s, y_tr, X_val_s, y_val, params,
         torch.cuda.empty_cache()
     return val_probs
 
-# =============================================================================
+
+# ══════════════════════════════════════════════════════════════════════════════
 # 5. MAIN
-# =============================================================================
+# ══════════════════════════════════════════════════════════════════════════════
 
 def main():
     t_start = time.time()
 
     log.info("=" * 70)
-    log.info("EXPERIMENT B -- STACKING ENSEMBLE: CatBoost + FT-Transformer")
-    log.info("           Trained on Synthetic Data, Tested on Real")
+    log.info("STACKING ENSEMBLE — WEIGHTED HYBRID DATA")
+    log.info("Base models: Exp D CatBoost + Weighted Hybrid FT-Transformer")
+    log.info("Meta-learner: Logistic Regression (weighted fit)")
     log.info(f"Started : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     log.info("=" * 70)
 
-    # 5.1 Load data
+    # ── 5.1 Verify prerequisites ──────────────────────────────────────────────
+    log.info("\nChecking prerequisites...")
+    for path, name in [
+        (WHYBRID_CB_PROBS_PATH,  "Exp D CatBoost test probs"),
+        (WHYBRID_CB_PARAMS_PATH, "Exp D CatBoost params"),
+        (HYBRID_FTT_PROBS_PATH,  "Hybrid FT-T test probs"),
+        (HYBRID_FTT_PARAMS_PATH, "Hybrid FT-T params"),
+        (HYBRID_FTT_SCALER_PATH, "Hybrid FT-T scaler"),
+    ]:
+        if not path.exists():
+            log.error(f"  MISSING: {name} -> {path}")
+            log.error("  Run weighted_hybrid_catboost.py and hybrid_fttransformer.py first.")
+            sys.exit(1)
+        log.info(f"  OK : {name}")
+
+    # ── 5.2 Load data ─────────────────────────────────────────────────────────
     log.info("\nLoading datasets...")
-    if not SYNTH_TRAIN_FILE.exists():
-        log.error(f"Synthetic file not found: {SYNTH_TRAIN_FILE}")
-        log.error("Run generate_synthetic_data.py first.")
-        sys.exit(1)
+    hybrid_df     = pd.read_csv(HYBRID_FILE)
+    real_train_df = pd.read_csv(REAL_TRAIN_FILE)
+    real_test_df  = pd.read_csv(REAL_TEST_FILE)
+    feature_cols  = [c for c in hybrid_df.columns if c != TARGET_COL]
 
-    synth_train_df = pd.read_csv(SYNTH_TRAIN_FILE)
-    test_df        = pd.read_csv(REAL_TEST_FILE)
-    feature_cols   = [c for c in synth_train_df.columns if c != TARGET_COL]
+    X_hybrid_df = hybrid_df[feature_cols]
+    y_hybrid    = hybrid_df[TARGET_COL].values
+    X_test_df   = real_test_df[feature_cols]
+    y_test      = real_test_df[TARGET_COL].values
 
-    X_synth_df = synth_train_df[feature_cols]
-    y_synth    = synth_train_df[TARGET_COL].values
-    X_test_df  = test_df[feature_cols]
-    y_test     = test_df[TARGET_COL].values
+    n_real  = len(real_train_df)
+    n_total = len(hybrid_df)
+    n_synth = n_total - n_real
 
-    log.info(f"  Synthetic train : {X_synth_df.shape} | Sepsis: {y_synth.mean():.1%}")
-    log.info(f"  Real test       : {X_test_df.shape}  | Sepsis: {y_test.mean():.1%}")
-    log.info(f"  Features        : {len(feature_cols)}")
+    log.info(f"  Hybrid train : {X_hybrid_df.shape} | Sepsis: {y_hybrid.mean():.1%}")
+    log.info(f"  Real rows : {n_real} | Synthetic rows : {n_synth}")
+    log.info(f"  Real test : {X_test_df.shape}  | Sepsis: {y_test.mean():.1%}")
 
-    # 5.2 Load FT-T hyperparameters
-    log.info("\nLoading FT-Transformer best params (Phase 6 architecture)...")
-    if not FTT_PARAMS_PATH.exists():
-        log.error(f"FT-T params not found: {FTT_PARAMS_PATH}")
-        sys.exit(1)
-    with open(FTT_PARAMS_PATH) as f:
+    # ── 5.3 Sample weight vector ──────────────────────────────────────────────
+    sample_weights          = np.ones(n_total, dtype=np.float32)
+    sample_weights[:n_real] = REAL_SAMPLE_WEIGHT
+    sample_weights[n_real:] = SYNTH_SAMPLE_WEIGHT
+
+    real_inf = n_real * REAL_SAMPLE_WEIGHT
+    pct_real = 100 * real_inf / (real_inf + n_synth * SYNTH_SAMPLE_WEIGHT)
+    log.info(f"\n  Weighting : real={REAL_SAMPLE_WEIGHT}, synthetic={SYNTH_SAMPLE_WEIGHT}")
+    log.info(f"  Effective influence : real={pct_real:.1f}% | synthetic={100-pct_real:.1f}%")
+    log.info(f"  Applied at : CatBoost Pool, FT-T WeightedRandomSampler, LR fit")
+
+    # ── 5.4 Load params ───────────────────────────────────────────────────────
+    log.info("\nLoading params and scaler...")
+    with open(WHYBRID_CB_PARAMS_PATH) as f:
+        cb_best = json.load(f)["best_params"]
+    with open(HYBRID_FTT_PARAMS_PATH) as f:
         ftt_params = json.load(f)
-    log.info(f"  FT-T params: {ftt_params}")
+    with open(HYBRID_FTT_SCALER_PATH, "rb") as f:
+        ftt_scaler = pickle.load(f)
+    log.info(f"  CatBoost params : {cb_best}")
+    log.info(f"  FT-T params     : {ftt_params}")
 
-    # Identify binary vs numerical columns for scaling
     binary_cols = [c for c in feature_cols
-                   if set(X_synth_df[c].dropna().unique()).issubset({0, 1, 0.0, 1.0})]
+                   if set(X_hybrid_df[c].dropna().unique()).issubset({0, 1, 0.0, 1.0})]
     num_cols    = [c for c in feature_cols if c not in binary_cols]
-    log.info(f"  Numerical cols: {len(num_cols)} | Binary cols: {len(binary_cols)}")
 
-    def scale_for_ftt_fit(X_df):
-        """Fit scaler on this DataFrame's numerical cols. Returns (array, scaler)."""
-        scaler = StandardScaler()
-        d = X_df.copy()
-        d[num_cols] = scaler.fit_transform(d[num_cols])
-        return d.values.astype(np.float32), scaler
-
-    def scale_for_ftt_transform(X_df, scaler):
-        """Apply pre-fitted scaler."""
-        d = X_df.copy()
-        d[num_cols] = scaler.transform(d[num_cols])
+    def scale_for_ftt(df):
+        d = df.copy()
+        d[num_cols] = ftt_scaler.transform(d[num_cols])
         return d.values.astype(np.float32)
 
-    # 5.3 Load synthetic CatBoost best params
-    log.info("\nLoading synthetic CatBoost best params (from Optuna tuning)...")
-    if not SYNTH_CB_BEST_PARAMS_PATH.exists():
-        log.error(f"Synthetic best params not found: {SYNTH_CB_BEST_PARAMS_PATH}")
-        log.error("Run synthetic_catboost_tuned.py first.")
-        sys.exit(1)
-    with open(SYNTH_CB_BEST_PARAMS_PATH) as f:
-        synth_cb_best = json.load(f)["best_params"]
-    log.info(f"  Synthetic CB best params: {synth_cb_best}")
+    X_hybrid_scaled = scale_for_ftt(X_hybrid_df)
+    X_test_scaled   = scale_for_ftt(X_test_df)
 
-    # 5.4 Load real baseline probs for DeLong comparison
-    log.info("\nLoading real-trained baseline probabilities for comparison...")
+    # ── 5.5 Load saved test probs ─────────────────────────────────────────────
+    log.info("\nLoading saved test-set probabilities...")
+    cb_test_probs  = np.load(WHYBRID_CB_PROBS_PATH)
+    ftt_test_probs = np.load(HYBRID_FTT_PROBS_PATH)["test_probs"]
 
-    real_stack_probs = None
-    real_stack_auroc = None
-    if PHASE7_TEST_PROBS_CSV.exists():
-        p7_df            = pd.read_csv(PHASE7_TEST_PROBS_CSV)
-        real_stack_probs = p7_df["ensemble_prob"].values
-        real_stack_auroc = roc_auc_score(y_test, real_stack_probs)
-        log.info(f"  Real Phase 7 ensemble loaded. AUROC: {real_stack_auroc:.4f}")
+    assert len(cb_test_probs)  == len(y_test), "CatBoost test probs length mismatch"
+    assert len(ftt_test_probs) == len(y_test), "FT-T test probs length mismatch"
+
+    log.info(f"  Exp D CatBoost AUROC : {roc_auc_score(y_test, cb_test_probs):.4f}")
+    log.info(f"  Hybrid FT-T AUROC    : {roc_auc_score(y_test, ftt_test_probs):.4f}")
+
+    real_cb_test_probs = None
+    if EXPA_CB_PROBS_PATH.exists():
+        real_cb_test_probs = np.load(EXPA_CB_PROBS_PATH)
+        log.info(f"  Exp A real-only AUROC: {roc_auc_score(y_test, real_cb_test_probs):.4f}")
     else:
-        log.warning(f"  Phase 7 test probs not found: {PHASE7_TEST_PROBS_CSV}")
+        log.warning("  Exp A probs not found — 4-way DeLong will be skipped.")
 
-    real_cb_probs = None
-    real_cb_auroc = None
-    if REAL_CB_PROBS_PATH.exists():
-        real_cb_probs = np.load(str(REAL_CB_PROBS_PATH))
-        real_cb_auroc = roc_auc_score(y_test, real_cb_probs)
-        log.info(f"  Real CatBoost probs loaded. AUROC: {real_cb_auroc:.4f}")
-    else:
-        log.warning(f"  Real CB probs not found: {REAL_CB_PROBS_PATH}")
-
-    # =========================================================================
-    # 5.5 GENERATE OOF PROBABILITIES
-    # Identical logic to Phase 7 Step 1.
-    # Meta-learner trained only on OOF predictions -- no leakage.
-    # =========================================================================
+    # ══════════════════════════════════════════════════════════════════════════
+    # 5.6 OUT-OF-FOLD PROBABILITIES
+    # ══════════════════════════════════════════════════════════════════════════
     log.info("\n" + "=" * 60)
-    log.info("STEP 1 -- Generating out-of-fold probabilities (5-fold CV)")
+    log.info("STEP 1 — Generating out-of-fold probabilities (5-fold CV)")
     log.info("=" * 60)
-    log.info("Each fold: CatBoost + FT-T trained on 4 folds, predict on held-out.")
-    log.info(f"Result: {len(y_synth):,} x 2 OOF matrix -- no leakage into meta-learner.\n")
+    log.info("Train folds: weighted. Val fold: unweighted (clean AUPRC signal).")
 
     skf     = StratifiedKFold(n_splits=CV_FOLDS, shuffle=True, random_state=RANDOM_SEED)
-    oof_cb  = np.zeros(len(y_synth))
-    oof_ftt = np.zeros(len(y_synth))
+    oof_cb  = np.zeros(n_total)
+    oof_ftt = np.zeros(n_total)
 
-    for fold_idx, (train_idx, val_idx) in enumerate(skf.split(X_synth_df, y_synth)):
+    for fold_idx, (train_idx, val_idx) in enumerate(skf.split(X_hybrid_df, y_hybrid)):
         fold_start = time.time()
-        log.info(f"  Fold {fold_idx + 1}/{CV_FOLDS} " + "-" * 40)
+        log.info(f"\n  Fold {fold_idx + 1}/{CV_FOLDS} " + "-" * 38)
 
-        X_tr_df  = X_synth_df.iloc[train_idx]
-        X_val_df = X_synth_df.iloc[val_idx]
-        y_tr     = y_synth[train_idx]
-        y_val    = y_synth[val_idx]
+        X_tr_df = X_hybrid_df.iloc[train_idx]
+        X_val_df = X_hybrid_df.iloc[val_idx]
+        y_tr    = y_hybrid[train_idx]
+        y_val   = y_hybrid[val_idx]
+        sw_tr   = sample_weights[train_idx]
 
-        log.info(f"    Train: {len(y_tr):,} | Val: {len(y_val):,} | "
-                 f"Sepsis in val: {y_val.mean():.1%}")
+        log.info(f"    Train: {len(y_tr)} "
+                 f"(real={(train_idx < n_real).sum()}, "
+                 f"synth={(train_idx >= n_real).sum()}) | "
+                 f"Val: {len(y_val)} | Sepsis: {y_val.mean():.1%}")
 
-        # CatBoost fold -- identical to Phase 7 using best_params + early_stopping_rounds=50
-        log.info("    Training CatBoost fold...")
-        cb_fold_params = dict(
-            iterations           = synth_cb_best["iterations"],
-            learning_rate        = synth_cb_best["learning_rate"],
-            depth                = synth_cb_best["depth"],
-            l2_leaf_reg          = synth_cb_best["l2_leaf_reg"],
-            bagging_temperature  = synth_cb_best["bagging_temperature"],
-            random_strength      = synth_cb_best["random_strength"],
-            border_count         = synth_cb_best["border_count"],
-            class_weights        = [1.0, synth_cb_best["class_weight_pos"]],
-            eval_metric          = "AUC",
-            random_seed          = RANDOM_SEED,
-            verbose              = 0,
-            early_stopping_rounds= 50,
-            task_type            = CB_TASK_TYPE,
+        # CatBoost fold
+        log.info("    [CatBoost] Exp D params + Pool(weight=sw_tr)...")
+        train_pool = Pool(X_tr_df, y_tr, weight=sw_tr)
+        val_pool   = Pool(X_val_df, y_val)
+        cb_fold = CatBoostClassifier(
+            iterations            = cb_best["iterations"],
+            learning_rate         = cb_best["learning_rate"],
+            depth                 = cb_best["depth"],
+            l2_leaf_reg           = cb_best["l2_leaf_reg"],
+            bagging_temperature   = cb_best["bagging_temperature"],
+            random_strength       = cb_best["random_strength"],
+            border_count          = cb_best["border_count"],
+            class_weights         = [1.0, cb_best["class_weight_pos"]],
+            eval_metric           = "AUC",
+            random_seed           = RANDOM_SEED,
+            verbose               = 0,
+            early_stopping_rounds = 50,
         )
-        if CB_DEVICES:
-            cb_fold_params["devices"] = CB_DEVICES
-
-        cb_fold = CatBoostClassifier(**cb_fold_params)
-        cb_fold.fit(X_tr_df, y_tr, eval_set=(X_val_df, y_val), verbose=0)
+        cb_fold.fit(train_pool, eval_set=val_pool, verbose=0)
         oof_cb[val_idx] = cb_fold.predict_proba(X_val_df)[:, 1]
-        cb_val_auroc    = roc_auc_score(y_val, oof_cb[val_idx])
-        log.info(f"    CatBoost val AUROC: {cb_val_auroc:.4f}")
-        cb_fold.save_model(str(MODELS_DIR / f"synthetic_catboost_fold{fold_idx + 1}.cbm"))
+        log.info(f"    CatBoost val AUROC : {roc_auc_score(y_val, oof_cb[val_idx]):.4f}")
 
-        # FT-Transformer fold
-        # Fit scaler on this fold's training data (no pre-existing synthetic scaler)
-        log.info("    Training FT-Transformer fold...")
-        X_tr_s, fold_scaler = scale_for_ftt_fit(X_tr_df)
-        X_val_s             = scale_for_ftt_transform(X_val_df, fold_scaler)
-
+        # FT-T fold
+        log.info("    [FT-T] Hybrid params + WeightedRandomSampler...")
         oof_ftt[val_idx] = train_ftt_fold(
-            X_tr_s, y_tr, X_val_s, y_val, ftt_params,
-            patience=15, max_epochs=100
+            X_hybrid_scaled[train_idx], y_tr, sw_tr,
+            X_hybrid_scaled[val_idx],   y_val,
+            ftt_params, patience=15, max_epochs=100,
         )
-        ftt_val_auroc = roc_auc_score(y_val, oof_ftt[val_idx])
-        log.info(f"    FT-T val AUROC: {ftt_val_auroc:.4f}")
+        log.info(f"    FT-T val AUROC     : {roc_auc_score(y_val, oof_ftt[val_idx]):.4f}")
+        log.info(f"    Fold time          : {(time.time()-fold_start)/60:.1f} min")
 
-        fold_time = time.time() - fold_start
-        log.info(f"    Fold {fold_idx + 1} complete in {fold_time / 60:.1f} min")
-
-    # OOF summary
-    oof_cb_auroc  = roc_auc_score(y_synth, oof_cb)
-    oof_ftt_auroc = roc_auc_score(y_synth, oof_ftt)
-    log.info(f"\n  OOF AUROC -- CatBoost:       {oof_cb_auroc:.4f}")
-    log.info(f"  OOF AUROC -- FT-Transformer: {oof_ftt_auroc:.4f}")
+    oof_cb_auroc  = roc_auc_score(y_hybrid, oof_cb)
+    oof_ftt_auroc = roc_auc_score(y_hybrid, oof_ftt)
+    log.info(f"\n  OOF AUROC - CatBoost : {oof_cb_auroc:.4f}")
+    log.info(f"  OOF AUROC - FT-T     : {oof_ftt_auroc:.4f}")
+    log.info("  NOTE: OOF AUROC on hybrid data is inflated. Not for clinical claims.")
 
     oof_df = pd.DataFrame({
-        "y_true"           : y_synth,
+        "y_true"           : y_hybrid,
+        "is_real"          : (np.arange(n_total) < n_real).astype(int),
+        "sample_weight"    : sample_weights,
         "oof_catboost"     : oof_cb,
         "oof_fttransformer": oof_ftt,
     })
-    oof_df.to_csv(RESULTS_DIR / "synthetic_oof_probs.csv", index=False)
-    log.info(f"  OOF probs saved -> {RESULTS_DIR / 'synthetic_oof_probs.csv'}")
+    oof_df.to_csv(RESULTS_DIR / "stacking_oof_probs.csv", index=False)
 
-    # =========================================================================
-    # 5.6 TRAIN META-LEARNER  (identical to Phase 7)
-    # =========================================================================
+    # ══════════════════════════════════════════════════════════════════════════
+    # 5.7 TRAIN META-LEARNER (weighted fit)
+    # ══════════════════════════════════════════════════════════════════════════
     log.info("\n" + "=" * 60)
-    log.info("STEP 2 -- Training Logistic Regression meta-learner")
+    log.info("STEP 2 — Training meta-learner (weighted LR fit)")
     log.info("=" * 60)
 
     X_meta_train = np.column_stack([oof_cb, oof_ftt])
     meta_learner = LogisticRegression(
         C=1.0, random_state=RANDOM_SEED, max_iter=1000, solver="lbfgs"
     )
-    meta_learner.fit(X_meta_train, y_synth)
+    # sample_weight ensures real rows drive meta-learner coefficients 4x more
+    meta_learner.fit(X_meta_train, y_hybrid, sample_weight=sample_weights)
 
     coef = meta_learner.coef_[0]
-    log.info(f"  Meta-learner coefficients:")
-    log.info(f"    CatBoost weight      : {coef[0]:.4f}")
-    log.info(f"    FT-Transformer weight: {coef[1]:.4f}")
-    log.info(f"    Intercept            : {meta_learner.intercept_[0]:.4f}")
+    log.info(f"  CatBoost coefficient : {coef[0]:.4f}")
+    log.info(f"  FT-T coefficient     : {coef[1]:.4f}")
+    log.info(f"  Intercept            : {meta_learner.intercept_[0]:.4f}")
 
-    with open(MODELS_DIR / "synthetic_meta_learner.pkl", "wb") as f:
+    with open(MODELS_DIR / "stacking_meta_learner.pkl", "wb") as f:
         pickle.dump(meta_learner, f)
-    log.info(f"  Meta-learner saved -> {MODELS_DIR / 'synthetic_meta_learner.pkl'}")
 
     coef_dict = {
         "catboost_coefficient"     : float(coef[0]),
         "fttransformer_coefficient": float(coef[1]),
         "intercept"                : float(meta_learner.intercept_[0]),
-        "note": "Higher coefficient = meta-learner trusts this model more",
+        "meta_learner_weighted"    : True,
+        "real_weight"              : REAL_SAMPLE_WEIGHT,
+        "synth_weight"             : SYNTH_SAMPLE_WEIGHT,
+        "note": "Weighted fit: real rows 4x influence. Consistent with full pipeline.",
     }
-    with open(RESULTS_DIR / "synthetic_meta_coefficients.json", "w") as f:
+    with open(RESULTS_DIR / "stacking_meta_coefficients.json", "w") as f:
         json.dump(coef_dict, f, indent=2)
 
-    # =========================================================================
-    # 5.7 TRAIN FULL MODELS FOR TEST INFERENCE
-    # Phase 7 loaded pre-saved test probs from Phase 2 and Phase 6.
-    # Synthetic equivalent: retrain both base models on full synthetic data.
-    # =========================================================================
+    # ══════════════════════════════════════════════════════════════════════════
+    # 5.8 TEST SET EVALUATION
+    # ══════════════════════════════════════════════════════════════════════════
     log.info("\n" + "=" * 60)
-    log.info("STEP 3 -- Training full models on all synthetic data for test inference")
-    log.info("=" * 60)
-
-    # CatBoost full
-    log.info("  Training CatBoost on full synthetic training set...")
-    cb_full_params = dict(
-        iterations           = synth_cb_best["iterations"],
-        learning_rate        = synth_cb_best["learning_rate"],
-        depth                = synth_cb_best["depth"],
-        l2_leaf_reg          = synth_cb_best["l2_leaf_reg"],
-        bagging_temperature  = synth_cb_best["bagging_temperature"],
-        random_strength      = synth_cb_best["random_strength"],
-        border_count         = synth_cb_best["border_count"],
-        class_weights        = [1.0, synth_cb_best["class_weight_pos"]],
-        eval_metric          = "AUC",
-        random_seed          = RANDOM_SEED,
-        verbose              = 100,
-        early_stopping_rounds= 50,
-        task_type            = CB_TASK_TYPE,
-    )
-    if CB_DEVICES:
-        cb_full_params["devices"] = CB_DEVICES
-
-    cb_full = CatBoostClassifier(**cb_full_params)
-    cb_full.fit(X_synth_df, y_synth, eval_set=(X_test_df, y_test))
-    cb_test_probs = cb_full.predict_proba(X_test_df)[:, 1]
-    cb_full.save_model(str(MODELS_DIR / "synthetic_catboost_full.cbm"))
-    log.info(f"  CatBoost test AUROC: {roc_auc_score(y_test, cb_test_probs):.4f}")
-
-    # FT-Transformer full
-    log.info("  Training FT-Transformer on full synthetic training set...")
-    X_synth_s, full_scaler = scale_for_ftt_fit(X_synth_df)
-    X_test_s               = scale_for_ftt_transform(X_test_df, full_scaler)
-
-    with open(MODELS_DIR / "synthetic_ftt_full_scaler.pkl", "wb") as f:
-        pickle.dump(full_scaler, f)
-
-    # Use 10% internal validation split for early stopping (same spirit as Phase 7)
-    X_ftt_tr, X_ftt_val, y_ftt_tr, y_ftt_val = train_test_split(
-        X_synth_s, y_synth, test_size=0.10,
-        stratify=y_synth, random_state=RANDOM_SEED
-    )
-
-    n_features     = X_synth_s.shape[1]
-    ftt_full       = build_fttransformer(ftt_params, n_features).to(DEVICE)
-    pos_weight_full= torch.tensor(
-        [(y_synth == 0).sum() / max((y_synth == 1).sum(), 1)],
-        dtype=torch.float32
-    ).to(DEVICE)
-    criterion_full = nn.BCEWithLogitsLoss(pos_weight=pos_weight_full)
-    opt_full       = optim.AdamW(ftt_full.parameters(),
-                                  lr=ftt_params["lr"],
-                                  weight_decay=ftt_params["weight_decay"])
-    sched_full     = optim.lr_scheduler.CosineAnnealingLR(
-        opt_full, T_max=100, eta_min=1e-6
-    )
-
-    full_tr_loader  = make_loader(X_ftt_tr,  y_ftt_tr.astype(np.float32),
-                                   ftt_params["batch_size"], shuffle=True)
-    full_val_loader = make_loader(X_ftt_val, y_ftt_val.astype(np.float32),
-                                   ftt_params["batch_size"], shuffle=False)
-    test_loader     = make_loader(X_test_s,  y_test.astype(np.float32),
-                                   ftt_params["batch_size"], shuffle=False)
-
-    best_auprc_full   = 0.0
-    best_weights_full = None
-    no_improve_full   = 0
-
-    log.info("    FT-T full training (patience=15, max_epochs=100)...")
-    for epoch in range(100):
-        train_epoch_ftt(ftt_full, full_tr_loader, opt_full, criterion_full)
-        sched_full.step()
-        val_probs_ep = get_probs_ftt(ftt_full, full_val_loader)
-        auprc_ep     = average_precision_score(y_ftt_val, val_probs_ep)
-        if auprc_ep > best_auprc_full:
-            best_auprc_full   = auprc_ep
-            best_weights_full = {k: v.cpu().clone()
-                                 for k, v in ftt_full.state_dict().items()}
-            no_improve_full   = 0
-        else:
-            no_improve_full += 1
-        if no_improve_full >= 15:
-            log.info(f"    Early stopping at epoch {epoch + 1}")
-            break
-
-    if best_weights_full:
-        ftt_full.load_state_dict(best_weights_full)
-
-    ftt_test_probs = get_probs_ftt(ftt_full, test_loader)
-    ftt_auroc_test = roc_auc_score(y_test, ftt_test_probs)
-    log.info(f"  FT-T test AUROC: {ftt_auroc_test:.4f}")
-
-    torch.save(ftt_full.state_dict(),
-               str(MODELS_DIR / "synthetic_fttransformer_full.pt"))
-
-    # =========================================================================
-    # 5.8 TEST SET EVALUATION  (identical structure to Phase 7)
-    # =========================================================================
-    log.info("\n" + "=" * 60)
-    log.info(f"STEP 4 -- Evaluating stacking ensemble on real test set (n={len(y_test)})")
+    log.info("STEP 3 — Evaluating ensemble on real test set (n=633)")
     log.info("=" * 60)
 
     X_meta_test    = np.column_stack([cb_test_probs, ftt_test_probs])
     ensemble_probs = meta_learner.predict_proba(X_meta_test)[:, 1]
 
-    test_probs_df = pd.DataFrame({
-        "y_true"            : y_test,
-        "catboost_prob"     : cb_test_probs,
-        "fttransformer_prob": ftt_test_probs,
-        "ensemble_prob"     : ensemble_probs,
-    })
-    test_probs_df.to_csv(RESULTS_DIR / "synthetic_test_probs.csv", index=False)
+    pd.DataFrame({
+        "y_true": y_test, "catboost_prob": cb_test_probs,
+        "fttransformer_prob": ftt_test_probs, "ensemble_prob": ensemble_probs,
+    }).to_csv(RESULTS_DIR / "stacking_test_probs.csv", index=False)
 
-    metrics = compute_metrics(y_test, ensemble_probs)
+    np.savez(RESULTS_DIR / "stacking_predictions.npz",
+             ensemble_probs=ensemble_probs, catboost_probs=cb_test_probs,
+             ftt_probs=ftt_test_probs, y_test=y_test)
+
+    metrics            = compute_metrics(y_test, ensemble_probs)
     auroc_lo, auroc_hi = bootstrap_ci(y_test, ensemble_probs, roc_auc_score)
     auprc_lo, auprc_hi = bootstrap_ci(y_test, ensemble_probs, average_precision_score)
     metrics["auroc_ci_low"]  = auroc_lo
@@ -726,368 +609,307 @@ def main():
     metrics["auprc_ci_low"]  = auprc_lo
     metrics["auprc_ci_high"] = auprc_hi
 
-    log.info(f"\n  {'=' * 50}")
-    log.info(f"  SYNTHETIC-TRAINED STACKING ENSEMBLE -- TEST SET RESULTS")
-    log.info(f"  {'=' * 50}")
-    log.info(f"  AUROC       : {metrics['auroc']:.4f} [{auroc_lo:.4f}-{auroc_hi:.4f}]")
-    log.info(f"  AUPRC       : {metrics['auprc']:.4f} [{auprc_lo:.4f}-{auroc_hi:.4f}]")
-    log.info(f"  Brier Score : {metrics['brier_score']:.4f}")
+    cb_auroc  = roc_auc_score(y_test, cb_test_probs)
+    ftt_auroc = roc_auc_score(y_test, ftt_test_probs)
+
+    log.info(f"\n  AUROC       : {metrics['auroc']:.4f} [{auroc_lo:.4f}-{auroc_hi:.4f}]")
+    log.info(f"  AUPRC       : {metrics['auprc']:.4f} [{auprc_lo:.4f}-{auprc_hi:.4f}]")
+    log.info(f"  Brier       : {metrics['brier_score']:.4f}")
     log.info(f"  Sensitivity : {metrics['sensitivity']:.4f}")
     log.info(f"  Specificity : {metrics['specificity']:.4f}")
     log.info(f"  PPV         : {metrics['ppv']:.4f}")
     log.info(f"  NPV         : {metrics['npv']:.4f}")
     log.info(f"  F1          : {metrics['f1']:.4f}")
     log.info(f"  Threshold   : {metrics['threshold']:.4f}")
-    log.info(f"  TP={metrics['tp']} FP={metrics['fp']} "
-             f"TN={metrics['tn']} FN={metrics['fn']}")
+    log.info(f"  TP={metrics['tp']} FP={metrics['fp']} TN={metrics['tn']} FN={metrics['fn']}")
 
-    cb_auroc  = roc_auc_score(y_test, cb_test_probs)
-    ftt_auroc = roc_auc_score(y_test, ftt_test_probs)
-    log.info(f"\n  Comparison:")
-    log.info(f"    Synth CatBoost AUROC      : {cb_auroc:.4f}")
-    log.info(f"    Synth FT-Transformer AUROC: {ftt_auroc:.4f}")
-    log.info(f"    Synth Ensemble AUROC      : {metrics['auroc']:.4f}")
+    log.info(f"\n  Exp D CatBoost AUROC     : {cb_auroc:.4f}")
+    log.info(f"  Hybrid FT-T AUROC        : {ftt_auroc:.4f}")
+    log.info(f"  Stacking Ensemble AUROC  : {metrics['auroc']:.4f}")
+    if real_cb_test_probs is not None:
+        real_auroc = roc_auc_score(y_test, real_cb_test_probs)
+        real_auprc = average_precision_score(y_test, real_cb_test_probs)
+        log.info(f"  Exp A Real-only AUROC    : {real_auroc:.4f}")
+        log.info(f"  DELTA AUROC vs real-only : {metrics['auroc'] - real_auroc:+.4f}")
+        log.info(f"  DELTA AUPRC vs real-only : {metrics['auprc'] - real_auprc:+.4f}")
 
-    # DeLong 1: ensemble vs synthetic CatBoost  (mirrors Phase 7 primary test)
-    log.info("\n  DeLong test: Synthetic Ensemble vs Synthetic CatBoost")
-    auc_ens, auc_cb, z_stat, p_val = delong_test(y_test, ensemble_probs, cb_test_probs)
-    log.info(f"    Ensemble AUROC  : {auc_ens:.4f}")
-    log.info(f"    CatBoost AUROC  : {auc_cb:.4f}")
-    log.info(f"    Z-statistic     : {z_stat:.4f}")
-    log.info(f"    P-value         : {p_val:.4f}")
-    log.info(f"    Significant     : {'YES (p<0.05)' if p_val < 0.05 else 'NO (p>=0.05)'}")
-
-    delong_results = {
-        "ensemble_auroc": auc_ens,
-        "catboost_auroc": auc_cb,
-        "z_statistic"   : z_stat,
-        "p_value"       : p_val,
-        "significant"   : p_val < 0.05,
-        "direction"     : "Ensemble better" if auc_ens > auc_cb else "CatBoost better",
+    # DeLong
+    delong_results = {}
+    a1, b1, z1, p1 = delong_test(y_test, ensemble_probs, cb_test_probs)
+    log.info(f"\n  DeLong vs Exp D CatBoost  : z={z1:.4f}, p={p1:.4f} "
+             f"({'sig' if p1 < 0.05 else 'not sig'})")
+    delong_results["vs_expD_catboost"] = {
+        "ensemble_auroc": a1, "expD_auroc": b1, "z": z1, "p": p1,
+        "significant": p1 < 0.05,
+        "direction": "Ensemble better" if a1 > b1 else "Exp D CatBoost better",
     }
 
-    # DeLong 2: ensemble vs FT-T
-    log.info("\n  DeLong test: Synthetic Ensemble vs Synthetic FT-Transformer")
-    auc_ens2, auc_ftt_dl, z2, p2 = delong_test(y_test, ensemble_probs, ftt_test_probs)
-    log.info(f"    Ensemble AUROC  : {auc_ens2:.4f}")
-    log.info(f"    FT-T AUROC      : {auc_ftt_dl:.4f}")
-    log.info(f"    P-value         : {p2:.4f}")
-    log.info(f"    Significant     : {'YES (p<0.05)' if p2 < 0.05 else 'NO (p>=0.05)'}")
-    delong_results["vs_ftt_z"]   = z2
-    delong_results["vs_ftt_p"]   = p2
-    delong_results["vs_ftt_sig"] = p2 < 0.05
+    a2, b2, z2, p2 = delong_test(y_test, ensemble_probs, ftt_test_probs)
+    log.info(f"  DeLong vs Hybrid FT-T     : z={z2:.4f}, p={p2:.4f} "
+             f"({'sig' if p2 < 0.05 else 'not sig'})")
+    delong_results["vs_hybrid_ftt"] = {
+        "ensemble_auroc": a2, "hybrid_ftt_auroc": b2, "z": z2, "p": p2,
+        "significant": p2 < 0.05,
+        "direction": "Ensemble better" if a2 > b2 else "Hybrid FT-T better",
+    }
 
-    # DeLong 3: synthetic ensemble vs real Phase 7 ensemble
-    if real_stack_probs is not None:
-        log.info("\n  DeLong test: Synthetic Ensemble vs Real Phase 7 Ensemble")
-        auc_s3, auc_r3, z3, p3 = delong_test(y_test, ensemble_probs, real_stack_probs)
-        log.info(f"    Synth Ensemble AUROC: {auc_s3:.4f}")
-        log.info(f"    Real  Ensemble AUROC: {auc_r3:.4f}")
-        log.info(f"    P-value             : {p3:.4f}")
-        log.info(f"    Significant         : {'YES (p<0.05)' if p3 < 0.05 else 'NO (p>=0.05)'}")
-        delong_results["vs_real_stack_z"]   = z3
-        delong_results["vs_real_stack_p"]   = p3
-        delong_results["vs_real_stack_sig"] = p3 < 0.05
-        delong_results["vs_real_stack_dir"] = (
-            "Synth better" if auc_s3 > auc_r3 else "Real better"
-        )
+    if real_cb_test_probs is not None:
+        a3, b3, z3, p3 = delong_test(y_test, ensemble_probs, real_cb_test_probs)
+        log.info(f"  DeLong vs Exp A real-only : z={z3:.4f}, p={p3:.4f} "
+                 f"({'sig' if p3 < 0.05 else 'not sig'})")
+        delong_results["vs_expA_real_only"] = {
+            "ensemble_auroc": a3, "expA_auroc": b3, "z": z3, "p": p3,
+            "significant": p3 < 0.05,
+            "direction": "Ensemble better" if a3 > b3 else "Real-only better",
+            "delta_auroc_vs_real": float(metrics["auroc"] - b3),
+            "delta_auprc_vs_real": float(
+                metrics["auprc"] - average_precision_score(y_test, real_cb_test_probs)
+            ),
+        }
 
-    # DeLong 4: synthetic ensemble vs real Phase 2 CatBoost
-    if real_cb_probs is not None:
-        log.info("\n  DeLong test: Synthetic Ensemble vs Real Phase 2 CatBoost")
-        auc_s4, auc_r4, z4, p4 = delong_test(y_test, ensemble_probs, real_cb_probs)
-        log.info(f"    Synth Ensemble AUROC: {auc_s4:.4f}")
-        log.info(f"    Real  CB AUROC      : {auc_r4:.4f}")
-        log.info(f"    P-value             : {p4:.4f}")
-        log.info(f"    Significant         : {'YES (p<0.05)' if p4 < 0.05 else 'NO (p>=0.05)'}")
-        delong_results["vs_real_cb_z"]   = z4
-        delong_results["vs_real_cb_p"]   = p4
-        delong_results["vs_real_cb_sig"] = p4 < 0.05
-        delong_results["vs_real_cb_dir"] = (
-            "Synth better" if auc_s4 > auc_r4 else "Real better"
-        )
-
-    with open(RESULTS_DIR / "synthetic_delong_results.json", "w") as f:
+    with open(RESULTS_DIR / "stacking_delong_results.json", "w") as f:
         json.dump(delong_results, f, indent=2)
 
-    # Threshold sensitivity table (identical 7 targets to Phase 7)
-    log.info("\n  Threshold sensitivity analysis:")
+    # Threshold table
     thresh_rows = []
-    targets     = [0.80, 0.82, 0.85, 0.87, 0.90, 0.92, 0.95]
-    log.info(f"  {'Target':>8} {'Thresh':>8} {'Sens':>7} {'Spec':>7} "
-             f"{'PPV':>7} {'NPV':>7} {'F1':>7} {'TP':>5} {'FP':>5} {'FN':>5}")
-    log.info("  " + "-" * 70)
-
-    for target in targets:
+    log.info(f"\n  {'Target':>8} {'Thresh':>8} {'Sens':>7} {'Spec':>7} "
+             f"{'PPV':>7} {'NPV':>7} {'F1':>7}")
+    log.info("  " + "-" * 60)
+    for target in [0.80, 0.82, 0.85, 0.87, 0.90, 0.92, 0.95]:
         thr = find_threshold_at_sensitivity(y_test, ensemble_probs, target)
         m   = compute_metrics(y_test, ensemble_probs, thr)
         thresh_rows.append({
-            "target_sensitivity": target,
-            "threshold"         : round(thr, 4),
-            "sensitivity"       : round(m["sensitivity"], 4),
-            "specificity"       : round(m["specificity"], 4),
-            "ppv"               : round(m["ppv"], 4),
-            "npv"               : round(m["npv"], 4),
-            "f1"                : round(m["f1"], 4),
+            "target_sensitivity": target, "threshold": round(thr, 4),
+            "sensitivity": round(m["sensitivity"], 4),
+            "specificity": round(m["specificity"], 4),
+            "ppv": round(m["ppv"], 4), "npv": round(m["npv"], 4),
+            "f1": round(m["f1"], 4),
             "tp": m["tp"], "fp": m["fp"], "tn": m["tn"], "fn": m["fn"],
         })
         log.info(f"  {target:>8.2f} {thr:>8.4f} {m['sensitivity']:>7.4f} "
-                 f"{m['specificity']:>7.4f} {m['ppv']:>7.4f} {m['npv']:>7.4f} "
-                 f"{m['f1']:>7.4f} {m['tp']:>5} {m['fp']:>5} {m['fn']:>5}")
+                 f"{m['specificity']:>7.4f} {m['ppv']:>7.4f} "
+                 f"{m['npv']:>7.4f} {m['f1']:>7.4f}")
 
     thresh_df = pd.DataFrame(thresh_rows)
-    thresh_df.to_csv(RESULTS_DIR / "synthetic_threshold_table.csv", index=False)
+    thresh_df.to_csv(RESULTS_DIR / "stacking_threshold_table.csv", index=False)
 
-    # Save full metrics JSON
     runtime = (time.time() - t_start) / 60
     full_metrics = {
-        "model"          : "Stacking Ensemble (CatBoost + FT-T) -- Synthetic-Trained",
-        "experiment"     : "B",
-        "timestamp"      : datetime.now().isoformat(),
-        "training_data"  : "Synthetic only (CTGAN-generated)",
-        "test_data"      : "Real held-out (Option B, n=633)",
-        "n_synthetic_train"      : int(len(y_synth)),
-        "n_real_test"            : int(len(y_test)),
-        "n_features"             : len(feature_cols),
-        "cv_folds"               : CV_FOLDS,
-        "oof_auroc_catboost"     : float(oof_cb_auroc),
-        "oof_auroc_fttransformer": float(oof_ftt_auroc),
-        "test_metrics"           : metrics,
-        "meta_learner"           : coef_dict,
-        "delong"                 : delong_results,
-        "real_stack_auroc_phase7": real_stack_auroc,
-        "real_cb_auroc_phase2"   : real_cb_auroc,
-        "device"                 : str(DEVICE),
-        "cb_task_type"           : CB_TASK_TYPE,
-        "runtime_minutes"        : round(runtime, 2),
+        "model"                   : "Stacking Ensemble (Weighted Hybrid)",
+        "experiment"              : "Synthetic Stacking",
+        "timestamp"               : datetime.now().isoformat(),
+        "dataset"                 : "Hybrid train (12,530) | Real test (633)",
+        "n_hybrid_train"          : int(n_total),
+        "n_real_train"            : int(n_real),
+        "n_synthetic_train"       : int(n_synth),
+        "n_test"                  : int(len(y_test)),
+        "n_features"              : len(feature_cols),
+        "cv_folds"                : CV_FOLDS,
+        "real_sample_weight"      : REAL_SAMPLE_WEIGHT,
+        "synth_sample_weight"     : SYNTH_SAMPLE_WEIGHT,
+        "real_influence_pct"      : float(pct_real),
+        "weighting_applied_at"    : ["CatBoost Pool", "FT-T WeightedRandomSampler",
+                                     "LogisticRegression sample_weight"],
+        "oof_auroc_catboost"      : float(oof_cb_auroc),
+        "oof_auroc_fttransformer" : float(oof_ftt_auroc),
+        "oof_note"                : "OOF on hybrid data is inflated — not for clinical claims",
+        "test_metrics"            : metrics,
+        "meta_learner"            : coef_dict,
+        "delong"                  : delong_results,
+        "runtime_minutes"         : float(runtime),
     }
-    with open(RESULTS_DIR / "synthetic_stacking_metrics.json", "w") as f:
+    with open(RESULTS_DIR / "stacking_metrics.json", "w") as f:
         json.dump(full_metrics, f, indent=2)
-    log.info(f"\n  Full metrics saved -> "
-             f"{RESULTS_DIR / 'synthetic_stacking_metrics.json'}")
 
-    # =========================================================================
-    # 5.9 FIGURES  (identical structure and colour scheme to Phase 7)
-    # =========================================================================
+    # ══════════════════════════════════════════════════════════════════════════
+    # 5.9 FIGURES
+    # ══════════════════════════════════════════════════════════════════════════
     log.info("\nGenerating figures...")
-
     COLORS = {
-        "ensemble" : "#E53935",   # strong red -- synthetic stacking (primary)
-        "catboost" : "#1565C0",   # blue       -- synthetic CatBoost base
-        "ftt"      : "#6A1B9A",   # purple     -- synthetic FT-T base
-        "real_ens" : "#FB8C00",   # orange     -- real Phase 7 ensemble
-        "random"   : "#9E9E9E",   # grey
+        "ensemble": "#E53935", "expD_cb": "#1565C0",
+        "ftt": "#6A1B9A",      "expA": "#2E7D32", "random": "#9E9E9E",
     }
+
+    plot_models = [
+        (ensemble_probs,  "Ensemble",       COLORS["ensemble"], 2.5, "-"),
+        (cb_test_probs,   "Exp D CatBoost", COLORS["expD_cb"],  1.5, "--"),
+        (ftt_test_probs,  "Hybrid FT-T",    COLORS["ftt"],      1.5, "-."),
+    ]
+    if real_cb_test_probs is not None:
+        plot_models.append(
+            (real_cb_test_probs, "Exp A Real-only", COLORS["expA"], 1.5, ":")
+        )
 
     # Figure 1: ROC + PR
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
     fig.suptitle(
-        f"Experiment B -- Synthetic Stacking Ensemble vs Base Models\n"
-        f"Evaluated on Real Test Set (n={len(y_test)})",
+        f"Weighted Hybrid Stacking Ensemble vs Base Models\n"
+        f"Real Test Set (n={len(y_test)}, prevalence={y_test.mean():.1%})",
         fontsize=13, fontweight="bold"
     )
-
-    roc_items = [
-        (ensemble_probs,
-         f"Synth Ensemble  AUROC={metrics['auroc']:.4f}",
-         COLORS["ensemble"], 2.5, "-"),
-        (cb_test_probs,
-         f"Synth CatBoost  AUROC={cb_auroc:.4f}",
-         COLORS["catboost"], 1.5, "--"),
-        (ftt_test_probs,
-         f"Synth FT-T      AUROC={ftt_auroc:.4f}",
-         COLORS["ftt"], 1.5, "-."),
-    ]
-    if real_stack_probs is not None:
-        roc_items.append((
-            real_stack_probs,
-            f"Real Ensemble   AUROC={real_stack_auroc:.4f}",
-            COLORS["real_ens"], 1.2, ":"
-        ))
-
-    for probs, label, color, lw, ls in roc_items:
+    for probs, name, color, lw, ls in plot_models:
         fpr_, tpr_, _ = roc_curve(y_test, probs)
-        axes[0].plot(fpr_, tpr_, color=color, lw=lw, ls=ls, label=label)
-
-    axes[0].plot([0, 1], [0, 1], "--", color=COLORS["random"], lw=0.8, alpha=0.5)
+        axes[0].plot(fpr_, tpr_, color=color, lw=lw, ls=ls,
+                     label=f"{name}  AUROC={roc_auc_score(y_test, probs):.4f}")
+        prec_, rec_, _ = precision_recall_curve(y_test, probs)
+        axes[1].plot(rec_, prec_, color=color, lw=lw, ls=ls,
+                     label=f"{name}  AUPRC={average_precision_score(y_test, probs):.4f}")
+    axes[0].plot([0,1],[0,1],"--",color=COLORS["random"],lw=0.8,alpha=0.5)
     axes[0].fill_between(*roc_curve(y_test, ensemble_probs)[:2],
                          alpha=0.06, color=COLORS["ensemble"])
-    axes[0].set_xlabel("False Positive Rate")
-    axes[0].set_ylabel("True Positive Rate")
-    axes[0].set_title("ROC Curve", fontweight="bold")
-    axes[0].legend(loc="lower right", fontsize=8)
-    axes[0].spines[["top", "right"]].set_visible(False)
-
-    pr_items = [
-        (ensemble_probs,
-         f"Synth Ensemble  AUPRC={metrics['auprc']:.4f}",
-         COLORS["ensemble"], 2.5, "-"),
-        (cb_test_probs,
-         f"Synth CatBoost  AUPRC={average_precision_score(y_test, cb_test_probs):.4f}",
-         COLORS["catboost"], 1.5, "--"),
-        (ftt_test_probs,
-         f"Synth FT-T      AUPRC={average_precision_score(y_test, ftt_test_probs):.4f}",
-         COLORS["ftt"], 1.5, "-."),
-    ]
-    if real_stack_probs is not None:
-        pr_items.append((
-            real_stack_probs,
-            f"Real Ensemble   AUPRC="
-            f"{average_precision_score(y_test, real_stack_probs):.4f}",
-            COLORS["real_ens"], 1.2, ":"
-        ))
-
-    for probs, label, color, lw, ls in pr_items:
-        prec_, rec_, _ = precision_recall_curve(y_test, probs)
-        axes[1].plot(rec_, prec_, color=color, lw=lw, ls=ls, label=label)
-
-    prev = y_test.mean()
-    axes[1].axhline(prev, color=COLORS["random"], ls="--", lw=0.8,
-                    label=f"Prevalence ({prev:.2f})")
-    axes[1].set_xlabel("Recall")
-    axes[1].set_ylabel("Precision")
-    axes[1].set_title("Precision-Recall Curve", fontweight="bold")
-    axes[1].legend(loc="upper right", fontsize=8)
-    axes[1].spines[["top", "right"]].set_visible(False)
-
+    for ax, xlabel, ylabel, title, loc in [
+        (axes[0], "False Positive Rate", "True Positive Rate", "ROC Curve", "lower right"),
+        (axes[1], "Recall", "Precision", "Precision-Recall Curve", "upper right"),
+    ]:
+        ax.set_xlabel(xlabel); ax.set_ylabel(ylabel)
+        ax.set_title(title, fontweight="bold")
+        ax.legend(loc=loc, fontsize=8)
+        ax.spines[["top","right"]].set_visible(False)
+    axes[1].axhline(y_test.mean(), color=COLORS["random"], ls="--", lw=0.8,
+                    label=f"Prevalence ({y_test.mean():.2f})")
     plt.tight_layout()
-    plt.savefig(FIGURES_DIR / "synthetic_stacking_roc_pr.png",
-                dpi=150, bbox_inches="tight")
-    plt.savefig(FIGURES_DIR / "synthetic_stacking_roc_pr.pdf",
-                dpi=150, bbox_inches="tight")
+    plt.savefig(FIGURES_DIR / "stacking_roc_pr.png", dpi=150, bbox_inches="tight")
+    plt.savefig(FIGURES_DIR / "stacking_roc_pr.pdf", dpi=150, bbox_inches="tight")
     plt.close()
-    log.info("  Saved -> synthetic_stacking_roc_pr.png")
+    log.info("  Saved -> stacking_roc_pr.png")
 
     # Figure 2: Calibration
     fig, ax = plt.subplots(figsize=(7, 6))
-    cal_items = [
-        (ensemble_probs,
-         f"Synth Ensemble (Brier={metrics['brier_score']:.4f})",
-         COLORS["ensemble"]),
-        (cb_test_probs,
-         f"Synth CatBoost (Brier={brier_score_loss(y_test, cb_test_probs):.4f})",
-         COLORS["catboost"]),
-        (ftt_test_probs,
-         f"Synth FT-T (Brier={brier_score_loss(y_test, ftt_test_probs):.4f})",
-         COLORS["ftt"]),
-    ]
-    if real_stack_probs is not None:
-        cal_items.append((
-            real_stack_probs,
-            f"Real Ensemble (Brier={brier_score_loss(y_test, real_stack_probs):.4f})",
-            COLORS["real_ens"]
-        ))
-    for probs, label, color in cal_items:
-        prob_true_, prob_pred_ = calibration_curve(y_test, probs, n_bins=10)
-        ax.plot(prob_pred_, prob_true_, "o-", color=color, lw=2, label=label)
-
-    ax.plot([0, 1], [0, 1], "--", color="gray", label="Perfect calibration")
-    ax.set_xlabel("Mean Predicted Probability")
-    ax.set_ylabel("Fraction of Positives")
-    ax.set_title("Calibration -- Synthetic Ensemble vs Base Models", fontweight="bold")
+    for probs, name, color, *_ in plot_models:
+        pt, pp = calibration_curve(y_test, probs, n_bins=10)
+        ax.plot(pp, pt, "o-", color=color, lw=2,
+                label=f"{name} (Brier={brier_score_loss(y_test, probs):.4f})")
+    ax.plot([0,1],[0,1],"--",color="gray",label="Perfect calibration")
+    ax.set_xlabel("Mean Predicted Probability"); ax.set_ylabel("Fraction of Positives")
+    ax.set_title("Calibration Curves", fontweight="bold")
     ax.legend(fontsize=8); ax.grid(True, alpha=0.3)
-    ax.spines[["top", "right"]].set_visible(False)
+    ax.spines[["top","right"]].set_visible(False)
     plt.tight_layout()
-    plt.savefig(FIGURES_DIR / "synthetic_stacking_calibration.png",
-                dpi=150, bbox_inches="tight")
-    plt.savefig(FIGURES_DIR / "synthetic_stacking_calibration.pdf",
-                dpi=150, bbox_inches="tight")
+    plt.savefig(FIGURES_DIR / "stacking_calibration.png", dpi=150, bbox_inches="tight")
+    plt.savefig(FIGURES_DIR / "stacking_calibration.pdf", dpi=150, bbox_inches="tight")
     plt.close()
-    log.info("  Saved -> synthetic_stacking_calibration.png")
+    log.info("  Saved -> stacking_calibration.png")
 
     # Figure 3: Confusion matrix
-    y_pred_ens = (ensemble_probs >= metrics["threshold"]).astype(int)
-    cm         = confusion_matrix(y_test, y_pred_ens)
-    fig, ax    = plt.subplots(figsize=(5, 4))
-    im = ax.imshow(cm, cmap="Reds", interpolation="nearest")
+    cm  = confusion_matrix(y_test, (ensemble_probs >= metrics["threshold"]).astype(int))
+    fig, ax = plt.subplots(figsize=(5, 4))
+    im = ax.imshow(cm, cmap="Blues", interpolation="nearest")
     plt.colorbar(im, ax=ax)
-    ax.set_xticks([0, 1]); ax.set_yticks([0, 1])
-    ax.set_xticklabels(["Non-sepsis", "Sepsis"])
-    ax.set_yticklabels(["Non-sepsis", "Sepsis"])
-    thresh_cm = cm.max() / 2
+    ax.set_xticks([0,1]); ax.set_yticks([0,1])
+    ax.set_xticklabels(["Non-sepsis","Sepsis"])
+    ax.set_yticklabels(["Non-sepsis","Sepsis"])
     for i in range(2):
         for j in range(2):
-            ax.text(j, i, str(cm[i, j]), ha="center", va="center",
-                    color="white" if cm[i, j] > thresh_cm else "black",
-                    fontsize=14)
+            ax.text(j, i, str(cm[i,j]), ha="center", va="center", fontsize=14,
+                    color="white" if cm[i,j] > cm.max()/2 else "black")
     ax.set_xlabel("Predicted"); ax.set_ylabel("True")
     ax.set_title(
-        f"Synthetic Stacking Ensemble -- Confusion Matrix\n"
+        f"Stacking Ensemble (Weighted Hybrid)\n"
         f"Sens={metrics['sensitivity']:.4f}  Spec={metrics['specificity']:.4f}  "
         f"Thresh={metrics['threshold']:.4f}",
         fontsize=9, fontweight="bold"
     )
     plt.tight_layout()
-    plt.savefig(FIGURES_DIR / "synthetic_stacking_confusion_matrix.png",
-                dpi=150, bbox_inches="tight")
-    plt.savefig(FIGURES_DIR / "synthetic_stacking_confusion_matrix.pdf",
-                dpi=150, bbox_inches="tight")
+    plt.savefig(FIGURES_DIR / "stacking_confusion_matrix.png", dpi=150, bbox_inches="tight")
+    plt.savefig(FIGURES_DIR / "stacking_confusion_matrix.pdf", dpi=150, bbox_inches="tight")
     plt.close()
-    log.info("  Saved -> synthetic_stacking_confusion_matrix.png")
+    log.info("  Saved -> stacking_confusion_matrix.png")
 
     # Figure 4: Threshold sensitivity
     fig, axes = plt.subplots(1, 3, figsize=(16, 5))
-    fig.suptitle(
-        "Experiment B Stacking Ensemble -- Threshold Sensitivity Analysis",
-        fontsize=12, fontweight="bold"
-    )
-    thr_vals  = thresh_df["threshold"].values
-    sens_vals = thresh_df["sensitivity"].values
-    spec_vals = thresh_df["specificity"].values
-    ppv_vals  = thresh_df["ppv"].values
-    npv_vals  = thresh_df["npv"].values
-    f1_vals   = thresh_df["f1"].values
-
-    axes[0].plot(thr_vals, sens_vals, "o-", color=COLORS["ensemble"], lw=2,
-                 label="Sensitivity")
-    axes[0].plot(thr_vals, spec_vals, "s-", color=COLORS["catboost"],  lw=2,
-                 label="Specificity")
+    fig.suptitle("Weighted Hybrid Stacking — Threshold Sensitivity Analysis",
+                 fontsize=12, fontweight="bold")
+    thr_vals = thresh_df["threshold"].values
+    axes[0].plot(thr_vals, thresh_df["sensitivity"].values, "o-",
+                 color=COLORS["ensemble"], lw=2, label="Sensitivity")
+    axes[0].plot(thr_vals, thresh_df["specificity"].values, "s-",
+                 color=COLORS["expD_cb"], lw=2, label="Specificity")
     axes[0].set_xlabel("Threshold"); axes[0].set_ylabel("Score")
     axes[0].set_title("Sensitivity vs Specificity", fontweight="bold")
-    axes[0].legend(fontsize=9)
-    axes[0].spines[["top", "right"]].set_visible(False); axes[0].grid(True, alpha=0.3)
-
-    axes[1].plot(thr_vals, ppv_vals, "o-", color="#2ECC71", lw=2, label="PPV")
-    axes[1].plot(thr_vals, npv_vals, "s-", color="#F39C12", lw=2, label="NPV")
+    axes[0].legend(fontsize=9); axes[0].grid(True, alpha=0.3)
+    axes[0].spines[["top","right"]].set_visible(False)
+    axes[1].plot(thr_vals, thresh_df["ppv"].values, "o-", color="#2ECC71", lw=2, label="PPV")
+    axes[1].plot(thr_vals, thresh_df["npv"].values, "s-", color="#F39C12", lw=2, label="NPV")
     axes[1].set_xlabel("Threshold"); axes[1].set_ylabel("Score")
     axes[1].set_title("PPV vs NPV", fontweight="bold")
-    axes[1].legend(fontsize=9)
-    axes[1].spines[["top", "right"]].set_visible(False); axes[1].grid(True, alpha=0.3)
-
-    axes[2].plot(thr_vals, f1_vals, "o-", color=COLORS["ftt"], lw=2)
-    axes[2].set_xlabel("Threshold"); axes[2].set_ylabel("F1 Score")
+    axes[1].legend(fontsize=9); axes[1].grid(True, alpha=0.3)
+    axes[1].spines[["top","right"]].set_visible(False)
+    axes[2].plot(thr_vals, thresh_df["f1"].values, "o-", color=COLORS["ftt"], lw=2)
+    axes[2].set_xlabel("Threshold"); axes[2].set_ylabel("F1")
     axes[2].set_title("F1 Score", fontweight="bold")
-    axes[2].spines[["top", "right"]].set_visible(False); axes[2].grid(True, alpha=0.3)
-
+    axes[2].grid(True, alpha=0.3); axes[2].spines[["top","right"]].set_visible(False)
     plt.tight_layout()
-    plt.savefig(FIGURES_DIR / "synthetic_stacking_threshold_sensitivity.png",
+    plt.savefig(FIGURES_DIR / "stacking_threshold_sensitivity.png",
                 dpi=150, bbox_inches="tight")
-    plt.savefig(FIGURES_DIR / "synthetic_stacking_threshold_sensitivity.pdf",
+    plt.savefig(FIGURES_DIR / "stacking_threshold_sensitivity.pdf",
                 dpi=150, bbox_inches="tight")
     plt.close()
-    log.info("  Saved -> synthetic_stacking_threshold_sensitivity.png")
+    log.info("  Saved -> stacking_threshold_sensitivity.png")
 
-    # =========================================================================
-    # 5.10 FINAL SUMMARY
-    # =========================================================================
+    # Figure 5: Experiment comparison bar chart
+    exp_names  = ["Exp D\nWeighted\nHybrid CB", "Hybrid\nFT-T", "Stacking\nEnsemble"]
+    auroc_vals = [cb_auroc, ftt_auroc, metrics["auroc"]]
+    auprc_vals = [average_precision_score(y_test, cb_test_probs),
+                  average_precision_score(y_test, ftt_test_probs), metrics["auprc"]]
+    bar_colors = [COLORS["expD_cb"], COLORS["ftt"], COLORS["ensemble"]]
+    if real_cb_test_probs is not None:
+        exp_names  = ["Exp A\nReal-only"] + exp_names
+        auroc_vals = [roc_auc_score(y_test, real_cb_test_probs)] + auroc_vals
+        auprc_vals = [average_precision_score(y_test, real_cb_test_probs)] + auprc_vals
+        bar_colors = [COLORS["expA"]] + bar_colors
+
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+    fig.suptitle(
+        "Experiment Comparison — All Hybrid Models on Real Test Set (n=633)\n"
+        "Weighting: real=4.0, synthetic=1.0 applied consistently",
+        fontsize=12, fontweight="bold"
+    )
+    x = np.arange(len(exp_names))
+    for ax_i, (vals, ylabel, title, ylim) in enumerate([
+        (auroc_vals, "AUROC", "AUROC Comparison", (0.85, 1.0)),
+        (auprc_vals, "AUPRC", "AUPRC Comparison", (0.80, 1.0)),
+    ]):
+        bars = axes[ax_i].bar(x, vals, color=bar_colors, alpha=0.85, width=0.55)
+        axes[ax_i].set_xticks(x); axes[ax_i].set_xticklabels(exp_names, fontsize=9)
+        axes[ax_i].set_ylabel(ylabel); axes[ax_i].set_title(title, fontweight="bold")
+        axes[ax_i].set_ylim(ylim)
+        axes[ax_i].spines[["top","right"]].set_visible(False)
+        axes[ax_i].grid(True, alpha=0.3, axis="y")
+        for bar, val in zip(bars, vals):
+            axes[ax_i].text(bar.get_x() + bar.get_width()/2, val + 0.001,
+                            f"{val:.4f}", ha="center", va="bottom", fontsize=8)
+    plt.tight_layout()
+    plt.savefig(FIGURES_DIR / "stacking_experiment_comparison.png",
+                dpi=150, bbox_inches="tight")
+    plt.savefig(FIGURES_DIR / "stacking_experiment_comparison.pdf",
+                dpi=150, bbox_inches="tight")
+    plt.close()
+    log.info("  Saved -> stacking_experiment_comparison.png")
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # FINAL SUMMARY
+    # ══════════════════════════════════════════════════════════════════════════
+    runtime = (time.time() - t_start) / 60
     log.info("\n" + "=" * 70)
-    log.info("EXPERIMENT B -- STACKING ENSEMBLE COMPLETE")
+    log.info("STACKING ENSEMBLE (WEIGHTED HYBRID) — COMPLETE")
     log.info("=" * 70)
-    log.info(f"  AUROC      : {metrics['auroc']:.4f} [{auroc_lo:.4f}-{auroc_hi:.4f}]")
-    log.info(f"  AUPRC      : {metrics['auprc']:.4f} [{auprc_lo:.4f}-{auprc_hi:.4f}]")
-    log.info(f"  Brier      : {metrics['brier_score']:.4f}")
-    log.info(f"  Sensitivity: {metrics['sensitivity']:.4f}")
-    log.info(f"  Specificity: {metrics['specificity']:.4f}")
-    log.info(f"  PPV        : {metrics['ppv']:.4f}")
-    log.info(f"  F1         : {metrics['f1']:.4f}")
-    log.info(f"  DeLong vs Synth CatBoost: z={z_stat:.4f}, p={p_val:.4f} "
-             f"({'sig' if p_val < 0.05 else 'not sig'})")
-    if real_stack_auroc:
-        log.info(f"  vs Real Phase 7 Ensemble: AUROC diff = "
-                 f"{metrics['auroc'] - real_stack_auroc:+.4f}")
-    log.info(f"  Meta weights -> CatBoost: {coef[0]:.4f} | FT-T: {coef[1]:.4f}")
-    log.info(f"  Runtime    : {runtime:.1f} min")
-    log.info(f"\n  Models   -> {MODELS_DIR}")
+    log.info(f"  AUROC       : {metrics['auroc']:.4f} [{auroc_lo:.4f}-{auroc_hi:.4f}]")
+    log.info(f"  AUPRC       : {metrics['auprc']:.4f} [{auprc_lo:.4f}-{auroc_hi:.4f}]")
+    log.info(f"  Brier       : {metrics['brier_score']:.4f}")
+    log.info(f"  Sensitivity : {metrics['sensitivity']:.4f}")
+    log.info(f"  Specificity : {metrics['specificity']:.4f}")
+    log.info(f"  PPV         : {metrics['ppv']:.4f}")
+    log.info(f"  F1          : {metrics['f1']:.4f}")
+    log.info(f"  Threshold   : {metrics['threshold']:.4f}")
+    log.info(f"\n  Meta-learner : CatBoost={coef[0]:.4f} | FT-T={coef[1]:.4f}")
+    log.info(f"  DeLong vs Exp D : z={z1:.4f}, p={p1:.4f}")
+    log.info(f"  DeLong vs FT-T  : z={z2:.4f}, p={p2:.4f}")
+    if real_cb_test_probs is not None:
+        log.info(f"  DeLong vs Exp A : z={z3:.4f}, p={p3:.4f}")
+        log.info(f"  DELTA AUPRC vs real-only : "
+                 f"{metrics['auprc'] - average_precision_score(y_test, real_cb_test_probs):+.4f}")
+    log.info(f"\n  Runtime  : {runtime:.1f} min")
+    log.info(f"  Models   -> {MODELS_DIR}")
     log.info(f"  Results  -> {RESULTS_DIR}")
     log.info(f"  Figures  -> {FIGURES_DIR}")
     log.info(f"  Log      -> {log_path}")

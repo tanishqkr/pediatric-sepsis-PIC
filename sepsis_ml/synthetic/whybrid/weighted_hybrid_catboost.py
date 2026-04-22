@@ -105,11 +105,11 @@ CV_FOLDS             = 5
 TARGET_COL           = "sepsis_label"
 TARGET_SENSITIVITY   = 0.90
 BOOTSTRAP_ITERATIONS = 1000
-OPTUNA_TRIALS        = 5
+OPTUNA_TRIALS        = 100
 
 # 50:50 influence balance
 # Real: 2530 × 4.5 ≈ 11,385  |  Synthetic: 10,000 × 1.0 = 10,000
-REAL_SAMPLE_WEIGHT  = 4.5
+REAL_SAMPLE_WEIGHT  = 4
 SYNTH_SAMPLE_WEIGHT = 1.0
 
 np.random.seed(RANDOM_SEED)
