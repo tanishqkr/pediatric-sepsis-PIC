@@ -1,0 +1,28 @@
+{
+  "vs_expD_catboost": {
+    "ensemble_auroc": 0.9786127167630058,
+    "expD_auroc": 0.9775571751696406,
+    "z": 0.5580295584477065,
+    "p": 0.5768242002152089,
+    "significant": false,
+    "direction": "Ensemble better"
+  },
+  "vs_hybrid_ftt": {
+    "ensemble_auroc": 0.9786127167630058,
+    "hybrid_ftt_auroc": 0.9637848705704951,
+    "z": 1.6976398772477,
+    "p": 0.08957575161006837,
+    "significant": false,
+    "direction": "Ensemble better"
+  },
+  "vs_expA_real_only": {
+    "ensemble_auroc": 0.9786127167630058,
+    "expA_auroc": 0.9867931641115858,
+    "z": -1.5296187208909344,
+    "p": 0.12611113279081998,
+    "significant": false,
+    "direction": "Real-only better",
+    "delta_auroc_vs_real": -0.008180447348579922,
+    "delta_auprc_vs_real": -0.015670203673288086
+  }
+}

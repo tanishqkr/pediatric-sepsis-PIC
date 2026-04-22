@@ -1,0 +1,12 @@
+{
+  "n_blocks": 3,
+  "d_block": 256,
+  "attention_n_heads": 8,
+  "attention_dropout": 0.2527334959449506,
+  "ffn_d_hidden_multiplier": 3.1884946943343944,
+  "ffn_dropout": 0.005330867284533939,
+  "residual_dropout": 0.11666810920078984,
+  "lr": 4.4048404293852725e-05,
+  "weight_decay": 7.251722921067465e-05,
+  "batch_size": 256
+}

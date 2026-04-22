@@ -1,0 +1,80 @@
+{
+  "model": "Stacking Ensemble (Weighted Hybrid)",
+  "experiment": "Synthetic Stacking",
+  "timestamp": "2026-04-22T15:55:16.286174",
+  "dataset": "Hybrid train (12,530) | Real test (633)",
+  "n_hybrid_train": 12530,
+  "n_real_train": 2530,
+  "n_synthetic_train": 10000,
+  "n_test": 633,
+  "n_features": 225,
+  "cv_folds": 5,
+  "real_sample_weight": 4.0,
+  "synth_sample_weight": 1.0,
+  "real_influence_pct": 50.29821073558648,
+  "weighting_applied_at": [
+    "CatBoost Pool",
+    "FT-T WeightedRandomSampler",
+    "LogisticRegression sample_weight"
+  ],
+  "oof_auroc_catboost": 0.9942678089563334,
+  "oof_auroc_fttransformer": 0.9862977473769533,
+  "oof_note": "OOF on hybrid data is inflated \u2014 not for clinical claims",
+  "test_metrics": {
+    "auroc": 0.9786127167630059,
+    "auprc": 0.953381467152244,
+    "brier_score": 0.05031648010258491,
+    "f1": 0.8722222222222222,
+    "sensitivity": 0.9075144508670521,
+    "specificity": 0.9347826086956522,
+    "ppv": 0.839572192513369,
+    "npv": 0.9641255605381166,
+    "threshold": 0.23268956051026338,
+    "tp": 157,
+    "fp": 30,
+    "tn": 430,
+    "fn": 16,
+    "auroc_ci_low": 0.9682889505422131,
+    "auroc_ci_high": 0.9874993484732308,
+    "auprc_ci_low": 0.9313621548921127,
+    "auprc_ci_high": 0.9722865469825992
+  },
+  "meta_learner": {
+    "catboost_coefficient": 6.048150055409375,
+    "fttransformer_coefficient": 1.8584177537658448,
+    "intercept": -4.097034132655092,
+    "meta_learner_weighted": true,
+    "real_weight": 4.0,
+    "synth_weight": 1.0,
+    "note": "Weighted fit: real rows 4x influence. Consistent with full pipeline."
+  },
+  "delong": {
+    "vs_expD_catboost": {
+      "ensemble_auroc": 0.9786127167630058,
+      "expD_auroc": 0.9775571751696406,
+      "z": 0.5580295584477065,
+      "p": 0.5768242002152089,
+      "significant": false,
+      "direction": "Ensemble better"
+    },
+    "vs_hybrid_ftt": {
+      "ensemble_auroc": 0.9786127167630058,
+      "hybrid_ftt_auroc": 0.9637848705704951,
+      "z": 1.6976398772477,
+      "p": 0.08957575161006837,
+      "significant": false,
+      "direction": "Ensemble better"
+    },
+    "vs_expA_real_only": {
+      "ensemble_auroc": 0.9786127167630058,
+      "expA_auroc": 0.9867931641115858,
+      "z": -1.5296187208909344,
+      "p": 0.12611113279081998,
+      "significant": false,
+      "direction": "Real-only better",
+      "delta_auroc_vs_real": -0.008180447348579922,
+      "delta_auprc_vs_real": -0.015670203673288086
+    }
+  },
+  "runtime_minutes": 29.685370218753814
+}

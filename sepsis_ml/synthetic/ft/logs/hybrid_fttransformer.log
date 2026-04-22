@@ -1,0 +1,100 @@
+2026-04-22 13:29:54,539 | INFO | Device : CUDA - NVIDIA RTX 4500 Ada Generation (25.8 GB VRAM)
+2026-04-22 13:29:54,539 | INFO | ======================================================================
+2026-04-22 13:29:54,539 | INFO | WEIGHTED HYBRID FT-TRANSFORMER
+2026-04-22 13:29:54,539 | INFO | Started : 2026-04-22 13:29:54
+2026-04-22 13:29:54,539 | INFO | ======================================================================
+2026-04-22 13:29:54,539 | INFO | 
+Loading datasets...
+2026-04-22 13:29:54,732 | INFO |   Hybrid train : (12530, 225) | Sepsis: 27.3%
+2026-04-22 13:29:54,732 | INFO |   Real rows    : 2530 (rows 0..2529)
+2026-04-22 13:29:54,732 | INFO |   Synthetic    : 10000 (rows 2530..12529)
+2026-04-22 13:29:54,735 | INFO |   Real test    : (633, 225)  | Sepsis: 27.3%
+2026-04-22 13:29:54,735 | INFO |   Features     : 225
+2026-04-22 13:29:54,736 | INFO | 
+  Weighting : real=4.0, synthetic=1.0
+2026-04-22 13:29:54,736 | INFO |   Effective influence : real=50.3% | synthetic=49.7%
+2026-04-22 13:29:54,736 | INFO |   FT-T method : WeightedRandomSampler (no data duplication)
+2026-04-22 13:29:54,748 | INFO | 
+  Train split : 10024 | Val split: 2506
+2026-04-22 13:29:54,748 | INFO |   Real in train split  : 2037
+2026-04-22 13:29:54,748 | INFO |   Synth in train split : 7987
+2026-04-22 13:29:54,789 | INFO | 
+  Numerical features : 185
+2026-04-22 13:29:54,789 | INFO |   Binary features    : 40
+2026-04-22 13:29:54,789 | INFO |   Fitting scaler on hybrid training split...
+2026-04-22 13:29:54,813 | INFO |   Scaler saved.
+2026-04-22 13:29:54,971 | INFO | 
+  pos_weight (training split) : 2.661
+2026-04-22 13:29:54,977 | INFO | 
+============================================================
+2026-04-22 13:29:54,977 | INFO | Starting Optuna: 30 trials (Hybrid FT-Transformer)
+2026-04-22 13:29:54,977 | INFO | Objective: AUPRC on unweighted val split
+2026-04-22 13:29:54,977 | INFO | Training: WeightedRandomSampler (real=4.0, synthetic=1.0)
+2026-04-22 13:29:54,977 | INFO | ============================================================
+2026-04-22 14:59:45,748 | INFO | 
+Optuna finished in 89.8 min
+2026-04-22 14:59:45,748 | INFO | Best val AUPRC : 0.9825
+2026-04-22 14:59:45,748 | INFO | Best params    : {'n_blocks': 3, 'd_block': 256, 'attention_n_heads': 8, 'attention_dropout': 0.2527334959449506, 'ffn_d_hidden_multiplier': 3.1884946943343944, 'ffn_dropout': 0.005330867284533939, 'residual_dropout': 0.11666810920078984, 'lr': 4.4048404293852725e-05, 'weight_decay': 7.251722921067465e-05, 'batch_size': 256}
+2026-04-22 14:59:45,748 | INFO | 
+============================================================
+2026-04-22 14:59:45,748 | INFO | Retraining best model on full hybrid set (12,530 rows)...
+2026-04-22 14:59:45,748 | INFO | WeightedRandomSampler: real rows sampled ~4x per epoch.
+2026-04-22 14:59:45,748 | INFO | ============================================================
+2026-04-22 14:59:45,816 | INFO |   pos_weight (full hybrid) : 2.662
+2026-04-22 15:21:13,759 | INFO |   Final model saved. Best val AUPRC: 1.0000
+2026-04-22 15:21:13,759 | INFO | 
+============================================================
+2026-04-22 15:21:13,759 | INFO | Evaluating on real held-out test set (n=633)...
+2026-04-22 15:21:13,759 | INFO | ============================================================
+2026-04-22 15:21:14,702 | INFO |   AUROC : 0.9638 [0.9483-0.9772]
+2026-04-22 15:21:14,702 | INFO |   AUPRC : 0.9208 [0.8838-0.9505]
+2026-04-22 15:21:14,702 | INFO |   Brier : 0.0888
+2026-04-22 15:21:14,724 | INFO | 
+  Primary threshold (90% sensitivity):
+2026-04-22 15:21:14,724 | INFO |     Threshold   : 0.0061
+2026-04-22 15:21:14,724 | INFO |     Sensitivity : 0.9075
+2026-04-22 15:21:14,724 | INFO |     Specificity : 0.8609
+2026-04-22 15:21:14,724 | INFO |     PPV         : 0.7104
+2026-04-22 15:21:14,724 | INFO |     NPV         : 0.9612
+2026-04-22 15:21:14,724 | INFO |     F1          : 0.7970
+2026-04-22 15:21:14,724 | INFO |     TP=157.0 FP=64.0 TN=396.0 FN=16.0
+2026-04-22 15:21:14,735 | INFO | 
+  DeLong tests:
+2026-04-22 15:21:14,737 | INFO |     Hybrid FT-T vs Phase 6 FT-T : z=0.4869, p=0.6263 (not sig)
+2026-04-22 15:21:14,758 | INFO |     Hybrid FT-T vs Exp D CatBoost : z=-1.4031, p=0.1606 (not sig)
+2026-04-22 15:21:14,758 | INFO |     Hybrid FT-T vs Exp A real-only : z=-2.1961, p=0.0281 (sig)
+2026-04-22 15:21:14,767 | INFO | 
+  Predictions saved -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\ft\results\hybrid_ftt_predictions.npz
+2026-04-22 15:21:14,767 | INFO |   Results saved     -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\ft\results\hybrid_ftt_results.json
+2026-04-22 15:21:14,767 | INFO | 
+Generating figures...
+2026-04-22 15:21:15,819 | INFO |   Saved -> hybrid_ftt_optuna_history.png
+2026-04-22 15:21:16,146 | INFO |   Saved -> hybrid_ftt_roc_pr.png
+2026-04-22 15:21:16,314 | INFO |   Saved -> hybrid_ftt_calibration.png
+2026-04-22 15:21:16,691 | INFO |   Saved -> hybrid_ftt_threshold_sensitivity.png
+2026-04-22 15:21:16,691 | INFO | 
+======================================================================
+2026-04-22 15:21:16,691 | INFO | WEIGHTED HYBRID FT-TRANSFORMER — COMPLETE
+2026-04-22 15:21:16,691 | INFO | ======================================================================
+2026-04-22 15:21:16,691 | INFO |   AUROC       : 0.9638 [0.9483-0.9772]
+2026-04-22 15:21:16,691 | INFO |   AUPRC       : 0.9208 [0.8838-0.9505]
+2026-04-22 15:21:16,691 | INFO |   Brier       : 0.0888
+2026-04-22 15:21:16,691 | INFO |   Sensitivity : 0.9075 @ threshold 0.0061
+2026-04-22 15:21:16,691 | INFO |   Specificity : 0.8609
+2026-04-22 15:21:16,691 | INFO |   PPV         : 0.7104
+2026-04-22 15:21:16,691 | INFO |   NPV         : 0.9612
+2026-04-22 15:21:16,691 | INFO |   F1          : 0.7970
+2026-04-22 15:21:16,691 | INFO | 
+  Weighting   : real=4.0, synth=1.0
+2026-04-22 15:21:16,691 | INFO |   Real influence : 50.3%
+2026-04-22 15:21:16,691 | INFO | 
+  Optuna runtime : 89.8 min
+2026-04-22 15:21:16,691 | INFO |   Total runtime  : 111.4 min
+2026-04-22 15:21:16,691 | INFO | 
+  Models  -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\ft\models
+2026-04-22 15:21:16,691 | INFO |   Results -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\ft\results
+2026-04-22 15:21:16,691 | INFO |   Figures -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\ft\figures
+2026-04-22 15:21:16,691 | INFO |   Log     -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\ft\logs\hybrid_fttransformer.log
+2026-04-22 15:21:16,691 | INFO | 
+  Next -> run synthetic_stacking.py (loads hybrid_ftt_predictions.npz)
+2026-04-22 15:21:16,691 | INFO | ======================================================================

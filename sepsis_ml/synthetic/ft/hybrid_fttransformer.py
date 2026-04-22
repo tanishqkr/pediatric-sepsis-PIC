@@ -67,6 +67,8 @@ if __name__ == "__main__":
     multiprocessing.freeze_support()
 
 import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 import os
 import json
 import pickle
@@ -155,8 +157,8 @@ log = logging.getLogger(__name__)
 RANDOM_SEED         = 42
 TARGET_COL          = "sepsis_label"
 TARGET_SENSITIVITY  = 0.90
-N_OPTUNA_TRIALS     = 100
-N_EPOCHS_MAX        = 100
+N_OPTUNA_TRIALS     = 30
+N_EPOCHS_MAX        = 50
 PATIENCE            = 15
 PATIENCE_FINAL      = 20
 N_EPOCHS_FINAL      = 150

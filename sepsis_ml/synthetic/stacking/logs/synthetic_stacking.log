@@ -1,0 +1,156 @@
+2026-04-22 15:25:35,163 | INFO | Device : CUDA - NVIDIA RTX 4500 Ada Generation (25.8 GB VRAM)
+2026-04-22 15:25:35,163 | INFO | ======================================================================
+2026-04-22 15:25:35,163 | INFO | STACKING ENSEMBLE — WEIGHTED HYBRID DATA
+2026-04-22 15:25:35,163 | INFO | Base models: Exp D CatBoost + Weighted Hybrid FT-Transformer
+2026-04-22 15:25:35,163 | INFO | Meta-learner: Logistic Regression (weighted fit)
+2026-04-22 15:25:35,163 | INFO | Started : 2026-04-22 15:25:35
+2026-04-22 15:25:35,163 | INFO | ======================================================================
+2026-04-22 15:25:35,163 | INFO | 
+Checking prerequisites...
+2026-04-22 15:25:35,163 | INFO |   OK : Exp D CatBoost test probs
+2026-04-22 15:25:35,163 | INFO |   OK : Exp D CatBoost params
+2026-04-22 15:25:35,163 | INFO |   OK : Hybrid FT-T test probs
+2026-04-22 15:25:35,163 | INFO |   OK : Hybrid FT-T params
+2026-04-22 15:25:35,163 | INFO |   OK : Hybrid FT-T scaler
+2026-04-22 15:25:35,163 | INFO | 
+Loading datasets...
+2026-04-22 15:25:35,332 | INFO |   Hybrid train : (12530, 225) | Sepsis: 27.3%
+2026-04-22 15:25:35,332 | INFO |   Real rows : 2530 | Synthetic rows : 10000
+2026-04-22 15:25:35,332 | INFO |   Real test : (633, 225)  | Sepsis: 27.3%
+2026-04-22 15:25:35,332 | INFO | 
+  Weighting : real=4.0, synthetic=1.0
+2026-04-22 15:25:35,332 | INFO |   Effective influence : real=50.3% | synthetic=49.7%
+2026-04-22 15:25:35,332 | INFO |   Applied at : CatBoost Pool, FT-T WeightedRandomSampler, LR fit
+2026-04-22 15:25:35,332 | INFO | 
+Loading params and scaler...
+2026-04-22 15:25:35,332 | INFO |   CatBoost params : {'iterations': 207, 'learning_rate': 0.1601531217136121, 'depth': 8, 'l2_leaf_reg': 7.561064512368886, 'bagging_temperature': 0.7712703466859457, 'random_strength': 0.14808930346818072, 'border_count': 112, 'class_weight_pos': 1.905541708337954}
+2026-04-22 15:25:35,332 | INFO |   FT-T params     : {'n_blocks': 3, 'd_block': 256, 'attention_n_heads': 8, 'attention_dropout': 0.2527334959449506, 'ffn_d_hidden_multiplier': 3.1884946943343944, 'ffn_dropout': 0.005330867284533939, 'residual_dropout': 0.11666810920078984, 'lr': 4.4048404293852725e-05, 'weight_decay': 7.251722921067465e-05, 'batch_size': 256, 'actual_attention_n_heads': 8}
+2026-04-22 15:25:35,434 | INFO | 
+Loading saved test-set probabilities...
+2026-04-22 15:25:35,434 | INFO |   Exp D CatBoost AUROC : 0.9776
+2026-04-22 15:25:35,443 | INFO |   Hybrid FT-T AUROC    : 0.9638
+2026-04-22 15:25:35,445 | INFO |   Exp A real-only AUROC: 0.9868
+2026-04-22 15:25:35,446 | INFO | 
+============================================================
+2026-04-22 15:25:35,446 | INFO | STEP 1 — Generating out-of-fold probabilities (5-fold CV)
+2026-04-22 15:25:35,446 | INFO | ============================================================
+2026-04-22 15:25:35,446 | INFO | Train folds: weighted. Val fold: unweighted (clean AUPRC signal).
+2026-04-22 15:25:35,448 | INFO | 
+  Fold 1/5 --------------------------------------
+2026-04-22 15:25:35,455 | INFO |     Train: 10024 (real=2013, synth=8011) | Val: 2506 | Sepsis: 27.3%
+2026-04-22 15:25:35,455 | INFO |     [CatBoost] Exp D params + Pool(weight=sw_tr)...
+2026-04-22 15:25:37,919 | INFO |     CatBoost val AUROC : 0.9936
+2026-04-22 15:25:37,919 | INFO |     [FT-T] Hybrid params + WeightedRandomSampler...
+2026-04-22 15:35:20,236 | INFO |     FT-T val AUROC     : 0.9894
+2026-04-22 15:35:20,236 | INFO |     Fold time          : 9.7 min
+2026-04-22 15:35:20,236 | INFO | 
+  Fold 2/5 --------------------------------------
+2026-04-22 15:35:20,236 | INFO |     Train: 10024 (real=2029, synth=7995) | Val: 2506 | Sepsis: 27.3%
+2026-04-22 15:35:20,251 | INFO |     [CatBoost] Exp D params + Pool(weight=sw_tr)...
+2026-04-22 15:35:22,569 | INFO |     CatBoost val AUROC : 0.9934
+2026-04-22 15:35:22,569 | INFO |     [FT-T] Hybrid params + WeightedRandomSampler...
+2026-04-22 15:41:32,213 | INFO |     FT-T val AUROC     : 0.9889
+2026-04-22 15:41:32,213 | INFO |     Fold time          : 6.2 min
+2026-04-22 15:41:32,213 | INFO | 
+  Fold 3/5 --------------------------------------
+2026-04-22 15:41:32,213 | INFO |     Train: 10024 (real=2018, synth=8006) | Val: 2506 | Sepsis: 27.3%
+2026-04-22 15:41:32,213 | INFO |     [CatBoost] Exp D params + Pool(weight=sw_tr)...
+2026-04-22 15:41:34,594 | INFO |     CatBoost val AUROC : 0.9958
+2026-04-22 15:41:34,594 | INFO |     [FT-T] Hybrid params + WeightedRandomSampler...
+2026-04-22 15:45:39,391 | INFO |     FT-T val AUROC     : 0.9900
+2026-04-22 15:45:39,391 | INFO |     Fold time          : 4.1 min
+2026-04-22 15:45:39,391 | INFO | 
+  Fold 4/5 --------------------------------------
+2026-04-22 15:45:39,408 | INFO |     Train: 10024 (real=2018, synth=8006) | Val: 2506 | Sepsis: 27.3%
+2026-04-22 15:45:39,408 | INFO |     [CatBoost] Exp D params + Pool(weight=sw_tr)...
+2026-04-22 15:45:41,650 | INFO |     CatBoost val AUROC : 0.9939
+2026-04-22 15:45:41,650 | INFO |     [FT-T] Hybrid params + WeightedRandomSampler...
+2026-04-22 15:49:59,536 | INFO |     FT-T val AUROC     : 0.9880
+2026-04-22 15:49:59,536 | INFO |     Fold time          : 4.3 min
+2026-04-22 15:49:59,536 | INFO | 
+  Fold 5/5 --------------------------------------
+2026-04-22 15:49:59,545 | INFO |     Train: 10024 (real=2042, synth=7982) | Val: 2506 | Sepsis: 27.3%
+2026-04-22 15:49:59,545 | INFO |     [CatBoost] Exp D params + Pool(weight=sw_tr)...
+2026-04-22 15:50:01,800 | INFO |     CatBoost val AUROC : 0.9945
+2026-04-22 15:50:01,800 | INFO |     [FT-T] Hybrid params + WeightedRandomSampler...
+2026-04-22 15:55:15,403 | INFO |     FT-T val AUROC     : 0.9891
+2026-04-22 15:55:15,403 | INFO |     Fold time          : 5.3 min
+2026-04-22 15:55:15,403 | INFO | 
+  OOF AUROC - CatBoost : 0.9943
+2026-04-22 15:55:15,403 | INFO |   OOF AUROC - FT-T     : 0.9863
+2026-04-22 15:55:15,403 | INFO |   NOTE: OOF AUROC on hybrid data is inflated. Not for clinical claims.
+2026-04-22 15:55:15,446 | INFO | 
+============================================================
+2026-04-22 15:55:15,446 | INFO | STEP 2 — Training meta-learner (weighted LR fit)
+2026-04-22 15:55:15,446 | INFO | ============================================================
+2026-04-22 15:55:15,466 | INFO |   CatBoost coefficient : 6.0482
+2026-04-22 15:55:15,466 | INFO |   FT-T coefficient     : 1.8584
+2026-04-22 15:55:15,466 | INFO |   Intercept            : -4.0970
+2026-04-22 15:55:15,466 | INFO | 
+============================================================
+2026-04-22 15:55:15,466 | INFO | STEP 3 — Evaluating ensemble on real test set (n=633)
+2026-04-22 15:55:15,466 | INFO | ============================================================
+2026-04-22 15:55:16,225 | INFO | 
+  AUROC       : 0.9786 [0.9683-0.9875]
+2026-04-22 15:55:16,225 | INFO |   AUPRC       : 0.9534 [0.9314-0.9723]
+2026-04-22 15:55:16,225 | INFO |   Brier       : 0.0503
+2026-04-22 15:55:16,225 | INFO |   Sensitivity : 0.9075
+2026-04-22 15:55:16,225 | INFO |   Specificity : 0.9348
+2026-04-22 15:55:16,225 | INFO |   PPV         : 0.8396
+2026-04-22 15:55:16,225 | INFO |   NPV         : 0.9641
+2026-04-22 15:55:16,225 | INFO |   F1          : 0.8722
+2026-04-22 15:55:16,225 | INFO |   Threshold   : 0.2327
+2026-04-22 15:55:16,225 | INFO |   TP=157 FP=30 TN=430 FN=16
+2026-04-22 15:55:16,225 | INFO | 
+  Exp D CatBoost AUROC     : 0.9776
+2026-04-22 15:55:16,225 | INFO |   Hybrid FT-T AUROC        : 0.9638
+2026-04-22 15:55:16,225 | INFO |   Stacking Ensemble AUROC  : 0.9786
+2026-04-22 15:55:16,225 | INFO |   Exp A Real-only AUROC    : 0.9868
+2026-04-22 15:55:16,225 | INFO |   DELTA AUROC vs real-only : -0.0082
+2026-04-22 15:55:16,225 | INFO |   DELTA AUPRC vs real-only : -0.0157
+2026-04-22 15:55:16,243 | INFO | 
+  DeLong vs Exp D CatBoost  : z=0.5580, p=0.5768 (not sig)
+2026-04-22 15:55:16,249 | INFO |   DeLong vs Hybrid FT-T     : z=1.6976, p=0.0896 (not sig)
+2026-04-22 15:55:16,255 | INFO |   DeLong vs Exp A real-only : z=-1.5296, p=0.1261 (not sig)
+2026-04-22 15:55:16,258 | INFO | 
+    Target   Thresh    Sens    Spec     PPV     NPV      F1
+2026-04-22 15:55:16,258 | INFO |   ------------------------------------------------------------
+2026-04-22 15:55:16,260 | INFO |       0.80   0.6046  0.8035  0.9783  0.9329  0.9298  0.8634
+2026-04-22 15:55:16,265 | INFO |       0.82   0.5009  0.8208  0.9761  0.9281  0.9354  0.8712
+2026-04-22 15:55:16,268 | INFO |       0.85   0.4020  0.8671  0.9652  0.9036  0.9507  0.8850
+2026-04-22 15:55:16,269 | INFO |       0.87   0.3575  0.8728  0.9609  0.8935  0.9526  0.8830
+2026-04-22 15:55:16,273 | INFO |       0.90   0.2327  0.9075  0.9348  0.8396  0.9641  0.8722
+2026-04-22 15:55:16,276 | INFO |       0.92   0.1844  0.9249  0.9261  0.8247  0.9704  0.8719
+2026-04-22 15:55:16,276 | INFO |       0.95   0.0447  0.9538  0.8522  0.7082  0.9800  0.8128
+2026-04-22 15:55:16,287 | INFO | 
+Generating figures...
+2026-04-22 15:55:16,874 | INFO |   Saved -> stacking_roc_pr.png
+2026-04-22 15:55:17,075 | INFO |   Saved -> stacking_calibration.png
+2026-04-22 15:55:17,242 | INFO |   Saved -> stacking_confusion_matrix.png
+2026-04-22 15:55:17,721 | INFO |   Saved -> stacking_threshold_sensitivity.png
+2026-04-22 15:55:18,000 | INFO |   Saved -> stacking_experiment_comparison.png
+2026-04-22 15:55:18,000 | INFO | 
+======================================================================
+2026-04-22 15:55:18,000 | INFO | STACKING ENSEMBLE (WEIGHTED HYBRID) — COMPLETE
+2026-04-22 15:55:18,000 | INFO | ======================================================================
+2026-04-22 15:55:18,000 | INFO |   AUROC       : 0.9786 [0.9683-0.9875]
+2026-04-22 15:55:18,000 | INFO |   AUPRC       : 0.9534 [0.9314-0.9875]
+2026-04-22 15:55:18,000 | INFO |   Brier       : 0.0503
+2026-04-22 15:55:18,000 | INFO |   Sensitivity : 0.9075
+2026-04-22 15:55:18,000 | INFO |   Specificity : 0.9348
+2026-04-22 15:55:18,000 | INFO |   PPV         : 0.8396
+2026-04-22 15:55:18,000 | INFO |   F1          : 0.8722
+2026-04-22 15:55:18,000 | INFO |   Threshold   : 0.2327
+2026-04-22 15:55:18,000 | INFO | 
+  Meta-learner : CatBoost=6.0482 | FT-T=1.8584
+2026-04-22 15:55:18,000 | INFO |   DeLong vs Exp D : z=0.5580, p=0.5768
+2026-04-22 15:55:18,000 | INFO |   DeLong vs FT-T  : z=1.6976, p=0.0896
+2026-04-22 15:55:18,000 | INFO |   DeLong vs Exp A : z=-1.5296, p=0.1261
+2026-04-22 15:55:18,000 | INFO |   DELTA AUPRC vs real-only : -0.0157
+2026-04-22 15:55:18,000 | INFO | 
+  Runtime  : 29.7 min
+2026-04-22 15:55:18,000 | INFO |   Models   -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\stacking\models
+2026-04-22 15:55:18,000 | INFO |   Results  -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\stacking\results
+2026-04-22 15:55:18,000 | INFO |   Figures  -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\stacking\figures
+2026-04-22 15:55:18,000 | INFO |   Log      -> D:\pediatric-sepsis-PIC\sepsis_ml\synthetic\stacking\logs\synthetic_stacking.log
+2026-04-22 15:55:18,000 | INFO | ======================================================================

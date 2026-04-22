@@ -1,17 +1,17 @@
 {
-  "best_cv_auprc": 0.9892614944131047,
+  "best_cv_auprc": 0.9880579086452965,
   "best_params": {
-    "iterations": 793,
-    "learning_rate": 0.14447746112718687,
-    "depth": 5,
-    "l2_leaf_reg": 5.628109945722504,
-    "bagging_temperature": 0.5924145688620425,
-    "random_strength": 0.09290082543999545,
-    "border_count": 168,
-    "class_weight_pos": 2.0968344329055206
+    "iterations": 207,
+    "learning_rate": 0.1601531217136121,
+    "depth": 8,
+    "l2_leaf_reg": 7.561064512368886,
+    "bagging_temperature": 0.7712703466859457,
+    "random_strength": 0.14808930346818072,
+    "border_count": 112,
+    "class_weight_pos": 1.905541708337954
   },
-  "n_trials": 5,
-  "real_sample_weight": 4.5,
+  "n_trials": 10,
+  "real_sample_weight": 4,
   "synth_sample_weight": 1.0,
-  "timestamp": "2026-04-22T00:30:48"
+  "timestamp": "2026-04-22T13:25:01"
 }
