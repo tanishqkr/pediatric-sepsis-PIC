@@ -1,0 +1,9 @@
+{
+  "catboost_coefficient": 6.048150055409375,
+  "fttransformer_coefficient": 1.8584177537658448,
+  "intercept": -4.097034132655092,
+  "meta_learner_weighted": true,
+  "real_weight": 4.0,
+  "synth_weight": 1.0,
+  "note": "Weighted fit: real rows 4x influence. Consistent with full pipeline."
+}

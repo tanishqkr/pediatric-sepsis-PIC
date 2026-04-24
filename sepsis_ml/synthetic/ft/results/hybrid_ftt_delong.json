@@ -1,0 +1,28 @@
+{
+  "vs_phase6_ftt": {
+    "hybrid_ftt_auroc": 0.9637848705704951,
+    "phase6_ftt_auroc": 0.957728072379995,
+    "z": 0.48688219017323153,
+    "p": 0.6263418207515097,
+    "significant": false,
+    "direction": "Hybrid FT-T better"
+  },
+  "vs_expD_catboost": {
+    "hybrid_ftt_auroc": 0.9637848705704951,
+    "expD_catboost_auroc": 0.9775571751696406,
+    "z": -1.4030667440532625,
+    "p": 0.1605969368988971,
+    "significant": false,
+    "direction": "Exp D CatBoost better"
+  },
+  "vs_expA_real_only": {
+    "hybrid_ftt_auroc": 0.9637848705704951,
+    "expA_auroc": 0.9867931641115858,
+    "z": -2.196080785822279,
+    "p": 0.028086161593970482,
+    "significant": true,
+    "direction": "Real-only better",
+    "delta_auroc": -0.023008293541090685,
+    "delta_auprc": -0.048295913591293926
+  }
+}
