@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PIC Sepsis Pipeline Diagram</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 48px 32px;
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    .pipe-grid {
+      max-width: 1500px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      grid-template-rows: auto 20px auto;
+      column-gap: 14px;
+      row-gap: 48px;
+      align-items: start;
+    }
+
+    /* ---- all boxes exactly the same (wider & taller) ---- */
+    .box {
+      background: #ffffff;
+      border: 1px solid #d9d9d6;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      height: 100%;
+      width: 230px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box-head {
+      padding: 18px 20px 12px 20px;
+      font-weight: 700;
+      font-size: 19px;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
+    .box-head .step {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.7;
+      margin-bottom: 2px;
+      letter-spacing: 0.02em;
+    }
+
+    .box-body {
+      padding: 8px 20px 18px 20px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #18181a;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .box-body ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    /* .box-body li {
+      margin-bottom: 7px;
+    } */
+
+    .box-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    .box-body .sub {
+      font-size: 14px;
+      color: #3d3d3d;
+    }
+
+    /* ---- arrows ---- */
+    .arrow-h,
+    .arrow-v {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a3a29c;
+      align-self: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .arrow-h svg,
+    .arrow-v svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+
+    /* ---- background colours ---- */
+    .bg-raw {
+      background: #E6F1FB;
+      color: #0C447C;
+    }
+
+    .bg-step1 {
+      background: #EAF3DE;
+      color: #27500A;
+    }
+
+    .bg-step2 {
+      background: #FAEEDA;
+      color: #633806;
+    }
+
+    .bg-step3 {
+      background: #EEEDFE;
+      color: #3C3489;
+    }
+
+    .bg-step4 {
+      background: #FAECE7;
+      color: #712B13;
+    }
+
+    .bg-step5 {
+      background: #FBEAF0;
+      color: #72243E;
+    }
+
+    .bg-step6 {
+      background: #E1F5EE;
+      color: #085041;
+    }
+
+    .bg-model {
+      background: #E6F1FB;
+      color: #0C447C;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="pipe-grid">
+
+    <!-- ===== ROW 1 (TOP) ===== -->
+
+    <!-- Raw PIC Tables – col 1 -->
+    <div class="box" style="grid-column:1; grid-row:1;">
+      <div class="box-head bg-raw">Raw PIC Tables</div>
+      <div class="box-body">
+        <ul>
+          <li>12,881 patients</li>
+          <li>13,941 ICU stays</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- arrow col 2 -->
+    <div class="arrow-h" style="grid-column:2; grid-row:1;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
+    </div>
+
+    <!-- Step 1 – col 3 -->
+    <div class="box" style="grid-column:3; grid-row:1;">
+      <div class="box-head bg-step1"><span class="step">Step 1</span>Cohort Extraction</div>
+      <div class="box-body">
+        <ul>
+          <li>Age/repeat/LOC excl. → 12,447</li>
+          <li>No infection excl. (−9,284) → 3,163</li>
+          <li>Final: 3,163 stays</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- arrow col 4 -->
+    <div class="arrow-h" style="grid-column:4; grid-row:1;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
+    </div>
+
+    <!-- Step 2 – col 5 -->
+    <div class="box" style="grid-column:5; grid-row:1;">
+      <div class="box-head bg-step2"><span class="step">Step 2</span>Physiological Cleaning</div>
+      <div class="box-body">
+        <ul>
+          <li>Unit conversion (HgB g/L → g/dL)</li>
+          <li>Outlier bound removal</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- arrow col 6 -->
+    <div class="arrow-h" style="grid-column:6; grid-row:1;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
+    </div>
+
+    <!-- Step 3 – col 7 -->
+    <div class="box" style="grid-column:7; grid-row:1;">
+      <div class="box-head bg-step3"><span class="step">Step 3</span>Feature Engineering</div>
+      <div class="box-body">
+        <ul>
+          <li>306 candidate features</li>
+          <li>5 stats: max/min/mean</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- arrow col 8 -->
+    <div class="arrow-h" style="grid-column:8; grid-row:1;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12" />
+        <polyline points="12 5 19 12 12 19" />
+      </svg>
+    </div>
+
+    <!-- Step 4 – col 9 -->
+    <div class="box" style="grid-column:9; grid-row:1;">
+      <div class="box-head bg-step4"><span class="step">Step 4</span>Phoenix Labeling</div>
+      <div class="box-body">
+        <ul>
+          <li>864 sepsis cases</li>
+          <li>27.3% prevalence (CV + coag. domains)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== ROW 2 (GAP – down arrow) ===== -->
+    <div class="arrow-v" style="grid-column:9; grid-row:2;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <polyline points="5 12 12 19 19 12" />
+      </svg>
+    </div>
+
+    <!-- ===== ROW 3 (BOTTOM) ===== -->
+
+    <!-- Model-Ready Dataset – col 5 -->
+    <div class="box" style="grid-column:5; grid-row:3;">
+      <div class="box-head bg-model">Model-Ready Dataset</div>
+      <div class="box-body">
+        <ul>
+          <li>225 Features</li>
+          <li>3,163 Samples</li>
+          <li>(2,530 train / 633 test)</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- arrow ← col 6 -->
+    <div class="arrow-h" style="grid-column:6; grid-row:3;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12" />
+        <polyline points="12 5 5 12 12 19" />
+      </svg>
+    </div>
+
+    <!-- Step 5 – col 7 (Train/Test Split) -->
+    <div class="box" style="grid-column:7; grid-row:3;">
+      <div class="box-head bg-step5"><span class="step">Step 5</span>Train/Test Split + Median Imputation</div>
+      <div class="box-body">
+        <ul>
+          <li>Train: 2,530</li>
+          <li>Test: 633</li>
+          <li>27.3% prevalence preserved (stratified)</li>
+          <li>Median fit on train only</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- arrow ← col 8 -->
+    <div class="arrow-h" style="grid-column:8; grid-row:3;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12" />
+        <polyline points="12 5 5 12 12 19" />
+      </svg>
+    </div>
+
+    <!-- Step 6 – col 9 (Dataset Construction) -->
+    <div class="box" style="grid-column:9; grid-row:3;">
+      <div class="box-head bg-step6"><span class="step">Step 6</span>Dataset Construction</div>
+      <div class="box-body">
+        <ul>
+          <li>Strip 10 cols (Phoenix score/sparse/ID) → 225 features</li>
+          <li>Option B: 3,163 samples</li>
+          <li>Weights {0:1, 1:2.7}</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
