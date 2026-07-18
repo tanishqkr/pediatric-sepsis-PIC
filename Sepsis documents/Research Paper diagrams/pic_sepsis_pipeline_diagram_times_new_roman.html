@@ -13,7 +13,7 @@
       margin: 0;
       padding: 48px 32px;
       background: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-family: "Times New Roman", Times, serif;
     }
 
     .pipe-grid {
@@ -35,7 +35,7 @@
       overflow: hidden;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
       height: 100%;
-      width: 230px;
+      width: 245px;
       display: flex;
       flex-direction: column;
     }
@@ -43,14 +43,14 @@
     .box-head {
       padding: 18px 20px 12px 20px;
       font-weight: 700;
-      font-size: 19px;
+      font-size: 20px;
       line-height: 1.3;
       flex-shrink: 0;
     }
 
     .box-head .step {
       display: block;
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 600;
       opacity: 0.7;
       margin-bottom: 2px;
@@ -59,7 +59,7 @@
 
     .box-body {
       padding: 8px 20px 18px 20px;
-      font-size: 15px;
+      font-size: 17px;
       line-height: 1.65;
       color: #18181a;
       flex: 1;
@@ -82,7 +82,7 @@
     }
 
     .box-body .sub {
-      font-size: 14px;
+      font-size: 17px;
       color: #3d3d3d;
     }
 
@@ -221,7 +221,7 @@
       <div class="box-body">
         <ul>
           <li>306 candidate features</li>
-          <li>5 stats: max/min/mean</li>
+          <li>5 stats: max/min/mean/first/count</li>
         </ul>
       </div>
     </div>
@@ -263,8 +263,9 @@
       <div class="box-body">
         <ul>
           <li>225 Features</li>
-          <li>3,163 Samples</li>
-          <li>(2,530 train / 633 test)</li>
+          <li>3,163 Samples (Option B)</li>
+          <li>2,530 train / 633 test</li>
+          <li>Weights {0:1, 1:2.7}</li>
         </ul>
 
       </div>
@@ -279,15 +280,14 @@
       </svg>
     </div>
 
-    <!-- Step 5 – col 7 (Train/Test Split) -->
+    <!-- Step 6 – col 7 (Leakage Audit, Phase 0) -->
     <div class="box" style="grid-column:7; grid-row:3;">
-      <div class="box-head bg-step5"><span class="step">Step 5</span>Train/Test Split + Median Imputation</div>
+      <div class="box-head bg-step6"><span class="step">Step 6 — Phase 0</span>Leakage Audit</div>
       <div class="box-body">
         <ul>
-          <li>Train: 2,530</li>
-          <li>Test: 633</li>
-          <li>27.3% prevalence preserved (stratified)</li>
-          <li>Median fit on train only</li>
+          <li>305 features after structural cleaning + _was_measured dedup</li>
+          <li>Removes 80 leaky: 40 count + 6 vaso + 33 was_measured + 1 los_hours</li>
+          <li>→ 225 final features</li>
         </ul>
       </div>
     </div>
@@ -301,14 +301,15 @@
       </svg>
     </div>
 
-    <!-- Step 6 – col 9 (Dataset Construction) -->
+    <!-- Step 5 – col 9 (Dataset Construction & Split) -->
     <div class="box" style="grid-column:9; grid-row:3;">
-      <div class="box-head bg-step6"><span class="step">Step 6</span>Dataset Construction</div>
+      <div class="box-head bg-step5"><span class="step">Step 5</span>Dataset Construction &amp; Split</div>
       <div class="box-body">
         <ul>
-          <li>Strip 10 cols (Phoenix score/sparse/ID) → 225 features</li>
-          <li>Option B: 3,163 samples</li>
-          <li>Weights {0:1, 1:2.7}</li>
+          <li>Option A: 12,447 rows · Option B: 3,163 rows</li>
+          <li>80/20 stratified split, 27.3% prevalence preserved</li>
+          <li>Median imputation fit on train only</li>
+          <li>Raw cols: Option B 380 · Option A 383</li>
         </ul>
       </div>
     </div>
