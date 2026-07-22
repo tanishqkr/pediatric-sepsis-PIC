@@ -1,0 +1,2268 @@
+\documentclass[final,3p,times]{elsarticle}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf}
+\usepackage{lineno}
+\graphicspath{{figures/}}
+\usepackage[hidelinks]{hyperref}
+\usepackage{placeins}
+
+\journal{Computers in Biology and Medicine}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Early Prediction of Pediatric Sepsis Using Machine Learning,
+Deep Learning, and Explainable AI on the PIC Database: A Comparative
+Study Using Phoenix Sepsis Criteria}
+
+\author[nmims]{Tanish Porwal\fnref{equal}}
+\author[nmims]{Uzair Teli\corref{cor1}\fnref{equal}}
+\author[nmims]{Shruti Sharma}
+
+\fntext[equal]{Tanish Porwal and Uzair Teli contributed equally to this work and share first authorship.}
+
+\cortext[cor1]{Corresponding author. Email address: uzairteli7@gmail.com}
+
+\affiliation[nmims]{organization={Department of Engineering,
+             SVKM's NMIMS Indore Campus},
+             city={Indore},
+             country={India}}
+
+\begin{abstract}
+Sepsis remains a leading cause of paediatric intensive care mortality, and existing prediction models are largely trained on adult populations using outdated diagnostic definitions, leaving a gap for paediatric-specific, reproducible work on open data. This study develops a hybrid framework for early prediction of paediatric sepsis on the Pediatric Intensive Care (PIC) database, using the Phoenix Sepsis Criteria as the labelling standard. Using PIC database version 1.1.0 ($n = 3{,}163$ infection-restricted patients), a systematic leakage audit across 306 candidate features removed vasoactive medication indicators and measurement-frequency features carrying label information by construction. The resulting 225-feature dataset was trained using six baseline classifiers, a tuned CatBoost model, three deep learning architectures (FT-Transformer, ResNet, TabNet), a CatBoost--FT-Transformer stacking ensemble (the CBFTTS-SA model), and a CTGAN-based synthetic augmentation pipeline with Iman--Conover correlation correction. Tuned CatBoost achieved AUROC 0.9868 (AUPRC 0.9691, Brier Score 0.0385) at a recommended threshold of 0.365, corresponding to 90\% sensitivity and 96.3\% specificity. The CBFTTS-SA model achieved a statistically indistinguishable AUROC of 0.9851 (DeLong $p = 0.388$) and is presented as the study's forward-looking architecture, since transformer-based models are expected to close the gap with gradient boosting as training data scales; CatBoost remains the stronger, fully interpretable choice at the present cohort size. DeLong tests confirmed CatBoost's significant superiority over five non-CatBoost baselines; FT-Transformer alone was statistically non-inferior ($p = 0.169$) but with substantially lower specificity (0.852 vs 0.963). TreeSHAP analysis identified \texttt{lactate\_max}, \texttt{D-dimer\_max}, and \texttt{platelets\_min} as dominant predictors, mapping onto Phoenix cardiovascular and coagulation domains. Subgroup analysis confirmed robust generalisation across all paediatric age bands (AUROC 0.970--1.000). To the best of our knowledge, this is the first published study combining CatBoost, Phoenix labelling, SHAP explainability, and a CatBoost--Transformer stacking ensemble on the PIC database in one reproducible pipeline.
+\end{abstract}
+
+\begin{keyword}
+pediatric sepsis \sep machine learning \sep CatBoost \sep
+Phoenix Sepsis Criteria \sep SHAP \sep explainable AI \sep
+PIC database \sep stacking ensemble \sep synthetic data augmentation
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+% =============================================================
+\section{Introduction}
+\label{sec:literature_review}
+
+Sepsis is a life-threatening condition in which the immune
+system's response to infection damages the body's own tissues and
+organs rather than resolving the infection; in children it can
+progress from suspected infection to multi-organ failure within
+hours, and delays in recognition of even an hour have been
+associated with measurable increases in mortality  a
+relationship first quantified in adult septic shock~\cite{kumar2006}
+and corroborated in paediatric critical care analyses~\cite{schlapbach2024}.
+Globally, sepsis is one of the most fatal conditions in paediatric
+intensive care units (PICUs), with an estimated 25 million
+paediatric sepsis cases annually and in-hospital mortality ranging
+from roughly 7\% for sepsis to over 33\% for septic shock in
+lower-resource settings~\cite{sanchezpinto2024, schlapbach2024}. This scale of
+burden, combined with the speed at which children deteriorate,
+creates a genuine clinical need for prediction systems that can
+flag at-risk patients before organ failure becomes irreversible.
+
+Children are not small adults with respect to sepsis. Their
+immune systems, organs, and vital-sign norms are still maturing,
+and thresholds that indicate danger in adults may fall within the
+normal range for young children~\cite{sanchezpinto2024}. Blood
+pressure, respiratory rate, and neurological baselines all differ
+by age. The bulk of published sepsis ML models do not account for
+this: they are trained on adult ICU data, most commonly
+MIMIC-III and MIMIC-IV, and these representational assumptions do
+not transfer cleanly to children~\cite{le2019, yang2023}.
+Pediatric-specific work on open datasets, with rigorous leakage
+controls and a clinically current labelling standard, remains rare.
+
+For years, the diagnostic standard was SIRS (Systemic Inflammatory
+Response Syndrome) criteria, adapted for paediatric populations by
+Goldstein et al.~\cite{goldstein2005}, which labels sepsis when a
+child shows abnormality in two or more of heart rate, respiratory
+rate, temperature, and white blood cell count. SIRS is
+non-specific: fever from a cold, post-surgical inflammation, and
+crying can all trigger its thresholds without any underlying
+infection, producing a high false-positive rate that leads to
+alert fatigue and unnecessary interventions. PELOD-2 (Pediatric
+Logistic Organ Dysfunction score) improved on this for measuring
+organ-dysfunction severity in critically ill children~\cite{leteurtre2013},
+but it was designed to assess existing dysfunction rather than
+predict sepsis onset. The Phoenix Sepsis Score, developed by
+Sanchez-Pinto et al.\ and validated through an international
+consensus effort by Schlapbach et al., replaces the proxy-based
+SIRS approach with a direct measure of organ dysfunction across
+four domains  respiratory, cardiovascular, coagulation, and
+neurological  validated against over three million patient
+encounters~\cite{sanchezpinto2024, schlapbach2024}. A total
+Phoenix score of two or above indicates sepsis. This study uses
+Phoenix as its labelling standard because it is the only
+definition that operationalises actual organ failure rather than
+systemic inflammation as a stand-in~\cite{sanchezpinto2024}.
+
+An important methodological constraint must be acknowledged up
+front. The Pediatric Intensive Care (PIC) database, the data
+source for this study, does not record the fraction of inspired
+oxygen (FiO\textsubscript{2}) or mechanical ventilation parameters,
+making the respiratory Phoenix component non-computable; the
+absence of Glasgow Coma Scale (GCS) documentation similarly renders
+the neurological component zero throughout the cohort~\cite{zeng2020}.
+Sepsis classification in this study therefore rests on the
+cardiovascular and coagulation Phoenix domains alone, a limitation
+shared with other machine learning studies applying Phoenix
+criteria to datasets with incomplete physiological coverage~\cite{chanci2025}.
+This does not undermine the validity of the labelling approach,
+given that cardiovascular instability and coagulation dysfunction
+are consistently identified as the dominant organ-failure
+signatures driving mortality and deterioration in paediatric
+sepsis.
+
+Machine learning applied to sepsis prediction has expanded
+considerably over the past decade: Fleuren et al.\ catalogued 130
+published models across 28 studies in a single systematic review, and Yang
+et al.\ examined 23 eligible studies with a narrower methodological
+lens, both arriving at the conclusion that predictive performance
+has improved with richer feature sets and more sophisticated
+algorithms~\cite{fleuren2020, yang2023}. This body of work carries
+two structural problems. The first is dataset bias: MIMIC-III and
+MIMIC-IV dominate training across the field, and adult ICU
+physiology does not transfer cleanly to children, whose
+age-dependent vital-sign ranges, immune responses, and organ
+dysfunction signatures differ substantially from adult
+norms~\cite{yang2023, le2019}. The second is methodological
+weakness: Deng et al.\ showed that data leakage, inconsistent
+outcome definitions, and weak validation designs appear
+persistently across clinical ML studies, overstating the actual
+predictive capability of many published models~\cite{deng2022}.
+Le et al.\ trained one of the earlier paediatric-specific models
+on UCSF PICU data, reporting an AUROC of 0.916 at the time of
+onset with prediction up to four hours before clinical sepsis
+onset, establishing that early prediction was achievable in
+children, though replication across hospital systems has been
+limited~\cite{le2019}.
+
+Among architectures applied to structured clinical data, gradient
+boosted decision trees have repeatedly come out on top. CatBoost,
+XGBoost, and LightGBM handle non-linear feature interactions and
+mixed variable types without the preprocessing overhead neural
+networks require, and their native class-imbalance handling suits
+ICU datasets where positive cases are rare, outperforming deep
+learning on moderate-sized tabular datasets
+repeatedly~\cite{gorishniy2021, chanci2025}. This preference has
+been confirmed empirically in the paediatric sepsis literature.
+Chanci et al.\ applied CatBoost with Phoenix Sepsis Criteria
+labelling on a US hospital dataset and reported an AUROC of 0.98,
+including a SHAP explainability analysis, though the underlying
+data remains proprietary and inaccessible for external
+validation~\cite{chanci2025}. Han et al.\ compared
+five tree-based algorithms -- extra trees, random forest, LightGBM,
+XGBoost, and CatBoost -- for paediatric bloodstream infection
+prediction, with random forest achieving the best performance
+(AUROC 0.874 on the derivation set, 0.762 on external
+validation)~\cite{han2024}. Shi et al.\
+applied an XGBoost and GRU-based recurrent neural network
+framework with SHAP interpretability to predict sepsis in
+paediatric patients transitioning from the emergency department to
+the PICU, achieving an AUROC of 0.915~\cite{shi2025}.
+
+Two problems recur consistently enough across the sepsis ML
+literature to warrant treatment as active design decisions rather
+than background noise. The first is class imbalance: in the cohort
+used here, sepsis-positive patients are outnumbered roughly three
+to one. SMOTE and other synthetic oversampling strategies are the
+standard response, but t-SNE visualisation of this dataset's
+feature space showed substantial class overlap between
+sepsis-positive and sepsis-negative patients, and generating
+synthetic minority samples in a region where the classes are not
+cleanly separable risks inflating performance metrics without
+improving genuine discriminative capability; class weights were
+used instead, a standard approach for clinical
+ML~\cite{deng2022}. The second is leakage, which Deng et al.\
+identified as widespread and underreported across clinical ML
+studies~\cite{deng2022}; a systematic pre-training audit of
+candidate features was conducted in this study, detailed in
+Section~\ref{subsec:leakage}.
+
+Deep learning has been applied to sepsis prediction with
+meaningful success, though much of that success has come from
+sequential or time-series formulations. Lauritsen et al.\ trained
+LSTM-based networks on electronic health record
+sequences~\cite{lauritsen2020}; Moor et al.\ applied Gaussian
+Process Temporal Convolutional Networks with dynamic time warping
+to early sepsis recognition~\cite{moor2019}; Kamaleswaran et al.\
+used convolutional neural networks to predict sepsis up to eight
+hours before onset in a paediatric cohort~\cite{kamaleswaran2018}.
+These results depend on longitudinal data structures that are not
+always available or consistently recorded across institutions.
+
+For purely tabular data, two architectures have attracted more
+recent attention. Gorishniy et al.\ introduced the Feature
+Tokenizer Transformer (FT-Transformer), which treats each tabular
+feature as an individual token processed through multi-head
+self-attention, outperforming prior deep learning methods across
+multiple tabular benchmarks while remaining competitive with
+gradient boosted trees~\cite{gorishniy2021}. Arik and Pfister
+introduced TabNet, which uses sequential attention to select
+features instance by instance, giving it built-in interpretability
+without post-hoc methods~\cite{arik2021}. This study benchmarks
+both architectures, plus a ResNet baseline, against tuned CatBoost,
+and combines CatBoost with the FT-Transformer in a stacking
+ensemble  named the \textbf{CBFTTS-SA model} in this study  that
+forms the paper's featured architecture.
+
+The PIC training cohort used here contains 2,530 patients, a
+sample size that is workable but small enough to raise the
+question of whether synthetic augmentation could improve model
+robustness. CTGAN, introduced by Xu et al., is a conditional
+generative adversarial network for tabular data using
+mode-specific normalisation and conditional sampling~\cite{xu2019},
+but it is well documented to generate features from marginal
+distributions independently, destroying correlation
+structure~\cite{xu2019}. In this dataset the problem was severe:
+the Spearman correlation between INR and PT in real patients was
+0.999, reflecting their shared biological pathway, while vanilla
+CTGAN reduced this to 0.016. A three-stage correction pipeline was
+developed for this study: CTGAN trained separately per class,
+Iman-Conover rank correlation injection~\cite{iman1982} to restore
+the real correlation structure, and a zero-inflation correction for
+heavy-zero-mass features.
+
+A model that performs well on a held-out test set is not
+automatically useful in a clinical environment; trust requires
+that the person acting on a prediction can understand why it was
+made. A false positive sepsis alert carries real costs
+(unnecessary antibiotics, invasive procedures, alert fatigue), and
+a missed true positive can be fatal, so asking a clinician to act
+on an unexplained probability score is asking them to outsource
+judgement to a system they cannot interrogate~\cite{athukorala2026}.
+Regulatory frameworks such as the EU AI Act now classify high-risk
+medical AI in ways that effectively require interpretability as a
+condition of deployment. Among post-hoc explanation methods, SHAP
+has become the most widely adopted: Lundberg and Lee grounded
+feature attribution in Shapley values from cooperative game
+theory~\cite{lundberg2017}, and SHAP is the only additive
+attribution method that simultaneously satisfies the local
+accuracy, missingness, and consistency axioms~\cite{lundberg2017}.
+For tree-based models, the TreeSHAP algorithm computes exact
+Shapley values without sampling approximation. Prior work on the
+PIC database has already demonstrated that SHAP surfaces clinically
+meaningful patterns from Chinese PICU data: Shen et al.\ applied
+CatBoost with SHAP for AKI mortality prediction~\cite{shen2025},
+Zhou et al.\ used SHAP for DIC prediction~\cite{zhou2025}, and
+Huang et al.\ incorporated SHAP into a sepsis survival
+analysis~\cite{huang2025}. Outside the PIC context, Yang et al.\
+applied explainable ensemble ML with SHAP to MIMIC-IV sepsis data
+to identify clinically relevant feature contributions~\cite{jiang2023}.
+
+The PIC database, described by Zeng et al., is the first publicly
+accessible intensive care database drawn from a Chinese paediatric
+population, maintained by the Children's Hospital of Zhejiang
+University School of Medicine~\cite{zeng2020}. Its public
+availability makes it one of the few resources outside North
+America and Europe on which paediatric clinical ML models can be
+openly developed and validated, and it has been used across a
+range of prediction tasks: sepsis survival analysis~\cite{huang2025},
+AKI mortality with CatBoost and SHAP~\cite{shen2025}, DIC
+prediction~\cite{zhou2025}, ensemble-based ICU mortality
+prediction~\cite{hong2021}, and the triglyceride-glucose index in
+paediatric sepsis mortality~\cite{ding2026}. Cohort construction
+and database characteristics for the present study are detailed in
+Section~\ref{subsec:dataset_preprocessing}.
+
+Despite this volume of research, a specific and reproducible
+combination has not appeared in the published literature. Three
+points illustrate the gap most directly:
+
+\begin{itemize}
+    \item Chanci et al.\ applied CatBoost with Phoenix Sepsis
+    Criteria labelling and reached strong predictive performance
+    (AUROC 0.98) with a SHAP explainability layer, but the work
+    relied on proprietary US hospital data, so neither the dataset
+    nor the trained model is accessible for external
+    validation~\cite{chanci2025}.
+    \item Shen et al.\ used CatBoost with SHAP on the PIC database,
+    but the target outcome was acute kidney injury mortality rather
+    than sepsis onset, so the clinical domain and labelling logic
+    are entirely different~\cite{shen2025}.
+    \item Huang et al.\ worked with PIC data on a sepsis-related
+    question but framed it as survival analysis, without Phoenix
+    criteria for case definition and without any explainability
+    component~\cite{huang2025}.
+\end{itemize}
+
+No published study has brought all four elements together in a
+single pipeline: CatBoost as a primary model, Phoenix Sepsis
+Criteria as the labelling standard, SHAP-based explainability, and
+the PIC database as the data source. Each missing element in the
+prior work represents a real limitation, whether in
+reproducibility, clinical validity of the outcome definition, or
+the absence of an interpretive layer clinicians can engage with.
+
+This study fills that gap with a complete machine learning, deep
+learning, and explainable AI pipeline for early paediatric sepsis
+prediction on the PIC database, using Phoenix Sepsis Criteria as
+the labelling standard throughout. To the best of the authors'
+knowledge, this is the first published study combining CatBoost,
+Phoenix Sepsis Criteria labelling, SHAP explainability, and the PIC
+database in a single pipeline; as authors of this work, we developed
+a hybrid framework composed of the following four components:
+
+\begin{itemize}
+    \item A systematic leakage audit in which 306 candidate
+    features were audited before any model was trained, identifying
+    and removing features that carried label information by
+    construction.
+    \item A principled deep learning benchmark in which three
+    architectures  FT-Transformer, ResNet, and TabNet  were
+    benchmarked against CatBoost using DeLong significance testing,
+    and CatBoost was combined with the FT-Transformer in a stacking
+    ensemble, named the \textbf{CBFTTS-SA model} in this study and
+    presented as the paper's featured architecture, on the basis
+    that transformer-class models are expected to close the gap
+    with gradient boosting as training data scales beyond this
+    cohort's moderate size.
+    \item A synthetic data augmentation study in which CTGAN~\cite{xu2019}
+    was extended with Iman-Conover rank correlation injection~\cite{iman1982}
+    to address CTGAN's known correlation-destruction problem, and
+    evaluated honestly against real-data training.
+    \item A SHAP interaction analysis in which a lactate--platelets
+    axis and an INR--D-dimer coagulopathy axis were identified,
+    mapping directly onto the cardiovascular and coagulation
+    Phoenix domains and providing biological grounding for the
+    CatBoost component's predictions.
+    \item A performance comparison in which tuned CatBoost is the
+    strongest and fully interpretable model at the present cohort
+    size (AUROC 0.9868), while the CBFTTS-SA model is statistically
+    indistinguishable from it (AUROC 0.9851, $p = 0.388$) and is
+    identified as the architecture with the greatest scaling
+    potential, on the basis that transformer-class models are
+    expected to close the gap with gradient boosting as training
+    data grows beyond this cohort's moderate size  leading to the
+    conclusion that CatBoost remains the stronger choice for
+    immediate deployment today, but the CBFTTS-SA model is positioned to
+    become the superior architecture as larger paediatric ICU
+    datasets become available.
+\end{itemize}
+
+The remainder of this paper is organised as follows:
+Section~\ref{sec:methods} describes the dataset, preprocessing, and
+methods; Section~\ref{sec:results} presents experimental results;
+Section~\ref{sec:discussion} discusses findings and limitations;
+and Section~\ref{sec:conclusion} concludes.
+
+% =============================================================
+\section{Materials and Methods}
+\label{sec:methods}
+
+\subsection{Data Pipeline Overview}
+\label{subsec:dataset_preprocessing}
+
+Figure~\ref{fig:cohort_pipeline} gives a visual overview of the
+six-stage cohort-construction and preprocessing pipeline described
+in this subsection, from the raw PIC tables through to the
+model-ready dataset. The stepwise counts shown in the figure are
+under final reconciliation against Table~\ref{tab:cohort_flow} and
+the text below; the entry counts, intermediate cohort sizes, and
+sepsis-prevalence figures reported in prose throughout this
+subsection are the authoritative values for this study.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{cohort_preprocessing_pipeline}
+    \caption{Overview of the cohort-construction and preprocessing
+    pipeline, from raw PIC tables through cohort extraction,
+    physiological cleaning, feature engineering, Phoenix labelling,
+    dataset construction, and the train/test split with median
+    imputation, yielding the final model-ready dataset.}
+    \label{fig:cohort_pipeline}
+\end{figure}
+
+\subsubsection{Data Source}
+\label{subsec:datasource}
+
+This study uses the Pediatric Intensive Care (PIC) database
+(version~1.1.0), a publicly available, de-identified collection
+of electronic health records from paediatric patients admitted to
+the intensive care unit at the Children's Hospital of Zhejiang
+University School of Medicine in China~\cite{zeng2020}. The
+dataset is accessible to credentialed researchers through
+PhysioNet and spans routine clinical care collected between 2010
+and 2018, covering patient demographics, laboratory measurements,
+vital signs, medications, microbiology results, fluid balance,
+and clinical symptoms. All timestamps are shifted to preserve
+patient privacy while maintaining the relative temporal ordering
+of events, making valid time-series analysis possible.
+
+The database contains 12,881 unique patients across 13,941 ICU
+stays and is one of the largest publicly available paediatric
+intensive care datasets. Its relational structure mirrors that of
+the widely benchmarked MIMIC database, adapted for a paediatric
+population. Table~\ref{tab:pic_summary} summarises the key
+characteristics of the PIC database.
+
+\begin{table}[htbp]
+\centering
+\caption{Summary characteristics of the PIC database v1.1.0.}
+\label{tab:pic_summary}
+\small
+\begin{tabular}{ll}
+\toprule
+\textbf{Attribute} & \textbf{Value} \\
+\midrule
+Dataset             & Pediatric Intensive Care (PIC) \\
+Version             & v1.1.0 \\
+Total patients      & 12,881 \\
+Total ICU stays     & 13,941 \\
+Time period         & 2010--2018 \\
+Population          & Paediatric (age 0--18) \\
+Data type           & EHR (labs, vitals, meds, symptoms) \\
+Clinical tables     & 11 (+ 3 reference tables) \\
+Source              & Children's Hospital, Zhejiang University \\
+Access              & PhysioNet (credentialed) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To construct the feature set required for early sepsis onset
+prediction, data were extracted from multiple relational tables
+within the PIC database and linked using patient and ICU stay
+identifiers to form a unified representation of each admission.
+The primary clinical tables used were: \texttt{PATIENTS},
+\texttt{ADMISSIONS}, and \texttt{ICUSTAYS} for demographics and
+admission metadata; \texttt{LABEVENTS} and \texttt{CHARTEVENTS}
+for laboratory results and physiological measurements;
+\texttt{PRESCRIPTIONS}, \texttt{INPUTEVENTS}, and
+\texttt{OUTPUTEVENTS} for treatment and fluid records;
+\texttt{MICROBIOLOGYEVENTS} for infection-related data; and
+\texttt{EMR\_SYMPTOMS} and \texttt{SURGERY\_INFO} for clinical
+context. Three reference tables  \texttt{D\_ITEMS},
+\texttt{D\_LABITEMS}, and \texttt{D\_ICD\_DIAGNOSES}  were
+used for variable mapping only and did not contribute directly to
+the feature matrices.
+
+\subsubsection{Cohort Definition}
+\label{subsec:cohort}
+
+The initial pool comprised 13,941 ICU stays from 12,881 unique
+paediatric patients. A sequential filtering and restriction
+process was applied to define the analysis cohort. Stays where
+the patient's age fell outside the range of 0 to 18 years were
+excluded ($n = 42$). Repeat ICU admissions were removed, retaining
+only each patient's first stay to ensure observation independence
+($n = 1{,}060$ excluded). Stays with a total ICU length of stay
+under six hours were excluded as they provide insufficient
+physiological observation time for meaningful feature extraction
+($n = 392$). The resulting intermediate cohort comprised 12,447
+ICU stays. A further restriction to patients with clinically
+suspected infection was then applied, as the prediction model is
+intended for deployment after infection suspicion rather than
+across all PICU admissions indiscriminately ($n = 9{,}284$
+excluded). The final modelling cohort comprised 3,163 stays.
+Table~\ref{tab:cohort_flow} details each step. The majority of the
+initial exclusions arose from repeat ICU admissions (7.6\%),
+removed to preserve statistical independence of observations; the
+restriction to patients with suspected infection (74.6\% of the
+intermediate cohort) reflects the intended clinical deployment
+context of the model.
+
+\begin{table}[htbp]
+\centering
+\caption{Cohort construction: stepwise exclusions and restriction
+from the PIC database.}
+\label{tab:cohort_flow}
+\small
+\begin{tabular}{lrr}
+\toprule
+\textbf{Step} & \textbf{Count} & \textbf{\% of Total} \\
+\midrule
+Initial ICU stays                   & 13,941 & 100.0\% \\
+Excluded: age out of range          &     42 &   0.3\% \\
+Excluded: non-first ICU stay        &  1,060 &   7.6\% \\
+Excluded: LOS $<$ 6 hours           &    392 &   2.8\% \\
+\midrule
+Intermediate cohort                 & 12,447 &  89.3\% \\
+Excluded: no suspected infection    &  9,284 &  66.6\% \\
+\midrule
+\textbf{Final modelling cohort}     & \textbf{3,163} & \textbf{22.7\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Preprocessing Pipeline}
+\label{subsec:preprocessing_pipeline}
+
+Data preprocessing was implemented as a six-stage modular
+pipeline  cohort filtering, physiological data cleaning and
+validation, feature extraction, sepsis label definition, label
+verification and dataset construction, and train-test split with
+imputation  with each stage producing intermediate output and
+logs to enable full reproducibility. This stage corresponds to the
+preprocessing block of the overall study pipeline shown in
+Figure~\ref{fig:pipeline_overview}.
+
+\paragraph{Physiological data cleaning and validation.} The
+objective of this stage was to remove implausible values arising
+from measurement or transcription errors while preserving genuine
+extreme clinical observations in critically ill patients. For each
+variable, physiologically informed upper and lower bounds were
+defined with conservative buffers based on reported clinical
+extremes in the paediatric critical care
+literature~\cite{sanchezpinto2024, zeng2020}; values outside these
+bounds were treated as missing rather than corrected, avoiding
+distortion of subsequent statistical summaries. Three systematic
+data issues were identified and corrected iteratively: haemoglobin
+values stored in g/L were being compared against g/dL thresholds,
+invalidating 87.9\% of readings, and a unit conversion factor was
+applied to resolve this; the anion gap lower bound was revised
+from 0 to $-5$~mmol/L to accommodate measurement and calculation
+artefacts; and the SpO\textsubscript{2} upper bound was raised
+from 100.0\% to 100.5\% to accommodate analyser rounding
+artefacts.
+
+\paragraph{Feature extraction.} Feature extraction was performed
+over a fixed 24-hour window following ICU admission, chosen
+because it aligns with the natural rhythm of clinical assessment
+cycles in PICUs and is consistent with the prediction horizon used
+in prior paediatric sepsis ML studies~\cite{le2019, chanci2025}.
+All predictors are computed from data within this window, ensuring
+they temporally precede the prediction target and eliminating any
+possibility of future-data leakage. For each physiological
+variable, five statistical summaries were computed (maximum,
+minimum, mean, first recorded value, measurement count); beyond
+these, domain-informed engineering produced trend features
+(difference between first and last recorded values), derived
+physiological metrics (shock index, mean arterial pressure),
+age-adjusted vital-sign abnormality indicators, fluid balance
+features, infection-related features derived from antibiotic and
+microbiology records, 31 binary symptom indicators, and surgical
+context indicators. This stage produced 306 candidate feature columns. Structural
+cleaning -- removal of identifier and free-text columns,
+zero-variance fields, redundant unit-duplicate columns, Phoenix
+component score columns, and deduplication of
+\texttt{\_was\_measured} indicators to one column per variable --
+reduced this to a 305-feature dataset prior to the leakage audit
+described below. The leakage audit (Section~\ref{subsec:leakage})
+removed 80 of these features in a single pass, yielding the final
+225-feature clean modelling set used throughout this study.
+
+\subsubsection{Leakage Audit}
+\label{subsec:leakage}
+
+Prior to model training, a systematic leakage audit was conducted
+across the 305-feature structurally-cleaned dataset
+(Section~\ref{subsec:preprocessing_pipeline}). Six candidate
+leakage suspects were examined. Four were assessed by training an
+isolated classifier on each candidate feature group alone and
+measuring its stand-alone discriminative power (isolation AUROC):
+a group whose isolation AUROC approaches the full-model AUROC
+despite representing only a narrow, clinically indirect signal is
+evidence that the group encodes label information by construction
+rather than genuine physiology.
+
+Measurement frequency features (\texttt{\_count} columns,
+$n = 40$) were found to be directly correlated with the Phoenix
+labelling process: sepsis-positive patients had systematically
+higher measurement counts, driven by clinical urgency rather than
+physiology (isolation AUROC 0.878). Vasoactive medication
+indicators ($n = 6$ columns) were the most structurally leaky
+category: 73.5\% of sepsis patients received vasoactives compared
+to 23.7\% of non-sepsis patients, and these variables are
+themselves components of the Phoenix cardiovascular domain that
+defines the label (isolation AUROC 0.863). Trend features
+($n = 16$) and fluid balance variables ($n = 4$) were assessed and
+retained: trend features showed a maximum feature-label correlation
+of 0.159 and isolation AUROC of 0.848, indicative of genuine
+physiological signal, while fluid balance features achieved an
+isolation AUROC of only 0.609, confirming no leakage concern.
+
+Two further diagnostic checks were performed. The deduplicated
+\texttt{\_was\_measured} missingness indicators ($n = 33$, one
+retained per variable after the structural-cleaning deduplication)
+showed the same physician-ordering signature as the count columns
+(e.g.\ $r = 0.38$ for \texttt{inr\_trend\_was\_measured},
+\texttt{fibrinogen\_max\_was\_measured}, and
+\texttt{ddimer\_max\_was\_measured} against the sepsis label) and
+were removed in full alongside them. A comparison of training-set
+imputation medians against full-cohort medians, run as a diagnostic
+for outcome-dependent features, flagged \texttt{los\_hours} (ICU
+length of stay) with the largest discrepancy (4.165 hours); this
+column was identified as an outcome variable unknowable at the time
+of prediction and was dropped. A companion patient-overlap check
+between training and test partitions could not be directly verified
+because patient identifiers were removed during preprocessing;
+overlap is instead structurally prevented by the cohort-definition
+rule restricting the cohort to each patient's first ICU stay
+(Section~\ref{subsec:cohort}).
+
+In total, 80 features across four leaky categories
+(\texttt{\_count}, vasoactive medication, \texttt{\_was\_measured},
+and \texttt{los\_hours}) were removed, yielding the final clean
+feature set of 225 features. A post-cleaning isolation test on this
+reduced set achieved AUROC 0.978 and AUPRC 0.950, confirming that
+the retained features carry strong legitimate predictive signal.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{isolation_test_aurocs}
+    \caption{Isolation AUROC values of each leakage group.}
+    \label{fig:isolation_test_aurocs}
+\end{figure}
+
+\subsubsection{Sepsis Label Definition (Phoenix Criteria)}
+\label{subsec:labelling}
+
+Sepsis labels were defined using the Phoenix paediatric sepsis
+criteria~\cite{sanchezpinto2024}. As established in
+Section~\ref{sec:literature_review}, the respiratory and
+neurological Phoenix components were non-computable in the PIC
+database (FiO\textsubscript{2}, ventilation parameters, and GCS
+are absent) and were set to zero; labelling therefore rested on
+the cardiovascular and coagulation Phoenix domains exclusively,
+consistent with other PIC-based studies facing the same data
+constraint~\cite{chanci2025}. Missing values within the computable
+domains were treated as contributing zero points, consistent with
+the Phoenix framework's convention that absent measurements
+contribute no positive score~\cite{sanchezpinto2024}. The final
+sepsis label was assigned to any patient meeting both conditions:
+clinically suspected infection and a Phoenix score of two or
+above.
+
+Applying this definition to the infection-restricted cohort of
+3,163 stays identified 864 sepsis cases (27.3\%) and 2,299
+patients with suspected infection but no sepsis (72.7\%). For
+context, across the full 12,447-stay intermediate cohort, 864
+sepsis cases represent 6.9\% prevalence, with 2,299
+suspected-infection/no-sepsis patients (18.5\%) and 9,284 patients
+with no suspected infection (74.6\%).
+
+\subsubsection{Dataset Construction and Train-Test Split}
+\label{subsec:verification}
+
+A dedicated validation stage confirmed the clinical plausibility
+of the derived labels. Comparative analysis between
+sepsis-positive and sepsis-negative patients showed expected
+clinical patterns: higher lactate levels, lower platelet counts,
+greater vasoactive medication use, and substantially higher
+in-hospital mortality in the sepsis group (18.1\% versus 4.4\%),
+consistent with the pathophysiology of sepsis and providing face
+validity for the labelling approach.
+
+Two datasets were constructed from the labelled cohort. Option~A
+encompassed the full 12,447-stay intermediate cohort ($\{0: 1.0,
+1: 13.4\}$ class weights, reflecting 6.9\% prevalence). Option~B
+restricted the population to patients with suspected infection,
+yielding 3,163 stays ($\{0: 1.0, 1: 2.7\}$ class weights,
+reflecting 27.3\% prevalence). \textbf{Option~B was used for all
+primary model training, tuning, and evaluation throughout this
+study; Option~A is used exclusively for the cohort-definition
+sensitivity analysis reported in Section~\ref{subsec:sensitivity},
+in which the primary model architecture is retrained from scratch
+on Option~A to test whether the study's conclusions are an
+artefact of the infection-restriction design choice.} Option~B was
+selected as the primary modelling dataset because it reflects the
+realistic clinical deployment context: the prediction model would
+be applied after infection has been suspected, not indiscriminately
+across all PICU admissions.
+
+The Option~B dataset was divided into training (80\%, $n=2{,}530$)
+and testing (20\%, $n=633$) sets using stratified sampling to
+preserve the 27.3\% sepsis prevalence across both partitions.
+Missing values were imputed using median values computed
+exclusively on the training set and applied to both partitions,
+preventing any leakage of test-set distributional information into
+the imputation process. For variables with a missingness rate above 20\%, binary indicator
+features (\texttt{\_was\_measured}) were engineered to capture the
+clinical signal associated with whether a test was ordered at all,
+a threshold consistent with common practice in clinical ML
+studies~\cite{deng2022}; after deduplication to one indicator per
+variable, these were subsequently identified as leaking the same
+physician-ordering signal as the \texttt{\_count} features
+(Section~\ref{subsec:leakage}) and were removed from the model
+inputs in full -- no \texttt{\_was\_measured} columns are present
+in the final 225-feature set. Phoenix score component columns and
+residual identifier columns were likewise excluded during the
+leakage-audit stage. The leakage audit
+(Section~\ref{subsec:leakage}) is therefore the sole source of the
+reduction from the 305-feature structurally-cleaned dataset to the
+final 225-feature modelling matrix used throughout this study.
+
+\subsubsection{Synthetic Data Augmentation}
+\label{subsec:synthetic_intro}
+
+The Option~B training cohort of 2,530 patients is workable but
+modest by deep-learning standards, which raises the question of
+whether synthetic data could supplement it. To test this, a
+CTGAN-based synthetic patient generation pipeline was built and
+evaluated as part of this study, extended with an Iman-Conover
+rank correlation correction step to address a known limitation of
+standard CTGAN on clinically correlated variables (Section~\ref{sec:literature_review}).
+The pipeline, its design rationale, and the resulting real-data
+versus synthetic-augmented model comparisons are reported in full
+in Section~\ref{subsec:synthetic}.
+
+\subsection{Methods}
+\label{subsec:methods_all}
+
+\subsubsection{Experimental Setup}
+\label{subsec:setup}
+
+All experiments were conducted on the Option~B infection-only
+cohort (2,530 training / 633 test samples, 27.3\% sepsis
+prevalence), split with stratification to preserve class balance.
+Missing values were imputed using training-set medians exclusively,
+applied identically to both partitions. A \texttt{StandardScaler}
+was applied to numerical features; binary indicators for care unit
+type and gender were excluded from scaling. Class imbalance was
+addressed using inverse-prevalence class weights
+($\{0:1.0, 1:2.7\}$ for Option~B), rather than SMOTE-style
+synthesis, for the reasons discussed in Section~\ref{sec:literature_review}.
+All model training and evaluation was performed in a conda
+environment using Python~3.10 with CatBoost, XGBoost, LightGBM,
+scikit-learn, and Optuna. Five-fold stratified cross-validation was
+used during training to assess generalisation prior to final
+evaluation on the held-out test set. This study was conducted and
+reported in accordance with the TRIPOD (Transparent Reporting of a
+multivariable prediction model for Individual Prognosis Or
+Diagnosis) statement for prediction model development~\cite{collins2015}.
+
+\subsubsection{Baseline Models}
+\label{subsec:baseline_methods}
+
+Six classifiers were trained on the 225-feature clean dataset:
+CatBoost, XGBoost, LightGBM, Random Forest, Logistic Regression,
+and a Multi-Layer Perceptron (MLP). All models used five-fold
+stratified cross-validation, and a fixed operating threshold
+targeting 85\% sensitivity was applied to enable a fair comparison
+of the precision-recall balance across architectures. The
+strongest-performing baseline was carried forward for hyperparameter
+tuning as the primary single-model architecture.
+
+\subsubsection{CatBoost Tuning and Alternative Pipelines}
+\label{subsec:catboost_methods}
+
+CatBoost was selected for tuning based on its superior baseline
+performance. One hundred Bayesian optimisation trials were
+conducted using Optuna, with 5-fold cross-validated AUPRC as the
+objective; AUPRC was preferred over AUROC because it is more
+sensitive to classifier performance at the clinically relevant
+high-recall region and less susceptible to inflation under class
+imbalance. Two alternative single-pipeline architectures were
+tested against the resulting tuned CatBoost model. First, a
+tree-based stacking ensemble was constructed with tuned CatBoost,
+XGBoost, and LightGBM as base learners and a logistic regression
+meta-learner: ten clinically motivated interaction features (e.g.\
+lactate$_{\max}\times$platelets$_{\min}$, D-dimer$_{\max}\times$INR$_{\max}$)
+were engineered and added to the base feature set, out-of-fold
+probabilities from five-fold cross-validation trained the
+meta-learner, and all base models were retrained on the full
+training set before test-set evaluation. Second, a Phoenix-aware
+asymmetric loss function was developed in which false negatives are
+penalised proportionally to a patient-level severity proxy computed
+from normalised z-scores of seven Phoenix component variables
+(lactate$_{\max}$, platelets$_{\min}$ (inverted), INR$_{\max}$,
+D-dimer$_{\max}$, $|\text{base\_excess}_{\min}|$, PT$_{\text{mean}}$,
+PTT$_{\max}$): the per-sample loss for a positive-class patient is
+$\text{loss}_i = -w_i\log(p_i)$ with $w_i = \text{base\_weight} +
+\alpha\cdot\text{severity}_i$, and negative-class samples retain
+standard cross-entropy. Both $\alpha$ and base\_weight were jointly
+optimised with CatBoost hyperparameters via Optuna over 50 trials.
+
+The optimal hyperparameter configuration identified by 100 Optuna
+trials is presented in Table~\ref{tab:catboost_hyperparams}.
+
+\begin{table}[htbp]
+\centering
+\caption{Optimal hyperparameters identified by Optuna (100 trials,
+AUPRC-optimised). Best CV AUPRC: 0.9580.}
+\label{tab:catboost_hyperparams}
+\begin{tabular}{lc}
+\toprule
+\textbf{Hyperparameter} & \textbf{Optimal Value} \\
+\midrule
+Iterations              & 510   \\
+Learning Rate           & 0.0342 \\
+Tree Depth              & 7     \\
+L2 Leaf Regularisation  & 3.754 \\
+Bagging Temperature     & 0.975 \\
+Random Strength         & 0.050 \\
+Border Count            & 233   \\
+Positive Class Weight   & 1.820 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Primary Model Evaluation Protocol}
+\label{subsec:eval_protocol}
+
+The tuned CatBoost model was evaluated using five components.
+Pairwise DeLong tests assessed whether AUROC differences between
+tuned CatBoost and each comparator (baseline classifiers, deep
+learning models, alternative pipelines) were statistically
+meaningful. Probability calibration was assessed using reliability
+diagrams and Platt scaling. Decision Curve Analysis (DCA) evaluated
+clinical net benefit across a range of decision thresholds against
+\textit{treat-all} and \textit{treat-none} reference strategies. A
+full threshold sensitivity analysis characterised the
+sensitivity--specificity trade-off across five operating points
+spanning 80--95\% sensitivity, to support an evidence-based clinical
+deployment recommendation. Finally, subgroup performance was
+evaluated separately across four clinically defined paediatric age
+bands  neonates (0--28 days), infants (29 days--1 year), children
+(1--12 years), and adolescents (12--18 years)  aligned with
+established clinical categories in paediatric critical care.
+
+\subsubsection{Deep Learning Benchmark}
+\label{subsec:dl_methods}
+
+Three deep learning architectures were benchmarked against tuned
+CatBoost: the Feature Tokenizer Transformer (FT-Transformer), which
+embeds each tabular feature as an individual token processed
+through multi-head self-attention~\cite{gorishniy2021}; a tabular
+ResNet, providing a residual feed-forward baseline that isolates
+what architectural depth alone contributes without attention; and
+TabNet, which applies sequential instance-wise attention masks to
+dynamically select a sparse feature subset per patient~\cite{arik2021}.
+Each was trained on the same 225-feature leakage-clean dataset with
+identical class weights, five-fold stratified cross-validation
+during hyperparameter search, and the same 80/20 stratified
+train-test split. Hyperparameters for all three architectures were
+optimised using Optuna with five-fold cross-validated AUPRC as the
+objective, matching the CatBoost tuning protocol. Performance is
+reported at the threshold targeting the 90\% sensitivity operating
+point for each architecture, with pairwise DeLong tests against
+tuned CatBoost.
+
+\subsubsection{CBFTTS-SA Model: CatBoost--FT-Transformer Stacking Ensemble}
+\label{subsec:stacking_methods}
+
+This study's featured architecture, named the \textbf{CBFTTS-SA model},
+stacks tuned CatBoost and the FT-Transformer as base learners with a
+logistic regression meta-learner trained on their out-of-fold
+probability outputs from five-fold stratified cross-validation. The
+FT-Transformer was selected as the second base learner over ResNet
+and TabNet because it produced the highest standalone AUROC among
+the three deep learning architectures and its attention-based
+representation is architecturally most distinct from CatBoost's
+ordered-boosting structure, satisfying the standard diversity
+condition for effective stacking. Two configurations were evaluated:
+one trained exclusively on the 2,530-patient real-data training set,
+and a second trained on the hybrid dataset from the synthetic
+augmentation pipeline (Section~\ref{subsec:synthetic_methods}),
+combining all real patients with 10,000 CTGAN-generated patients. In
+both configurations the meta-learner received only the two
+base-learner probability columns as inputs, forcing it to act purely
+as a probability combiner; base learners were retrained on the full
+training set before final test-set evaluation. As a secondary
+experiment, the FT-Transformer's CLS-token attention weight vector
+was also extracted and concatenated with the raw 225-feature vector
+to train an attention-augmented CatBoost variant (450 input
+dimensions), testing whether the transformer's learned inter-feature
+weighting could improve CatBoost's split-finding directly rather
+than through stacking.
+
+\subsubsection{Synthetic Data Augmentation Pipeline}
+\label{subsec:synthetic_methods}
+
+CTGAN, a conditional generative adversarial network for tabular
+data~\cite{xu2019}, was used to generate synthetic patients, with a
+three-stage correction pipeline developed to address its known
+correlation-destruction problem (Section~\ref{sec:literature_review}):
+CTGAN was trained separately on sepsis-positive and sepsis-negative
+patients to preserve correct within-class marginal distributions,
+Iman-Conover rank correlation injection~\cite{iman1982} restored the
+real Spearman correlation matrix within each class, and a
+zero-inflation correction was applied to variables with heavy zero
+mass. The final synthetic dataset comprised 10,000 generated
+patients split proportionally by the training cohort's 27.3\% class
+prevalence. Three augmentation configurations were evaluated against
+the real-data CatBoost baseline: a CatBoost model trained exclusively
+on synthetic data; a hybrid CatBoost trained on all 2,530 real
+patients (sample weight 4) combined with the 10,000 synthetic
+patients (sample weight 1); and the hybrid-data CBFTTS-SA model configuration
+described above. All comparisons used DeLong tests against the
+real-data tuned CatBoost model, and cross-validation folds used
+during Optuna tuning remained unweighted to avoid inflating
+optimisation signal from synthetic samples.
+
+\subsubsection{SHAP Explainability Methodology}
+\label{subsec:shap_methods}
+
+SHAP explainability analysis was applied to the CatBoost component
+using the TreeSHAP algorithm, which computes exact Shapley values
+without sampling approximation~\cite{lundberg2017}. SHAP values were
+computed for all 633 test-set patients across the full 225 features.
+Four analyses were performed: global feature importance (ranked by
+mean absolute SHAP value), dependence analysis for the top features,
+individual patient explanation via waterfall plots for three
+clinically informative cases (a true positive, a false negative, and
+a false positive), and pairwise SHAP interaction analysis for the top
+ten features using the TreeSHAP interaction API.
+
+\subsubsection{Sensitivity Analysis Design}
+\label{subsec:sensitivity_methods}
+
+To test whether the study's conclusions are an artefact of the
+Option~B infection-restriction design choice, the tuned CatBoost
+architecture  with hyperparameters fixed from the Option~B
+optimisation  was retrained from scratch on Option~A (the full
+12,447-stay intermediate cohort, regardless of infection suspicion),
+with class weights adjusted for its lower sepsis prevalence
+($\{0:1.0, 1:13.4\}$ versus Option~B's $\{0:1.0, 1:2.7\}$). This
+design isolates the effect of cohort selection from model
+architecture and hyperparameter choices: everything except the
+training population is held constant between the two configurations.
+All primary training, tuning, and evaluation elsewhere in this study
+used Option~B exclusively; Option~A is used only for this sensitivity
+check, evaluated on the same held-out test set as the primary model.
+
+
+
+Figure~\ref{fig:pipeline_overview} summarises the overall
+architecture of the study, from the source database through to
+explainability analysis. Data flow proceeds from the PIC database
+through preprocessing, three parallel modelling tracks, evaluation,
+and SHAP explainability analysis, with each of these stages described
+in detail in the subsections that follow.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.90\textwidth]{study_pipeline_overview}
+    \caption{Complete research pipeline for early paediatric sepsis
+    prediction. Data flow proceeds from the PIC database through
+    preprocessing, three parallel modelling tracks, evaluation, and
+    SHAP explainability analysis. The tuned CatBoost model (amber,
+    starred) is the primary single-model architecture selected for
+    downstream evaluation.}
+    \label{fig:pipeline_overview}
+\end{figure}
+
+% =============================================================
+\section{Results}
+\label{sec:results}
+
+% -- 5.3 --
+\subsection{Baseline Model Comparison}
+\label{subsec:baseline}
+
+All tree-based ensemble methods attained AUROC above 0.97 on the
+225-feature clean dataset; gradient boosting methods substantially
+outperformed Random Forest, Logistic Regression, and MLP. CatBoost
+produced the strongest performance at baseline (AUROC 0.9863) with
+the lowest Brier score (0.0399), as summarised in
+Table~\ref{tab:baseline}, and was carried forward for hyperparameter
+tuning.
+
+\begin{table}[htbp]
+\centering
+\caption{Baseline model comparison on the Option~B held-out test set ($n = 633$), at a decision threshold fixed to 85\% sensitivity for cross-architecture comparability. All models were trained with five-fold stratified cross-validation; the metrics reported here are test-set evaluations. Bootstrap 95\% CIs not computed for baseline configurations; see Table~\ref{tab:dl_results}.}
+\label{tab:baseline}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Model} & \textbf{AUROC} & \textbf{AUPRC} & \textbf{Sensitivity} & \textbf{Specificity} & \textbf{F1} & \textbf{Brier Score} \\
+\midrule
+CatBoost            & 0.9863 & 0.9684 & 0.855 & 0.980 & 0.881 & 0.0399 \\
+LightGBM            & 0.9806 & 0.9570 & 0.855 & 0.963 & 0.876 & 0.0521 \\
+XGBoost             & 0.9780 & 0.9512 & 0.867 & 0.963 & 0.882 & 0.0505 \\
+Random Forest       & 0.9656 & 0.9222 & 0.855 & 0.928 & 0.836 & 0.0712 \\
+Logistic Regression & 0.9152 & 0.8477 & 0.855 & 0.833 & 0.744 & 0.1038 \\
+MLP                 & 0.9212 & 0.8635 & 0.855 & 0.863 & 0.771 & 0.1045 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The baseline comparison is visualised in
+Figure~\ref{fig:roc_pr_baseline}, displaying ROC and
+Precision-Recall curves for all six models. The Precision-Recall
+curve is informative given the 27.3\% class prevalence. Gradient
+boosting methods maintain high precision across the recall range,
+while Logistic Regression and MLP show early signs of degradation.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{phase1_roc_pr_all_models}
+    \caption{ROC (left) and Precision-Recall (right) curves for
+    all six baseline classifiers on the Option~B test set.}
+    \label{fig:roc_pr_baseline}
+\end{figure}
+
+% -- 5.4 --
+\subsection{Hyperparameter Tuning  CatBoost}
+\label{subsec:catboost}
+
+The optimal hyperparameter configuration identified by 100 Optuna
+trials is presented in Table~\ref{tab:catboost_hyperparams}
+(Section~\ref{subsec:catboost_methods}).
+
+The tuned model achieved AUROC 0.9868 and AUPRC 0.9691 on the
+test set. The Optuna optimisation trajectory is shown in
+Figure~\ref{fig:optuna_history}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{optuna_optimization_history}
+    \caption{Optuna trial AUPRC values across 100 trials.
+    Convergence is observed by approximately trial 60, with
+    subsequent marginal gains.}
+    \label{fig:optuna_history}
+\end{figure}
+
+\subsubsection{Tree-Based Stacking Ensemble (CatBoost + XGBoost + LightGBM)}
+\label{subsubsec:stacking}
+
+This tree-based ensemble is a distinct experiment from the
+CatBoost--FT-Transformer CBFTTS-SA model reported in
+Section~\ref{subsec:stacking}; it is evaluated here purely as a
+same-family (all-gradient-boosting) alternative to single-model
+CatBoost. The ensemble achieved AUROC 0.9851 and AUPRC 0.9680,
+marginally below tuned CatBoost on both metrics. The DeLong test
+confirmed the difference was not statistically significant
+($p > 0.05$), and the added pipeline complexity yielded no
+measurable benefit over CatBoost alone.
+
+\subsubsection{Phoenix-Aware Custom Loss}
+\label{subsubsec:customloss}
+
+Optuna converged to $\alpha = 2.831$ and base\_weight $= 4.467$.
+Despite its alignment with the clinical objective, the custom loss
+model underperformed significantly: AUROC 0.9674, AUPRC 0.9313, and
+Brier Score 0.1005  more than twice that of tuned CatBoost.
+
+\subsubsection{Model Selection}
+\label{subsubsec:modelselection}
+
+Neither alternative pipeline improved on tuned CatBoost, which
+remains the strongest and most efficient single-model architecture
+in this study. A three-way comparison is presented in
+Table~\ref{tab:novel_comparison}; the paper's separately evaluated
+featured architecture, the CBFTTS-SA model (CatBoost--FT-Transformer
+stacking ensemble), is reported in
+Section~\ref{subsec:stacking}.
+
+\begin{table}[htbp]
+\centering
+\caption{Comparison of tuned CatBoost against the two alternative single-family pipelines on the Option~B test set ($n = 633$) at the recommended threshold ($t = 0.365$). Bootstrap 95\% CIs were not computed for these configurations; point estimates are reported.}
+\label{tab:novel_comparison}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Configuration} & \textbf{AUROC} & \textbf{AUPRC} & \textbf{Sensitivity} & \textbf{Specificity} & \textbf{F1} & \textbf{Brier Score} \\
+\midrule
+Tuned CatBoost (primary single model) & \textbf{0.9868} & \textbf{0.9691} & \textbf{0.896} & \textbf{0.963} & \textbf{0.899} & \textbf{0.0385} \\
+Tree-Based Stacking Ensemble & 0.9851 & 0.9680 & 0.855 & 0.978 & 0.894 & 0.0422 \\
+Custom Loss (Phoenix-aware) & 0.9674 & 0.9313 & 0.855 & 0.930 & 0.839 & 0.1005 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% -- 5.5 --
+\subsection{Comprehensive Evaluation of the Primary Model}
+\label{subsec:primary_eval}
+
+\subsubsection{Statistical Comparison: DeLong Tests}
+
+As Table~\ref{tab:delong} shows, the tuned model was statistically
+superior to every baseline: LightGBM ($p = 0.017$), XGBoost
+($p = 0.005$), and by a larger margin against Random Forest,
+Logistic Regression, and MLP (all $p < 0.001$). The one
+non-significant result was against the untuned CatBoost baseline
+($p = 0.619$), which is expected: hyperparameter tuning sharpened
+the model without fundamentally altering its architecture.
+
+\begin{table}[htbp]
+    \centering
+    \caption{DeLong test results for pairwise AUROC comparisons
+    between tuned CatBoost and all baseline classifiers.}
+    \label{tab:delong}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{lcccc}
+        \toprule
+        \textbf{Comparison} & \textbf{AUROC (Tuned)} & \textbf{AUROC (Baseline)} & \textbf{\textit{p}-value} & \textbf{Significant ($p < 0.05$)} \\
+        \midrule
+        vs CatBoost Baseline    & 0.9868 & 0.9863 & 0.619    & No  \\
+        vs LightGBM             & 0.9868 & 0.9806 & 0.017    & Yes \\
+        vs XGBoost              & 0.9868 & 0.9780 & 0.005    & Yes \\
+        vs Random Forest        & 0.9868 & 0.9656 & $<0.001$ & Yes \\
+        vs Logistic Regression  & 0.9868 & 0.9152 & $<0.001$ & Yes \\
+        vs MLP                  & 0.9868 & 0.9212 & $<0.001$ & Yes \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{Calibration}
+
+Pre-calibration, the model achieved a Brier Score of $0.0385$,
+indicating strong probabilistic calibration. Platt scaling was
+applied as a post-hoc step; however, the calibrated model yielded a
+marginally higher Brier Score of $0.0422$, a slight degradation
+rather than improvement, consistent with the model's decision
+boundary already being well-tuned through Optuna. The reliability
+diagram (Figure~\ref{fig:calibration}) shows that the model is
+well-calibrated in the intermediate probability range ($0.3$--$0.8$),
+with minor over-confidence at very high predicted probabilities.
+The pre-calibration model is used for all subsequent threshold
+analyses.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{phase3_fig3_calibration.png}
+    \caption{Reliability diagram (calibration curve) for the tuned
+    CatBoost model before and after Platt scaling. Pre-calibration
+    Brier Score: 0.0385; post-calibration: 0.0422. A perfectly
+    calibrated model would follow the diagonal dashed line.}
+    \label{fig:calibration}
+\end{figure}
+
+\subsubsection{Decision Curve Analysis}
+
+The tuned CatBoost model demonstrated positive net benefit over
+both the \textit{treat all} and \textit{treat none} reference
+strategies across the clinically relevant threshold range of $0.1$
+to $0.8$, confirming that deployment of the model would result in
+more appropriate interventions than either extreme clinical
+strategy (Figure~\ref{fig:dca}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{phase3_fig4_dca.png}
+    \caption{Decision Curve Analysis for the tuned CatBoost model.
+    Net benefit is plotted against the decision threshold
+    probability. The model outperforms both the treat-all and
+    treat-none baselines across the range of clinically plausible
+    thresholds.}
+    \label{fig:dca}
+\end{figure}
+% -- 5.5.4 
+\subsubsection{Threshold Analysis and Clinical Operating Point}
+\label{subsec:threshold}
+ 
+Table~\ref{tab:threshold} presents five operating points spanning
+80\% to 95\% sensitivity, with corresponding classification metrics
+at each decision boundary evaluated on the held-out test set.
+ 
+\begin{table}[htbp]
+\centering
+\caption{Threshold sensitivity analysis for the tuned CatBoost model
+on the Option~B test set ($n = 633$). The $\approx$90\% sensitivity operating
+point ($t = 0.365$, achieved sensitivity 0.896) is recommended for clinical deployment. Sens.\ =
+sensitivity; Spec.\ = specificity.}
+\label{tab:threshold}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Operating Point} & \textbf{Threshold} & \textbf{Sens.} &
+\textbf{Spec.} & \textbf{PPV} & \textbf{NPV} & \textbf{F1} \\
+\midrule
+80\% Sensitivity              & 0.577 & 0.815 & 0.993 & 0.979 & 0.935 & 0.890 \\
+85\% Sensitivity              & 0.447 & 0.861 & 0.980 & 0.943 & 0.949 & 0.900 \\
+\textbf{$\approx$90\% (recommended)} & \textbf{0.365} & \textbf{0.896} &
+\textbf{0.963} & \textbf{0.901} & \textbf{0.961} & \textbf{0.899} \\
+92\% Sensitivity              & 0.276 & 0.919 & 0.943 & 0.859 & 0.969 & 0.888 \\
+95\% Sensitivity              & 0.213 & 0.954 & 0.930 & 0.838 & 0.982 & 0.892 \\
+\bottomrule
+\end{tabular}
+\end{table}
+ 
+A threshold of 0.365, targeting 90\% sensitivity (achieved: 0.896), is
+recommended as the primary clinical operating point: sensitivity
+0.896, specificity 0.963, PPV 0.901, NPV 0.961, F1 0.899. The high
+NPV means patients falling below the threshold can be safely
+deprioritised with a missed-sepsis rate of only 3.9\%, clinically
+tolerable in a PICU context where routine monitoring continues
+regardless of model output, while the 96.3\% specificity limits
+unnecessary escalations that would otherwise drive alert fatigue.
+Across the full threshold range, PPV drops from 0.979 to 0.838 moving
+from the 80\% to 95\% sensitivity point (the cost of capturing more
+true positives), while F1 stays stable (0.888--0.900) throughout,
+confirming the recommended 90\% point sits near the F1 optimum while
+preserving workflow-compatible specificity.
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{threshold_sensitivity_analysis}
+    \caption{Threshold sensitivity curve showing sensitivity,
+    specificity, PPV, and F1 score as a function of decision threshold.
+    The recommended operating point ($t = 0.365$) is marked with a
+    vertical dashed line.}
+    \label{fig:threshold_sensitivity}
+\end{figure}
+ 
+% -- 5.5.5 
+\subsubsection{Subgroup Analysis by Age Band}
+\label{subsec:subgroup}
+ 
+Results by age band are summarised in Table~\ref{tab:subgroup}.
+ 
+\begin{table}[htbp]
+\centering
+\caption{Subgroup performance by age band at the recommended threshold
+($t = 0.365$). Prev.\ = sepsis prevalence within subgroup. The
+adolescent subgroup ($n = 19$) is small; perfect discrimination should
+be interpreted with caution.}
+\label{tab:subgroup}
+\small
+\begin{tabular}{lcccccccc}
+\toprule
+\textbf{Age Group} & \textbf{N} & \textbf{Sepsis N} &
+\textbf{Prev.} & \textbf{AUROC} & \textbf{Sens.} &
+\textbf{Spec.} & \textbf{F1} & \textbf{AUPRC} \\
+\midrule
+Neonate (0--28d)     & 102 & 17 & 16.7\% & 0.970 & 0.824 & 0.965 & 0.824 & 0.915 \\
+Infant (29d--1y)     & 223 & 64 & 28.7\% & 0.989 & 0.859 & 0.969 & 0.887 & 0.977 \\
+Child (1--12y)       & 289 & 87 & 30.1\% & 0.988 & 0.931 & 0.955 & 0.915 & 0.972 \\
+Adolescent (12--18y) &  19 &  5 & 26.3\% & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+ 
+The model generalised robustly across all subgroups, with AUROC
+ranging from 0.970 in neonates to 1.000 in adolescents. The neonate
+group had the lowest prevalence (16.7\%) and the most restrained
+performance, consistent with the known physiological atypicality of
+neonatal sepsis, though 0.970 remains strong relative to any published
+benchmark for this age group. The infant and child subgroups together
+constitute 80\% of the test cohort (512 of 633 patients) and both
+exceeded AUROC 0.987, confirming discriminative performance is not
+concentrated in a single age stratum; the adolescent subgroup's
+perfect discrimination on only 19 patients carries a wide confidence
+interval and does not warrant strong conclusions beyond an absence of
+evidence for degraded performance in older children. SHAP feature
+rankings were consistent across all age bands  lactate, D-dimer,
+and platelets drive predictions throughout, with the neonate group
+showing slightly elevated reliance on haematological features.
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{phase3_fig5_subgroup_analysis}
+    \caption{AUROC and sensitivity by age band with 95\% confidence
+    intervals. The neonate group shows the widest uncertainty interval
+    attributable to its smaller sample size. All four age bands
+    exceed AUROC 0.97.}
+    \label{fig:subgroup_auroc}
+\end{figure}
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{phase3_fig6_summary_dashboard}
+    \caption{Comprehensive evaluation dashboard for the tuned CatBoost
+    primary model, summarising ROC and Precision-Recall curves,
+    calibration diagram, Decision Curve Analysis, confusion matrix,
+    and subgroup AUROC results at the recommended threshold
+    ($t = 0.365$).}
+    \label{fig:summary_dashboard}
+\end{figure}
+
+% -- 5.6 --
+\subsection{Deep Learning Model Evaluation}
+\label{subsec:dl}
+
+Hyperparameter search converged to the configurations detailed in
+Tables~\ref{tab:ftt_hyperparams}--\ref{tab:tabnet_hyperparams}.
+The FT-Transformer settled on a shallow two-block architecture
+with 256 embedding dimensions and eight attention heads, with
+relatively low dropout throughout, reflecting the moderate
+training set size. The ResNet required eight blocks with
+512-dimensional hidden layers and substantially higher second-layer
+dropout (0.444), indicating that aggressive regularisation was
+needed to prevent overfitting in the deeper feed-forward stack.
+TabNet converged to four decision steps with 64-dimensional output
+width, a configuration that is common for clinical tabular
+datasets of this scale.
+
+\begin{table}[H]
+\centering
+\caption{Optimal FT-Transformer hyperparameters identified by
+Optuna (best 5-fold CV AUPRC: 0.9453).}
+\label{tab:ftt_hyperparams}
+\small
+\begin{tabular}{lc}
+\toprule
+\textbf{Hyperparameter} & \textbf{Value} \\
+\midrule
+Transformer blocks ($n\_blocks$)        & 2 \\
+Block embedding dimension ($d\_block$)  & 256 \\
+Attention heads                         & 8 \\
+Attention dropout                       & 0.142 \\
+FFN hidden multiplier                   & 2.338 \\
+FFN dropout                             & 0.066 \\
+Residual dropout                        & 0.013 \\
+Learning rate                           & $4.09 \times 10^{-4}$ \\
+Weight decay                            & $7.71 \times 10^{-5}$ \\
+Batch size                              & 128 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Optimal tabular ResNet hyperparameters identified by
+Optuna (best 5-fold CV AUPRC: 0.8594).}
+\label{tab:resnet_hyperparams}
+\small
+\begin{tabular}{lc}
+\toprule
+\textbf{Hyperparameter} & \textbf{Value} \\
+\midrule
+Residual blocks ($n\_blocks$)           & 8 \\
+Main hidden dimension ($d\_main$)       & 512 \\
+Inter-block dimension ($d\_hidden$)     & 512 \\
+First-layer dropout                     & 0.204 \\
+Second-layer dropout                    & 0.444 \\
+Learning rate                           & $1.59 \times 10^{-4}$ \\
+Weight decay                            & $1.67 \times 10^{-6}$ \\
+Batch size                              & 64 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Optimal TabNet hyperparameters identified by Optuna
+(best 5-fold CV AUPRC: 0.9049).}
+\label{tab:tabnet_hyperparams}
+\small
+\begin{tabular}{lc}
+\toprule
+\textbf{Hyperparameter} & \textbf{Value} \\
+\midrule
+Decision step output width ($n\_d$)             & 64 \\
+Attention embedding dimension ($n\_a$)          & 16 \\
+Decision steps ($n\_steps$)                     & 4 \\
+Feature reuse coefficient ($\gamma$)            & 1.082 \\
+Sparsity regularisation ($\lambda_{\text{s}}$)  & $2.41 \times 10^{-3}$ \\
+Learning rate                                   & $7.89 \times 10^{-3}$ \\
+Batch normalisation momentum                    & 0.221 \\
+Attention mask type                             & \texttt{entmax} \\
+Batch size                                      & 128 \\
+Virtual batch size                              & 64 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Test-set results for all three architectures, alongside the tuned
+CatBoost reference, are presented in Table~\ref{tab:dl_results}.
+The FT-Transformer achieved the highest discriminative performance
+among the three deep learning models at AUROC 0.9577 (95\% CI:
+0.9404--0.9737) and AUPRC 0.9131 (95\% CI: 0.8748--0.9484).
+ResNet and TabNet produced near-identical AUROC values of 0.9311
+(95\% CI: 0.9046--0.9538) and 0.9306 (95\% CI: 0.9088--0.9497)
+respectively, with TabNet showing the weakest AUPRC at 0.8657.
+None of the three architectures approached the tuned CatBoost
+AUROC of 0.9868.
+
+\begin{table}[H]
+\centering
+\caption{Deep learning model performance on the Option~B test set
+($n = 633$) at the threshold targeting 90\% sensitivity. DeLong
+$p$-values are pairwise comparisons against the tuned CatBoost
+primary model. 95\% CIs computed by stratified bootstrap
+(1000 iterations).}
+\label{tab:dl_results}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Model} & \textbf{AUROC} & \textbf{AUPRC} & \textbf{Sens.} &
+\textbf{Spec.} & \textbf{F1} & \textbf{Brier} \\
+\midrule
+FT-Transformer        & 0.9577 & 0.9131 & 0.896 & 0.852 & 0.783 & 0.073 \\
+ResNet                & 0.9311 & 0.8744 & 0.902 & 0.813 & 0.752 & 0.094 \\
+TabNet                & 0.9306 & 0.8657 & 0.908 & 0.770 & 0.720 & 0.108 \\
+\midrule
+Tuned CatBoost (ref.) & 0.9868 & 0.9691 & 0.896 & 0.963 & 0.899 & 0.0385 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Pairwise DeLong tests against the primary model yielded
+$p = 0.169$ for the FT-Transformer, $p = 0.018$ for ResNet, and
+$p = 0.014$ for TabNet. The FT-Transformer result does not reach
+significance at the conventional 0.05 threshold, meaning its
+0.029 AUROC gap relative to CatBoost cannot be statistically
+distinguished from sampling variation on a test set of 633
+patients. The ResNet and TabNet gaps are statistically confirmed;
+both architectures are meaningfully inferior to the primary model
+in discriminative terms.
+
+A more clinically consequential distinction emerges when
+specificity is examined alongside sensitivity. All three deep
+learning models achieve similar or higher sensitivity than
+CatBoost, but at substantially lower specificity. The
+FT-Transformer matches CatBoost's sensitivity of 0.896 exactly,
+but specificity falls to 0.852 from CatBoost's 0.963. ResNet and
+TabNet push sensitivity to 0.902 and 0.908 respectively, at the
+further cost of specificity dropping to 0.813 and 0.770. At a
+prevalence of 27.3\%, this specificity gap translates directly
+into false-positive burden: at the same sensitivity level, the
+FT-Transformer generates approximately four times as many false alerts
+per true positive as CatBoost (computed from reported specificities at
+matched sensitivity 0.896: FP/TP$_{\text{FT-T}}$ $\approx 0.44$ vs.
+FP/TP$_{\text{CatBoost}}$ $\approx 0.11$). In a PICU deployment this matters
+operationally, because alert fatigue driven by low precision is
+one of the primary mechanisms through which clinical decision
+support systems erode clinician trust and compliance over
+time~\cite{athukorala2026}. Probability calibration shows the
+same gradient: Brier scores range from 0.073 to 0.108 for the
+deep learning models compared to 0.0385 for tuned CatBoost,
+indicating that all three produce less reliable probability
+outputs as a basis for clinical threshold setting.
+
+These results are broadly consistent with the tabular benchmark
+findings of Gorishniy et al., who showed that FT-Transformer
+becomes competitive with gradient boosting on datasets of
+sufficient scale, but that the advantage reverses at moderate
+training sizes where CatBoost's implicit regularisation through
+ordered boosting provides more stable generalisation than the
+data-hungry attention mechanism~\cite{gorishniy2021}. With 2,530
+training patients, this cohort sits in that moderate-size regime.
+The TabNet outcome is informative in a specific way: instance-wise
+feature selection did not produce a performance gain relative to
+the simpler ResNet, suggesting that predictive information is
+distributed across the feature set broadly rather than concentrated
+in a sparse patient-specific subset. This has a clinical
+implication of its own, since it means no small panel of features
+is sufficient for reliable early sepsis detection uniformly across
+all patients in this cohort.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{phase6_roc_pr_comparison}
+    \caption{ROC (left) and Precision-Recall (right) curves for
+    the three deep learning architectures compared against tuned
+    CatBoost on the Option~B test set. The FT-Transformer most
+    closely approaches the CatBoost reference in both curves.
+    ResNet and TabNet overlap substantially throughout the
+    high-recall region.}
+    \label{fig:dl_roc_pr}
+\end{figure}
+
+% -- 5.6.1 --
+\subsection{CBFTTS-SA Model: CatBoost--FT-Transformer Stacking Ensemble}
+\label{subsec:stacking}
+
+The real-data CBFTTS-SA model achieved AUROC 0.9851 (95\% CI: 0.9770--0.9921),
+marginally below tuned CatBoost alone (0.9868); the hybrid
+(real~+~synthetic) CBFTTS-SA model configuration achieved AUROC 0.9786 (95\%
+CI: 0.9683--0.9875). DeLong tests comparing each configuration
+against tuned CatBoost yielded $p = 0.388$ and $p = 0.126$
+respectively; neither difference is statistically significant at the
+0.05 threshold, so the two architectures are reported side by side
+in Table~\ref{tab:tu_comparison} and throughout this paper rather
+than as a strict ranking. Table~\ref{tab:tu_comparison} reports the
+full clinical evaluation for both CBFTTS-SA model configurations at the
+threshold targeting 90\% sensitivity for each model, matching the
+protocol used for the deep learning benchmark
+(Section~\ref{subsec:dl}); SHAP explainability and the
+cohort-definition sensitivity check (Section~\ref{subsec:sensitivity})
+were performed on the CatBoost component only, since TreeSHAP and
+the cohort-definition question both apply most directly to the
+model recommended for immediate deployment; the weight analysis
+below shows CatBoost carries the large majority of the ensemble's
+discriminative signal. To assess whether the hybrid (real~+~synthetic)
+CBFTTS-SA configuration is itself viable as a standalone deployment
+candidate rather than only as a statistically-tied alternative to
+CatBoost, Decision Curve Analysis, a full five-point threshold
+sensitivity analysis, and subgroup analysis by age band were
+additionally carried out for that configuration at its own
+recommended operating threshold; these extended results are reported
+in Section~\ref{subsec:hybrid_extended} below.
+
+\begin{table}[htbp]
+\centering
+\caption{Tuned CatBoost versus the CBFTTS-SA model (CatBoost--FT-Transformer
+stacking ensemble) on the Option~B test set ($n = 633$), at the
+threshold targeting 90\% sensitivity for each model. 95\% CIs for
+AUROC and AUPRC computed by stratified bootstrap (1000 iterations);
+see main text.}
+\label{tab:tu_comparison}
+\small
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{Configuration} & \textbf{AUROC} & \textbf{AUPRC} &
+\textbf{Sens.} & \textbf{Spec.} & \textbf{F1} & \textbf{Brier} &
+\textbf{DeLong $p$} \\
+\midrule
+\textbf{Tuned CatBoost (single model)} & \textbf{0.9868} &
+\textbf{0.9691} & \textbf{0.896} & \textbf{0.963} & \textbf{0.899} &
+\textbf{0.0385} & Reference \\
+CBFTTS-SA model (real data) & 0.9851 & 0.9658 & 0.902 & 0.957 & 0.894 &
+0.0428 & 0.388 \\
+CBFTTS-SA model (hybrid, real+synthetic) & 0.9786 & 0.9534 & 0.908 & 0.935
+& 0.872 & 0.0503 & 0.126 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A secondary DeLong comparison against the standalone FT-Transformer
+(Section~\ref{subsec:dl}) shows the real-data CBFTTS-SA model performs
+significantly better than the transformer component alone
+($p = 0.0013$); the hybrid CBFTTS-SA model's advantage over the
+hybrid-trained FT-Transformer alone is directionally consistent but
+not significant ($p = 0.090$). This indicates that stacking
+meaningfully improves on the transformer component even though the
+ensemble does not surpass CatBoost alone, supporting the choice of
+FT-Transformer as the diversity-contributing base learner rather
+than confirming stacking as redundant.
+
+The meta-learner weight ratio assigned by logistic regression to
+the two base learners is informative: CatBoost received
+approximately three to four times the weight of the FT-Transformer
+across both configurations, confirming that at the present cohort
+size the ensemble's predictive signal is driven predominantly by
+the gradient-boosted component. This is consistent with the
+benchmark finding in Section~\ref{subsec:dl} that FT-Transformer-class
+architectures close the gap with gradient boosting only as
+training data scales~\cite{gorishniy2021}; at $n = 2{,}530$ training
+patients, CatBoost's ordered-boosting regularisation still has the
+edge. The CBFTTS-SA model is nonetheless presented as this study's
+featured architecture (Section~\ref{sec:literature_review}), on the
+basis that it is statistically indistinguishable from CatBoost
+alone today and is architecturally the more promising candidate to
+improve further as larger paediatric ICU datasets become available,
+whereas tuned CatBoost alone remains the stronger-performing and
+fully interpretable choice for immediate deployment at the present
+cohort size. The hybrid CBFTTS-SA model configuration produced a slightly
+lower AUROC than the real-data configuration, consistent with the
+finding in Section~\ref{subsec:synthetic} that synthetic patients
+introduce noise the sample weighting scheme does not fully
+suppress.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{phase7_roc_pr}
+    \caption{ROC (left) and Precision-Recall (right) curves for
+    both CBFTTS-SA model configurations compared against tuned CatBoost
+    on the Option~B test set.}
+    \label{fig:stacking_roc_pr}
+\end{figure}
+
+\subsubsection{Extended Clinical Evaluation of the Hybrid CBFTTS-SA Model}
+\label{subsec:hybrid_extended}
+
+The evaluation above establishes that the hybrid CBFTTS-SA model is
+statistically indistinguishable from tuned CatBoost at a single
+operating point targeting 90\% sensitivity (Table~\ref{tab:tu_comparison}).
+To characterise this configuration more completely as a candidate for
+future deployment as paediatric ICU datasets scale, the same
+threshold-sensitivity, subgroup, and net-benefit analyses applied to
+the primary CatBoost model in Sections~\ref{subsec:threshold}
+and~\ref{subsec:subgroup} were repeated for the hybrid CBFTTS-SA model
+in isolation, using its own recommended operating threshold of
+$t = 0.233$ (targeting $\approx$90\% sensitivity, achieved sensitivity
+0.9075) rather than borrowing the CatBoost threshold of $t = 0.365$,
+since the two models' predicted-probability distributions are not
+identical and applying a single model's threshold to another would
+misrepresent its true operating characteristics.
+
+\paragraph{Threshold sensitivity.} Table~\ref{tab:hybrid_threshold}
+presents the same five operating points spanning 80--95\% sensitivity
+used for the primary model. The pattern mirrors the CatBoost result:
+specificity trades off against sensitivity from 0.978 at the 80\%
+point down to 0.852 at the 95\% point, while F1 remains comparatively
+stable (0.813--0.885) across the range, peaking at the 85\% operating
+point (F1 = 0.885) rather than exactly at the 90\% point, though the
+difference between the two (0.885 vs 0.872) is marginal.
+
+\begin{table}[htbp]
+\centering
+\caption{Threshold sensitivity analysis for the hybrid (real~+~synthetic)
+CBFTTS-SA model on the Option~B test set ($n = 633$). The
+$\approx$90\% sensitivity operating point ($t = 0.233$, achieved
+sensitivity 0.908) is used as the model's own recommended threshold
+throughout this subsection. Sens.\ = sensitivity; Spec.\ = specificity.}
+\label{tab:hybrid_threshold}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Operating Point} & \textbf{Threshold} & \textbf{Sens.} &
+\textbf{Spec.} & \textbf{PPV} & \textbf{NPV} & \textbf{F1} \\
+\midrule
+80\% Sensitivity              & 0.605 & 0.804 & 0.978 & 0.933 & 0.930 & 0.863 \\
+85\% Sensitivity              & 0.402 & 0.867 & 0.965 & 0.904 & 0.951 & 0.885 \\
+\textbf{$\approx$90\% (recommended)} & \textbf{0.233} & \textbf{0.908} &
+\textbf{0.935} & \textbf{0.840} & \textbf{0.964} & \textbf{0.872} \\
+92\% Sensitivity              & 0.184 & 0.925 & 0.926 & 0.825 & 0.970 & 0.872 \\
+95\% Sensitivity              & 0.045 & 0.954 & 0.852 & 0.708 & 0.980 & 0.813 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{cbftts_sa_hybrid_threshold_sensitivity}
+    \caption{Threshold sensitivity curves for the hybrid CBFTTS-SA
+    model showing sensitivity, specificity, PPV, NPV, and F1 score as
+    a function of decision threshold. The recommended operating point
+    ($t = 0.233$) is marked with a vertical dashed line.}
+    \label{fig:hybrid_threshold_sensitivity}
+\end{figure}
+
+\paragraph{Subgroup analysis by age band.} Table~\ref{tab:hybrid_subgroup}
+reports performance by age band at the model's recommended threshold.
+AUROC ranges from 0.961 in neonates to 1.000 in adolescents, closely
+tracking the CatBoost subgroup pattern (0.970--1.000,
+Table~\ref{tab:subgroup}) though 0.5--0.9 percentage points lower in
+every band except the adolescent group, consistent with the small
+but consistent AUROC gap between the hybrid CBFTTS-SA model and
+CatBoost observed at the overall cohort level
+(Table~\ref{tab:tu_comparison}). As with the primary model, the
+neonate subgroup shows the most restrained performance and the
+smallest prevalence (16.7\%), and the infant and child subgroups
+together account for 80\% of the test cohort, confirming that the
+hybrid model's discriminative performance is likewise not concentrated
+in a single age stratum.
+
+\begin{table}[htbp]
+\centering
+\caption{Subgroup performance by age band for the hybrid
+(real~+~synthetic) CBFTTS-SA model, at its recommended threshold
+($t = 0.233$). Prev.\ = sepsis prevalence within subgroup. As with
+the primary model, the adolescent subgroup ($n = 19$) is small and
+perfect discrimination should be interpreted with caution.}
+\label{tab:hybrid_subgroup}
+\small
+\begin{tabular}{lcccccccc}
+\toprule
+\textbf{Age Group} & \textbf{N} & \textbf{Sepsis N} &
+\textbf{Prev.} & \textbf{AUROC} & \textbf{Sens.} &
+\textbf{Spec.} & \textbf{F1} & \textbf{AUPRC} \\
+\midrule
+Neonate (0--28d)     & 102 & 17 & 16.7\% & 0.961 & 0.765 & 0.965 & 0.788 & 0.871 \\
+Infant (29d--1y)     & 223 & 64 & 28.7\% & 0.982 & 0.859 & 0.962 & 0.880 & 0.962 \\
+Child (1--12y)       & 289 & 87 & 30.1\% & 0.983 & 0.966 & 0.901 & 0.880 & 0.963 \\
+Adolescent (12--18y) &  19 &  5 & 26.3\% & 1.000 & 1.000 & 0.929 & 0.909 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{cbftts_sa_hybrid_subgroup_by_age}
+    \caption{AUROC, sensitivity, and specificity by age band for the
+    hybrid CBFTTS-SA model at its recommended threshold ($t = 0.233$).
+    All four age bands exceed AUROC 0.96, mirroring the age-band
+    pattern observed for the primary CatBoost model
+    (Figure~\ref{fig:subgroup_auroc}).}
+    \label{fig:hybrid_subgroup_auroc}
+\end{figure}
+
+\paragraph{Decision Curve Analysis.} The hybrid CBFTTS-SA model
+demonstrated positive net benefit over both the \textit{treat all}
+and \textit{treat none} reference strategies across the clinically
+relevant threshold range of 0.1 to 0.8, the same range used for the
+primary CatBoost model's DCA (Section~\ref{subsec:threshold}), and
+in fact remained positive across the entire threshold range tested
+(0.01--0.95; Figure~\ref{fig:hybrid_dca}), confirming that the hybrid
+configuration would, like CatBoost, translate into more appropriate
+clinical decisions than either extreme strategy if deployed. Net
+benefit declines gradually and stays close to zero from 0.266 at a
+threshold of 0.01 down to 0.058 at 0.95, in contrast with the
+treat-all strategy, whose net benefit collapses once the decision
+threshold exceeds the cohort prevalence of 27.3\% (treat-all net
+benefit crosses zero at approximately threshold 0.27 and falls
+sharply thereafter, reaching approximately $-13.5$ at threshold
+0.95). Figure~\ref{fig:hybrid_dca} plots the full 0.01--0.95 range
+on a single axis, so this divergence dominates the vertical scale
+and compresses the model curve into a comparatively flat band near
+zero; the substantive comparison is nonetheless unambiguous, since
+the model curve never crosses the treat-all curve below the
+prevalence threshold and remains above the treat-none baseline
+(NB $= 0$) throughout, indicating a consistent clinical advantage
+across the plausible range of deployment thresholds rather than
+only at the single 90\%-sensitivity operating point emphasised
+elsewhere in this paper.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{cbftts_sa_hybrid_dca}
+    \caption{Decision Curve Analysis for the hybrid CBFTTS-SA model.
+    Net benefit is plotted against the decision threshold probability
+    over the full 0.01--0.95 range tested, alongside the treat-all
+    and treat-none reference strategies. Because the treat-all curve
+    falls sharply below the cohort's 27.3\% prevalence threshold
+    (reaching approximately $-13.5$ at threshold 0.95), the axis is
+    dominated by that divergence and the model's own curve appears
+    as a comparatively flat band close to zero; see main text for the
+    corresponding CatBoost comparison plotted on a clinically-windowed
+    axis (Figure~\ref{fig:dca}).}
+    \label{fig:hybrid_dca}
+\end{figure}
+
+Taken together, these extended results indicate that the hybrid
+CBFTTS-SA model's near-parity with CatBoost on overall AUROC
+(Table~\ref{tab:tu_comparison}) extends to the clinically relevant
+threshold-sensitivity, subgroup, and net-benefit profile: the hybrid
+configuration is a coherent, self-consistent clinical tool in its own
+right rather than only a statistically-tied summary statistic, which
+supports its designation as this study's forward-looking architecture
+(Section~\ref{sec:literature_review}) even though tuned CatBoost
+remains the stronger and more directly interpretable choice for
+deployment at the present cohort size.
+
+\subsection{Attention-Augmented CatBoost}
+\label{subsec:attention}
+
+The result was a statistically significant degradation in
+performance. The attention-augmented model achieved AUROC 0.9657
+on the test set, compared to 0.9868 for tuned CatBoost alone. A
+pairwise DeLong test confirmed the gap was not attributable to
+sampling variation: $p = 0.014$, with the augmented model performing
+significantly worse. The Brier score rose from 0.0385 to 0.0978
+alongside the discriminative decline, indicating that probability
+calibration deteriorated in parallel.
+
+Examining the features assigned the highest attention mass by the
+FT-Transformer reveals why augmentation failed rather than helped.
+The five most attention-weighted features were
+\texttt{calcium\_max}, \texttt{pao2\_max}, care unit designation
+(SICU), \texttt{lactate\_max}, and \texttt{platelets\_min}. The
+final two are among the top five features by mean absolute SHAP
+value in the CatBoost model, and the others are strong physiological
+predictors in their own right: the attention weights were not
+identifying novel information, but reproducing, in a noisier
+continuous form, the same importance ranking CatBoost's split-based
+mechanism already encodes. Adding these 225 attention columns
+increased feature dimensionality without adding predictive content.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{phase8_attention_heatmap}
+    \caption{FT-Transformer CLS-token attention weight distribution
+    across the 225 input features. Attention mass concentrates on
+    \texttt{calcium\_max}, \texttt{pao2\_max},
+    \texttt{lactate\_max}, and \texttt{platelets\_min}  features
+    that are already among the strongest predictors in the CatBoost
+    model.}
+    \label{fig:attention_heatmap}
+\end{figure}
+
+This outcome is a useful negative result: it suggests that the
+FT-Transformer and CatBoost, despite their architectural differences,
+draw on substantially overlapping predictive structure within this
+feature set, so injecting the transformer's summary of that structure
+into CatBoost as additional features adds correlated inputs without
+a corresponding gain in discriminative signal~\cite{gorishniy2021}.
+This is a distinct finding from the CBFTTS-SA model result above: stacking
+the two architectures' independent predictions (Section~\ref{subsec:stacking})
+is statistically neutral, whereas concatenating the FT-Transformer's
+internal representations directly into CatBoost's input space is
+actively harmful.
+
+% -- 5.6.4 --
+\subsection{Synthetic Data Augmentation}
+\label{subsec:synthetic}
+
+As a diagnostic step, vanilla CTGAN was first applied to the full
+training dataset before any correction. The result exposed a severe
+limitation: the Spearman correlation between INR and PT in real
+training data (0.999) collapsed to 0.016 after vanilla CTGAN
+generation, meaning a synthetic patient could exhibit a normal INR
+alongside a massively prolonged PT  a physiologically impossible
+combination. The three-stage correction pipeline
+(Section~\ref{subsec:synthetic_methods}) substantially repaired
+this correlation structure.
+
+Three augmentation configurations were evaluated against the
+real-data tuned CatBoost model (Table~\ref{tab:synthetic_results}).
+A CatBoost model trained exclusively on the 10,000 synthetic
+patients achieved AUROC 0.9290 ($p < 0.0001$, significantly worse).
+A hybrid CatBoost combining all 2,530 real patients (weight 4) with
+the synthetic patients (weight 1) improved to AUROC 0.9776
+($p = 0.0007$, still significantly worse). The hybrid CBFTTS-SA model
+configuration, in which the hybrid dataset trained the base
+learners before the meta-learner combined them, reached AUROC
+0.9786  the only augmentation configuration whose DeLong test did
+not reach significance ($p = 0.126$), because the meta-learner's
+dominant real-data CatBoost weighting limits how much synthetic
+noise reaches the final output.
+
+\begin{table}[htbp]
+\centering
+\caption{Synthetic data augmentation results. All DeLong
+$p$-values compare against the real-data tuned CatBoost model
+(AUROC 0.9868).}
+\label{tab:synthetic_results}
+\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Configuration} & \textbf{AUROC} & \textbf{DeLong $p$} &
+\textbf{Significant?} \\
+\midrule
+Synthetic-only CatBoost      & 0.9290 & $< 0.0001$ & Yes (worse) \\
+Hybrid CatBoost (weighted)   & 0.9776 & 0.0007     & Yes (worse) \\
+$\star$ Hybrid CBFTTS-SA model (Proposed) & 0.9786 & 0.126 & No \\
+\midrule
+Tuned CatBoost (real data)   & 0.9868 &            & Reference \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{hybrid_three_way_roc_pr}
+    \caption{Three-way ROC and Precision-Recall comparison between
+    the synthetic-only, hybrid-weighted, and real-data CatBoost
+    configurations on the Option~B test set.}
+    \label{fig:hybrid_roc_pr}
+\end{figure}
+
+The clear pattern across all three configurations is monotonic:
+AUROC climbs from 0.929 (pure synthetic) to 0.978 (hybrid,
+real-weighted) to 0.986 (real data only) as the real-data
+contribution to training increases. This is evidence that real
+data, not synthetic data, is doing the work  synthetic patients
+act as a diluent rather than a booster. The underlying limitation
+is not pairwise correlation structure, which the Iman-Conover step
+restores reasonably well, but the long-tail distributions of
+abnormal laboratory values (e.g.\ \texttt{lactate\_max},
+\texttt{D-dimer\_max}) that carry the strongest sepsis signal: a
+generative model trained on a few hundred positive examples
+systematically underestimates probability mass in the extreme right
+tail, and no post-hoc correlation correction can recover information
+the training data never provided. The practical implication is that
+synthetic augmentation is not a substitute for real data collection
+in this setting.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{distribution_comparison_key_features}
+    \caption{Comparison of key feature distributions between real
+    training data and CTGAN-generated synthetic data after
+    Iman-Conover correlation injection. Marginal distributions are
+    broadly preserved, but the extreme right tails of
+    \texttt{lactate\_max} and \texttt{D-dimer\_max} are
+    underrepresented in the synthetic cohort.}
+    \label{fig:synthetic_distribution}
+\end{figure}
+
+% -- 5.6.5 --
+\subsection{SHAP Explainability Analysis}
+\label{subsec:shap}
+ 
+SHAP explainability analysis was applied to the CatBoost component,
+which the weight analysis in Section~\ref{subsec:stacking} shows
+carries the large majority of the CBFTTS-SA model's discriminative signal.
+ 
+\paragraph{Global feature importance.}
+Global feature importance was ranked by mean absolute SHAP value across
+all test patients, reflecting each feature's average contribution to
+predictions regardless of direction. The top 20 features are presented
+in Table~\ref{tab:shap_top20}, visualised as a beeswarm plot in
+Figure~\ref{fig:shap_beeswarm}.
+ 
+\begin{table}[htbp]
+\centering
+\caption{Top 20 features by mean absolute SHAP value, computed across
+all 633 test-set patients. Rankings reflect global importance regardless
+of prediction direction.}
+\label{tab:shap_top20}
+\small
+\begin{tabular}{clll}
+\toprule
+\textbf{Rank} & \textbf{Feature} & \textbf{Display Name} &
+\textbf{Mean $|\text{SHAP}|$} \\
+\midrule
+1  & \texttt{lactate\_max}      & Lactate (max)                 & 0.992 \\
+2  & \texttt{ddimer\_max}       & D-dimer (max)                 & 0.957 \\
+3  & \texttt{platelets\_min}    & Platelets (min)               & 0.776 \\
+4  & \texttt{inr\_max}          & INR (max)                     & 0.539 \\
+5  & \texttt{calcium\_max}      & Calcium (max)                 & 0.519 \\
+6  & \texttt{pt\_max}           & PT (max)                      & 0.259 \\
+7  & \texttt{calcium\_mean}     & Calcium (mean)                & 0.222 \\
+8  & \texttt{glucose\_max}      & Glucose (max)                 & 0.214 \\
+9  & \texttt{pao2\_max}         & PaO\textsubscript{2} (max)    & 0.176 \\
+10 & \texttt{ph\_min}           & pH (min)                      & 0.161 \\
+11 & \texttt{hematocrit\_min}   & Haematocrit (min)             & 0.146 \\
+12 & \texttt{platelets\_first}  & Platelets (first recorded)    & 0.146 \\
+13 & \texttt{care\_unit\_SICU}  & Care unit: SICU               & 0.124 \\
+14 & \texttt{fibrinogen\_min}   & Fibrinogen (min)              & 0.115 \\
+15 & \texttt{care\_unit\_CICU}  & Care unit: CICU               & 0.114 \\
+16 & \texttt{ddimer\_mean}      & D-dimer (mean)                & 0.108 \\
+17 & \texttt{platelets\_mean}   & Platelets (mean)              & 0.091 \\
+18 & \texttt{potassium\_min}    & Potassium (min)               & 0.084 \\
+19 & \texttt{lactate\_first}    & Lactate (first recorded)      & 0.075 \\
+20 & \texttt{bicarbonate\_min}  & Bicarbonate (min)             & 0.073 \\
+\bottomrule
+\end{tabular}
+\end{table}
+ 
+The top five features  lactate, D-dimer, platelets, INR, and PT 
+map directly onto the two computable Phoenix domains: elevated maximum
+lactate and depressed minimum platelets correspond to the
+cardiovascular domain, while elevated INR, D-dimer, and PT correspond
+to the coagulation domain~\cite{sanchezpinto2024, schlapbach2024}.
+Calcium (max and mean) at ranks 5 and 7 reflects dysregulated
+electrolyte balance in severe systemic infection, and PaO\textsubscript{2},
+pH, and bicarbonate in the mid-tier capture respiratory and metabolic
+acidosis. Prior SHAP analyses on the PIC database have surfaced
+similarly coherent feature hierarchies~\cite{shen2025, zhou2025}.
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{phase4_shap_beeswarm}
+    \caption{SHAP beeswarm plot for the top 20 features by mean
+    absolute SHAP value, computed across all 633 test-set patients.
+    Each point represents one patient; colour encodes feature value
+    (red = high, blue = low). Features mapping to the Phoenix
+    cardiovascular domain (\texttt{lactate\_max},
+    \texttt{platelets\_min}) occupy the top ranks, followed by the
+    coagulation axis (\texttt{ddimer\_max}, \texttt{inr\_max},
+    \texttt{pt\_max}).}
+    \label{fig:shap_beeswarm}
+\end{figure}
+ 
+\paragraph{SHAP dependence analysis.}
+For \texttt{lactate\_max}, the SHAP contribution is approximately zero
+below 2~mmol/L and rises sharply above 4~mmol/L, consistent with the
+clinical threshold for hyperlactataemia in the Phoenix cardiovascular
+domain~\cite{sanchezpinto2024}. D-dimer shows a steep positive
+contribution above 2~mg/L (coagulopathy burden), platelets (min) shows
+a strongly negative contribution below 100$\times10^9$/L
+(thrombocytopaenia), and INR contributions rise sharply above 1.5.
+Calcium (max) is non-monotonic: both hypo- and hypercalcaemia are
+associated with increased sepsis risk, a U-shaped pattern that cannot
+be recovered by linear models and that gives a mechanistic reason for
+the AUROC gap between gradient boosting and logistic regression in the
+baseline comparison.
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{phase4_fig3_dependence_plots}
+    \caption{SHAP dependence plots for the top features. The x-axis
+    shows raw feature value; the y-axis shows SHAP contribution to
+    the sepsis prediction. Colour encodes the value of the
+    highest-interacting feature identified by SHAP. The non-monotonic
+    calcium pattern and the threshold-like behaviour of lactate and
+    D-dimer are visible in the respective panels.}
+    \label{fig:shap_dependence}
+\end{figure}
+ 
+\paragraph{Individual patient explanations.}
+Three cases illustrate the model's behaviour at its margins
+(Figure~\ref{fig:shap_waterfall}). The true positive (predicted
+probability 0.9997) shows elevated lactate, high D-dimer, and
+depressed platelets acting in concert. The false negative
+(probability 0.365, at threshold) reflects a borderline case: modest
+lactate elevation counterbalanced by near-normal coagulation markers,
+characteristic of early or atypical sepsis. The false positive
+(probability 0.982; true label non-sepsis) shows laboratory findings
+mimicking sepsis, possibly a severe non-infectious inflammatory state.
+The model's errors are concentrated at the genuine physiological
+boundary of the Phoenix criteria, not in clearly normal or abnormal
+presentations.
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{phase4_fig4_waterfall_plots}
+    \caption{SHAP waterfall plots for three selected test patients:
+    true positive (top), false negative (middle), and false positive
+    (bottom). Red bars push the prediction toward the sepsis class;
+    blue bars push toward non-sepsis. $f(x)$ is the final model
+    output and $E[f(x)]$ is the baseline log-odds value.}
+    \label{fig:shap_waterfall}
+\end{figure}
+ 
+\paragraph{Feature interaction analysis.}
+The lactate--platelets interaction is the largest pairwise SHAP
+interaction in the model (mean absolute interaction 0.035), spanning
+the cardiovascular Phoenix domain: tissue hypoperfusion and
+consumptive thrombocytopaenia frequently co-occur in the same
+haemodynamic cascade~\cite{sanchezpinto2024}. The INR--D-dimer
+coagulopathy axis is second largest (0.021), reflecting converging
+evidence of clotting factor depletion and fibrin
+degradation~\cite{schlapbach2024}.
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{phase4_shap_interaction_heatmap}
+    \caption{SHAP interaction value heatmap for the top features.
+    The lactate--platelets axis (mean absolute interaction 0.035)
+    and the INR--D-dimer coagulopathy axis (0.021) are the two
+    dominant pairwise interactions, mapping to the Phoenix
+    cardiovascular and coagulation domains respectively.}
+    \label{fig:shap_interaction}
+\end{figure}
+ 
+\paragraph{SHAP summary and clinical interpretation.}
+The dominant features  lactate, D-dimer, platelets, INR, and PT 
+collectively represent three of the four Phoenix organ systems:
+cardiovascular (lactate, platelets), coagulation (D-dimer, INR, PT),
+and metabolic (glucose, pH, bicarbonate). The absence of respiratory
+and neurological features from the top rankings is consistent with
+the known data limitation: FiO\textsubscript{2} and GCS were
+unavailable in PIC v1.1.0 and were set to zero in the Phoenix score
+computation~\cite{zeng2020}. The interaction analysis shows the model
+has internally learned that simultaneous multi-system compromise is
+disproportionately informative, consistent with the additive organ
+dysfunction logic underlying the Phoenix score itself, providing a
+principled basis for clinician trust in the model's decision
+logic~\cite{athukorala2026}. Age does not rank highly among the
+top-ranked features, suggesting organ dysfunction markers are
+sufficient discriminators across the paediatric age range without
+requiring demographic adjustment~\cite{sanchezpinto2024}.
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{phase4_fig6_shap_by_class}
+    \caption{Mean absolute SHAP contributions stratified by true
+    class (sepsis vs non-sepsis), showing which features drive the
+    separation between classes most strongly. The coagulation and
+    cardiovascular features dominate in both directions.}
+    \label{fig:shap_by_class}
+\end{figure}
+% -- 5.7 --
+\subsection{Sensitivity Analysis: Option~A vs Option~B Cohort}
+\label{subsec:sensitivity}
+ 
+The Option~A training set comprised 9,957 patients with a sepsis
+prevalence of 6.9\%, compared to 2,530 patients at 27.3\% for
+Option~B. Performance on the same held-out test set is compared in
+Table~\ref{tab:sensitivity}.
+ 
+\begin{table}[htbp]
+\centering
+\caption{Performance comparison between the primary Option~B
+(infection cohort) and sensitivity analysis Option~A (full cohort)
+models at the fixed threshold $t = 0.365$. Delta = Option~A minus
+Option~B.}
+\label{tab:sensitivity}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Metric} & \textbf{Option~B} & \textbf{Option~A} &
+\textbf{Delta} & \textbf{Interpretation} \\
+\midrule
+AUROC            & 0.9868 & 0.9968 & $+0.010$ & A marginally higher \\
+AUPRC            & 0.9691 & 0.9644 & $-0.005$ & B marginally higher \\
+Sensitivity      & 0.896  & 0.983  & $+0.087$ & A: fewer missed sepsis \\
+Specificity      & 0.963  & 0.968  & $+0.005$ & Near identical \\
+PPV              & 0.901  & 0.700  & $-0.201$ & A: lower precision \\
+NPV              & 0.961  & 0.999  & $+0.038$ & A: stronger rule-out \\
+F1               & 0.899  & 0.817  & $-0.082$ & B: better balanced \\
+Brier Score      & 0.0385 & 0.0164 & $-0.022$ & A: lower raw calibration error \\
+Training $n$     & 2,530  & 9,957  & $+7,427$ & A much larger \\
+Sepsis prevalence & 27.3\% & 6.9\% & $-20.4\%$ & B more balanced \\
+\bottomrule
+\end{tabular}
+\end{table}
+ 
+Option~A achieved a marginally higher AUROC (0.9968 vs 0.9868) and
+lower Brier Score (0.0164 vs 0.0385), both attributable to its larger
+training set and to the relative ease of discriminating sepsis from the
+broader non-infected majority: when 74.6\% of the evaluation population
+has no infection suspicion at all, many true negatives are clinically
+straightforward and easy to classify correctly, inflating discriminative
+and calibration metrics beyond what they would be in the actual
+deployment context.
+
+The more operationally meaningful comparison is PPV and F1. Option~A's
+PPV of 0.700 means three in ten flagged patients are false positives,
+compared to one in ten under Option~B; since a sepsis alert model is
+activated after infection has been suspected, not across all admissions
+indiscriminately, Option~B's PPV of 0.901 is the figure that would
+actually govern clinical workload, and its F1 advantage (0.899 vs 0.817)
+confirms more balanced performance at the chosen threshold. These
+results confirm that Option~B is the appropriate primary analysis
+dataset and that the primary findings are robust rather than artefacts
+of the specific cohort definition.
+ 
+\paragraph{SHAP consistency across cohorts.}
+The core features driving predictions were consistent across both
+cohorts: \texttt{lactate\_max}, \texttt{platelets\_min},
+\texttt{ddimer\_max}, \texttt{inr\_max}, and \texttt{glucose\_max} all
+appeared in the top ten for both configurations. The primary
+difference was elevated importance of antibiotic-count and
+microbiology-culture-count features in the Option~A model, where the
+broader non-infected population makes treatment-related variables more
+discriminative. This reinforces the leakage-aware feature selection
+decision made for the primary analysis: in the infection-only cohort
+these treatment proxies carry less additional signal once infection is
+already established, and including them would risk reintroducing proxy
+leakage in a subtler form.
+ 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{phase5_fig3_shap_A_vs_B}
+    \caption{Side-by-side comparison of top-10 SHAP feature
+    importances for the Option~A and Option~B models. The core
+    physiological features are consistent across both cohorts;
+    treatment-proxy features (antibiotic count, culture count)
+    rise in importance in Option~A due to the broader non-infected
+    comparison group.}
+    \label{fig:sensitivity_shap}
+\end{figure}
+
+% =============================================================
+\section{Discussion}
+\label{sec:discussion}
+
+This study presents the first published combination of CatBoost, Phoenix
+Sepsis Criteria labelling, TreeSHAP explainability, and the PIC database in
+a single pipeline for early paediatric sepsis prediction, alongside the CBFTTS-SA
+model, a CatBoost--FT-Transformer stacking ensemble developed as this
+study's forward-looking architecture. The tuned CatBoost model achieved
+AUROC 0.9868 and AUPRC 0.9691 on a held-out test set of 633 patients, with
+strong calibration (Brier Score 0.0385) and clinically actionable operating
+characteristics at the recommended threshold; the CBFTTS-SA model was statistically
+indistinguishable from it (AUROC 0.9851, $p = 0.388$). These figures compare
+favourably with the existing literature: they are consistent with the 0.98
+AUROC reported by Chanci et al.\ using CatBoost and Phoenix labelling on
+proprietary US hospital data~\cite{chanci2025}, and exceed the 0.916 AUROC
+reported by Le et al.\ in a UCSF PICU cohort using a four-hour prediction
+horizon~\cite{le2019}, though differences in labelling standard, prediction
+window, and cohort composition complicate direct comparison. Across the
+baseline comparison, CatBoost, LightGBM, and XGBoost all exceeded AUROC
+0.97, consistent with broader evidence that gradient boosted trees dominate
+on moderate-sized clinical tabular data with non-linear feature interactions
+and class imbalance~\cite{gorishniy2021, fleuren2020}. The leakage audit is
+a further methodological contribution: removing vasoactive medication
+indicators, measurement frequency features, deduplicated measurement-
+indicator columns, and a length-of-stay outcome proxy eliminated 80
+features in total, and
+the isolation AUROC of the removed count features alone reached 0.878,
+confirming that models retaining such variables would have systematically
+overstated predictive capability, a concrete response to the leakage
+problem Deng et al.\ identified as pervasive and underreported in clinical
+machine learning~\cite{deng2022}.
+
+Benchmarking three deep learning architectures against CatBoost produced a
+consistent picture. The FT-Transformer achieved AUROC 0.9577, a gap of 0.029
+relative to CatBoost that did not reach statistical significance on this
+test set ($p = 0.169$), in line with Gorishniy et al., who showed that
+FT-Transformer becomes competitive with gradient boosting only at larger
+training scale~\cite{gorishniy2021}; with 2,530 training patients, the
+present cohort sits in the moderate-size regime where CatBoost's
+ordered-boosting regularisation retains an advantage. The CBFTTS-SA model's result
+reinforces this reading: stacking was statistically neutral relative to
+CatBoost alone, and the meta-learner assigned three to four times more
+weight to CatBoost than to the FT-Transformer, indicating the transformer
+component is not yet contributing its full share at this training size.
+The CBFTTS-SA model is therefore reported as this study's architecture with the
+strongest scaling potential rather than its best current performer, while
+tuned CatBoost remains the stronger and more immediately deployable model
+today. A more clinically consequential finding is the specificity gap
+between CatBoost and the deep learning models: all three matched or
+exceeded CatBoost's sensitivity but at substantially lower specificity,
+with TabNet as low as 0.770 against CatBoost's 0.963 at comparable
+sensitivity, translating to roughly four times as many false alerts per
+true positive at this cohort's 27.3\% prevalence. Given that alert fatigue
+from low-specificity tools is a recognised mechanism through which clinical
+decision support systems lose clinician trust~\cite{athukorala2026}, this
+balance of sensitivity and specificity, combined with lower calibration
+error and simpler training requirements, makes CatBoost the operationally
+preferable choice for this application.
+
+The SHAP analysis indicates that the model's decision logic is grounded in
+established pathophysiological markers rather than statistical artefacts.
+The top five features, lactate, D-dimer, platelets, INR, and PT, map
+directly onto the cardiovascular and coagulation Phoenix domains that
+define the sepsis labels in this cohort~\cite{sanchezpinto2024,
+schlapbach2024}, and the interaction analysis identifies two mechanistically
+coherent axes: a lactate-platelets interaction reflecting simultaneous
+circulatory failure and consumptive thrombocytopaenia, and an INR-D-dimer
+coagulopathy axis reflecting concurrent clotting factor depletion and
+fibrin degradation. The non-monotonic calcium relationship identified in
+the dependence analysis, in which both hypocalcaemia and hypercalcaemia are
+associated with increased risk, would not be recoverable by logistic
+regression and illustrates how gradient boosted trees can surface genuine
+clinical signal from raw feature values without explicit engineering. The
+synthetic augmentation results are consistent with this reliance on
+genuine signal: performance climbed monotonically from synthetic-only
+(0.929) through hybrid (0.978) to real-data-only (0.986) training,
+confirming that real data, not synthetic data, drives performance, since
+the Iman-Conover correction repairs CTGAN's correlation collapse but
+cannot manufacture the extreme-tail lactate and D-dimer values that carry
+the strongest sepsis signal. The age-stratified analysis further supports
+the model's robustness: neonates showed the most restrained but still
+strong performance (AUROC 0.970), consistent with the physiological
+distinctiveness of the neonatal period, while the infant and child
+subgroups, comprising 80\% of the test cohort, both exceeded AUROC 0.987,
+indicating that performance is not artificially inflated by concentration
+in a single age stratum.
+
+
+
+% =============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+This study establishes a complete and reproducible machine learning
+pipeline for early paediatric sepsis prediction on the PIC database, using
+Phoenix Sepsis Criteria as the labelling standard throughout. A tuned
+CatBoost model achieves AUROC 0.9868 and AUPRC 0.9691, the strongest
+reported performance for Phoenix-labelled paediatric sepsis prediction on
+this database to the authors' knowledge, at a recommended clinical
+operating threshold of 0.365 (90\% sensitivity, 96.3\% specificity). A
+systematic pre-training leakage audit removed four structurally leaky
+feature categories measurement-frequency, vasoactive-medication,
+measurement-indicator, and length-of-stay columns from a
+305-feature structurally-cleaned candidate pool, offering a
+methodological template
+for future work on the same database. Benchmarking against three deep
+learning architectures shows the FT-Transformer is statistically
+non-inferior in discrimination but carries a substantially higher
+false-positive burden; the CBFTTS-SA model, a CatBoost--FT-Transformer stacking
+ensemble, performs comparably to CatBoost alone ($p = 0.388$) and is
+presented as the more promising architecture as paediatric ICU datasets
+grow, while CatBoost remains the operationally preferable choice today. A
+CTGAN augmentation pipeline with Iman-Conover correlation correction shows
+that real data, not synthetic data, drives performance in this setting.
+TreeSHAP analysis further grounds the model's decision logic in
+established paediatric sepsis pathophysiology, supporting clinician trust
+in its outputs.
+
+These contributions address three concrete gaps in the existing
+literature: the absence of Phoenix-labelled paediatric sepsis prediction
+on reproducible open data, the absence of rigorous leakage controls in
+published PIC-based models, and the absence of an interpretable layer
+clinicians can engage with in deployment contexts. The findings should be
+read alongside the constraints of a retrospective, single-centre design
+with a modest events-per-variable ratio and a labelling scheme limited to
+two of the four Phoenix domains by the data available. Prospective,
+multi-site external validation is accordingly the necessary next step
+before any clinical deployment, ideally paired with a time-series
+reformulation that evaluates risk continuously rather than at a single
+fixed window and, as larger paediatric ICU datasets become available,
+re-evaluation of the CBFTTS-SA model's scaling advantage. The methodological
+foundation established here, from leakage-audited features through
+calibrated, interpretable predictions, provides a platform for that work.
+
+% =============================================================
+\section*{Acknowledgements}
+The authors thank the PhysioNet platform for providing access to
+the PIC database.
+
+% =============================================================
+\section*{Conflicts of Interest}
+The authors declare no conflicts of interest.
+
+% =============================================================
+\section*{Data Availability}
+The PIC database is publicly available via PhysioNet at
+\url{https://physionet.org}. All preprocessing and modelling code
+is available at
+\url{https://github.com/tanishqkr/pediatric-sepsis-PIC}.
+
+% =============================================================
+\section*{Ethics Statement}
+This study used the Paediatric Intensive Care (PIC) database
+(version~1.1.0), a de-identified, publicly available dataset
+accessible via PhysioNet under credentialed researcher access.
+No identifiable patient data were used or accessed. In
+accordance with the institutional guidelines of SVKM's NMIMS
+Indore Campus and the terms of the PhysioNet Credentialed
+Health Data Use Agreement, no additional Institutional Review
+Board approval was required for this retrospective analysis of
+pre-existing, de-identified data.
+
+% ── Bibliography ──────────────────────────────────────────────
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}
