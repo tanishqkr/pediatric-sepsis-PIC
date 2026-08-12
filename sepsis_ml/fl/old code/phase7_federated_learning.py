@@ -945,44 +945,6 @@ np.savez(
 log.info("All results saved.")
 
 # ══════════════════════════════════════════════════════════════════════
-# 18b. SAVE MODEL CHECKPOINTS + SCALER + METADATA
-#      Needed for federated SHAP (phase9_federated_shap/) — nothing above
-#      this point wrote the actual trained weights, only metrics.
-# ══════════════════════════════════════════════════════════════════════
-log.info("-" * 50)
-log.info("Saving model checkpoints for downstream federated SHAP...")
-
-MODELS_DIR = FL_DIR / "models"
-MODELS_DIR.mkdir(parents=True, exist_ok=True)
-
-torch.save(global_model_fedavg.state_dict(), MODELS_DIR / "fedavg_global_final.pt")
-torch.save(global_model_fedprox.state_dict(), MODELS_DIR / "fedprox_global_final.pt")
-log.info(f"  Saved: {MODELS_DIR / 'fedavg_global_final.pt'}")
-log.info(f"  Saved: {MODELS_DIR / 'fedprox_global_final.pt'}")
-
-# the StandardScaler is centralised/shared across nodes (see section 6) —
-# federated_shap.py needs the exact same fitted scaler, not a new one
-with open(MODELS_DIR / "scaler.pkl", "wb") as f:
-    pickle.dump(scaler, f)
-log.info(f"  Saved: {MODELS_DIR / 'scaler.pkl'}")
-
-# everything federated_shap.py needs to rebuild the model + preprocessing
-# without re-importing this whole training script
-model_metadata = {
-    "feature_cols": feature_cols,
-    "num_cols": num_cols,
-    "binary_cols": binary_cols,
-    "target": TARGET,
-    "node_names": NODE_NAMES,
-    "node_sizes": {n: node_data[n]["n"] for n in NODE_NAMES},
-    "n_features": N_FEATURES,
-    "fl_config": FL_CONFIG,
-}
-with open(MODELS_DIR / "model_metadata.json", "w") as f:
-    json.dump(model_metadata, f, indent=2)
-log.info(f"  Saved: {MODELS_DIR / 'model_metadata.json'}")
-
-# ══════════════════════════════════════════════════════════════════════
 # 19. FIGURES
 # ══════════════════════════════════════════════════════════════════════
 log.info("Generating figures...")
