@@ -1,0 +1,205 @@
+2026-08-12 15:33:17,788 | INFO | ======================================================================
+2026-08-12 15:33:17,788 | INFO | PHASE 7 — FEDERATED LEARNING SIMULATION
+2026-08-12 15:33:17,788 | INFO | FT-Transformer | FedAvg + FedProx | 5 Care Unit Nodes
+2026-08-12 15:33:17,788 | INFO | Started : 2026-08-12 15:33:17
+2026-08-12 15:33:17,788 | INFO | ======================================================================
+2026-08-12 15:33:17,804 | INFO | Device : CPU
+2026-08-12 15:33:17,804 | INFO | FL Config: 50 rounds | 5 local epochs/round | FedProx μ=0.01
+2026-08-12 15:33:17,820 | INFO | --------------------------------------------------
+2026-08-12 15:33:17,820 | INFO | Loading datasets...
+2026-08-12 15:33:17,852 | INFO | Train : 2530 patients | Sepsis: 27.3%
+2026-08-12 15:33:17,852 | INFO | Test  : 633 patients  | Sepsis: 27.3%
+2026-08-12 15:33:17,852 | INFO | Features: 225
+2026-08-12 15:33:17,852 | INFO | --------------------------------------------------
+2026-08-12 15:33:17,852 | INFO | Partitioning training data into 5 care unit nodes...
+2026-08-12 15:33:17,852 | INFO | Care unit columns found: ['care_unit_CICU', 'care_unit_General ICU', 'care_unit_NICU', 'care_unit_PICU', 'care_unit_SICU']
+2026-08-12 15:33:17,852 | INFO |   Node 'CICU': 144 patients | Sepsis: 59.7%
+2026-08-12 15:33:17,852 | INFO |   Node 'General ICU': 1251 patients | Sepsis: 23.2%
+2026-08-12 15:33:17,852 | INFO |   Node 'NICU': 421 patients | Sepsis: 14.0%
+2026-08-12 15:33:17,852 | INFO |   Node 'PICU': 213 patients | Sepsis: 33.8%
+2026-08-12 15:33:17,868 | INFO |   Node 'SICU': 501 patients | Sepsis: 36.7%
+2026-08-12 15:33:17,870 | INFO | Total nodes: 5
+2026-08-12 15:33:17,870 | INFO | --------------------------------------------------
+2026-08-12 15:33:17,870 | INFO | Fitting StandardScaler on full training set...
+2026-08-12 15:33:17,935 | INFO |   Node 'CICU': X=(144, 225), sepsis=59.7%
+2026-08-12 15:33:17,936 | INFO |   Node 'General ICU': X=(1251, 225), sepsis=23.2%
+2026-08-12 15:33:17,936 | INFO |   Node 'NICU': X=(421, 225), sepsis=14.0%
+2026-08-12 15:33:17,936 | INFO |   Node 'PICU': X=(213, 225), sepsis=33.8%
+2026-08-12 15:33:17,936 | INFO |   Node 'SICU': X=(501, 225), sepsis=36.7%
+2026-08-12 15:33:17,936 | INFO | Numerical features scaled: 185
+2026-08-12 15:33:17,936 | INFO | Binary features unchanged: 40
+2026-08-12 15:33:17,943 | INFO | FT-Transformer parameters: 1,565,529
+2026-08-12 15:33:17,946 | INFO |   Node 'CICU' pos_weight: 0.674
+2026-08-12 15:33:17,947 | INFO |   Node 'General ICU' pos_weight: 3.314
+2026-08-12 15:33:17,947 | INFO |   Node 'NICU' pos_weight: 6.136
+2026-08-12 15:33:17,947 | INFO |   Node 'PICU' pos_weight: 1.958
+2026-08-12 15:33:17,947 | INFO |   Node 'SICU' pos_weight: 1.723
+2026-08-12 15:33:17,947 | INFO | ======================================================================
+2026-08-12 15:33:17,947 | INFO | RUNNING FEDAVG
+2026-08-12 15:33:17,947 | INFO |   Rounds: 50 | Local epochs/round: 5
+2026-08-12 15:33:17,947 | INFO | ======================================================================
+2026-08-12 15:35:40,412 | INFO | FedAvg Round   1/50 | AUROC: 0.9166 | AUPRC: 0.8445 | Loss: 0.8058 | Time: 142.5s
+2026-08-12 15:37:55,129 | INFO | FedAvg Round   2/50 | AUROC: 0.9403 | AUPRC: 0.8737 | Loss: 0.4412 | Time: 134.7s
+2026-08-12 15:40:08,421 | INFO | FedAvg Round   3/50 | AUROC: 0.9548 | AUPRC: 0.9081 | Loss: 0.3522 | Time: 133.3s
+2026-08-12 15:42:20,813 | INFO | FedAvg Round   4/50 | AUROC: 0.9511 | AUPRC: 0.8941 | Loss: 0.3042 | Time: 132.4s
+2026-08-12 15:44:36,595 | INFO | FedAvg Round   5/50 | AUROC: 0.9294 | AUPRC: 0.8621 | Loss: 0.2695 | Time: 135.8s
+2026-08-12 15:46:50,765 | INFO | FedAvg Round   6/50 | AUROC: 0.9346 | AUPRC: 0.8781 | Loss: 0.2514 | Time: 134.2s
+2026-08-12 15:49:05,227 | INFO | FedAvg Round   7/50 | AUROC: 0.9399 | AUPRC: 0.8743 | Loss: 0.2508 | Time: 134.5s
+2026-08-12 15:51:20,222 | INFO | FedAvg Round   8/50 | AUROC: 0.9454 | AUPRC: 0.8816 | Loss: 0.2362 | Time: 135.0s
+2026-08-12 15:53:34,961 | INFO | FedAvg Round   9/50 | AUROC: 0.9437 | AUPRC: 0.8827 | Loss: 0.2292 | Time: 134.7s
+2026-08-12 15:55:48,803 | INFO | FedAvg Round  10/50 | AUROC: 0.9394 | AUPRC: 0.8752 | Loss: 0.2224 | Time: 133.8s
+2026-08-12 15:58:03,152 | INFO | FedAvg Round  11/50 | AUROC: 0.9508 | AUPRC: 0.8870 | Loss: 0.2133 | Time: 134.3s
+2026-08-12 16:00:17,785 | INFO | FedAvg Round  12/50 | AUROC: 0.9467 | AUPRC: 0.8808 | Loss: 0.2134 | Time: 134.6s
+2026-08-12 16:02:32,745 | INFO | FedAvg Round  13/50 | AUROC: 0.9461 | AUPRC: 0.8884 | Loss: 0.2258 | Time: 135.0s
+2026-08-12 16:04:47,205 | INFO | FedAvg Round  14/50 | AUROC: 0.9361 | AUPRC: 0.8680 | Loss: 0.1846 | Time: 134.5s
+2026-08-12 16:06:59,546 | INFO | FedAvg Round  15/50 | AUROC: 0.9509 | AUPRC: 0.8971 | Loss: 0.1889 | Time: 132.3s
+2026-08-12 16:09:11,976 | INFO | FedAvg Round  16/50 | AUROC: 0.9466 | AUPRC: 0.8846 | Loss: 0.1915 | Time: 132.4s
+2026-08-12 16:11:24,272 | INFO | FedAvg Round  17/50 | AUROC: 0.9401 | AUPRC: 0.8821 | Loss: 0.1925 | Time: 132.3s
+2026-08-12 16:13:36,845 | INFO | FedAvg Round  18/50 | AUROC: 0.9494 | AUPRC: 0.8916 | Loss: 0.1846 | Time: 132.6s
+2026-08-12 16:15:49,290 | INFO | FedAvg Round  19/50 | AUROC: 0.9403 | AUPRC: 0.8857 | Loss: 0.1841 | Time: 132.4s
+2026-08-12 16:18:01,866 | INFO | FedAvg Round  20/50 | AUROC: 0.9516 | AUPRC: 0.8993 | Loss: 0.1724 | Time: 132.6s
+2026-08-12 16:20:14,326 | INFO | FedAvg Round  21/50 | AUROC: 0.9504 | AUPRC: 0.8939 | Loss: 0.1575 | Time: 132.5s
+2026-08-12 16:22:26,315 | INFO | FedAvg Round  22/50 | AUROC: 0.9526 | AUPRC: 0.8985 | Loss: 0.1655 | Time: 132.0s
+2026-08-12 16:24:39,150 | INFO | FedAvg Round  23/50 | AUROC: 0.9446 | AUPRC: 0.8860 | Loss: 0.1846 | Time: 132.8s
+2026-08-12 16:26:52,742 | INFO | FedAvg Round  24/50 | AUROC: 0.9450 | AUPRC: 0.8920 | Loss: 0.1543 | Time: 133.6s
+2026-08-12 16:29:06,124 | INFO | FedAvg Round  25/50 | AUROC: 0.9419 | AUPRC: 0.8878 | Loss: 0.1600 | Time: 133.4s
+2026-08-12 16:31:18,868 | INFO | FedAvg Round  26/50 | AUROC: 0.9478 | AUPRC: 0.8980 | Loss: 0.1482 | Time: 132.7s
+2026-08-12 16:33:30,943 | INFO | FedAvg Round  27/50 | AUROC: 0.9516 | AUPRC: 0.8945 | Loss: 0.1825 | Time: 132.1s
+2026-08-12 16:35:43,737 | INFO | FedAvg Round  28/50 | AUROC: 0.9429 | AUPRC: 0.8773 | Loss: 0.1621 | Time: 132.8s
+2026-08-12 16:37:55,770 | INFO | FedAvg Round  29/50 | AUROC: 0.9479 | AUPRC: 0.8883 | Loss: 0.1683 | Time: 132.0s
+2026-08-12 16:40:07,603 | INFO | FedAvg Round  30/50 | AUROC: 0.9470 | AUPRC: 0.8895 | Loss: 0.1478 | Time: 131.8s
+2026-08-12 16:42:20,135 | INFO | FedAvg Round  31/50 | AUROC: 0.9498 | AUPRC: 0.8890 | Loss: 0.1461 | Time: 132.5s
+2026-08-12 16:44:32,683 | INFO | FedAvg Round  32/50 | AUROC: 0.9533 | AUPRC: 0.9002 | Loss: 0.1443 | Time: 132.5s
+2026-08-12 16:46:45,123 | INFO | FedAvg Round  33/50 | AUROC: 0.9452 | AUPRC: 0.8834 | Loss: 0.1516 | Time: 132.4s
+2026-08-12 16:48:56,901 | INFO | FedAvg Round  34/50 | AUROC: 0.9493 | AUPRC: 0.8942 | Loss: 0.1519 | Time: 131.8s
+2026-08-12 16:51:08,884 | INFO | FedAvg Round  35/50 | AUROC: 0.9450 | AUPRC: 0.8849 | Loss: 0.1505 | Time: 132.0s
+2026-08-12 16:53:21,078 | INFO | FedAvg Round  36/50 | AUROC: 0.9505 | AUPRC: 0.8983 | Loss: 0.1142 | Time: 132.2s
+2026-08-12 16:55:33,586 | INFO | FedAvg Round  37/50 | AUROC: 0.9466 | AUPRC: 0.8906 | Loss: 0.1592 | Time: 132.5s
+2026-08-12 16:57:46,532 | INFO | FedAvg Round  38/50 | AUROC: 0.9444 | AUPRC: 0.8797 | Loss: 0.1484 | Time: 132.9s
+2026-08-12 16:59:59,810 | INFO | FedAvg Round  39/50 | AUROC: 0.9518 | AUPRC: 0.8965 | Loss: 0.1283 | Time: 133.3s
+2026-08-12 17:02:11,994 | INFO | FedAvg Round  40/50 | AUROC: 0.9502 | AUPRC: 0.8890 | Loss: 0.1400 | Time: 132.2s
+2026-08-12 17:04:24,110 | INFO | FedAvg Round  41/50 | AUROC: 0.9410 | AUPRC: 0.8792 | Loss: 0.1178 | Time: 132.1s
+2026-08-12 17:06:36,435 | INFO | FedAvg Round  42/50 | AUROC: 0.9417 | AUPRC: 0.8862 | Loss: 0.1249 | Time: 132.3s
+2026-08-12 17:08:49,325 | INFO | FedAvg Round  43/50 | AUROC: 0.9432 | AUPRC: 0.8870 | Loss: 0.1460 | Time: 132.9s
+2026-08-12 17:11:01,935 | INFO | FedAvg Round  44/50 | AUROC: 0.9461 | AUPRC: 0.8899 | Loss: 0.1190 | Time: 132.6s
+2026-08-12 17:13:14,729 | INFO | FedAvg Round  45/50 | AUROC: 0.9321 | AUPRC: 0.8666 | Loss: 0.1274 | Time: 132.8s
+2026-08-12 17:15:27,658 | INFO | FedAvg Round  46/50 | AUROC: 0.9422 | AUPRC: 0.8788 | Loss: 0.1429 | Time: 132.9s
+2026-08-12 17:17:40,412 | INFO | FedAvg Round  47/50 | AUROC: 0.9440 | AUPRC: 0.8842 | Loss: 0.1314 | Time: 132.8s
+2026-08-12 17:19:53,064 | INFO | FedAvg Round  48/50 | AUROC: 0.9460 | AUPRC: 0.8830 | Loss: 0.1291 | Time: 132.7s
+2026-08-12 17:22:05,828 | INFO | FedAvg Round  49/50 | AUROC: 0.9411 | AUPRC: 0.8886 | Loss: 0.1314 | Time: 132.8s
+2026-08-12 17:24:18,049 | INFO | FedAvg Round  50/50 | AUROC: 0.9451 | AUPRC: 0.8897 | Loss: 0.1158 | Time: 132.2s
+2026-08-12 17:24:19,817 | INFO | 
+FedAvg Final | AUROC: 0.9451 [0.9256–0.9623] | AUPRC: 0.8897 | Runtime: 111.0 min
+2026-08-12 17:24:19,817 | INFO | ======================================================================
+2026-08-12 17:24:19,817 | INFO | RUNNING FEDPROX (μ=0.01)
+2026-08-12 17:24:19,833 | INFO |   Rounds: 50 | Local epochs/round: 5
+2026-08-12 17:24:19,833 | INFO | ======================================================================
+2026-08-12 17:26:31,920 | INFO | FedProx Round   1/50 | AUROC: 0.9128 | AUPRC: 0.8418 | Loss: 0.8007 | Time: 132.1s
+2026-08-12 17:28:44,427 | INFO | FedProx Round   2/50 | AUROC: 0.9463 | AUPRC: 0.8946 | Loss: 0.3945 | Time: 132.5s
+2026-08-12 17:30:56,326 | INFO | FedProx Round   3/50 | AUROC: 0.9542 | AUPRC: 0.9083 | Loss: 0.3250 | Time: 131.9s
+2026-08-12 17:33:09,205 | INFO | FedProx Round   4/50 | AUROC: 0.9453 | AUPRC: 0.8917 | Loss: 0.2626 | Time: 132.9s
+2026-08-12 17:35:22,529 | INFO | FedProx Round   5/50 | AUROC: 0.9549 | AUPRC: 0.8999 | Loss: 0.2523 | Time: 133.3s
+2026-08-12 17:37:34,634 | INFO | FedProx Round   6/50 | AUROC: 0.9554 | AUPRC: 0.9069 | Loss: 0.2371 | Time: 132.1s
+2026-08-12 17:39:46,837 | INFO | FedProx Round   7/50 | AUROC: 0.9547 | AUPRC: 0.9052 | Loss: 0.2176 | Time: 132.2s
+2026-08-12 17:41:59,080 | INFO | FedProx Round   8/50 | AUROC: 0.9526 | AUPRC: 0.8994 | Loss: 0.2349 | Time: 132.2s
+2026-08-12 17:44:12,151 | INFO | FedProx Round   9/50 | AUROC: 0.9497 | AUPRC: 0.9012 | Loss: 0.2299 | Time: 133.1s
+2026-08-12 17:46:25,300 | INFO | FedProx Round  10/50 | AUROC: 0.9521 | AUPRC: 0.9013 | Loss: 0.2070 | Time: 133.1s
+2026-08-12 17:48:38,576 | INFO | FedProx Round  11/50 | AUROC: 0.9500 | AUPRC: 0.8952 | Loss: 0.2051 | Time: 133.3s
+2026-08-12 17:50:51,775 | INFO | FedProx Round  12/50 | AUROC: 0.9553 | AUPRC: 0.9037 | Loss: 0.2193 | Time: 133.2s
+2026-08-12 17:53:03,961 | INFO | FedProx Round  13/50 | AUROC: 0.9584 | AUPRC: 0.9126 | Loss: 0.1870 | Time: 132.2s
+2026-08-12 17:55:17,091 | INFO | FedProx Round  14/50 | AUROC: 0.9590 | AUPRC: 0.9099 | Loss: 0.1888 | Time: 133.1s
+2026-08-12 17:57:30,321 | INFO | FedProx Round  15/50 | AUROC: 0.9579 | AUPRC: 0.9090 | Loss: 0.1857 | Time: 133.2s
+2026-08-12 17:59:42,067 | INFO | FedProx Round  16/50 | AUROC: 0.9523 | AUPRC: 0.8995 | Loss: 0.1670 | Time: 131.7s
+2026-08-12 18:01:54,731 | INFO | FedProx Round  17/50 | AUROC: 0.9573 | AUPRC: 0.9111 | Loss: 0.1630 | Time: 132.7s
+2026-08-12 18:04:06,403 | INFO | FedProx Round  18/50 | AUROC: 0.9567 | AUPRC: 0.9146 | Loss: 0.1470 | Time: 131.7s
+2026-08-12 18:06:18,401 | INFO | FedProx Round  19/50 | AUROC: 0.9457 | AUPRC: 0.8918 | Loss: 0.1588 | Time: 132.0s
+2026-08-12 18:08:30,659 | INFO | FedProx Round  20/50 | AUROC: 0.9506 | AUPRC: 0.8994 | Loss: 0.1736 | Time: 132.3s
+2026-08-12 18:10:43,133 | INFO | FedProx Round  21/50 | AUROC: 0.9529 | AUPRC: 0.9002 | Loss: 0.1381 | Time: 132.5s
+2026-08-12 18:12:56,135 | INFO | FedProx Round  22/50 | AUROC: 0.9611 | AUPRC: 0.9137 | Loss: 0.1639 | Time: 133.0s
+2026-08-12 18:15:08,690 | INFO | FedProx Round  23/50 | AUROC: 0.9577 | AUPRC: 0.9056 | Loss: 0.1336 | Time: 132.6s
+2026-08-12 18:17:21,872 | INFO | FedProx Round  24/50 | AUROC: 0.9522 | AUPRC: 0.8933 | Loss: 0.1477 | Time: 133.2s
+2026-08-12 18:19:34,231 | INFO | FedProx Round  25/50 | AUROC: 0.9575 | AUPRC: 0.9055 | Loss: 0.1419 | Time: 132.4s
+2026-08-12 18:21:47,744 | INFO | FedProx Round  26/50 | AUROC: 0.9587 | AUPRC: 0.9121 | Loss: 0.1512 | Time: 133.5s
+2026-08-12 18:24:00,679 | INFO | FedProx Round  27/50 | AUROC: 0.9584 | AUPRC: 0.9119 | Loss: 0.1473 | Time: 132.9s
+2026-08-12 18:26:13,642 | INFO | FedProx Round  28/50 | AUROC: 0.9641 | AUPRC: 0.9225 | Loss: 0.1256 | Time: 133.0s
+2026-08-12 18:28:26,533 | INFO | FedProx Round  29/50 | AUROC: 0.9585 | AUPRC: 0.9040 | Loss: 0.1600 | Time: 132.9s
+2026-08-12 18:30:39,744 | INFO | FedProx Round  30/50 | AUROC: 0.9630 | AUPRC: 0.9191 | Loss: 0.1156 | Time: 133.2s
+2026-08-12 18:32:52,744 | INFO | FedProx Round  31/50 | AUROC: 0.9577 | AUPRC: 0.9096 | Loss: 0.1069 | Time: 133.0s
+2026-08-12 18:35:06,068 | INFO | FedProx Round  32/50 | AUROC: 0.9551 | AUPRC: 0.9014 | Loss: 0.1261 | Time: 133.3s
+2026-08-12 18:37:19,275 | INFO | FedProx Round  33/50 | AUROC: 0.9614 | AUPRC: 0.9152 | Loss: 0.1109 | Time: 133.2s
+2026-08-12 18:39:32,655 | INFO | FedProx Round  34/50 | AUROC: 0.9584 | AUPRC: 0.9100 | Loss: 0.1060 | Time: 133.4s
+2026-08-12 18:41:45,555 | INFO | FedProx Round  35/50 | AUROC: 0.9617 | AUPRC: 0.9147 | Loss: 0.1267 | Time: 132.9s
+2026-08-12 18:43:57,792 | INFO | FedProx Round  36/50 | AUROC: 0.9575 | AUPRC: 0.9038 | Loss: 0.1376 | Time: 132.2s
+2026-08-12 18:46:10,956 | INFO | FedProx Round  37/50 | AUROC: 0.9570 | AUPRC: 0.9064 | Loss: 0.1337 | Time: 133.2s
+2026-08-12 18:48:24,000 | INFO | FedProx Round  38/50 | AUROC: 0.9530 | AUPRC: 0.8974 | Loss: 0.1266 | Time: 133.0s
+2026-08-12 18:50:37,449 | INFO | FedProx Round  39/50 | AUROC: 0.9573 | AUPRC: 0.9115 | Loss: 0.1099 | Time: 133.4s
+2026-08-12 18:52:51,257 | INFO | FedProx Round  40/50 | AUROC: 0.9547 | AUPRC: 0.9017 | Loss: 0.1206 | Time: 133.8s
+2026-08-12 18:55:04,798 | INFO | FedProx Round  41/50 | AUROC: 0.9582 | AUPRC: 0.9119 | Loss: 0.1300 | Time: 133.5s
+2026-08-12 18:57:18,771 | INFO | FedProx Round  42/50 | AUROC: 0.9587 | AUPRC: 0.9073 | Loss: 0.1388 | Time: 134.0s
+2026-08-12 18:59:31,190 | INFO | FedProx Round  43/50 | AUROC: 0.9573 | AUPRC: 0.9045 | Loss: 0.0996 | Time: 132.4s
+2026-08-12 19:01:47,060 | INFO | FedProx Round  44/50 | AUROC: 0.9547 | AUPRC: 0.9023 | Loss: 0.1021 | Time: 135.9s
+2026-08-12 19:04:01,053 | INFO | FedProx Round  45/50 | AUROC: 0.9600 | AUPRC: 0.9132 | Loss: 0.1107 | Time: 134.0s
+2026-08-12 19:06:17,303 | INFO | FedProx Round  46/50 | AUROC: 0.9551 | AUPRC: 0.9070 | Loss: 0.1060 | Time: 136.3s
+2026-08-12 19:08:32,418 | INFO | FedProx Round  47/50 | AUROC: 0.9572 | AUPRC: 0.9089 | Loss: 0.1047 | Time: 135.1s
+2026-08-12 19:10:46,463 | INFO | FedProx Round  48/50 | AUROC: 0.9556 | AUPRC: 0.9069 | Loss: 0.1136 | Time: 134.0s
+2026-08-12 19:13:01,303 | INFO | FedProx Round  49/50 | AUROC: 0.9560 | AUPRC: 0.9042 | Loss: 0.1027 | Time: 134.8s
+2026-08-12 19:15:14,677 | INFO | FedProx Round  50/50 | AUROC: 0.9557 | AUPRC: 0.9096 | Loss: 0.0962 | Time: 133.4s
+2026-08-12 19:15:16,561 | INFO | 
+FedProx Final | AUROC: 0.9557 [0.9389–0.9714] | AUPRC: 0.9096 | Runtime: 110.9 min
+2026-08-12 19:15:16,561 | INFO | ======================================================================
+2026-08-12 19:15:16,561 | INFO | COMPUTING PER-NODE LOCAL-ONLY BASELINE
+2026-08-12 19:15:16,561 | INFO | (Each node trained in isolation — no federation)
+2026-08-12 19:15:16,561 | INFO | ======================================================================
+2026-08-12 19:15:16,561 | INFO |   Training local-only model for node: CICU...
+2026-08-12 19:18:48,130 | INFO |   CICU local AUROC: 0.8604 | FedAvg gain: +0.0847 | FedProx gain: +0.0953
+2026-08-12 19:18:48,130 | INFO |   Training local-only model for node: General ICU...
+2026-08-12 19:45:47,543 | INFO |   General ICU local AUROC: 0.9334 | FedAvg gain: +0.0117 | FedProx gain: +0.0223
+2026-08-12 19:45:47,543 | INFO |   Training local-only model for node: NICU...
+2026-08-12 19:55:17,082 | INFO |   NICU local AUROC: 0.8986 | FedAvg gain: +0.0466 | FedProx gain: +0.0571
+2026-08-12 19:55:17,082 | INFO |   Training local-only model for node: PICU...
+2026-08-12 20:00:11,036 | INFO |   PICU local AUROC: 0.8958 | FedAvg gain: +0.0494 | FedProx gain: +0.0599
+2026-08-12 20:00:11,036 | INFO |   Training local-only model for node: SICU...
+2026-08-12 20:11:21,950 | INFO |   SICU local AUROC: 0.9300 | FedAvg gain: +0.0151 | FedProx gain: +0.0256
+2026-08-12 20:11:21,966 | INFO | DeLong FedAvg vs CatBoost:  z=-1.8940, p=0.0582 (not significant)
+2026-08-12 20:11:21,966 | INFO | DeLong FedProx vs CatBoost: z=-1.4935, p=0.1353 (not significant)
+2026-08-12 20:11:21,998 | INFO | DeLong FedAvg vs Centralised FTT:  z=-0.5370, p=0.5913
+2026-08-12 20:11:21,998 | INFO | DeLong FedProx vs Centralised FTT: z=-0.0921, p=0.9266
+2026-08-12 20:11:22,014 | INFO | DeLong FedAvg vs FedProx: z=-0.4829, p=0.6292
+2026-08-12 20:11:22,014 | INFO | --------------------------------------------------
+2026-08-12 20:11:22,014 | INFO | Saving results...
+2026-08-12 20:11:22,048 | INFO | All results saved.
+2026-08-12 20:11:22,048 | INFO | --------------------------------------------------
+2026-08-12 20:11:22,048 | INFO | Saving model checkpoints for downstream federated SHAP...
+2026-08-12 20:11:22,063 | INFO |   Saved: D:\pediatric-sepsis-PIC\sepsis_ml\fl\models\fedavg_global_final.pt
+2026-08-12 20:11:22,063 | INFO |   Saved: D:\pediatric-sepsis-PIC\sepsis_ml\fl\models\fedprox_global_final.pt
+2026-08-12 20:11:22,063 | INFO |   Saved: D:\pediatric-sepsis-PIC\sepsis_ml\fl\models\scaler.pkl
+2026-08-12 20:11:22,063 | INFO |   Saved: D:\pediatric-sepsis-PIC\sepsis_ml\fl\models\model_metadata.json
+2026-08-12 20:11:22,063 | INFO | Generating figures...
+2026-08-12 20:11:23,081 | INFO | All figures saved.
+2026-08-12 20:11:23,081 | INFO | ======================================================================
+2026-08-12 20:11:23,081 | INFO | PHASE 7 — FEDERATED LEARNING — COMPLETE
+2026-08-12 20:11:23,081 | INFO | ======================================================================
+2026-08-12 20:11:23,081 | INFO | 
+2026-08-12 20:11:23,081 | INFO | ━━━ PERFORMANCE SUMMARY ━━━
+2026-08-12 20:11:23,081 | INFO | Model                                  AUROC    AUPRC    Brier     Sens     Spec
+2026-08-12 20:11:23,081 | INFO | ---------------------------------------------------------------------------
+2026-08-12 20:11:23,081 | INFO | Centralised CatBoost (ref)            0.9868   0.9691   0.0385    0.896    0.963
+2026-08-12 20:11:23,081 | INFO | Centralised FT-Transformer            0.9577   0.9131   0.0733    0.896    0.852
+2026-08-12 20:11:23,081 | INFO | FedAvg (federated FTT)                0.9451   0.8897   0.0969   0.8960   0.8609
+2026-08-12 20:11:23,081 | INFO | FedProx μ=0.01 (federated FTT)        0.9557   0.9096   0.0792   0.9017   0.8435
+2026-08-12 20:11:23,081 | INFO | 
+2026-08-12 20:11:23,081 | INFO | ━━━ FEDERATION GAIN (vs local-only) ━━━
+2026-08-12 20:11:23,081 | INFO |   CICU                 Local: 0.8604 | FedAvg gain: +0.0847 | FedProx gain: +0.0953
+2026-08-12 20:11:23,081 | INFO |   General ICU          Local: 0.9334 | FedAvg gain: +0.0117 | FedProx gain: +0.0223
+2026-08-12 20:11:23,081 | INFO |   NICU                 Local: 0.8986 | FedAvg gain: +0.0466 | FedProx gain: +0.0571
+2026-08-12 20:11:23,081 | INFO |   PICU                 Local: 0.8958 | FedAvg gain: +0.0494 | FedProx gain: +0.0599
+2026-08-12 20:11:23,081 | INFO |   SICU                 Local: 0.9300 | FedAvg gain: +0.0151 | FedProx gain: +0.0256
+2026-08-12 20:11:23,081 | INFO | 
+2026-08-12 20:11:23,081 | INFO | FedAvg runtime : 111.0 min
+2026-08-12 20:11:23,081 | INFO | FedProx runtime: 110.9 min
+2026-08-12 20:11:23,081 | INFO | ----------------------------------------------------------------------
+2026-08-12 20:11:23,081 | INFO | Outputs saved to:
+2026-08-12 20:11:23,081 | INFO |   Results : D:\pediatric-sepsis-PIC\sepsis_ml\fl\results
+2026-08-12 20:11:23,081 | INFO |   Figures : D:\pediatric-sepsis-PIC\sepsis_ml\fl\figures
+2026-08-12 20:11:23,081 | INFO |   Log     : D:\pediatric-sepsis-PIC\sepsis_ml\fl\logs\phase7_federated.log
+2026-08-12 20:11:23,081 | INFO | ======================================================================

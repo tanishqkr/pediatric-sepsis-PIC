@@ -1,6 +1,6 @@
 {
   "phase": "Phase4_SHAP",
-  "timestamp": "2026-04-11T14:48:27.971325",
+  "timestamp": "2026-08-12T20:19:39.935507",
   "dataset": "Option_B",
   "model": "Tuned_CatBoost",
   "n_test": 633,
@@ -177,13 +177,13 @@
     "ph_min"
   ],
   "figures": [
-    "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig1_beeswarm_top20.png",
-    "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig2_bar_importance.png",
-    "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig3_dependence_plots.png",
-    "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig4_waterfall_plots.png",
-    "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig5a_interaction_heatmap.png",
-    "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig5b_interaction_scatter.png",
-    "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig6_shap_by_class.png",
-    "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig7_shap_dashboard.png"
+    "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig1_beeswarm_top20.png",
+    "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig2_bar_importance.png",
+    "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig3_dependence_plots.png",
+    "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig4_waterfall_plots.png",
+    "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig5a_interaction_heatmap.png",
+    "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig5b_interaction_scatter.png",
+    "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig6_shap_by_class.png",
+    "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig7_shap_dashboard.png"
   ]
 }

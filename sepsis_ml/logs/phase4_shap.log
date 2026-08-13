@@ -310,3 +310,237 @@
 2026-04-11 14:48:27,975 | INFO |   â†’ Sensitivity analysis on Option A (full cohort)
 2026-04-11 14:48:27,975 | INFO |   â†’ Paper writing â€” Methods, Results, Discussion
 2026-04-11 14:48:27,975 | INFO | ======================================================================
+2026-08-12 20:11:28,873 | INFO | ======================================================================
+2026-08-12 20:11:28,873 | INFO | PHASE 4 — SHAP EXPLAINABILITY
+2026-08-12 20:11:28,873 | INFO | Run timestamp : 2026-08-12 20:11:28
+2026-08-12 20:11:28,873 | INFO | Base dir      : D:\pediatric-sepsis-PIC
+2026-08-12 20:11:28,873 | INFO | ======================================================================
+2026-08-12 20:11:28,875 | INFO | Loading data and model...
+2026-08-12 20:11:28,904 | INFO | Test set  : 633 rows x 225 features
+2026-08-12 20:11:28,904 | INFO | Train set : 2530 rows x 225 features
+2026-08-12 20:11:28,904 | INFO | Sepsis prevalence — test: 27.3%, train: 27.3%
+2026-08-12 20:11:28,904 | INFO | Tuned CatBoost loaded
+2026-08-12 20:11:28,920 | INFO | Model AUROC on test set: 0.9868 (sanity check)
+2026-08-12 20:11:28,920 | INFO | 
+2026-08-12 20:11:28,920 | INFO | ============================================================
+2026-08-12 20:11:28,920 | INFO | Computing SHAP values (TreeExplainer, full test set)...
+2026-08-12 20:11:28,920 | INFO | ============================================================
+2026-08-12 20:11:29,524 | INFO | SHAP values computed: (633, 225)
+2026-08-12 20:11:29,524 | INFO | Expected value (base rate): -1.0262
+2026-08-12 20:11:29,524 | INFO | SHAP value range: [-1.2442, 4.4773]
+2026-08-12 20:11:29,555 | INFO | Raw SHAP values saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_shap_values.npz
+2026-08-12 20:11:29,555 | INFO | Feature importance saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_feature_importance.csv
+2026-08-12 20:11:29,555 | INFO | Top 20 features by mean |SHAP|:
+2026-08-12 20:11:29,555 | INFO |    1. Lactate (max)                  0.99198
+2026-08-12 20:11:29,555 | INFO |    2. D-dimer (max)                  0.95739
+2026-08-12 20:11:29,555 | INFO |    3. Platelets (min)                0.77623
+2026-08-12 20:11:29,555 | INFO |    4. INR (max)                      0.53897
+2026-08-12 20:11:29,555 | INFO |    5. Calcium (max)                  0.51920
+2026-08-12 20:11:29,555 | INFO |    6. PT (max)                       0.25903
+2026-08-12 20:11:29,555 | INFO |    7. Calcium (mean)                 0.22155
+2026-08-12 20:11:29,555 | INFO |    8. Glucose (max)                  0.21425
+2026-08-12 20:11:29,555 | INFO |    9. PaO2 (max)                     0.17612
+2026-08-12 20:11:29,555 | INFO |   10. pH (min)                       0.16052
+2026-08-12 20:11:29,555 | INFO |   11. Haematocrit (min)              0.14609
+2026-08-12 20:11:29,555 | INFO |   12. Platelets (first)              0.14574
+2026-08-12 20:11:29,555 | INFO |   13. care_unit_SICU                 0.12439
+2026-08-12 20:11:29,555 | INFO |   14. Fibrinogen (min)               0.11478
+2026-08-12 20:11:29,555 | INFO |   15. care_unit_CICU                 0.11362
+2026-08-12 20:11:29,555 | INFO |   16. D-dimer (mean)                 0.10831
+2026-08-12 20:11:29,555 | INFO |   17. Platelets (mean)               0.09083
+2026-08-12 20:11:29,555 | INFO |   18. Potassium (min)                0.08438
+2026-08-12 20:11:29,555 | INFO |   19. Lactate (first)                0.07491
+2026-08-12 20:11:29,555 | INFO |   20. Bicarbonate (min)              0.07258
+2026-08-12 20:11:29,555 | INFO | Top 5 features: ['lactate_max', 'ddimer_max', 'platelets_min', 'inr_max', 'calcium_max']
+2026-08-12 20:11:29,555 | INFO | Top 10 features (for interactions): ['lactate_max', 'ddimer_max', 'platelets_min', 'inr_max', 'calcium_max', 'pt_max', 'calcium_mean', 'glucose_max', 'pao2_max', 'ph_min']
+2026-08-12 20:11:29,555 | INFO | 
+2026-08-12 20:11:29,555 | INFO | Identifying patients for waterfall plots...
+2026-08-12 20:11:29,555 | INFO | True Positive  patient idx=448, prob=0.9997, true_label=1
+2026-08-12 20:11:29,555 | INFO | False Negative patient idx=442, prob=0.3650, true_label=1
+2026-08-12 20:11:29,555 | INFO | False Positive patient idx=613, prob=0.9825, true_label=0
+2026-08-12 20:11:29,555 | INFO | 
+2026-08-12 20:11:29,555 | INFO | ============================================================
+2026-08-12 20:11:29,555 | INFO | Figure 1 — Global beeswarm plot...
+2026-08-12 20:11:29,555 | INFO | ============================================================
+2026-08-12 20:11:29,937 | INFO | Figure 1 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig1_beeswarm_top20.png
+2026-08-12 20:11:29,937 | INFO | Figure 2 — SHAP bar plot...
+2026-08-12 20:11:30,080 | INFO | Figure 2 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig2_bar_importance.png
+2026-08-12 20:11:30,080 | INFO | Figure 3 — Dependence plots (top 5 features)...
+2026-08-12 20:11:30,080 | INFO | Dependence plot features: ['lactate_max', 'platelets_min', 'base_excess_min', 'ddimer_max', 'inr_max']
+2026-08-12 20:11:30,574 | INFO | Figure 3 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig3_dependence_plots.png
+2026-08-12 20:11:30,574 | INFO | Figure 4 — Waterfall plots (TP, FN, FP)...
+2026-08-12 20:11:30,956 | INFO | Figure 4 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig4_waterfall_plots.png
+2026-08-12 20:11:30,956 | INFO |   True Positive — High Confidence Correct Sepsis
+2026-08-12 20:11:30,956 | INFO |     prob=0.9997, true=1
+2026-08-12 20:11:30,956 | INFO |     top 3 SHAP features: [('lactate_max', 2.1315555176252325), ('platelets_min', 1.4394705521374374), ('inr_max', 1.1068775839499125)]
+2026-08-12 20:11:30,956 | INFO |   False Negative — Missed Sepsis
+2026-08-12 20:11:30,956 | INFO |     prob=0.3650, true=1
+2026-08-12 20:11:30,956 | INFO |     top 3 SHAP features: [('calcium_max', 0.7488998043732241), ('ddimer_max', -0.5857416242628201), ('lactate_max', -0.4617814036667864)]
+2026-08-12 20:11:30,956 | INFO |   False Positive — Wrong Alarm
+2026-08-12 20:11:30,956 | INFO |     prob=0.9825, true=0
+2026-08-12 20:11:30,956 | INFO |     top 3 SHAP features: [('lactate_max', 4.35045357102073), ('care_unit_SICU', 0.6092233778568931), ('ddimer_max', -0.5757186659094098)]
+2026-08-12 20:11:30,956 | INFO | 
+2026-08-12 20:11:30,956 | INFO | ============================================================
+2026-08-12 20:11:30,956 | INFO | Computing SHAP interaction values (top 10 features, 2530 training rows)...
+2026-08-12 20:11:30,956 | INFO | This may take 5-15 minutes...
+2026-08-12 20:11:30,956 | INFO | ============================================================
+2026-08-12 20:13:18,588 | INFO | Interaction values computed: (633, 10, 10)
+2026-08-12 20:13:18,942 | INFO | Figure 5A saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig5a_interaction_heatmap.png
+2026-08-12 20:13:18,942 | INFO | Figure 5B — Focused interaction scatter plots...
+2026-08-12 20:13:19,179 | INFO | Figure 5B saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig5b_interaction_scatter.png
+2026-08-12 20:13:19,179 | INFO | Figure 6 — SHAP summary by class...
+2026-08-12 20:13:19,402 | INFO | Figure 6 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig6_shap_by_class.png
+2026-08-12 20:13:19,402 | INFO | Figure 7 — SHAP dashboard (paper summary)...
+2026-08-12 20:13:19,786 | INFO | Figure 7 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig7_shap_dashboard.png
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | ============================================================
+2026-08-12 20:13:19,786 | INFO | Saving results...
+2026-08-12 20:13:19,786 | INFO | ============================================================
+2026-08-12 20:13:19,786 | INFO | Phase 4 results saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_shap_results.json
+2026-08-12 20:13:19,786 | INFO | Experiment log updated: D:\pediatric-sepsis-PIC\sepsis_ml\results\experiment_log.json
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | ======================================================================
+2026-08-12 20:13:19,786 | INFO | PHASE 4 COMPLETE — SUMMARY
+2026-08-12 20:13:19,786 | INFO | ======================================================================
+2026-08-12 20:13:19,786 | INFO | SHAP values computed for  : 633 test patients, 225 features
+2026-08-12 20:13:19,786 | INFO | Expected value (base rate): -1.0262
+2026-08-12 20:13:19,786 | INFO | Top feature               : Lactate (max) (mean |SHAP|=0.99198)
+2026-08-12 20:13:19,786 | INFO | Figures saved             : 7 figures to D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | Top 10 features by SHAP importance:
+2026-08-12 20:13:19,786 | INFO |    1. Lactate (max)                  0.99198
+2026-08-12 20:13:19,786 | INFO |    2. D-dimer (max)                  0.95739
+2026-08-12 20:13:19,786 | INFO |    3. Platelets (min)                0.77623
+2026-08-12 20:13:19,786 | INFO |    4. INR (max)                      0.53897
+2026-08-12 20:13:19,786 | INFO |    5. Calcium (max)                  0.51920
+2026-08-12 20:13:19,786 | INFO |    6. PT (max)                       0.25903
+2026-08-12 20:13:19,786 | INFO |    7. Calcium (mean)                 0.22155
+2026-08-12 20:13:19,786 | INFO |    8. Glucose (max)                  0.21425
+2026-08-12 20:13:19,786 | INFO |    9. PaO2 (max)                     0.17612
+2026-08-12 20:13:19,786 | INFO |   10. pH (min)                       0.16052
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | Interaction pairs analysed:
+2026-08-12 20:13:19,786 | INFO |   Lactate (max) × Platelets (min)
+2026-08-12 20:13:19,786 | INFO |     Mean interaction — Sepsis: -0.00406, Non-sepsis: -0.00756
+2026-08-12 20:13:19,786 | INFO |   INR (max) × D-dimer (max)
+2026-08-12 20:13:19,786 | INFO |     Mean interaction — Sepsis: -0.01521, Non-sepsis: -0.00297
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | Next steps:
+2026-08-12 20:13:19,800 | INFO | ======================================================================
+2026-08-12 20:17:49,988 | INFO | ======================================================================
+2026-08-12 20:17:49,988 | INFO | PHASE 4 — SHAP EXPLAINABILITY
+2026-08-12 20:17:49,988 | INFO | Run timestamp : 2026-08-12 20:17:49
+2026-08-12 20:17:49,988 | INFO | Base dir      : D:\pediatric-sepsis-PIC
+2026-08-12 20:17:49,988 | INFO | ======================================================================
+2026-08-12 20:17:49,988 | INFO | Loading data and model...
+2026-08-12 20:17:50,035 | INFO | Test set  : 633 rows x 225 features
+2026-08-12 20:17:50,035 | INFO | Train set : 2530 rows x 225 features
+2026-08-12 20:17:50,035 | INFO | Sepsis prevalence — test: 27.3%, train: 27.3%
+2026-08-12 20:17:50,035 | INFO | Tuned CatBoost loaded
+2026-08-12 20:17:50,054 | INFO | Model AUROC on test set: 0.9868 (sanity check)
+2026-08-12 20:17:50,054 | INFO | 
+2026-08-12 20:17:50,054 | INFO | ============================================================
+2026-08-12 20:17:50,054 | INFO | Computing SHAP values (TreeExplainer, full test set)...
+2026-08-12 20:17:50,054 | INFO | ============================================================
+2026-08-12 20:17:50,647 | INFO | SHAP values computed: (633, 225)
+2026-08-12 20:17:50,647 | INFO | Expected value (base rate): -1.0262
+2026-08-12 20:17:50,649 | INFO | SHAP value range: [-1.2442, 4.4773]
+2026-08-12 20:17:50,673 | INFO | Raw SHAP values saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_shap_values.npz
+2026-08-12 20:17:50,679 | INFO | Feature importance saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_feature_importance.csv
+2026-08-12 20:17:50,679 | INFO | Top 20 features by mean |SHAP|:
+2026-08-12 20:17:50,679 | INFO |    1. Lactate (max)                  0.99198
+2026-08-12 20:17:50,679 | INFO |    2. D-dimer (max)                  0.95739
+2026-08-12 20:17:50,679 | INFO |    3. Platelets (min)                0.77623
+2026-08-12 20:17:50,679 | INFO |    4. INR (max)                      0.53897
+2026-08-12 20:17:50,679 | INFO |    5. Calcium (max)                  0.51920
+2026-08-12 20:17:50,679 | INFO |    6. PT (max)                       0.25903
+2026-08-12 20:17:50,679 | INFO |    7. Calcium (mean)                 0.22155
+2026-08-12 20:17:50,679 | INFO |    8. Glucose (max)                  0.21425
+2026-08-12 20:17:50,681 | INFO |    9. PaO2 (max)                     0.17612
+2026-08-12 20:17:50,681 | INFO |   10. pH (min)                       0.16052
+2026-08-12 20:17:50,681 | INFO |   11. Haematocrit (min)              0.14609
+2026-08-12 20:17:50,681 | INFO |   12. Platelets (first)              0.14574
+2026-08-12 20:17:50,681 | INFO |   13. care_unit_SICU                 0.12439
+2026-08-12 20:17:50,681 | INFO |   14. Fibrinogen (min)               0.11478
+2026-08-12 20:17:50,681 | INFO |   15. care_unit_CICU                 0.11362
+2026-08-12 20:17:50,681 | INFO |   16. D-dimer (mean)                 0.10831
+2026-08-12 20:17:50,681 | INFO |   17. Platelets (mean)               0.09083
+2026-08-12 20:17:50,681 | INFO |   18. Potassium (min)                0.08438
+2026-08-12 20:17:50,681 | INFO |   19. Lactate (first)                0.07491
+2026-08-12 20:17:50,681 | INFO |   20. Bicarbonate (min)              0.07258
+2026-08-12 20:17:50,681 | INFO | Top 5 features: ['lactate_max', 'ddimer_max', 'platelets_min', 'inr_max', 'calcium_max']
+2026-08-12 20:17:50,681 | INFO | Top 10 features (for interactions): ['lactate_max', 'ddimer_max', 'platelets_min', 'inr_max', 'calcium_max', 'pt_max', 'calcium_mean', 'glucose_max', 'pao2_max', 'ph_min']
+2026-08-12 20:17:50,681 | INFO | 
+2026-08-12 20:17:50,681 | INFO | Identifying patients for waterfall plots...
+2026-08-12 20:17:50,681 | INFO | True Positive  patient idx=448, prob=0.9997, true_label=1
+2026-08-12 20:17:50,681 | INFO | False Negative patient idx=442, prob=0.3650, true_label=1
+2026-08-12 20:17:50,681 | INFO | False Positive patient idx=613, prob=0.9825, true_label=0
+2026-08-12 20:17:50,681 | INFO | 
+2026-08-12 20:17:50,681 | INFO | ============================================================
+2026-08-12 20:17:50,681 | INFO | Figure 1 — Global beeswarm plot...
+2026-08-12 20:17:50,681 | INFO | ============================================================
+2026-08-12 20:17:51,054 | INFO | Figure 1 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig1_beeswarm_top20.png
+2026-08-12 20:17:51,054 | INFO | Figure 2 — SHAP bar plot...
+2026-08-12 20:17:51,211 | INFO | Figure 2 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig2_bar_importance.png
+2026-08-12 20:17:51,211 | INFO | Figure 3 — Dependence plots (top 5 features)...
+2026-08-12 20:17:51,211 | INFO | Dependence plot features: ['lactate_max', 'platelets_min', 'base_excess_min', 'ddimer_max', 'inr_max']
+2026-08-12 20:17:51,704 | INFO | Figure 3 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig3_dependence_plots.png
+2026-08-12 20:17:51,704 | INFO | Figure 4 — Waterfall plots (TP, FN, FP)...
+2026-08-12 20:17:52,071 | INFO | Figure 4 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig4_waterfall_plots.png
+2026-08-12 20:17:52,071 | INFO |   True Positive — High Confidence Correct Sepsis
+2026-08-12 20:17:52,071 | INFO |     prob=0.9997, true=1
+2026-08-12 20:17:52,071 | INFO |     top 3 SHAP features: [('lactate_max', 2.1315555176252325), ('platelets_min', 1.4394705521374374), ('inr_max', 1.1068775839499125)]
+2026-08-12 20:17:52,071 | INFO |   False Negative — Missed Sepsis
+2026-08-12 20:17:52,071 | INFO |     prob=0.3650, true=1
+2026-08-12 20:17:52,071 | INFO |     top 3 SHAP features: [('calcium_max', 0.7488998043732241), ('ddimer_max', -0.5857416242628201), ('lactate_max', -0.4617814036667864)]
+2026-08-12 20:17:52,087 | INFO |   False Positive — Wrong Alarm
+2026-08-12 20:17:52,087 | INFO |     prob=0.9825, true=0
+2026-08-12 20:17:52,087 | INFO |     top 3 SHAP features: [('lactate_max', 4.35045357102073), ('care_unit_SICU', 0.6092233778568931), ('ddimer_max', -0.5757186659094098)]
+2026-08-12 20:17:52,087 | INFO | 
+2026-08-12 20:17:52,087 | INFO | ============================================================
+2026-08-12 20:17:52,087 | INFO | Computing SHAP interaction values (top 10 features, 2530 training rows)...
+2026-08-12 20:17:52,087 | INFO | This may take 5-15 minutes...
+2026-08-12 20:17:52,087 | INFO | ============================================================
+2026-08-12 20:19:38,754 | INFO | Interaction values computed: (633, 10, 10)
+2026-08-12 20:19:39,104 | INFO | Figure 5A saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig5a_interaction_heatmap.png
+2026-08-12 20:19:39,104 | INFO | Figure 5B — Focused interaction scatter plots...
+2026-08-12 20:19:39,342 | INFO | Figure 5B saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig5b_interaction_scatter.png
+2026-08-12 20:19:39,342 | INFO | Figure 6 — SHAP summary by class...
+2026-08-12 20:19:39,552 | INFO | Figure 6 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig6_shap_by_class.png
+2026-08-12 20:19:39,552 | INFO | Figure 7 — SHAP dashboard (paper summary)...
+2026-08-12 20:19:39,935 | INFO | Figure 7 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig7_shap_dashboard.png
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | ============================================================
+2026-08-12 20:19:39,935 | INFO | Saving results...
+2026-08-12 20:19:39,935 | INFO | ============================================================
+2026-08-12 20:19:39,935 | INFO | Phase 4 results saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_shap_results.json
+2026-08-12 20:19:39,935 | INFO | Experiment log updated: D:\pediatric-sepsis-PIC\sepsis_ml\results\experiment_log.json
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | ======================================================================
+2026-08-12 20:19:39,935 | INFO | PHASE 4 COMPLETE — SUMMARY
+2026-08-12 20:19:39,935 | INFO | ======================================================================
+2026-08-12 20:19:39,935 | INFO | SHAP values computed for  : 633 test patients, 225 features
+2026-08-12 20:19:39,935 | INFO | Expected value (base rate): -1.0262
+2026-08-12 20:19:39,935 | INFO | Top feature               : Lactate (max) (mean |SHAP|=0.99198)
+2026-08-12 20:19:39,935 | INFO | Figures saved             : 7 figures to D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | Top 10 features by SHAP importance:
+2026-08-12 20:19:39,935 | INFO |    1. Lactate (max)                  0.99198
+2026-08-12 20:19:39,935 | INFO |    2. D-dimer (max)                  0.95739
+2026-08-12 20:19:39,935 | INFO |    3. Platelets (min)                0.77623
+2026-08-12 20:19:39,935 | INFO |    4. INR (max)                      0.53897
+2026-08-12 20:19:39,935 | INFO |    5. Calcium (max)                  0.51920
+2026-08-12 20:19:39,935 | INFO |    6. PT (max)                       0.25903
+2026-08-12 20:19:39,935 | INFO |    7. Calcium (mean)                 0.22155
+2026-08-12 20:19:39,935 | INFO |    8. Glucose (max)                  0.21425
+2026-08-12 20:19:39,935 | INFO |    9. PaO2 (max)                     0.17612
+2026-08-12 20:19:39,935 | INFO |   10. pH (min)                       0.16052
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | Interaction pairs analysed:
+2026-08-12 20:19:39,935 | INFO |   Lactate (max) × Platelets (min)
+2026-08-12 20:19:39,935 | INFO |     Mean interaction — Sepsis: -0.00406, Non-sepsis: -0.00756
+2026-08-12 20:19:39,935 | INFO |   INR (max) × D-dimer (max)
+2026-08-12 20:19:39,935 | INFO |     Mean interaction — Sepsis: -0.01521, Non-sepsis: -0.00297
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | Next steps:
+2026-08-12 20:19:39,949 | INFO | ======================================================================
