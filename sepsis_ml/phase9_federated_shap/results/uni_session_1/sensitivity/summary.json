@@ -1,0 +1,22 @@
+{
+  "axis3_algorithm": {
+    "check": "FedAvg vs FedProx federated SHAP ranking agreement",
+    "spearman_rho": 0.6963067768790074,
+    "p_value": 5.8039905696135914e-34,
+    "fedavg_top_5": [
+      "lactate_max",
+      "ddimer_first",
+      "platelets_min",
+      "ddimer_mean",
+      "inr_max"
+    ],
+    "fedprox_top_5": [
+      "lactate_max",
+      "pt_max",
+      "ddimer_mean",
+      "inr_max",
+      "fluid_input_total_ml"
+    ],
+    "top_5_overlap": 3
+  }
+}

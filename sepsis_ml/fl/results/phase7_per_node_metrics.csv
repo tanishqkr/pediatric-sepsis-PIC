@@ -1,0 +1,6 @@
+node,n_patients,sepsis_rate,local_only_auroc,local_only_auprc,fedavg_global_auroc,fedprox_global_auroc,federation_gain_fedavg,federation_gain_fedprox
+CICU,144,0.5972,0.8604,0.7944,0.9451,0.9557,0.0847,0.0953
+General ICU,1251,0.2318,0.9334,0.8745,0.9451,0.9557,0.0117,0.0223
+NICU,421,0.1401,0.8986,0.7696,0.9451,0.9557,0.0466,0.0571
+PICU,213,0.338,0.8958,0.811,0.9451,0.9557,0.0494,0.0599
+SICU,501,0.3673,0.93,0.8103,0.9451,0.9557,0.0151,0.0256

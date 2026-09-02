@@ -1,0 +1,1071 @@
+=============================================== 
+Phase 7 + Phase 9 Pipeline Started 12-08-2026 15:33:12.48 
+=============================================== 
+ 
+================================================== 
+================================================== 
+2026-08-12 15:33:17,788 | INFO | ======================================================================
+2026-08-12 15:33:17,788 | INFO | PHASE 7 — FEDERATED LEARNING SIMULATION
+2026-08-12 15:33:17,788 | INFO | FT-Transformer | FedAvg + FedProx | 5 Care Unit Nodes
+2026-08-12 15:33:17,788 | INFO | Started : 2026-08-12 15:33:17
+2026-08-12 15:33:17,788 | INFO | ======================================================================
+2026-08-12 15:33:17,804 | INFO | Device : CPU
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u03bc' in position 87: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\fl\phase7_federated_learning.py", line 166, in <module>
+    log.info(f"FL Config: {FL_CONFIG['n_rounds']} rounds | "
+Message: 'FL Config: 50 rounds | 5 local epochs/round | FedProx \u03bc=0.01'
+Arguments: ()
+2026-08-12 15:33:17,820 | INFO | --------------------------------------------------
+2026-08-12 15:33:17,820 | INFO | Loading datasets...
+2026-08-12 15:33:17,852 | INFO | Train : 2530 patients | Sepsis: 27.3%
+2026-08-12 15:33:17,852 | INFO | Test  : 633 patients  | Sepsis: 27.3%
+2026-08-12 15:33:17,852 | INFO | Features: 225
+2026-08-12 15:33:17,852 | INFO | --------------------------------------------------
+2026-08-12 15:33:17,852 | INFO | Partitioning training data into 5 care unit nodes...
+2026-08-12 15:33:17,852 | INFO | Care unit columns found: ['care_unit_CICU', 'care_unit_General ICU', 'care_unit_NICU', 'care_unit_PICU', 'care_unit_SICU']
+2026-08-12 15:33:17,852 | INFO |   Node 'CICU': 144 patients | Sepsis: 59.7%
+2026-08-12 15:33:17,852 | INFO |   Node 'General ICU': 1251 patients | Sepsis: 23.2%
+2026-08-12 15:33:17,852 | INFO |   Node 'NICU': 421 patients | Sepsis: 14.0%
+2026-08-12 15:33:17,852 | INFO |   Node 'PICU': 213 patients | Sepsis: 33.8%
+2026-08-12 15:33:17,868 | INFO |   Node 'SICU': 501 patients | Sepsis: 36.7%
+2026-08-12 15:33:17,870 | INFO | Total nodes: 5
+2026-08-12 15:33:17,870 | INFO | --------------------------------------------------
+2026-08-12 15:33:17,870 | INFO | Fitting StandardScaler on full training set...
+2026-08-12 15:33:17,935 | INFO |   Node 'CICU': X=(144, 225), sepsis=59.7%
+2026-08-12 15:33:17,936 | INFO |   Node 'General ICU': X=(1251, 225), sepsis=23.2%
+2026-08-12 15:33:17,936 | INFO |   Node 'NICU': X=(421, 225), sepsis=14.0%
+2026-08-12 15:33:17,936 | INFO |   Node 'PICU': X=(213, 225), sepsis=33.8%
+2026-08-12 15:33:17,936 | INFO |   Node 'SICU': X=(501, 225), sepsis=36.7%
+2026-08-12 15:33:17,936 | INFO | Numerical features scaled: 185
+2026-08-12 15:33:17,936 | INFO | Binary features unchanged: 40
+2026-08-12 15:33:17,943 | INFO | FT-Transformer parameters: 1,565,529
+2026-08-12 15:33:17,946 | INFO |   Node 'CICU' pos_weight: 0.674
+2026-08-12 15:33:17,947 | INFO |   Node 'General ICU' pos_weight: 3.314
+2026-08-12 15:33:17,947 | INFO |   Node 'NICU' pos_weight: 6.136
+2026-08-12 15:33:17,947 | INFO |   Node 'PICU' pos_weight: 1.958
+2026-08-12 15:33:17,947 | INFO |   Node 'SICU' pos_weight: 1.723
+2026-08-12 15:33:17,947 | INFO | ======================================================================
+2026-08-12 15:33:17,947 | INFO | RUNNING FEDAVG
+2026-08-12 15:33:17,947 | INFO |   Rounds: 50 | Local epochs/round: 5
+2026-08-12 15:33:17,947 | INFO | ======================================================================
+2026-08-12 15:35:40,412 | INFO | FedAvg Round   1/50 | AUROC: 0.9166 | AUPRC: 0.8445 | Loss: 0.8058 | Time: 142.5s
+2026-08-12 15:37:55,129 | INFO | FedAvg Round   2/50 | AUROC: 0.9403 | AUPRC: 0.8737 | Loss: 0.4412 | Time: 134.7s
+2026-08-12 15:40:08,421 | INFO | FedAvg Round   3/50 | AUROC: 0.9548 | AUPRC: 0.9081 | Loss: 0.3522 | Time: 133.3s
+2026-08-12 15:42:20,813 | INFO | FedAvg Round   4/50 | AUROC: 0.9511 | AUPRC: 0.8941 | Loss: 0.3042 | Time: 132.4s
+2026-08-12 15:44:36,595 | INFO | FedAvg Round   5/50 | AUROC: 0.9294 | AUPRC: 0.8621 | Loss: 0.2695 | Time: 135.8s
+2026-08-12 15:46:50,765 | INFO | FedAvg Round   6/50 | AUROC: 0.9346 | AUPRC: 0.8781 | Loss: 0.2514 | Time: 134.2s
+2026-08-12 15:49:05,227 | INFO | FedAvg Round   7/50 | AUROC: 0.9399 | AUPRC: 0.8743 | Loss: 0.2508 | Time: 134.5s
+2026-08-12 15:51:20,222 | INFO | FedAvg Round   8/50 | AUROC: 0.9454 | AUPRC: 0.8816 | Loss: 0.2362 | Time: 135.0s
+2026-08-12 15:53:34,961 | INFO | FedAvg Round   9/50 | AUROC: 0.9437 | AUPRC: 0.8827 | Loss: 0.2292 | Time: 134.7s
+2026-08-12 15:55:48,803 | INFO | FedAvg Round  10/50 | AUROC: 0.9394 | AUPRC: 0.8752 | Loss: 0.2224 | Time: 133.8s
+2026-08-12 15:58:03,152 | INFO | FedAvg Round  11/50 | AUROC: 0.9508 | AUPRC: 0.8870 | Loss: 0.2133 | Time: 134.3s
+2026-08-12 16:00:17,785 | INFO | FedAvg Round  12/50 | AUROC: 0.9467 | AUPRC: 0.8808 | Loss: 0.2134 | Time: 134.6s
+2026-08-12 16:02:32,745 | INFO | FedAvg Round  13/50 | AUROC: 0.9461 | AUPRC: 0.8884 | Loss: 0.2258 | Time: 135.0s
+2026-08-12 16:04:47,205 | INFO | FedAvg Round  14/50 | AUROC: 0.9361 | AUPRC: 0.8680 | Loss: 0.1846 | Time: 134.5s
+2026-08-12 16:06:59,546 | INFO | FedAvg Round  15/50 | AUROC: 0.9509 | AUPRC: 0.8971 | Loss: 0.1889 | Time: 132.3s
+2026-08-12 16:09:11,976 | INFO | FedAvg Round  16/50 | AUROC: 0.9466 | AUPRC: 0.8846 | Loss: 0.1915 | Time: 132.4s
+2026-08-12 16:11:24,272 | INFO | FedAvg Round  17/50 | AUROC: 0.9401 | AUPRC: 0.8821 | Loss: 0.1925 | Time: 132.3s
+2026-08-12 16:13:36,845 | INFO | FedAvg Round  18/50 | AUROC: 0.9494 | AUPRC: 0.8916 | Loss: 0.1846 | Time: 132.6s
+2026-08-12 16:15:49,290 | INFO | FedAvg Round  19/50 | AUROC: 0.9403 | AUPRC: 0.8857 | Loss: 0.1841 | Time: 132.4s
+2026-08-12 16:18:01,866 | INFO | FedAvg Round  20/50 | AUROC: 0.9516 | AUPRC: 0.8993 | Loss: 0.1724 | Time: 132.6s
+2026-08-12 16:20:14,326 | INFO | FedAvg Round  21/50 | AUROC: 0.9504 | AUPRC: 0.8939 | Loss: 0.1575 | Time: 132.5s
+2026-08-12 16:22:26,315 | INFO | FedAvg Round  22/50 | AUROC: 0.9526 | AUPRC: 0.8985 | Loss: 0.1655 | Time: 132.0s
+2026-08-12 16:24:39,150 | INFO | FedAvg Round  23/50 | AUROC: 0.9446 | AUPRC: 0.8860 | Loss: 0.1846 | Time: 132.8s
+2026-08-12 16:26:52,742 | INFO | FedAvg Round  24/50 | AUROC: 0.9450 | AUPRC: 0.8920 | Loss: 0.1543 | Time: 133.6s
+2026-08-12 16:29:06,124 | INFO | FedAvg Round  25/50 | AUROC: 0.9419 | AUPRC: 0.8878 | Loss: 0.1600 | Time: 133.4s
+2026-08-12 16:31:18,868 | INFO | FedAvg Round  26/50 | AUROC: 0.9478 | AUPRC: 0.8980 | Loss: 0.1482 | Time: 132.7s
+2026-08-12 16:33:30,943 | INFO | FedAvg Round  27/50 | AUROC: 0.9516 | AUPRC: 0.8945 | Loss: 0.1825 | Time: 132.1s
+2026-08-12 16:35:43,737 | INFO | FedAvg Round  28/50 | AUROC: 0.9429 | AUPRC: 0.8773 | Loss: 0.1621 | Time: 132.8s
+2026-08-12 16:37:55,770 | INFO | FedAvg Round  29/50 | AUROC: 0.9479 | AUPRC: 0.8883 | Loss: 0.1683 | Time: 132.0s
+2026-08-12 16:40:07,603 | INFO | FedAvg Round  30/50 | AUROC: 0.9470 | AUPRC: 0.8895 | Loss: 0.1478 | Time: 131.8s
+2026-08-12 16:42:20,135 | INFO | FedAvg Round  31/50 | AUROC: 0.9498 | AUPRC: 0.8890 | Loss: 0.1461 | Time: 132.5s
+2026-08-12 16:44:32,683 | INFO | FedAvg Round  32/50 | AUROC: 0.9533 | AUPRC: 0.9002 | Loss: 0.1443 | Time: 132.5s
+2026-08-12 16:46:45,123 | INFO | FedAvg Round  33/50 | AUROC: 0.9452 | AUPRC: 0.8834 | Loss: 0.1516 | Time: 132.4s
+2026-08-12 16:48:56,901 | INFO | FedAvg Round  34/50 | AUROC: 0.9493 | AUPRC: 0.8942 | Loss: 0.1519 | Time: 131.8s
+2026-08-12 16:51:08,884 | INFO | FedAvg Round  35/50 | AUROC: 0.9450 | AUPRC: 0.8849 | Loss: 0.1505 | Time: 132.0s
+2026-08-12 16:53:21,078 | INFO | FedAvg Round  36/50 | AUROC: 0.9505 | AUPRC: 0.8983 | Loss: 0.1142 | Time: 132.2s
+2026-08-12 16:55:33,586 | INFO | FedAvg Round  37/50 | AUROC: 0.9466 | AUPRC: 0.8906 | Loss: 0.1592 | Time: 132.5s
+2026-08-12 16:57:46,532 | INFO | FedAvg Round  38/50 | AUROC: 0.9444 | AUPRC: 0.8797 | Loss: 0.1484 | Time: 132.9s
+2026-08-12 16:59:59,810 | INFO | FedAvg Round  39/50 | AUROC: 0.9518 | AUPRC: 0.8965 | Loss: 0.1283 | Time: 133.3s
+2026-08-12 17:02:11,994 | INFO | FedAvg Round  40/50 | AUROC: 0.9502 | AUPRC: 0.8890 | Loss: 0.1400 | Time: 132.2s
+2026-08-12 17:04:24,110 | INFO | FedAvg Round  41/50 | AUROC: 0.9410 | AUPRC: 0.8792 | Loss: 0.1178 | Time: 132.1s
+2026-08-12 17:06:36,435 | INFO | FedAvg Round  42/50 | AUROC: 0.9417 | AUPRC: 0.8862 | Loss: 0.1249 | Time: 132.3s
+2026-08-12 17:08:49,325 | INFO | FedAvg Round  43/50 | AUROC: 0.9432 | AUPRC: 0.8870 | Loss: 0.1460 | Time: 132.9s
+2026-08-12 17:11:01,935 | INFO | FedAvg Round  44/50 | AUROC: 0.9461 | AUPRC: 0.8899 | Loss: 0.1190 | Time: 132.6s
+2026-08-12 17:13:14,729 | INFO | FedAvg Round  45/50 | AUROC: 0.9321 | AUPRC: 0.8666 | Loss: 0.1274 | Time: 132.8s
+2026-08-12 17:15:27,658 | INFO | FedAvg Round  46/50 | AUROC: 0.9422 | AUPRC: 0.8788 | Loss: 0.1429 | Time: 132.9s
+2026-08-12 17:17:40,412 | INFO | FedAvg Round  47/50 | AUROC: 0.9440 | AUPRC: 0.8842 | Loss: 0.1314 | Time: 132.8s
+2026-08-12 17:19:53,064 | INFO | FedAvg Round  48/50 | AUROC: 0.9460 | AUPRC: 0.8830 | Loss: 0.1291 | Time: 132.7s
+2026-08-12 17:22:05,828 | INFO | FedAvg Round  49/50 | AUROC: 0.9411 | AUPRC: 0.8886 | Loss: 0.1314 | Time: 132.8s
+2026-08-12 17:24:18,049 | INFO | FedAvg Round  50/50 | AUROC: 0.9451 | AUPRC: 0.8897 | Loss: 0.1158 | Time: 132.2s
+2026-08-12 17:24:19,817 | INFO | 
+FedAvg Final | AUROC: 0.9451 [0.9256–0.9623] | AUPRC: 0.8897 | Runtime: 111.0 min
+2026-08-12 17:24:19,817 | INFO | ======================================================================
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u03bc' in position 50: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\fl\phase7_federated_learning.py", line 588, in <module>
+    log.info(f"RUNNING FEDPROX (\u03bc={FL_CONFIG['fedprox_mu']})")
+Message: 'RUNNING FEDPROX (\u03bc=0.01)'
+Arguments: ()
+2026-08-12 17:24:19,833 | INFO |   Rounds: 50 | Local epochs/round: 5
+2026-08-12 17:24:19,833 | INFO | ======================================================================
+2026-08-12 17:26:31,920 | INFO | FedProx Round   1/50 | AUROC: 0.9128 | AUPRC: 0.8418 | Loss: 0.8007 | Time: 132.1s
+2026-08-12 17:28:44,427 | INFO | FedProx Round   2/50 | AUROC: 0.9463 | AUPRC: 0.8946 | Loss: 0.3945 | Time: 132.5s
+2026-08-12 17:30:56,326 | INFO | FedProx Round   3/50 | AUROC: 0.9542 | AUPRC: 0.9083 | Loss: 0.3250 | Time: 131.9s
+2026-08-12 17:33:09,205 | INFO | FedProx Round   4/50 | AUROC: 0.9453 | AUPRC: 0.8917 | Loss: 0.2626 | Time: 132.9s
+2026-08-12 17:35:22,529 | INFO | FedProx Round   5/50 | AUROC: 0.9549 | AUPRC: 0.8999 | Loss: 0.2523 | Time: 133.3s
+2026-08-12 17:37:34,634 | INFO | FedProx Round   6/50 | AUROC: 0.9554 | AUPRC: 0.9069 | Loss: 0.2371 | Time: 132.1s
+2026-08-12 17:39:46,837 | INFO | FedProx Round   7/50 | AUROC: 0.9547 | AUPRC: 0.9052 | Loss: 0.2176 | Time: 132.2s
+2026-08-12 17:41:59,080 | INFO | FedProx Round   8/50 | AUROC: 0.9526 | AUPRC: 0.8994 | Loss: 0.2349 | Time: 132.2s
+2026-08-12 17:44:12,151 | INFO | FedProx Round   9/50 | AUROC: 0.9497 | AUPRC: 0.9012 | Loss: 0.2299 | Time: 133.1s
+2026-08-12 17:46:25,300 | INFO | FedProx Round  10/50 | AUROC: 0.9521 | AUPRC: 0.9013 | Loss: 0.2070 | Time: 133.1s
+2026-08-12 17:48:38,576 | INFO | FedProx Round  11/50 | AUROC: 0.9500 | AUPRC: 0.8952 | Loss: 0.2051 | Time: 133.3s
+2026-08-12 17:50:51,775 | INFO | FedProx Round  12/50 | AUROC: 0.9553 | AUPRC: 0.9037 | Loss: 0.2193 | Time: 133.2s
+2026-08-12 17:53:03,961 | INFO | FedProx Round  13/50 | AUROC: 0.9584 | AUPRC: 0.9126 | Loss: 0.1870 | Time: 132.2s
+2026-08-12 17:55:17,091 | INFO | FedProx Round  14/50 | AUROC: 0.9590 | AUPRC: 0.9099 | Loss: 0.1888 | Time: 133.1s
+2026-08-12 17:57:30,321 | INFO | FedProx Round  15/50 | AUROC: 0.9579 | AUPRC: 0.9090 | Loss: 0.1857 | Time: 133.2s
+2026-08-12 17:59:42,067 | INFO | FedProx Round  16/50 | AUROC: 0.9523 | AUPRC: 0.8995 | Loss: 0.1670 | Time: 131.7s
+2026-08-12 18:01:54,731 | INFO | FedProx Round  17/50 | AUROC: 0.9573 | AUPRC: 0.9111 | Loss: 0.1630 | Time: 132.7s
+2026-08-12 18:04:06,403 | INFO | FedProx Round  18/50 | AUROC: 0.9567 | AUPRC: 0.9146 | Loss: 0.1470 | Time: 131.7s
+2026-08-12 18:06:18,401 | INFO | FedProx Round  19/50 | AUROC: 0.9457 | AUPRC: 0.8918 | Loss: 0.1588 | Time: 132.0s
+2026-08-12 18:08:30,659 | INFO | FedProx Round  20/50 | AUROC: 0.9506 | AUPRC: 0.8994 | Loss: 0.1736 | Time: 132.3s
+2026-08-12 18:10:43,133 | INFO | FedProx Round  21/50 | AUROC: 0.9529 | AUPRC: 0.9002 | Loss: 0.1381 | Time: 132.5s
+2026-08-12 18:12:56,135 | INFO | FedProx Round  22/50 | AUROC: 0.9611 | AUPRC: 0.9137 | Loss: 0.1639 | Time: 133.0s
+2026-08-12 18:15:08,690 | INFO | FedProx Round  23/50 | AUROC: 0.9577 | AUPRC: 0.9056 | Loss: 0.1336 | Time: 132.6s
+2026-08-12 18:17:21,872 | INFO | FedProx Round  24/50 | AUROC: 0.9522 | AUPRC: 0.8933 | Loss: 0.1477 | Time: 133.2s
+2026-08-12 18:19:34,231 | INFO | FedProx Round  25/50 | AUROC: 0.9575 | AUPRC: 0.9055 | Loss: 0.1419 | Time: 132.4s
+2026-08-12 18:21:47,744 | INFO | FedProx Round  26/50 | AUROC: 0.9587 | AUPRC: 0.9121 | Loss: 0.1512 | Time: 133.5s
+2026-08-12 18:24:00,679 | INFO | FedProx Round  27/50 | AUROC: 0.9584 | AUPRC: 0.9119 | Loss: 0.1473 | Time: 132.9s
+2026-08-12 18:26:13,642 | INFO | FedProx Round  28/50 | AUROC: 0.9641 | AUPRC: 0.9225 | Loss: 0.1256 | Time: 133.0s
+2026-08-12 18:28:26,533 | INFO | FedProx Round  29/50 | AUROC: 0.9585 | AUPRC: 0.9040 | Loss: 0.1600 | Time: 132.9s
+2026-08-12 18:30:39,744 | INFO | FedProx Round  30/50 | AUROC: 0.9630 | AUPRC: 0.9191 | Loss: 0.1156 | Time: 133.2s
+2026-08-12 18:32:52,744 | INFO | FedProx Round  31/50 | AUROC: 0.9577 | AUPRC: 0.9096 | Loss: 0.1069 | Time: 133.0s
+2026-08-12 18:35:06,068 | INFO | FedProx Round  32/50 | AUROC: 0.9551 | AUPRC: 0.9014 | Loss: 0.1261 | Time: 133.3s
+2026-08-12 18:37:19,275 | INFO | FedProx Round  33/50 | AUROC: 0.9614 | AUPRC: 0.9152 | Loss: 0.1109 | Time: 133.2s
+2026-08-12 18:39:32,655 | INFO | FedProx Round  34/50 | AUROC: 0.9584 | AUPRC: 0.9100 | Loss: 0.1060 | Time: 133.4s
+2026-08-12 18:41:45,555 | INFO | FedProx Round  35/50 | AUROC: 0.9617 | AUPRC: 0.9147 | Loss: 0.1267 | Time: 132.9s
+2026-08-12 18:43:57,792 | INFO | FedProx Round  36/50 | AUROC: 0.9575 | AUPRC: 0.9038 | Loss: 0.1376 | Time: 132.2s
+2026-08-12 18:46:10,956 | INFO | FedProx Round  37/50 | AUROC: 0.9570 | AUPRC: 0.9064 | Loss: 0.1337 | Time: 133.2s
+2026-08-12 18:48:24,000 | INFO | FedProx Round  38/50 | AUROC: 0.9530 | AUPRC: 0.8974 | Loss: 0.1266 | Time: 133.0s
+2026-08-12 18:50:37,449 | INFO | FedProx Round  39/50 | AUROC: 0.9573 | AUPRC: 0.9115 | Loss: 0.1099 | Time: 133.4s
+2026-08-12 18:52:51,257 | INFO | FedProx Round  40/50 | AUROC: 0.9547 | AUPRC: 0.9017 | Loss: 0.1206 | Time: 133.8s
+2026-08-12 18:55:04,798 | INFO | FedProx Round  41/50 | AUROC: 0.9582 | AUPRC: 0.9119 | Loss: 0.1300 | Time: 133.5s
+2026-08-12 18:57:18,771 | INFO | FedProx Round  42/50 | AUROC: 0.9587 | AUPRC: 0.9073 | Loss: 0.1388 | Time: 134.0s
+2026-08-12 18:59:31,190 | INFO | FedProx Round  43/50 | AUROC: 0.9573 | AUPRC: 0.9045 | Loss: 0.0996 | Time: 132.4s
+2026-08-12 19:01:47,060 | INFO | FedProx Round  44/50 | AUROC: 0.9547 | AUPRC: 0.9023 | Loss: 0.1021 | Time: 135.9s
+2026-08-12 19:04:01,053 | INFO | FedProx Round  45/50 | AUROC: 0.9600 | AUPRC: 0.9132 | Loss: 0.1107 | Time: 134.0s
+2026-08-12 19:06:17,303 | INFO | FedProx Round  46/50 | AUROC: 0.9551 | AUPRC: 0.9070 | Loss: 0.1060 | Time: 136.3s
+2026-08-12 19:08:32,418 | INFO | FedProx Round  47/50 | AUROC: 0.9572 | AUPRC: 0.9089 | Loss: 0.1047 | Time: 135.1s
+2026-08-12 19:10:46,463 | INFO | FedProx Round  48/50 | AUROC: 0.9556 | AUPRC: 0.9069 | Loss: 0.1136 | Time: 134.0s
+2026-08-12 19:13:01,303 | INFO | FedProx Round  49/50 | AUROC: 0.9560 | AUPRC: 0.9042 | Loss: 0.1027 | Time: 134.8s
+2026-08-12 19:15:14,677 | INFO | FedProx Round  50/50 | AUROC: 0.9557 | AUPRC: 0.9096 | Loss: 0.0962 | Time: 133.4s
+2026-08-12 19:15:16,561 | INFO | 
+FedProx Final | AUROC: 0.9557 [0.9389–0.9714] | AUPRC: 0.9096 | Runtime: 110.9 min
+2026-08-12 19:15:16,561 | INFO | ======================================================================
+2026-08-12 19:15:16,561 | INFO | COMPUTING PER-NODE LOCAL-ONLY BASELINE
+2026-08-12 19:15:16,561 | INFO | (Each node trained in isolation — no federation)
+2026-08-12 19:15:16,561 | INFO | ======================================================================
+2026-08-12 19:15:16,561 | INFO |   Training local-only model for node: CICU...
+2026-08-12 19:18:48,130 | INFO |   CICU local AUROC: 0.8604 | FedAvg gain: +0.0847 | FedProx gain: +0.0953
+2026-08-12 19:18:48,130 | INFO |   Training local-only model for node: General ICU...
+2026-08-12 19:45:47,543 | INFO |   General ICU local AUROC: 0.9334 | FedAvg gain: +0.0117 | FedProx gain: +0.0223
+2026-08-12 19:45:47,543 | INFO |   Training local-only model for node: NICU...
+2026-08-12 19:55:17,082 | INFO |   NICU local AUROC: 0.8986 | FedAvg gain: +0.0466 | FedProx gain: +0.0571
+2026-08-12 19:55:17,082 | INFO |   Training local-only model for node: PICU...
+2026-08-12 20:00:11,036 | INFO |   PICU local AUROC: 0.8958 | FedAvg gain: +0.0494 | FedProx gain: +0.0599
+2026-08-12 20:00:11,036 | INFO |   Training local-only model for node: SICU...
+2026-08-12 20:11:21,950 | INFO |   SICU local AUROC: 0.9300 | FedAvg gain: +0.0151 | FedProx gain: +0.0256
+2026-08-12 20:11:21,966 | INFO | DeLong FedAvg vs CatBoost:  z=-1.8940, p=0.0582 (not significant)
+2026-08-12 20:11:21,966 | INFO | DeLong FedProx vs CatBoost: z=-1.4935, p=0.1353 (not significant)
+2026-08-12 20:11:21,998 | INFO | DeLong FedAvg vs Centralised FTT:  z=-0.5370, p=0.5913
+2026-08-12 20:11:21,998 | INFO | DeLong FedProx vs Centralised FTT: z=-0.0921, p=0.9266
+2026-08-12 20:11:22,014 | INFO | DeLong FedAvg vs FedProx: z=-0.4829, p=0.6292
+2026-08-12 20:11:22,014 | INFO | --------------------------------------------------
+2026-08-12 20:11:22,014 | INFO | Saving results...
+2026-08-12 20:11:22,048 | INFO | All results saved.
+2026-08-12 20:11:22,048 | INFO | --------------------------------------------------
+2026-08-12 20:11:22,048 | INFO | Saving model checkpoints for downstream federated SHAP...
+2026-08-12 20:11:22,063 | INFO |   Saved: D:\pediatric-sepsis-PIC\sepsis_ml\fl\models\fedavg_global_final.pt
+2026-08-12 20:11:22,063 | INFO |   Saved: D:\pediatric-sepsis-PIC\sepsis_ml\fl\models\fedprox_global_final.pt
+2026-08-12 20:11:22,063 | INFO |   Saved: D:\pediatric-sepsis-PIC\sepsis_ml\fl\models\scaler.pkl
+2026-08-12 20:11:22,063 | INFO |   Saved: D:\pediatric-sepsis-PIC\sepsis_ml\fl\models\model_metadata.json
+2026-08-12 20:11:22,063 | INFO | Generating figures...
+2026-08-12 20:11:23,081 | INFO | All figures saved.
+2026-08-12 20:11:23,081 | INFO | ======================================================================
+2026-08-12 20:11:23,081 | INFO | PHASE 7 — FEDERATED LEARNING — COMPLETE
+2026-08-12 20:11:23,081 | INFO | ======================================================================
+2026-08-12 20:11:23,081 | INFO | 
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 33-35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\fl\phase7_federated_learning.py", line 1210, in <module>
+    log.info("\u2501\u2501\u2501 PERFORMANCE SUMMARY \u2501\u2501\u2501")
+Message: '\u2501\u2501\u2501 PERFORMANCE SUMMARY \u2501\u2501\u2501'
+Arguments: ()
+2026-08-12 20:11:23,081 | INFO | Model                                  AUROC    AUPRC    Brier     Sens     Spec
+2026-08-12 20:11:23,081 | INFO | ---------------------------------------------------------------------------
+2026-08-12 20:11:23,081 | INFO | Centralised CatBoost (ref)            0.9868   0.9691   0.0385    0.896    0.963
+2026-08-12 20:11:23,081 | INFO | Centralised FT-Transformer            0.9577   0.9131   0.0733    0.896    0.852
+2026-08-12 20:11:23,081 | INFO | FedAvg (federated FTT)                0.9451   0.8897   0.0969   0.8960   0.8609
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u03bc' in position 41: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\fl\phase7_federated_learning.py", line 1221, in <module>
+    log.info(f"{'FedProx \u03bc=' + str(FL_CONFIG['fedprox_mu']) + ' (federated FTT)':<35} "
+Message: 'FedProx \u03bc=0.01 (federated FTT)        0.9557   0.9096   0.0792   0.9017   0.8435'
+Arguments: ()
+2026-08-12 20:11:23,081 | INFO | 
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 33-35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\fl\phase7_federated_learning.py", line 1228, in <module>
+    log.info("\u2501\u2501\u2501 FEDERATION GAIN (vs local-only) \u2501\u2501\u2501")
+Message: '\u2501\u2501\u2501 FEDERATION GAIN (vs local-only) \u2501\u2501\u2501'
+Arguments: ()
+2026-08-12 20:11:23,081 | INFO |   CICU                 Local: 0.8604 | FedAvg gain: +0.0847 | FedProx gain: +0.0953
+2026-08-12 20:11:23,081 | INFO |   General ICU          Local: 0.9334 | FedAvg gain: +0.0117 | FedProx gain: +0.0223
+2026-08-12 20:11:23,081 | INFO |   NICU                 Local: 0.8986 | FedAvg gain: +0.0466 | FedProx gain: +0.0571
+2026-08-12 20:11:23,081 | INFO |   PICU                 Local: 0.8958 | FedAvg gain: +0.0494 | FedProx gain: +0.0599
+2026-08-12 20:11:23,081 | INFO |   SICU                 Local: 0.9300 | FedAvg gain: +0.0151 | FedProx gain: +0.0256
+2026-08-12 20:11:23,081 | INFO | 
+2026-08-12 20:11:23,081 | INFO | FedAvg runtime : 111.0 min
+2026-08-12 20:11:23,081 | INFO | FedProx runtime: 110.9 min
+2026-08-12 20:11:23,081 | INFO | ----------------------------------------------------------------------
+2026-08-12 20:11:23,081 | INFO | Outputs saved to:
+2026-08-12 20:11:23,081 | INFO |   Results : D:\pediatric-sepsis-PIC\sepsis_ml\fl\results
+2026-08-12 20:11:23,081 | INFO |   Figures : D:\pediatric-sepsis-PIC\sepsis_ml\fl\figures
+2026-08-12 20:11:23,081 | INFO |   Log     : D:\pediatric-sepsis-PIC\sepsis_ml\fl\logs\phase7_federated.log
+2026-08-12 20:11:23,081 | INFO | ======================================================================
+[SUCCESS] All Phase 7 checkpoints verified. 
+ 
+================================================== 
+================================================== 
+2026-08-12 20:11:28,873 | INFO | ======================================================================
+2026-08-12 20:11:28,873 | INFO | PHASE 4 — SHAP EXPLAINABILITY
+2026-08-12 20:11:28,873 | INFO | Run timestamp : 2026-08-12 20:11:28
+2026-08-12 20:11:28,873 | INFO | Base dir      : D:\pediatric-sepsis-PIC
+2026-08-12 20:11:28,873 | INFO | ======================================================================
+2026-08-12 20:11:28,875 | INFO | Loading data and model...
+2026-08-12 20:11:28,904 | INFO | Test set  : 633 rows x 225 features
+2026-08-12 20:11:28,904 | INFO | Train set : 2530 rows x 225 features
+2026-08-12 20:11:28,904 | INFO | Sepsis prevalence — test: 27.3%, train: 27.3%
+2026-08-12 20:11:28,904 | INFO | Tuned CatBoost loaded
+2026-08-12 20:11:28,920 | INFO | Model AUROC on test set: 0.9868 (sanity check)
+2026-08-12 20:11:28,920 | INFO | 
+2026-08-12 20:11:28,920 | INFO | ============================================================
+2026-08-12 20:11:28,920 | INFO | Computing SHAP values (TreeExplainer, full test set)...
+2026-08-12 20:11:28,920 | INFO | ============================================================
+2026-08-12 20:11:29,524 | INFO | SHAP values computed: (633, 225)
+2026-08-12 20:11:29,524 | INFO | Expected value (base rate): -1.0262
+2026-08-12 20:11:29,524 | INFO | SHAP value range: [-1.2442, 4.4773]
+2026-08-12 20:11:29,555 | INFO | Raw SHAP values saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_shap_values.npz
+2026-08-12 20:11:29,555 | INFO | Feature importance saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_feature_importance.csv
+2026-08-12 20:11:29,555 | INFO | Top 20 features by mean |SHAP|:
+2026-08-12 20:11:29,555 | INFO |    1. Lactate (max)                  0.99198
+2026-08-12 20:11:29,555 | INFO |    2. D-dimer (max)                  0.95739
+2026-08-12 20:11:29,555 | INFO |    3. Platelets (min)                0.77623
+2026-08-12 20:11:29,555 | INFO |    4. INR (max)                      0.53897
+2026-08-12 20:11:29,555 | INFO |    5. Calcium (max)                  0.51920
+2026-08-12 20:11:29,555 | INFO |    6. PT (max)                       0.25903
+2026-08-12 20:11:29,555 | INFO |    7. Calcium (mean)                 0.22155
+2026-08-12 20:11:29,555 | INFO |    8. Glucose (max)                  0.21425
+2026-08-12 20:11:29,555 | INFO |    9. PaO2 (max)                     0.17612
+2026-08-12 20:11:29,555 | INFO |   10. pH (min)                       0.16052
+2026-08-12 20:11:29,555 | INFO |   11. Haematocrit (min)              0.14609
+2026-08-12 20:11:29,555 | INFO |   12. Platelets (first)              0.14574
+2026-08-12 20:11:29,555 | INFO |   13. care_unit_SICU                 0.12439
+2026-08-12 20:11:29,555 | INFO |   14. Fibrinogen (min)               0.11478
+2026-08-12 20:11:29,555 | INFO |   15. care_unit_CICU                 0.11362
+2026-08-12 20:11:29,555 | INFO |   16. D-dimer (mean)                 0.10831
+2026-08-12 20:11:29,555 | INFO |   17. Platelets (mean)               0.09083
+2026-08-12 20:11:29,555 | INFO |   18. Potassium (min)                0.08438
+2026-08-12 20:11:29,555 | INFO |   19. Lactate (first)                0.07491
+2026-08-12 20:11:29,555 | INFO |   20. Bicarbonate (min)              0.07258
+2026-08-12 20:11:29,555 | INFO | Top 5 features: ['lactate_max', 'ddimer_max', 'platelets_min', 'inr_max', 'calcium_max']
+2026-08-12 20:11:29,555 | INFO | Top 10 features (for interactions): ['lactate_max', 'ddimer_max', 'platelets_min', 'inr_max', 'calcium_max', 'pt_max', 'calcium_mean', 'glucose_max', 'pao2_max', 'ph_min']
+2026-08-12 20:11:29,555 | INFO | 
+2026-08-12 20:11:29,555 | INFO | Identifying patients for waterfall plots...
+2026-08-12 20:11:29,555 | INFO | True Positive  patient idx=448, prob=0.9997, true_label=1
+2026-08-12 20:11:29,555 | INFO | False Negative patient idx=442, prob=0.3650, true_label=1
+2026-08-12 20:11:29,555 | INFO | False Positive patient idx=613, prob=0.9825, true_label=0
+2026-08-12 20:11:29,555 | INFO | 
+2026-08-12 20:11:29,555 | INFO | ============================================================
+2026-08-12 20:11:29,555 | INFO | Figure 1 — Global beeswarm plot...
+2026-08-12 20:11:29,555 | INFO | ============================================================
+2026-08-12 20:11:29,937 | INFO | Figure 1 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig1_beeswarm_top20.png
+2026-08-12 20:11:29,937 | INFO | Figure 2 — SHAP bar plot...
+2026-08-12 20:11:30,080 | INFO | Figure 2 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig2_bar_importance.png
+2026-08-12 20:11:30,080 | INFO | Figure 3 — Dependence plots (top 5 features)...
+2026-08-12 20:11:30,080 | INFO | Dependence plot features: ['lactate_max', 'platelets_min', 'base_excess_min', 'ddimer_max', 'inr_max']
+2026-08-12 20:11:30,574 | INFO | Figure 3 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig3_dependence_plots.png
+2026-08-12 20:11:30,574 | INFO | Figure 4 — Waterfall plots (TP, FN, FP)...
+2026-08-12 20:11:30,956 | INFO | Figure 4 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig4_waterfall_plots.png
+2026-08-12 20:11:30,956 | INFO |   True Positive — High Confidence Correct Sepsis
+2026-08-12 20:11:30,956 | INFO |     prob=0.9997, true=1
+2026-08-12 20:11:30,956 | INFO |     top 3 SHAP features: [('lactate_max', 2.1315555176252325), ('platelets_min', 1.4394705521374374), ('inr_max', 1.1068775839499125)]
+2026-08-12 20:11:30,956 | INFO |   False Negative — Missed Sepsis
+2026-08-12 20:11:30,956 | INFO |     prob=0.3650, true=1
+2026-08-12 20:11:30,956 | INFO |     top 3 SHAP features: [('calcium_max', 0.7488998043732241), ('ddimer_max', -0.5857416242628201), ('lactate_max', -0.4617814036667864)]
+2026-08-12 20:11:30,956 | INFO |   False Positive — Wrong Alarm
+2026-08-12 20:11:30,956 | INFO |     prob=0.9825, true=0
+2026-08-12 20:11:30,956 | INFO |     top 3 SHAP features: [('lactate_max', 4.35045357102073), ('care_unit_SICU', 0.6092233778568931), ('ddimer_max', -0.5757186659094098)]
+2026-08-12 20:11:30,956 | INFO | 
+2026-08-12 20:11:30,956 | INFO | ============================================================
+2026-08-12 20:11:30,956 | INFO | Computing SHAP interaction values (top 10 features, 2530 training rows)...
+2026-08-12 20:11:30,956 | INFO | This may take 5-15 minutes...
+2026-08-12 20:11:30,956 | INFO | ============================================================
+2026-08-12 20:13:18,588 | INFO | Interaction values computed: (633, 10, 10)
+2026-08-12 20:13:18,942 | INFO | Figure 5A saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig5a_interaction_heatmap.png
+2026-08-12 20:13:18,942 | INFO | Figure 5B — Focused interaction scatter plots...
+2026-08-12 20:13:19,179 | INFO | Figure 5B saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig5b_interaction_scatter.png
+2026-08-12 20:13:19,179 | INFO | Figure 6 — SHAP summary by class...
+2026-08-12 20:13:19,402 | INFO | Figure 6 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig6_shap_by_class.png
+2026-08-12 20:13:19,402 | INFO | Figure 7 — SHAP dashboard (paper summary)...
+2026-08-12 20:13:19,786 | INFO | Figure 7 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig7_shap_dashboard.png
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | ============================================================
+2026-08-12 20:13:19,786 | INFO | Saving results...
+2026-08-12 20:13:19,786 | INFO | ============================================================
+2026-08-12 20:13:19,786 | INFO | Phase 4 results saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_shap_results.json
+2026-08-12 20:13:19,786 | INFO | Experiment log updated: D:\pediatric-sepsis-PIC\sepsis_ml\results\experiment_log.json
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | ======================================================================
+2026-08-12 20:13:19,786 | INFO | PHASE 4 COMPLETE — SUMMARY
+2026-08-12 20:13:19,786 | INFO | ======================================================================
+2026-08-12 20:13:19,786 | INFO | SHAP values computed for  : 633 test patients, 225 features
+2026-08-12 20:13:19,786 | INFO | Expected value (base rate): -1.0262
+2026-08-12 20:13:19,786 | INFO | Top feature               : Lactate (max) (mean |SHAP|=0.99198)
+2026-08-12 20:13:19,786 | INFO | Figures saved             : 7 figures to D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | Top 10 features by SHAP importance:
+2026-08-12 20:13:19,786 | INFO |    1. Lactate (max)                  0.99198
+2026-08-12 20:13:19,786 | INFO |    2. D-dimer (max)                  0.95739
+2026-08-12 20:13:19,786 | INFO |    3. Platelets (min)                0.77623
+2026-08-12 20:13:19,786 | INFO |    4. INR (max)                      0.53897
+2026-08-12 20:13:19,786 | INFO |    5. Calcium (max)                  0.51920
+2026-08-12 20:13:19,786 | INFO |    6. PT (max)                       0.25903
+2026-08-12 20:13:19,786 | INFO |    7. Calcium (mean)                 0.22155
+2026-08-12 20:13:19,786 | INFO |    8. Glucose (max)                  0.21425
+2026-08-12 20:13:19,786 | INFO |    9. PaO2 (max)                     0.17612
+2026-08-12 20:13:19,786 | INFO |   10. pH (min)                       0.16052
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | Interaction pairs analysed:
+2026-08-12 20:13:19,786 | INFO |   Lactate (max) × Platelets (min)
+2026-08-12 20:13:19,786 | INFO |     Mean interaction — Sepsis: -0.00406, Non-sepsis: -0.00756
+2026-08-12 20:13:19,786 | INFO |   INR (max) × D-dimer (max)
+2026-08-12 20:13:19,786 | INFO |     Mean interaction — Sepsis: -0.01521, Non-sepsis: -0.00297
+2026-08-12 20:13:19,786 | INFO | 
+2026-08-12 20:13:19,786 | INFO | Next steps:
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 38, in <module>
+    from phase4_shap import get_display_name
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase4_shap.py", line 912, in <module>
+    log.info("  \u2192 Sensitivity analysis on Option A (full cohort)")
+Message: '  \u2192 Sensitivity analysis on Option A (full cohort)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 38, in <module>
+    from phase4_shap import get_display_name
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase4_shap.py", line 912, in <module>
+    log.info("  \u2192 Sensitivity analysis on Option A (full cohort)")
+Message: '  \u2192 Sensitivity analysis on Option A (full cohort)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 38, in <module>
+    from phase4_shap import get_display_name
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase4_shap.py", line 913, in <module>
+    log.info("  \u2192 Paper writing — Methods, Results, Discussion")
+Message: '  \u2192 Paper writing — Methods, Results, Discussion'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 38, in <module>
+    from phase4_shap import get_display_name
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase4_shap.py", line 913, in <module>
+    log.info("  \u2192 Paper writing — Methods, Results, Discussion")
+Message: '  \u2192 Paper writing — Methods, Results, Discussion'
+Arguments: ()
+2026-08-12 20:13:19,800 | INFO | ======================================================================
+[2026-08-12T20:13:19.816532] federated_shap_start :: {'algo': 'fedavg', 'device': 'cpu'}
+[2026-08-12T20:13:19.860491] node_shap_start :: {'node': 'CICU'}
+[fl_shap_results_io] log_experiment() signature mismatch: log_experiment() got an unexpected keyword argument 'top_feature'
+  -> open sepsis_ml/logger.py and fix the kwargs in log_to_leaderboard().
+[2026-08-12T20:13:50.016473] node_shap_done :: {'node': 'CICU', 'top_feature': 'lactate_max'}
+[2026-08-12T20:13:50.016473] node_shap_start :: {'node': 'NICU'}
+[fl_shap_results_io] log_experiment() signature mismatch: log_experiment() got an unexpected keyword argument 'top_feature'
+  -> open sepsis_ml/logger.py and fix the kwargs in log_to_leaderboard().
+[2026-08-12T20:15:20.710672] node_shap_done :: {'node': 'NICU', 'top_feature': 'lactate_max'}
+[2026-08-12T20:15:20.710672] node_shap_start :: {'node': 'PICU'}
+[fl_shap_results_io] log_experiment() signature mismatch: log_experiment() got an unexpected keyword argument 'top_feature'
+  -> open sepsis_ml/logger.py and fix the kwargs in log_to_leaderboard().
+[2026-08-12T20:16:11.814147] node_shap_done :: {'node': 'PICU', 'top_feature': 'lactate_max'}
+[2026-08-12T20:16:11.814147] node_shap_start :: {'node': 'SICU'}
+[fl_shap_results_io] log_experiment() signature mismatch: log_experiment() got an unexpected keyword argument 'top_feature'
+  -> open sepsis_ml/logger.py and fix the kwargs in log_to_leaderboard().
+[2026-08-12T20:17:44.543463] node_shap_done :: {'node': 'SICU', 'top_feature': 'lactate_max'}
+[2026-08-12T20:17:44.543463] node_shap_start :: {'node': 'General'}
+Traceback (most recent call last):
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 196, in <module>
+    main()
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 182, in main
+    result = run_node_shap(node_name, model, background, meta, scaler)
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 127, in run_node_shap
+    X_np, feature_names, n_patients = load_node_test_data(node_name, meta, scaler)
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 117, in load_node_test_data
+    raise KeyError(f"Expected column '{col}' in {config.MODEL_READY_TEST}.")
+KeyError: "Expected column 'care_unit_General' in D:/pediatric-sepsis-PIC\\model_datasets/B_test_model_ready.csv."
+2026-08-12 20:17:49,988 | INFO | ======================================================================
+2026-08-12 20:17:49,988 | INFO | PHASE 4 — SHAP EXPLAINABILITY
+2026-08-12 20:17:49,988 | INFO | Run timestamp : 2026-08-12 20:17:49
+2026-08-12 20:17:49,988 | INFO | Base dir      : D:\pediatric-sepsis-PIC
+2026-08-12 20:17:49,988 | INFO | ======================================================================
+2026-08-12 20:17:49,988 | INFO | Loading data and model...
+2026-08-12 20:17:50,035 | INFO | Test set  : 633 rows x 225 features
+2026-08-12 20:17:50,035 | INFO | Train set : 2530 rows x 225 features
+2026-08-12 20:17:50,035 | INFO | Sepsis prevalence — test: 27.3%, train: 27.3%
+2026-08-12 20:17:50,035 | INFO | Tuned CatBoost loaded
+2026-08-12 20:17:50,054 | INFO | Model AUROC on test set: 0.9868 (sanity check)
+2026-08-12 20:17:50,054 | INFO | 
+2026-08-12 20:17:50,054 | INFO | ============================================================
+2026-08-12 20:17:50,054 | INFO | Computing SHAP values (TreeExplainer, full test set)...
+2026-08-12 20:17:50,054 | INFO | ============================================================
+2026-08-12 20:17:50,647 | INFO | SHAP values computed: (633, 225)
+2026-08-12 20:17:50,647 | INFO | Expected value (base rate): -1.0262
+2026-08-12 20:17:50,649 | INFO | SHAP value range: [-1.2442, 4.4773]
+2026-08-12 20:17:50,673 | INFO | Raw SHAP values saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_shap_values.npz
+2026-08-12 20:17:50,679 | INFO | Feature importance saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_feature_importance.csv
+2026-08-12 20:17:50,679 | INFO | Top 20 features by mean |SHAP|:
+2026-08-12 20:17:50,679 | INFO |    1. Lactate (max)                  0.99198
+2026-08-12 20:17:50,679 | INFO |    2. D-dimer (max)                  0.95739
+2026-08-12 20:17:50,679 | INFO |    3. Platelets (min)                0.77623
+2026-08-12 20:17:50,679 | INFO |    4. INR (max)                      0.53897
+2026-08-12 20:17:50,679 | INFO |    5. Calcium (max)                  0.51920
+2026-08-12 20:17:50,679 | INFO |    6. PT (max)                       0.25903
+2026-08-12 20:17:50,679 | INFO |    7. Calcium (mean)                 0.22155
+2026-08-12 20:17:50,679 | INFO |    8. Glucose (max)                  0.21425
+2026-08-12 20:17:50,681 | INFO |    9. PaO2 (max)                     0.17612
+2026-08-12 20:17:50,681 | INFO |   10. pH (min)                       0.16052
+2026-08-12 20:17:50,681 | INFO |   11. Haematocrit (min)              0.14609
+2026-08-12 20:17:50,681 | INFO |   12. Platelets (first)              0.14574
+2026-08-12 20:17:50,681 | INFO |   13. care_unit_SICU                 0.12439
+2026-08-12 20:17:50,681 | INFO |   14. Fibrinogen (min)               0.11478
+2026-08-12 20:17:50,681 | INFO |   15. care_unit_CICU                 0.11362
+2026-08-12 20:17:50,681 | INFO |   16. D-dimer (mean)                 0.10831
+2026-08-12 20:17:50,681 | INFO |   17. Platelets (mean)               0.09083
+2026-08-12 20:17:50,681 | INFO |   18. Potassium (min)                0.08438
+2026-08-12 20:17:50,681 | INFO |   19. Lactate (first)                0.07491
+2026-08-12 20:17:50,681 | INFO |   20. Bicarbonate (min)              0.07258
+2026-08-12 20:17:50,681 | INFO | Top 5 features: ['lactate_max', 'ddimer_max', 'platelets_min', 'inr_max', 'calcium_max']
+2026-08-12 20:17:50,681 | INFO | Top 10 features (for interactions): ['lactate_max', 'ddimer_max', 'platelets_min', 'inr_max', 'calcium_max', 'pt_max', 'calcium_mean', 'glucose_max', 'pao2_max', 'ph_min']
+2026-08-12 20:17:50,681 | INFO | 
+2026-08-12 20:17:50,681 | INFO | Identifying patients for waterfall plots...
+2026-08-12 20:17:50,681 | INFO | True Positive  patient idx=448, prob=0.9997, true_label=1
+2026-08-12 20:17:50,681 | INFO | False Negative patient idx=442, prob=0.3650, true_label=1
+2026-08-12 20:17:50,681 | INFO | False Positive patient idx=613, prob=0.9825, true_label=0
+2026-08-12 20:17:50,681 | INFO | 
+2026-08-12 20:17:50,681 | INFO | ============================================================
+2026-08-12 20:17:50,681 | INFO | Figure 1 — Global beeswarm plot...
+2026-08-12 20:17:50,681 | INFO | ============================================================
+2026-08-12 20:17:51,054 | INFO | Figure 1 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig1_beeswarm_top20.png
+2026-08-12 20:17:51,054 | INFO | Figure 2 — SHAP bar plot...
+2026-08-12 20:17:51,211 | INFO | Figure 2 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig2_bar_importance.png
+2026-08-12 20:17:51,211 | INFO | Figure 3 — Dependence plots (top 5 features)...
+2026-08-12 20:17:51,211 | INFO | Dependence plot features: ['lactate_max', 'platelets_min', 'base_excess_min', 'ddimer_max', 'inr_max']
+2026-08-12 20:17:51,704 | INFO | Figure 3 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig3_dependence_plots.png
+2026-08-12 20:17:51,704 | INFO | Figure 4 — Waterfall plots (TP, FN, FP)...
+2026-08-12 20:17:52,071 | INFO | Figure 4 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig4_waterfall_plots.png
+2026-08-12 20:17:52,071 | INFO |   True Positive — High Confidence Correct Sepsis
+2026-08-12 20:17:52,071 | INFO |     prob=0.9997, true=1
+2026-08-12 20:17:52,071 | INFO |     top 3 SHAP features: [('lactate_max', 2.1315555176252325), ('platelets_min', 1.4394705521374374), ('inr_max', 1.1068775839499125)]
+2026-08-12 20:17:52,071 | INFO |   False Negative — Missed Sepsis
+2026-08-12 20:17:52,071 | INFO |     prob=0.3650, true=1
+2026-08-12 20:17:52,071 | INFO |     top 3 SHAP features: [('calcium_max', 0.7488998043732241), ('ddimer_max', -0.5857416242628201), ('lactate_max', -0.4617814036667864)]
+2026-08-12 20:17:52,087 | INFO |   False Positive — Wrong Alarm
+2026-08-12 20:17:52,087 | INFO |     prob=0.9825, true=0
+2026-08-12 20:17:52,087 | INFO |     top 3 SHAP features: [('lactate_max', 4.35045357102073), ('care_unit_SICU', 0.6092233778568931), ('ddimer_max', -0.5757186659094098)]
+2026-08-12 20:17:52,087 | INFO | 
+2026-08-12 20:17:52,087 | INFO | ============================================================
+2026-08-12 20:17:52,087 | INFO | Computing SHAP interaction values (top 10 features, 2530 training rows)...
+2026-08-12 20:17:52,087 | INFO | This may take 5-15 minutes...
+2026-08-12 20:17:52,087 | INFO | ============================================================
+2026-08-12 20:19:38,754 | INFO | Interaction values computed: (633, 10, 10)
+2026-08-12 20:19:39,104 | INFO | Figure 5A saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig5a_interaction_heatmap.png
+2026-08-12 20:19:39,104 | INFO | Figure 5B — Focused interaction scatter plots...
+2026-08-12 20:19:39,342 | INFO | Figure 5B saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig5b_interaction_scatter.png
+2026-08-12 20:19:39,342 | INFO | Figure 6 — SHAP summary by class...
+2026-08-12 20:19:39,552 | INFO | Figure 6 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig6_shap_by_class.png
+2026-08-12 20:19:39,552 | INFO | Figure 7 — SHAP dashboard (paper summary)...
+2026-08-12 20:19:39,935 | INFO | Figure 7 saved: D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap\phase4_fig7_shap_dashboard.png
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | ============================================================
+2026-08-12 20:19:39,935 | INFO | Saving results...
+2026-08-12 20:19:39,935 | INFO | ============================================================
+2026-08-12 20:19:39,935 | INFO | Phase 4 results saved: D:\pediatric-sepsis-PIC\sepsis_ml\results\phase4_shap_results.json
+2026-08-12 20:19:39,935 | INFO | Experiment log updated: D:\pediatric-sepsis-PIC\sepsis_ml\results\experiment_log.json
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | ======================================================================
+2026-08-12 20:19:39,935 | INFO | PHASE 4 COMPLETE — SUMMARY
+2026-08-12 20:19:39,935 | INFO | ======================================================================
+2026-08-12 20:19:39,935 | INFO | SHAP values computed for  : 633 test patients, 225 features
+2026-08-12 20:19:39,935 | INFO | Expected value (base rate): -1.0262
+2026-08-12 20:19:39,935 | INFO | Top feature               : Lactate (max) (mean |SHAP|=0.99198)
+2026-08-12 20:19:39,935 | INFO | Figures saved             : 7 figures to D:\pediatric-sepsis-PIC\sepsis_ml\figures\phase4_shap
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | Top 10 features by SHAP importance:
+2026-08-12 20:19:39,935 | INFO |    1. Lactate (max)                  0.99198
+2026-08-12 20:19:39,935 | INFO |    2. D-dimer (max)                  0.95739
+2026-08-12 20:19:39,935 | INFO |    3. Platelets (min)                0.77623
+2026-08-12 20:19:39,935 | INFO |    4. INR (max)                      0.53897
+2026-08-12 20:19:39,935 | INFO |    5. Calcium (max)                  0.51920
+2026-08-12 20:19:39,935 | INFO |    6. PT (max)                       0.25903
+2026-08-12 20:19:39,935 | INFO |    7. Calcium (mean)                 0.22155
+2026-08-12 20:19:39,935 | INFO |    8. Glucose (max)                  0.21425
+2026-08-12 20:19:39,935 | INFO |    9. PaO2 (max)                     0.17612
+2026-08-12 20:19:39,935 | INFO |   10. pH (min)                       0.16052
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | Interaction pairs analysed:
+2026-08-12 20:19:39,935 | INFO |   Lactate (max) × Platelets (min)
+2026-08-12 20:19:39,935 | INFO |     Mean interaction — Sepsis: -0.00406, Non-sepsis: -0.00756
+2026-08-12 20:19:39,935 | INFO |   INR (max) × D-dimer (max)
+2026-08-12 20:19:39,935 | INFO |     Mean interaction — Sepsis: -0.01521, Non-sepsis: -0.00297
+2026-08-12 20:19:39,935 | INFO | 
+2026-08-12 20:19:39,935 | INFO | Next steps:
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 38, in <module>
+    from phase4_shap import get_display_name
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase4_shap.py", line 912, in <module>
+    log.info("  \u2192 Sensitivity analysis on Option A (full cohort)")
+Message: '  \u2192 Sensitivity analysis on Option A (full cohort)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 38, in <module>
+    from phase4_shap import get_display_name
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase4_shap.py", line 912, in <module>
+    log.info("  \u2192 Sensitivity analysis on Option A (full cohort)")
+Message: '  \u2192 Sensitivity analysis on Option A (full cohort)'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 38, in <module>
+    from phase4_shap import get_display_name
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase4_shap.py", line 913, in <module>
+    log.info("  \u2192 Paper writing — Methods, Results, Discussion")
+Message: '  \u2192 Paper writing — Methods, Results, Discussion'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 35: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 38, in <module>
+    from phase4_shap import get_display_name
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase4_shap.py", line 913, in <module>
+    log.info("  \u2192 Paper writing — Methods, Results, Discussion")
+Message: '  \u2192 Paper writing — Methods, Results, Discussion'
+Arguments: ()
+2026-08-12 20:19:39,949 | INFO | ======================================================================
+[2026-08-12T20:19:39.949610] federated_shap_start :: {'algo': 'fedprox', 'device': 'cpu'}
+[2026-08-12T20:19:40.003176] node_shap_start :: {'node': 'CICU'}
+[fl_shap_results_io] log_experiment() signature mismatch: log_experiment() got an unexpected keyword argument 'top_feature'
+  -> open sepsis_ml/logger.py and fix the kwargs in log_to_leaderboard().
+[2026-08-12T20:20:12.621471] node_shap_done :: {'node': 'CICU', 'top_feature': 'lactate_max'}
+[2026-08-12T20:20:12.621471] node_shap_start :: {'node': 'NICU'}
+[fl_shap_results_io] log_experiment() signature mismatch: log_experiment() got an unexpected keyword argument 'top_feature'
+  -> open sepsis_ml/logger.py and fix the kwargs in log_to_leaderboard().
+[2026-08-12T20:21:49.850755] node_shap_done :: {'node': 'NICU', 'top_feature': 'lactate_max'}
+[2026-08-12T20:21:49.850755] node_shap_start :: {'node': 'PICU'}
+[fl_shap_results_io] log_experiment() signature mismatch: log_experiment() got an unexpected keyword argument 'top_feature'
+  -> open sepsis_ml/logger.py and fix the kwargs in log_to_leaderboard().
+[2026-08-12T20:22:41.396541] node_shap_done :: {'node': 'PICU', 'top_feature': 'lactate_max'}
+[2026-08-12T20:22:41.398544] node_shap_start :: {'node': 'SICU'}
+[fl_shap_results_io] log_experiment() signature mismatch: log_experiment() got an unexpected keyword argument 'top_feature'
+  -> open sepsis_ml/logger.py and fix the kwargs in log_to_leaderboard().
+[2026-08-12T20:24:17.432455] node_shap_done :: {'node': 'SICU', 'top_feature': 'lactate_max'}
+[2026-08-12T20:24:17.432455] node_shap_start :: {'node': 'General'}
+Traceback (most recent call last):
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 196, in <module>
+    main()
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 182, in main
+    result = run_node_shap(node_name, model, background, meta, scaler)
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 127, in run_node_shap
+    X_np, feature_names, n_patients = load_node_test_data(node_name, meta, scaler)
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\federated_shap.py", line 117, in load_node_test_data
+    raise KeyError(f"Expected column '{col}' in {config.MODEL_READY_TEST}.")
+KeyError: "Expected column 'care_unit_General' in D:/pediatric-sepsis-PIC\\model_datasets/B_test_model_ready.csv."
+[2026-08-12T20:24:19.130994] aggregate_shap_start :: {'algo': 'fedavg'}
+
+Top 5 federated features (fedavg):
+  lactate_max: 0.7900
+  ddimer_first: 0.4469
+  platelets_min: 0.3888
+  ddimer_mean: 0.3460
+  inr_max: 0.2989
+
+Node vs. federated rank correlation (low rho = that node disagrees with the aggregate):
+  CICU: rho=0.938 (p=0.0000)
+  NICU: rho=0.967 (p=0.0000)
+  PICU: rho=0.978 (p=0.0000)
+  SICU: rho=0.987 (p=0.0000)
+
+Run complete. Zip this folder to move it to another PC:
+  D:/pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\results\uni_session_1
+
+[2026-08-12T20:24:20.377131] aggregate_shap_start :: {'algo': 'fedprox'}
+
+Top 5 federated features (fedprox):
+  lactate_max: 0.8984
+  pt_max: 0.4871
+  ddimer_mean: 0.4646
+  inr_max: 0.2703
+  fluid_input_total_ml: 0.2475
+
+Node vs. federated rank correlation (low rho = that node disagrees with the aggregate):
+  CICU: rho=0.964 (p=0.0000)
+  NICU: rho=0.973 (p=0.0000)
+  PICU: rho=0.977 (p=0.0000)
+  SICU: rho=0.989 (p=0.0000)
+
+Run complete. Zip this folder to move it to another PC:
+  D:/pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\results\uni_session_1
+
+2026-08-12 20:24:22,703 | INFO | ======================================================================
+2026-08-12 20:24:22,703 | INFO | PHASE 5 — SENSITIVITY ANALYSIS (Option A — Full Cohort)
+2026-08-12 20:24:22,703 | INFO | Run timestamp : 2026-08-12 20:24:22
+2026-08-12 20:24:22,703 | INFO | Base dir      : D:\pediatric-sepsis-PIC
+2026-08-12 20:24:22,703 | INFO | ======================================================================
+2026-08-12 20:24:22,703 | INFO | 
+2026-08-12 20:24:22,703 | INFO | ============================================================
+2026-08-12 20:24:22,703 | INFO | SECTION 1 — Feature Preparation (Option A)
+2026-08-12 20:24:22,703 | INFO | ============================================================
+2026-08-12 20:24:22,911 | INFO | Raw Option A train: (9957, 383)
+2026-08-12 20:24:22,911 | INFO | Raw Option A test:  (2490, 383)
+2026-08-12 20:24:22,911 | INFO | Sepsis prevalence  — train: 6.9%, test: 6.9%
+2026-08-12 20:24:22,929 | INFO |   [A_train] Input shape: (9957, 383)
+2026-08-12 20:24:22,929 | INFO |   [A_train] Dropped leakage: ['expire_flag', 'hosp_expire', 'los_hours']
+2026-08-12 20:24:22,974 | INFO |   [A_train] Dropped vaso: 6 columns
+2026-08-12 20:24:22,974 | INFO |   [A_train] Dropped _count: 40 columns
+2026-08-12 20:24:22,990 | INFO |   [A_train] Dropped _was_measured: 102 columns
+2026-08-12 20:24:22,990 | INFO |   [A_train] care_unit one-hot: ['care_unit_CICU', 'care_unit_General ICU', 'care_unit_NICU', 'care_unit_PICU', 'care_unit_SICU']
+2026-08-12 20:24:23,006 | INFO |   [A_train] Final shape: (9957, 226) (features: 225, missing: 0)
+2026-08-12 20:24:23,006 | INFO |   [A_test] Input shape: (2490, 383)
+2026-08-12 20:24:23,006 | INFO |   [A_test] Dropped leakage: ['expire_flag', 'hosp_expire', 'los_hours']
+2026-08-12 20:24:23,023 | INFO |   [A_test] Dropped vaso: 6 columns
+2026-08-12 20:24:23,023 | INFO |   [A_test] Dropped _count: 40 columns
+2026-08-12 20:24:23,023 | INFO |   [A_test] Dropped _was_measured: 102 columns
+2026-08-12 20:24:23,023 | INFO |   [A_test] care_unit one-hot: ['care_unit_CICU', 'care_unit_General ICU', 'care_unit_NICU', 'care_unit_PICU', 'care_unit_SICU']
+2026-08-12 20:24:23,023 | INFO |   [A_test] Final shape: (2490, 226) (features: 225, missing: 0)
+2026-08-12 20:24:23,023 | INFO | Column consistency: PASS — 226 columns match exactly
+2026-08-12 20:24:23,039 | INFO | Feature alignment vs Option B:
+2026-08-12 20:24:23,039 | INFO |   Common features:       225
+2026-08-12 20:24:23,039 | INFO |   Extra in Option A:     0 
+2026-08-12 20:24:23,039 | INFO |   Missing from Option A: 0 
+2026-08-12 20:24:23,039 | INFO |   Aligned to Option B feature set: 225 features
+2026-08-12 20:24:23,612 | INFO | Prepared datasets saved to D:\pediatric-sepsis-PIC\sepsis_ml\sensitivity_analysis\results
+2026-08-12 20:24:23,612 | INFO | Final — Train: (9957, 225), Test: (2490, 225)
+2026-08-12 20:24:23,612 | INFO | Sepsis — Train: 691 (6.9%), Test: 173 (6.9%)
+2026-08-12 20:24:23,612 | INFO | 
+2026-08-12 20:24:23,612 | INFO | ============================================================
+2026-08-12 20:24:23,612 | INFO | SECTION 2 — Training CatBoost (fixed tuned params, Option A)
+2026-08-12 20:24:23,612 | INFO | ============================================================
+2026-08-12 20:24:23,612 | INFO | NOTE: Hyperparameters held FIXED from Phase 2A (Option B tuning).
+2026-08-12 20:24:23,612 | INFO | Only class_weights updated for Option A prevalence (1:13.4).
+2026-08-12 20:24:23,612 | INFO | Tuned params: {'iterations': 510, 'learning_rate': 0.0342, 'depth': 7, 'l2_leaf_reg': 3.754, 'bagging_temperature': 0.975, 'random_strength': 0.05, 'border_count': 233, 'class_weights': [1.0, 13.4], 'eval_metric': 'AUC', 'random_seed': 42, 'verbose': 100, 'early_stopping_rounds': 50}
+0:	test: 0.9834810	best: 0.9834810 (0)	total: 155ms	remaining: 1m 18s
+100:	test: 0.9949806	best: 0.9951003 (89)	total: 1s	remaining: 4.06s
+200:	test: 0.9961044	best: 0.9961419 (191)	total: 1.8s	remaining: 2.76s
+300:	test: 0.9963464	best: 0.9963963 (292)	total: 2.56s	remaining: 1.78s
+400:	test: 0.9967294	best: 0.9967344 (394)	total: 3.3s	remaining: 898ms
+Stopped by overfitting detector  (50 iterations wait)
+
+bestTest = 0.9967368608
+bestIteration = 402
+
+Shrink model to first 403 iterations.
+2026-08-12 20:24:27,477 | INFO | Model saved: D:\pediatric-sepsis-PIC\sepsis_ml\sensitivity_analysis\models\catboost_A_tuned.cbm
+2026-08-12 20:24:27,477 | INFO | 
+2026-08-12 20:24:27,477 | INFO | ============================================================
+2026-08-12 20:24:27,477 | INFO | SECTION 3 — Evaluation
+2026-08-12 20:24:27,477 | INFO | ============================================================
+2026-08-12 20:24:28,745 | INFO | AUROC : 0.9967 [0.9949–0.9982]
+2026-08-12 20:24:28,745 | INFO | AUPRC : 0.9636 [0.9443–0.9790]
+2026-08-12 20:24:28,745 | INFO | Brier : 0.0166
+2026-08-12 20:24:28,745 | INFO | 
+Metrics at clinical thresholds:
+2026-08-12 20:24:28,747 | INFO |   80% Sens | thresh=0.577 | Sens=0.948 | Spec=0.984 | PPV=0.816 | NPV=0.996 | F1=0.877 | TP=164 FP=37 TN=2280 FN=9
+2026-08-12 20:24:28,747 | INFO |   85% Sens | thresh=0.447 | Sens=0.965 | Spec=0.975 | PPV=0.739 | NPV=0.997 | F1=0.837 | TP=167 FP=59 TN=2258 FN=6
+2026-08-12 20:24:28,749 | INFO |   90% Sens (recommended) | thresh=0.365 | Sens=0.983 | Spec=0.967 | PPV=0.691 | NPV=0.999 | F1=0.811 | TP=170 FP=76 TN=2241 FN=3
+2026-08-12 20:24:28,749 | INFO |   92% Sens | thresh=0.276 | Sens=0.983 | Spec=0.956 | PPV=0.627 | NPV=0.999 | F1=0.766 | TP=170 FP=101 TN=2216 FN=3
+2026-08-12 20:24:28,749 | INFO |   95% Sens | thresh=0.213 | Sens=0.994 | Spec=0.949 | PPV=0.593 | NPV=1.000 | F1=0.743 | TP=172 FP=118 TN=2199 FN=1
+2026-08-12 20:24:28,753 | INFO | 
+2026-08-12 20:24:28,753 | INFO | ============================================================
+2026-08-12 20:24:28,753 | INFO | SECTION 4 — Option A vs Option B Comparison
+2026-08-12 20:24:28,753 | INFO | ============================================================
+2026-08-12 20:24:28,753 | INFO | Option A vs Option B:
+2026-08-12 20:24:28,753 | INFO |   Metric                           Option B     Option A      Delta
+2026-08-12 20:24:28,753 | INFO |   ----------------------------------------------------------------
+2026-08-12 20:24:28,753 | INFO |   AUROC                              0.9868       0.9967    +0.0099
+2026-08-12 20:24:28,755 | INFO |   AUPRC                              0.9691       0.9636    -0.0055
+2026-08-12 20:24:28,755 | INFO |   Sensitivity (0.365)                0.8960       0.9827    +0.0867
+2026-08-12 20:24:28,755 | INFO |   Specificity (0.365)                0.9630       0.9672    +0.0042
+2026-08-12 20:24:28,755 | INFO |   PPV (0.365)                        0.9010       0.6911    -0.2099
+2026-08-12 20:24:28,755 | INFO |   NPV (0.365)                        0.9610       0.9987    +0.0377
+2026-08-12 20:24:28,755 | INFO |   F1 (0.365)                         0.8990       0.8115    -0.0875
+2026-08-12 20:24:28,755 | INFO |   Brier Score                        0.0385       0.0166    -0.0219
+2026-08-12 20:24:28,755 | INFO |   N Train                              2530         9957
+2026-08-12 20:24:28,755 | INFO |   N Test                                633         2490
+2026-08-12 20:24:28,755 | INFO |   Sepsis Prevalence                   27.3%         6.9%
+2026-08-12 20:24:28,755 | INFO | 
+2026-08-12 20:24:28,755 | INFO | ============================================================
+2026-08-12 20:24:28,755 | INFO | SECTION 5 — SHAP Feature Importance (Option A)
+2026-08-12 20:24:28,755 | INFO | ============================================================
+2026-08-12 20:24:29,139 | INFO | Top 20 features by mean |SHAP| — Option A:
+2026-08-12 20:24:29,139 | INFO |    1. n_antibiotics_24h                   5.25246
+2026-08-12 20:24:29,139 | INFO |    2. lactate_max                         0.95562
+2026-08-12 20:24:29,139 | INFO |    3. platelets_min                       0.56919
+2026-08-12 20:24:29,139 | INFO |    4. inr_max                             0.52747
+2026-08-12 20:24:29,139 | INFO |    5. ddimer_max                          0.52462
+2026-08-12 20:24:29,139 | INFO |    6. n_cultures_24h                      0.44938
+2026-08-12 20:24:29,139 | INFO |    7. ddimer_mean                         0.37909
+2026-08-12 20:24:29,139 | INFO |    8. pt_max                              0.12881
+2026-08-12 20:24:29,139 | INFO |    9. glucose_max                         0.12813
+2026-08-12 20:24:29,139 | INFO |   10. platelets_mean                      0.11885
+2026-08-12 20:24:29,139 | INFO |   11. calcium_max                         0.11611
+2026-08-12 20:24:29,139 | INFO |   12. ph_min                              0.11312
+2026-08-12 20:24:29,139 | INFO |   13. care_unit_CICU                      0.11041
+2026-08-12 20:24:29,139 | INFO |   14. platelets_first                     0.10182
+2026-08-12 20:24:29,155 | INFO |   15. pao2_max                            0.09429
+2026-08-12 20:24:29,155 | INFO |   16. fibrinogen_min                      0.08050
+2026-08-12 20:24:29,155 | INFO |   17. potassium_min                       0.07969
+2026-08-12 20:24:29,155 | INFO |   18. calcium_mean                        0.07614
+2026-08-12 20:24:29,155 | INFO |   19. hematocrit_min                      0.07492
+2026-08-12 20:24:29,155 | INFO |   20. pco2_max                            0.07284
+2026-08-12 20:24:29,155 | INFO | 
+2026-08-12 20:24:29,155 | INFO | ============================================================
+2026-08-12 20:24:29,155 | INFO | Generating figures...
+2026-08-12 20:24:29,155 | INFO | ============================================================
+2026-08-12 20:24:29,331 | INFO | Figure 1 saved: phase5_fig1_roc_pr_A.png
+2026-08-12 20:24:29,521 | INFO | Figure 2 saved: phase5_fig2_A_vs_B_comparison.png
+2026-08-12 20:24:29,665 | INFO | Figure 3 saved: phase5_fig3_shap_A_vs_B.png
+2026-08-12 20:24:29,935 | INFO | Figure 4 saved: phase5_fig4_summary_dashboard.png
+2026-08-12 20:24:29,935 | INFO | 
+2026-08-12 20:24:29,935 | INFO | ============================================================
+2026-08-12 20:24:29,935 | INFO | Saving results...
+2026-08-12 20:24:29,935 | INFO | ============================================================
+2026-08-12 20:24:29,935 | INFO | Results saved: D:\pediatric-sepsis-PIC\sepsis_ml\sensitivity_analysis\results\phase5_results.json
+2026-08-12 20:24:29,935 | INFO | 
+2026-08-12 20:24:29,935 | INFO | ======================================================================
+2026-08-12 20:24:29,935 | INFO | PHASE 5 COMPLETE — SENSITIVITY ANALYSIS SUMMARY
+2026-08-12 20:24:29,935 | INFO | ======================================================================
+2026-08-12 20:24:29,935 | INFO | Metric                             Option B     Option A      Delta
+2026-08-12 20:24:29,935 | INFO | ------------------------------------------------------------------
+2026-08-12 20:24:29,935 | INFO | AUROC                                0.9868       0.9967    +0.0099
+2026-08-12 20:24:29,935 | INFO | AUPRC                                0.9691       0.9636    -0.0055
+2026-08-12 20:24:29,935 | INFO | Sensitivity (0.365)                   0.896        0.983     +0.087
+2026-08-12 20:24:29,935 | INFO | Specificity (0.365)                   0.963        0.967     +0.004
+2026-08-12 20:24:29,935 | INFO | Brier Score                          0.0385       0.0166    -0.0219
+2026-08-12 20:24:29,935 | INFO | N Train                                2530         9957
+2026-08-12 20:24:29,935 | INFO | N Test                                  633         2490
+2026-08-12 20:24:29,935 | INFO | Prevalence                            27.3%         6.9%
+2026-08-12 20:24:29,935 | INFO | 
+2026-08-12 20:24:29,935 | INFO | All outputs saved to: D:\pediatric-sepsis-PIC\sepsis_ml\sensitivity_analysis
+2026-08-12 20:24:29,935 | INFO |   Models   : D:\pediatric-sepsis-PIC\sepsis_ml\sensitivity_analysis\models
+2026-08-12 20:24:29,935 | INFO |   Figures  : D:\pediatric-sepsis-PIC\sepsis_ml\sensitivity_analysis\figures
+2026-08-12 20:24:29,935 | INFO |   Results  : D:\pediatric-sepsis-PIC\sepsis_ml\sensitivity_analysis\results
+2026-08-12 20:24:29,935 | INFO |   Logs     : D:\pediatric-sepsis-PIC\sepsis_ml\sensitivity_analysis\logs
+2026-08-12 20:24:29,935 | INFO | 
+2026-08-12 20:24:29,935 | INFO | Interpretation guidance:
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 65: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\sensitivity_analysis.py", line 38, in <module>
+    from phase5_sensitivity_analysis import bootstrap_auroc, bootstrap_auprc, metrics_at_threshold
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase5_sensitivity_analysis.py", line 864, in <module>
+    log.info("  AUROC within 0.02 of Option B \u2192 results generalise \u2713")
+Message: '  AUROC within 0.02 of Option B \u2192 results generalise \u2713'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 65: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\sensitivity_analysis.py", line 38, in <module>
+    from phase5_sensitivity_analysis import bootstrap_auroc, bootstrap_auprc, metrics_at_threshold
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase5_sensitivity_analysis.py", line 864, in <module>
+    log.info("  AUROC within 0.02 of Option B \u2192 results generalise \u2713")
+Message: '  AUROC within 0.02 of Option B \u2192 results generalise \u2713'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 82: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\sensitivity_analysis.py", line 38, in <module>
+    from phase5_sensitivity_analysis import bootstrap_auroc, bootstrap_auprc, metrics_at_threshold
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase5_sensitivity_analysis.py", line 865, in <module>
+    log.info("  AUPRC drop expected (6.9% vs 27.3% prevalence) \u2192 use AUROC for comparison")
+Message: '  AUPRC drop expected (6.9% vs 27.3% prevalence) \u2192 use AUROC for comparison'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 82: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\sensitivity_analysis.py", line 38, in <module>
+    from phase5_sensitivity_analysis import bootstrap_auroc, bootstrap_auprc, metrics_at_threshold
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase5_sensitivity_analysis.py", line 865, in <module>
+    log.info("  AUPRC drop expected (6.9% vs 27.3% prevalence) \u2192 use AUROC for comparison")
+Message: '  AUPRC drop expected (6.9% vs 27.3% prevalence) \u2192 use AUROC for comparison'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 95: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\sensitivity_analysis.py", line 38, in <module>
+    from phase5_sensitivity_analysis import bootstrap_auroc, bootstrap_auprc, metrics_at_threshold
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase5_sensitivity_analysis.py", line 866, in <module>
+    log.info("  Top SHAP features should remain lactate, D-dimer, platelets \u2192 validates signal")
+Message: '  Top SHAP features should remain lactate, D-dimer, platelets \u2192 validates signal'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\logging\__init__.py", line 1101, in emit
+    stream.write(msg + self.terminator)
+  File "C:\Users\stme\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 95: character maps to <undefined>
+Call stack:
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\sensitivity_analysis.py", line 38, in <module>
+    from phase5_sensitivity_analysis import bootstrap_auroc, bootstrap_auprc, metrics_at_threshold
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\pediatric-sepsis-PIC\sepsis_ml\phase5_sensitivity_analysis.py", line 866, in <module>
+    log.info("  Top SHAP features should remain lactate, D-dimer, platelets \u2192 validates signal")
+Message: '  Top SHAP features should remain lactate, D-dimer, platelets \u2192 validates signal'
+Arguments: ()
+2026-08-12 20:24:29,950 | INFO | 
+2026-08-12 20:24:29,950 | INFO | Next steps: Phase 6 — TabNet + improved ANN
+2026-08-12 20:24:29,950 | INFO | ======================================================================
+[2026-08-12T20:24:29.967060] sensitivity_analysis_start :: {}
+[2026-08-12T20:24:29.967060] axis3_done :: {'rho': 0.6963067768790074}
+
+Run complete. Zip this folder to move it to another PC:
+  D:/pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\results\uni_session_1
+
+
+Sensitivity analysis summary:
+{
+  "axis3_algorithm": {
+    "check": "FedAvg vs FedProx federated SHAP ranking agreement",
+    "spearman_rho": 0.6963067768790074,
+    "p_value": 5.8039905696135914e-34,
+    "fedavg_top_5": [
+      "lactate_max",
+      "ddimer_first",
+      "platelets_min",
+      "ddimer_mean",
+      "inr_max"
+    ],
+    "fedprox_top_5": [
+      "lactate_max",
+      "pt_max",
+      "ddimer_mean",
+      "inr_max",
+      "fluid_input_total_ml"
+    ],
+    "top_5_overlap": 3
+  }
+}
+Dashboard data written: D:/pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\results\uni_session_1\dashboard.json
+Copy this ONE file to the dashboard machine — that's all app.py needs to read.
+[2026-08-12T20:11:24.026119] pipeline_start :: {}
+[2026-08-12T20:11:24.026119] step_start :: {'step': 'federated_shap_fedavg', 'cmd': 'D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe federated_shap.py --algo fedavg --run-name uni_session_1'}
+[2026-08-12T20:17:45.048477] step_failed :: {'step': 'federated_shap_fedavg', 'error': "Command '['D:\\\\pediatric-sepsis-PIC\\\\sepsis_ml\\\\.venv\\\\Scripts\\\\python.exe', 'federated_shap.py', '--algo', 'fedavg', '--run-name', 'uni_session_1']' returned non-zero exit status 1."}
+
+!! federated_shap_fedavg failed — see run_log.jsonl. Continuing to next step. !!
+
+[2026-08-12T20:17:45.048477] step_start :: {'step': 'federated_shap_fedprox', 'cmd': 'D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe federated_shap.py --algo fedprox --run-name uni_session_1'}
+[2026-08-12T20:24:17.970310] step_failed :: {'step': 'federated_shap_fedprox', 'error': "Command '['D:\\\\pediatric-sepsis-PIC\\\\sepsis_ml\\\\.venv\\\\Scripts\\\\python.exe', 'federated_shap.py', '--algo', 'fedprox', '--run-name', 'uni_session_1']' returned non-zero exit status 1."}
+
+!! federated_shap_fedprox failed — see run_log.jsonl. Continuing to next step. !!
+
+[2026-08-12T20:24:17.972313] step_start :: {'step': 'aggregate_fedavg', 'cmd': 'D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe aggregate_shap.py --algo fedavg --run-dir D:/pediatric-sepsis-PIC\\sepsis_ml\\phase9_federated_shap\\results\\uni_session_1'}
+[2026-08-12T20:24:19.213802] step_done :: {'step': 'aggregate_fedavg'}
+[2026-08-12T20:24:19.213802] step_start :: {'step': 'aggregate_fedprox', 'cmd': 'D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe aggregate_shap.py --algo fedprox --run-dir D:/pediatric-sepsis-PIC\\sepsis_ml\\phase9_federated_shap\\results\\uni_session_1'}
+[2026-08-12T20:24:20.450799] step_done :: {'step': 'aggregate_fedprox'}
+[2026-08-12T20:24:20.450799] step_start :: {'step': 'sensitivity_analysis', 'cmd': 'D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe sensitivity_analysis.py --run-dir D:/pediatric-sepsis-PIC\\sepsis_ml\\phase9_federated_shap\\results\\uni_session_1'}
+[2026-08-12T20:24:30.171934] step_done :: {'step': 'sensitivity_analysis'}
+[2026-08-12T20:24:30.171934] step_start :: {'step': 'export_dashboard_data', 'cmd': 'D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe export_dashboard_data.py --run-dir D:/pediatric-sepsis-PIC\\sepsis_ml\\phase9_federated_shap\\results\\uni_session_1'}
+[2026-08-12T20:24:30.334140] step_done :: {'step': 'export_dashboard_data'}
+
+Run complete. Zip this folder to move it to another PC:
+  D:/pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\results\uni_session_1
+
+
+Done. Zip and carry this folder: D:/pediatric-sepsis-PIC\sepsis_ml\phase9_federated_shap\results\uni_session_1
+=============================================== 
+Pipeline completed successfully 12-08-2026 20:24:30.48 
+=============================================== 

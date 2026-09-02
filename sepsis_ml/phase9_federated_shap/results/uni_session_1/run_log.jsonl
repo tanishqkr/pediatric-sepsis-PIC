@@ -1,0 +1,37 @@
+{"ts": "2026-08-12T20:11:24.026119", "event": "pipeline_start"}
+{"ts": "2026-08-12T20:11:24.026119", "event": "step_start", "step": "federated_shap_fedavg", "cmd": "D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe federated_shap.py --algo fedavg --run-name uni_session_1"}
+{"ts": "2026-08-12T20:13:19.816532", "event": "federated_shap_start", "algo": "fedavg", "device": "cpu"}
+{"ts": "2026-08-12T20:13:19.860491", "event": "node_shap_start", "node": "CICU"}
+{"ts": "2026-08-12T20:13:50.016473", "event": "node_shap_done", "node": "CICU", "top_feature": "lactate_max"}
+{"ts": "2026-08-12T20:13:50.016473", "event": "node_shap_start", "node": "NICU"}
+{"ts": "2026-08-12T20:15:20.710672", "event": "node_shap_done", "node": "NICU", "top_feature": "lactate_max"}
+{"ts": "2026-08-12T20:15:20.710672", "event": "node_shap_start", "node": "PICU"}
+{"ts": "2026-08-12T20:16:11.814147", "event": "node_shap_done", "node": "PICU", "top_feature": "lactate_max"}
+{"ts": "2026-08-12T20:16:11.814147", "event": "node_shap_start", "node": "SICU"}
+{"ts": "2026-08-12T20:17:44.543463", "event": "node_shap_done", "node": "SICU", "top_feature": "lactate_max"}
+{"ts": "2026-08-12T20:17:44.543463", "event": "node_shap_start", "node": "General"}
+{"ts": "2026-08-12T20:17:45.048477", "event": "step_failed", "step": "federated_shap_fedavg", "error": "Command '['D:\\\\pediatric-sepsis-PIC\\\\sepsis_ml\\\\.venv\\\\Scripts\\\\python.exe', 'federated_shap.py', '--algo', 'fedavg', '--run-name', 'uni_session_1']' returned non-zero exit status 1."}
+{"ts": "2026-08-12T20:17:45.048477", "event": "step_start", "step": "federated_shap_fedprox", "cmd": "D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe federated_shap.py --algo fedprox --run-name uni_session_1"}
+{"ts": "2026-08-12T20:19:39.949610", "event": "federated_shap_start", "algo": "fedprox", "device": "cpu"}
+{"ts": "2026-08-12T20:19:40.003176", "event": "node_shap_start", "node": "CICU"}
+{"ts": "2026-08-12T20:20:12.621471", "event": "node_shap_done", "node": "CICU", "top_feature": "lactate_max"}
+{"ts": "2026-08-12T20:20:12.621471", "event": "node_shap_start", "node": "NICU"}
+{"ts": "2026-08-12T20:21:49.850755", "event": "node_shap_done", "node": "NICU", "top_feature": "lactate_max"}
+{"ts": "2026-08-12T20:21:49.850755", "event": "node_shap_start", "node": "PICU"}
+{"ts": "2026-08-12T20:22:41.396541", "event": "node_shap_done", "node": "PICU", "top_feature": "lactate_max"}
+{"ts": "2026-08-12T20:22:41.398544", "event": "node_shap_start", "node": "SICU"}
+{"ts": "2026-08-12T20:24:17.432455", "event": "node_shap_done", "node": "SICU", "top_feature": "lactate_max"}
+{"ts": "2026-08-12T20:24:17.432455", "event": "node_shap_start", "node": "General"}
+{"ts": "2026-08-12T20:24:17.970310", "event": "step_failed", "step": "federated_shap_fedprox", "error": "Command '['D:\\\\pediatric-sepsis-PIC\\\\sepsis_ml\\\\.venv\\\\Scripts\\\\python.exe', 'federated_shap.py', '--algo', 'fedprox', '--run-name', 'uni_session_1']' returned non-zero exit status 1."}
+{"ts": "2026-08-12T20:24:17.972313", "event": "step_start", "step": "aggregate_fedavg", "cmd": "D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe aggregate_shap.py --algo fedavg --run-dir D:/pediatric-sepsis-PIC\\sepsis_ml\\phase9_federated_shap\\results\\uni_session_1"}
+{"ts": "2026-08-12T20:24:19.130994", "event": "aggregate_shap_start", "algo": "fedavg"}
+{"ts": "2026-08-12T20:24:19.213802", "event": "step_done", "step": "aggregate_fedavg"}
+{"ts": "2026-08-12T20:24:19.213802", "event": "step_start", "step": "aggregate_fedprox", "cmd": "D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe aggregate_shap.py --algo fedprox --run-dir D:/pediatric-sepsis-PIC\\sepsis_ml\\phase9_federated_shap\\results\\uni_session_1"}
+{"ts": "2026-08-12T20:24:20.377131", "event": "aggregate_shap_start", "algo": "fedprox"}
+{"ts": "2026-08-12T20:24:20.450799", "event": "step_done", "step": "aggregate_fedprox"}
+{"ts": "2026-08-12T20:24:20.450799", "event": "step_start", "step": "sensitivity_analysis", "cmd": "D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe sensitivity_analysis.py --run-dir D:/pediatric-sepsis-PIC\\sepsis_ml\\phase9_federated_shap\\results\\uni_session_1"}
+{"ts": "2026-08-12T20:24:29.967060", "event": "sensitivity_analysis_start"}
+{"ts": "2026-08-12T20:24:29.967060", "event": "axis3_done", "rho": 0.6963067768790074}
+{"ts": "2026-08-12T20:24:30.171934", "event": "step_done", "step": "sensitivity_analysis"}
+{"ts": "2026-08-12T20:24:30.171934", "event": "step_start", "step": "export_dashboard_data", "cmd": "D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe export_dashboard_data.py --run-dir D:/pediatric-sepsis-PIC\\sepsis_ml\\phase9_federated_shap\\results\\uni_session_1"}
+{"ts": "2026-08-12T20:24:30.334140", "event": "step_done", "step": "export_dashboard_data"}
