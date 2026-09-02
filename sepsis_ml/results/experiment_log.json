@@ -468,5 +468,51 @@
       "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig6_shap_by_class.png",
       "/Users/tanishporwal/Documents/Sepsis/pediatric_sepsis_prediction_PIC_XAI/sepsis_ml/figures/phase4_shap/phase4_fig7_shap_dashboard.png"
     ]
+  },
+  {
+    "phase": "Phase3_Evaluation",
+    "timestamp": "2026-05-24T20:54:26.714383",
+    "dataset": "Option_B",
+    "model": "Tuned_CatBoost",
+    "n_test": 633,
+    "n_sepsis_test": 173,
+    "auroc": 0.9867931641115858,
+    "auroc_ci": [
+      0.9793928655686246,
+      0.993079148853889
+    ],
+    "auprc": 0.9690516708255321,
+    "brier_before_platt": 0.03853225254236254,
+    "brier_after_platt": 0.04219512036003682,
+    "delong_n_comparisons": 5,
+    "delong_n_significant": 4,
+    "subgroup_n_bands": 4,
+    "metrics_at_recommended_threshold_0365": {
+      "threshold": 0.365,
+      "TP": 155,
+      "FP": 17,
+      "TN": 443,
+      "FN": 18,
+      "sensitivity": 0.8959537572254336,
+      "specificity": 0.9630434782608696,
+      "PPV": 0.9011627906976745,
+      "NPV": 0.9609544468546638,
+      "F1": 0.8985507246376812
+    },
+    "artifacts": {
+      "delong_csv": "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\results\\phase3_delong_results.csv",
+      "calibration_json": "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\results\\phase3_calibration_results.json",
+      "dca_csv": "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\results\\phase3_dca_results.csv",
+      "subgroup_csv": "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\results\\phase3_subgroup_results.csv",
+      "threshold_table_csv": "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\results\\phase3_threshold_table.csv",
+      "figures": [
+        "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase3_evaluation\\phase3_fig1_roc_pr_all_models.png",
+        "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase3_evaluation\\phase3_fig2_delong_comparison.png",
+        "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase3_evaluation\\phase3_fig3_calibration.png",
+        "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase3_evaluation\\phase3_fig4_dca.png",
+        "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase3_evaluation\\phase3_fig5_subgroup_analysis.png",
+        "D:\\Projects\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase3_evaluation\\phase3_fig6_summary_dashboard.png"
+      ]
+    }
   }
 ]

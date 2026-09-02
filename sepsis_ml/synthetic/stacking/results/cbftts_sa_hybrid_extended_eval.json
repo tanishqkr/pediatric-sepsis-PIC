@@ -1,0 +1,684 @@
+{
+  "model": "CBFTTS-SA (hybrid, real+synthetic weighted)",
+  "timestamp": "2026-07-15T23:53:36.378832",
+  "n_test": 633,
+  "prevalence": 0.27330173775671407,
+  "recommended_threshold": 0.23268956051026338,
+  "ensemble_auroc": 0.9786127167630059,
+  "ensemble_auprc": 0.953381467152244,
+  "dca": [
+    {
+      "threshold": 0.01,
+      "net_benefit_model": 0.2659613512694082,
+      "net_benefit_treat_all": 0.2659613512694082,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.02,
+      "net_benefit_model": 0.26427443015120744,
+      "net_benefit_treat_all": 0.25847116097623885,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.03,
+      "net_benefit_model": 0.26129867591733036,
+      "net_benefit_treat_all": 0.25082653376980835,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.04,
+      "net_benefit_model": 0.25750394944707744,
+      "net_benefit_treat_all": 0.24302264349657715,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.05,
+      "net_benefit_model": 0.2536792217510601,
+      "net_benefit_treat_all": 0.23505446079654113,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.06,
+      "net_benefit_model": 0.25125205875432755,
+      "net_benefit_treat_all": 0.22691674229437667,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.07,
+      "net_benefit_model": 0.2502505563199646,
+      "net_benefit_treat_all": 0.21860401909324095,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.08,
+      "net_benefit_model": 0.24912425303935706,
+      "net_benefit_treat_all": 0.21011058451816747,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.09,
+      "net_benefit_model": 0.2485981632901064,
+      "net_benefit_treat_all": 0.20143048105133415,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.1,
+      "net_benefit_model": 0.24837633842373177,
+      "net_benefit_treat_all": 0.19255748639634895,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.11,
+      "net_benefit_model": 0.2477412712782008,
+      "net_benefit_treat_all": 0.1834850986030495,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.12,
+      "net_benefit_model": 0.2473790033031739,
+      "net_benefit_treat_all": 0.1742065201780842,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.13,
+      "net_benefit_model": 0.24735341649870166,
+      "net_benefit_treat_all": 0.16471464109967132,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.14,
+      "net_benefit_model": 0.24747419082258715,
+      "net_benefit_treat_all": 0.15500202064734192,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.15,
+      "net_benefit_model": 0.24533035963200445,
+      "net_benefit_treat_all": 0.14506086794907536,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.16,
+      "net_benefit_model": 0.24509140148950573,
+      "net_benefit_treat_all": 0.13488302113894532,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.17,
+      "net_benefit_model": 0.2426959020917794,
+      "net_benefit_treat_all": 0.12445992500808922,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.18,
+      "net_benefit_model": 0.24028050707047352,
+      "net_benefit_treat_all": 0.11378260702038298,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.19,
+      "net_benefit_model": 0.23858561036022857,
+      "net_benefit_treat_all": 0.10284165155149885,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.2,
+      "net_benefit_model": 0.2385466034755134,
+      "net_benefit_treat_all": 0.09162717219589259,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.21,
+      "net_benefit_model": 0.2365868778371028,
+      "net_benefit_treat_all": 0.08012878197052412,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.22,
+      "net_benefit_model": 0.23465791712237208,
+      "net_benefit_treat_all": 0.06833556122655651,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.23,
+      "net_benefit_model": 0.23386881680720542,
+      "net_benefit_treat_all": 0.056236023060667634,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.24,
+      "net_benefit_model": 0.22989939303234389,
+      "net_benefit_treat_all": 0.04381807599567639,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.25,
+      "net_benefit_model": 0.2285413375460769,
+      "net_benefit_treat_all": 0.031068983675618778,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.26,
+      "net_benefit_model": 0.22774433200973485,
+      "net_benefit_treat_all": 0.01797532129285684,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.27,
+      "net_benefit_model": 0.2259300136337077,
+      "net_benefit_treat_all": 0.004522928433854878,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.28,
+      "net_benefit_model": 0.22634720028084956,
+      "net_benefit_treat_all": -0.009303142004563836,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.29,
+      "net_benefit_model": 0.22557461673675544,
+      "net_benefit_treat_all": -0.023518679215895733,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.3,
+      "net_benefit_model": 0.22613405551794177,
+      "net_benefit_treat_all": -0.03814037463326564,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.31,
+      "net_benefit_model": 0.22609153559081438,
+      "net_benefit_treat_all": -0.05318588730911006,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.32,
+      "net_benefit_model": 0.2252578756621132,
+      "net_benefit_treat_all": -0.06867391506365583,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.33,
+      "net_benefit_model": 0.2245643818820589,
+      "net_benefit_treat_all": -0.08462427200490447,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.34,
+      "net_benefit_model": 0.22308391976638423,
+      "net_benefit_treat_all": -0.10105797309588782,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.35,
+      "net_benefit_model": 0.22323490096001944,
+      "net_benefit_treat_all": -0.11799732652813227,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.36,
+      "net_benefit_model": 0.22097156398104265,
+      "net_benefit_treat_all": -0.13546603475513436,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.37,
+      "net_benefit_model": 0.22026630557436244,
+      "net_benefit_treat_all": -0.1534893051480729,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.38,
+      "net_benefit_model": 0.219538296896499,
+      "net_benefit_treat_all": -0.1720939713601386,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.39,
+      "net_benefit_model": 0.2197964416129283,
+      "net_benefit_treat_all": -0.19130862662833764,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.4,
+      "net_benefit_model": 0.220115850447604,
+      "net_benefit_treat_all": -0.21116377040547663,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.41,
+      "net_benefit_model": 0.21782204728626128,
+      "net_benefit_treat_all": -0.23169196990387453,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.42,
+      "net_benefit_model": 0.21708340142724847,
+      "net_benefit_treat_all": -0.25292803835049305,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.43,
+      "net_benefit_model": 0.214351043485491,
+      "net_benefit_treat_all": -0.27490923200576467,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.44,
+      "net_benefit_model": 0.2136086662153013,
+      "net_benefit_treat_all": -0.297675468291582,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.45,
+      "net_benefit_model": 0.2141318397242568,
+      "net_benefit_treat_all": -0.3212695677150653,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.46,
+      "net_benefit_model": 0.21338716283424025,
+      "net_benefit_treat_all": -0.3457375226727517,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.47,
+      "net_benefit_model": 0.2126143849295061,
+      "net_benefit_treat_all": -0.3711287966854452,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.48,
+      "net_benefit_model": 0.21011058451816744,
+      "net_benefit_treat_all": -0.39749665816016533,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.49,
+      "net_benefit_model": 0.20611467335749464,
+      "net_benefit_treat_all": -0.4248985534182076,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "net_benefit_model": 0.20695102685624012,
+      "net_benefit_treat_all": -0.45339652448657186,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.51,
+      "net_benefit_model": 0.20466195957055808,
+      "net_benefit_treat_all": -0.4830576780475223,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.52,
+      "net_benefit_model": 0.20234333859926276,
+      "net_benefit_treat_all": -0.5139547130068458,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.53,
+      "net_benefit_model": 0.20157305636785317,
+      "net_benefit_treat_all": -0.5461665154112468,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.54,
+      "net_benefit_model": 0.20076928360464316,
+      "net_benefit_treat_all": -0.5797788309636651,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.55,
+      "net_benefit_model": 0.19835000877654907,
+      "net_benefit_treat_all": -0.6148850272073023,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.56,
+      "net_benefit_model": 0.19747235387045814,
+      "net_benefit_treat_all": -0.6515869596438318,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.57,
+      "net_benefit_model": 0.19655387780594438,
+      "net_benefit_treat_all": -0.6899959587053164,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.58,
+      "net_benefit_model": 0.19777326412397503,
+      "net_benefit_treat_all": -0.7302339577221096,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.59,
+      "net_benefit_model": 0.19685585481447232,
+      "net_benefit_treat_all": -0.7724347859592339,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.6,
+      "net_benefit_model": 0.19589257503949448,
+      "net_benefit_treat_all": -0.8167456556082148,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.61,
+      "net_benefit_model": 0.19330011747073358,
+      "net_benefit_treat_all": -0.8633288775468869,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.62,
+      "net_benefit_model": 0.19223413985199966,
+      "net_benefit_treat_all": -0.9123638480086472,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.63,
+      "net_benefit_model": 0.1911105418214423,
+      "net_benefit_treat_all": -0.9640493574142862,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.64,
+      "net_benefit_model": 0.1899245216780762,
+      "net_benefit_treat_all": -1.018606284009128,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.65,
+      "net_benefit_model": 0.1916046039268788,
+      "net_benefit_treat_all": -1.0762807492665316,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.66,
+      "net_benefit_model": 0.19040981321438527,
+      "net_benefit_treat_all": -1.1373478301273119,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.67,
+      "net_benefit_model": 0.1891426109435588,
+      "net_benefit_treat_all": -1.2021159461917756,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.68,
+      "net_benefit_model": 0.1877962085308057,
+      "net_benefit_treat_all": -1.2709320695102688,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.69,
+      "net_benefit_model": 0.18478316261529837,
+      "net_benefit_treat_all": -1.3441879427202776,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.7,
+      "net_benefit_model": 0.18694049499736703,
+      "net_benefit_treat_all": -1.4223275408109535,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.71,
+      "net_benefit_model": 0.1839080459770115,
+      "net_benefit_treat_all": -1.505856076700987,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.72,
+      "net_benefit_model": 0.18077183480027084,
+      "net_benefit_treat_all": -1.5953509365831637,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.73,
+      "net_benefit_model": 0.17910011116962146,
+      "net_benefit_treat_all": -1.691475045345503,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.74,
+      "net_benefit_model": 0.17729979341353752,
+      "net_benefit_treat_all": -1.7949933163203302,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.75,
+      "net_benefit_model": 0.17535545023696683,
+      "net_benefit_treat_all": -1.9067930489731437,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.76,
+      "net_benefit_model": 0.1782517114270669,
+      "net_benefit_treat_all": -2.0279094260136916,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.77,
+      "net_benefit_model": 0.1746685898756783,
+      "net_benefit_treat_all": -2.1595576619273302,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.78,
+      "net_benefit_model": 0.16774378859686914,
+      "net_benefit_treat_all": -2.303173919287664,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.79,
+      "net_benefit_model": 0.16535018430753026,
+      "net_benefit_treat_all": -2.4604679154442195,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.8,
+      "net_benefit_model": 0.1627172195892575,
+      "net_benefit_treat_all": -2.63349131121643,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.81,
+      "net_benefit_model": 0.1598071006901139,
+      "net_benefit_treat_all": -2.8247276960172956,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.82,
+      "net_benefit_model": 0.15499385641565733,
+      "net_benefit_treat_all": -3.0372125680182562,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.83,
+      "net_benefit_model": 0.14980020444196634,
+      "net_benefit_treat_all": -3.2746956602546247,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.84,
+      "net_benefit_model": 0.14573459715639805,
+      "net_benefit_treat_all": -3.54186413902054,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.85,
+      "net_benefit_model": 0.1484992101105845,
+      "net_benefit_treat_all": -3.8446550816219056,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.86,
+      "net_benefit_model": 0.16023470999774317,
+      "net_benefit_treat_all": -4.1907018731663275,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.87,
+      "net_benefit_model": 0.15202333211811886,
+      "net_benefit_treat_all": -4.58998663264066,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.88,
+      "net_benefit_model": 0.14797261716692997,
+      "net_benefit_treat_all": -5.055818852027383,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.89,
+      "net_benefit_model": 0.14318540858825218,
+      "net_benefit_treat_all": -5.606347838575327,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.9,
+      "net_benefit_model": 0.13744075829383887,
+      "net_benefit_treat_all": -6.26698262243286,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.91,
+      "net_benefit_model": 0.12725996138318413,
+      "net_benefit_treat_all": -7.0744251360365125,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.92,
+      "net_benefit_model": 0.11848341232227486,
+      "net_benefit_treat_all": -8.083728278041079,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.93,
+      "net_benefit_model": 0.10561949898442782,
+      "net_benefit_treat_all": -9.381403746332662,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.94,
+      "net_benefit_model": 0.08741442864665604,
+      "net_benefit_treat_all": -11.111637704054777,
+      "net_benefit_treat_none": 0.0
+    },
+    {
+      "threshold": 0.95,
+      "net_benefit_model": 0.05845181674565543,
+      "net_benefit_treat_all": -13.533965244865739,
+      "net_benefit_treat_none": 0.0
+    }
+  ],
+  "subgroup_by_age": [
+    {
+      "age_group": "Neonate (0-28d)",
+      "n": 102,
+      "sepsis_n": 17,
+      "prevalence": 0.16666666666666666,
+      "auroc": 0.9612456747404844,
+      "auprc": 0.8707688158352295,
+      "sensitivity": 0.7647058823529411,
+      "specificity": 0.9647058823529412,
+      "f1": 0.7878787878787878
+    },
+    {
+      "age_group": "Infant (29d-1y)",
+      "n": 223,
+      "sepsis_n": 64,
+      "prevalence": 0.28699551569506726,
+      "auroc": 0.9821147798742139,
+      "auprc": 0.9624713398698541,
+      "sensitivity": 0.859375,
+      "specificity": 0.9622641509433962,
+      "f1": 0.88
+    },
+    {
+      "age_group": "Child (1-12y)",
+      "n": 289,
+      "sepsis_n": 87,
+      "prevalence": 0.30103806228373703,
+      "auroc": 0.9827017184477069,
+      "auprc": 0.963333049045698,
+      "sensitivity": 0.9655172413793104,
+      "specificity": 0.900990099009901,
+      "f1": 0.8795811518324608
+    },
+    {
+      "age_group": "Adolescent (12-18y)",
+      "n": 19,
+      "sepsis_n": 5,
+      "prevalence": 0.2631578947368421,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 0.9285714285714286,
+      "f1": 0.9090909090909091
+    }
+  ],
+  "threshold_sensitivity": [
+    {
+      "operating_point": "80% Sensitivity",
+      "target_sensitivity": 0.8,
+      "threshold": 0.6046,
+      "sensitivity": 0.8035,
+      "specificity": 0.9783,
+      "ppv": 0.9329,
+      "npv": 0.9298,
+      "f1": 0.8634,
+      "recommended": false
+    },
+    {
+      "operating_point": "85% Sensitivity",
+      "target_sensitivity": 0.85,
+      "threshold": 0.402,
+      "sensitivity": 0.8671,
+      "specificity": 0.9652,
+      "ppv": 0.9036,
+      "npv": 0.9507,
+      "f1": 0.885,
+      "recommended": false
+    },
+    {
+      "operating_point": "~90% (recommended)",
+      "target_sensitivity": 0.9,
+      "threshold": 0.2327,
+      "sensitivity": 0.9075,
+      "specificity": 0.9348,
+      "ppv": 0.8396,
+      "npv": 0.9641,
+      "f1": 0.8722,
+      "recommended": true
+    },
+    {
+      "operating_point": "92% Sensitivity",
+      "target_sensitivity": 0.92,
+      "threshold": 0.1844,
+      "sensitivity": 0.9249,
+      "specificity": 0.9261,
+      "ppv": 0.8247,
+      "npv": 0.9704,
+      "f1": 0.8719,
+      "recommended": false
+    },
+    {
+      "operating_point": "95% Sensitivity",
+      "target_sensitivity": 0.95,
+      "threshold": 0.0447,
+      "sensitivity": 0.9538,
+      "specificity": 0.8522,
+      "ppv": 0.7082,
+      "npv": 0.98,
+      "f1": 0.8128,
+      "recommended": false
+    }
+  ]
+}

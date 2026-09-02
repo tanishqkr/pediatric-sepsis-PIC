@@ -1,0 +1,8 @@
+2026-07-15 23:49:57,689 | INFO | ======================================================================
+2026-07-15 23:49:57,690 | INFO | CBFTTS-SA HYBRID (WEIGHTED SYNTHETIC) — EXTENDED EVALUATION
+2026-07-15 23:49:57,690 | INFO | DCA | Subgroup-by-age | Clinical threshold sensitivity
+2026-07-15 23:49:57,690 | INFO | Started: 2026-07-15 23:49:57
+2026-07-15 23:49:57,690 | INFO | ======================================================================
+2026-07-15 23:49:57,869 | INFO | Loaded ensemble predictions: n=633, prevalence=27.3%
+2026-07-15 23:49:57,877 | INFO | Ensemble AUROC (sanity check): 0.9786
+2026-07-15 23:49:57,877 | ERROR | MISSING: D:\model_datasets\B_test_model_ready.csv

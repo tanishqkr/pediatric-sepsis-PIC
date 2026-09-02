@@ -396,3 +396,107 @@
 2026-04-10 17:13:35,599 | INFO |   â†’ Waterfall plots: TP, FN, FP patient examples
 2026-04-10 17:13:35,599 | INFO |   â†’ SHAP interaction: lactate_max x platelets_min
 2026-04-10 17:13:35,599 | INFO | ======================================================================
+2026-05-24 20:53:36,935 | INFO | ======================================================================
+2026-05-24 20:53:36,969 | INFO | PHASE 3 — FULL EVALUATION SUITE
+2026-05-24 20:53:36,970 | INFO | Run timestamp : 2026-05-24 20:53:36
+2026-05-24 20:53:36,970 | INFO | Base dir      : D:\Projects\pediatric-sepsis-PIC
+2026-05-24 20:53:36,970 | INFO | ======================================================================
+2026-05-24 20:53:37,001 | INFO | Loading test set and model...
+2026-05-24 20:53:37,195 | INFO | Test set loaded: 633 rows, 226 columns
+2026-05-24 20:53:37,329 | INFO | Feature matrix: 633 rows x 225 features
+2026-05-24 20:53:37,329 | INFO | Sepsis prevalence in test set: 27.3% (173 / 633)
+2026-05-24 20:53:37,358 | INFO | Feature matrix aligned to feature_list.json: 225 features
+2026-05-24 20:53:37,360 | INFO | Feature matrix aligned to feature_list.json: 225 features
+2026-05-24 20:53:37,842 | INFO | Tuned CatBoost loaded from D:\Projects\pediatric-sepsis-PIC\sepsis_ml\models\run_tuned\catboost_tuned.cbm
+2026-05-24 20:53:38,132 | INFO | Tuned CatBoost predictions: min=0.0010, max=0.9997, mean=0.2643
+2026-05-24 20:53:38,132 | INFO | Loading baseline models for DeLong tests...
+2026-05-24 20:53:38,173 | INFO |   Loaded CatBoost_baseline
+2026-05-24 20:53:47,804 | INFO |   Loaded LightGBM
+2026-05-24 20:53:50,178 | INFO |   Loaded XGBoost
+2026-05-24 20:53:52,975 | INFO |   Loaded RandomForest
+2026-05-24 20:53:53,128 | INFO |   Loaded LogisticReg
+2026-05-24 20:53:53,296 | WARNING |   Could not load MLP: <class 'numpy.random._mt19937.MT19937'> is not a known BitGenerator module.
+2026-05-24 20:53:53,296 | INFO | Loaded 5 baseline models for comparison
+2026-05-24 20:53:53,297 | INFO | 
+2026-05-24 20:53:53,297 | INFO | ============================================================
+2026-05-24 20:53:53,297 | INFO | SECTION A — DeLong Tests
+2026-05-24 20:53:53,297 | INFO | ============================================================
+2026-05-24 20:53:56,671 | INFO | Tuned CatBoost AUROC: 0.9868 [0.9794–0.9931]
+2026-05-24 20:53:59,840 | INFO |   vs CatBoost_baseline    | AUROC=0.9863 [0.9795–0.9922] | Z=+0.4975 | p=0.6189 | Significant: NO
+2026-05-24 20:54:02,392 | INFO |   vs LightGBM             | AUROC=0.9806 [0.9715–0.9885] | Z=+2.3774 | p=0.0174 | Significant: YES
+2026-05-24 20:54:05,123 | INFO |   vs XGBoost              | AUROC=0.9780 [0.9674–0.9875] | Z=+2.8155 | p=0.0049 | Significant: YES
+2026-05-24 20:54:08,423 | INFO |   vs RandomForest         | AUROC=0.9656 [0.9514–0.9769] | Z=+4.3237 | p=0.0000 | Significant: YES
+2026-05-24 20:54:11,717 | INFO |   vs LogisticReg          | AUROC=0.9152 [0.8850–0.9401] | Z=+5.4959 | p=0.0000 | Significant: YES
+2026-05-24 20:54:11,835 | INFO | DeLong results saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\results\phase3_delong_results.csv
+2026-05-24 20:54:11,835 | INFO | 
+2026-05-24 20:54:11,835 | INFO | ============================================================
+2026-05-24 20:54:11,836 | INFO | SECTION B — Calibration + Platt Scaling
+2026-05-24 20:54:11,836 | INFO | ============================================================
+2026-05-24 20:54:12,002 | INFO | Training set loaded: 2530 rows x 225 features
+2026-05-24 20:54:12,474 | INFO | Platt scaler saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\models\run_tuned\platt_scaler.pkl
+2026-05-24 20:54:12,476 | INFO | Brier score BEFORE Platt scaling: 0.0385
+2026-05-24 20:54:12,489 | INFO | Brier score AFTER  Platt scaling: 0.0422
+2026-05-24 20:54:12,492 | INFO | Calibration results saved
+2026-05-24 20:54:12,492 | INFO | 
+2026-05-24 20:54:12,493 | INFO | ============================================================
+2026-05-24 20:54:12,494 | INFO | SECTION C — Decision Curve Analysis (DCA)
+2026-05-24 20:54:12,494 | INFO | ============================================================
+2026-05-24 20:54:12,733 | INFO | DCA results saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\results\phase3_dca_results.csv
+2026-05-24 20:54:12,733 | INFO | Net benefit at key clinical thresholds:
+2026-05-24 20:54:12,734 | INFO |   80% Sens (pt=0.577): NB_model=0.2146, NB_treat_all=-0.7302
+2026-05-24 20:54:12,736 | INFO |   85% Sens (pt=0.447): NB_model=0.2222, NB_treat_all=-0.3213
+2026-05-24 20:54:12,738 | INFO |   90% Sens (recommended) (pt=0.365): NB_model=0.2291, NB_treat_all=-0.1535
+2026-05-24 20:54:12,741 | INFO |   92% Sens (pt=0.276): NB_model=0.2352, NB_treat_all=-0.0093
+2026-05-24 20:54:12,743 | INFO |   95% Sens (pt=0.213): NB_model=0.2448, NB_treat_all=0.0683
+2026-05-24 20:54:12,743 | INFO | 
+2026-05-24 20:54:12,743 | INFO | ============================================================
+2026-05-24 20:54:12,743 | INFO | SECTION D — Subgroup Analysis by Age Band
+2026-05-24 20:54:12,744 | INFO | ============================================================
+2026-05-24 20:54:14,134 | INFO |   Neonate (0–28d): n=102, sepsis=17 (16.7%), AUROC=0.9702 [0.9218–0.9990], AUPRC=0.9147, Sens=0.824, Spec=0.965
+2026-05-24 20:54:15,446 | INFO |   Infant (29d–1y): n=223, sepsis=64 (28.7%), AUROC=0.9892 [0.9785–0.9969], AUPRC=0.9768, Sens=0.859, Spec=0.969
+2026-05-24 20:54:16,756 | INFO |   Child (1–12y): n=289, sepsis=87 (30.1%), AUROC=0.9876 [0.9762–0.9957], AUPRC=0.9718, Sens=0.931, Spec=0.955
+2026-05-24 20:54:18,282 | INFO |   Adolescent (12–18y): n=19, sepsis=5 (26.3%), AUROC=1.0000 [1.0000–1.0000], AUPRC=1.0000, Sens=1.000, Spec=1.000
+2026-05-24 20:54:18,287 | INFO | Subgroup results saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\results\phase3_subgroup_results.csv
+2026-05-24 20:54:18,287 | INFO | 
+2026-05-24 20:54:18,287 | INFO | ============================================================
+2026-05-24 20:54:18,288 | INFO | SECTION E — Threshold Sensitivity Table
+2026-05-24 20:54:18,288 | INFO | ============================================================
+2026-05-24 20:54:18,297 | INFO |   80% Sens | thresh=0.577 | Sens=0.815 | Spec=0.993 | PPV=0.979 | NPV=0.935 | F1=0.890 | TP=141 FP=3 TN=457 FN=32
+2026-05-24 20:54:18,309 | INFO |   85% Sens | thresh=0.447 | Sens=0.861 | Spec=0.980 | PPV=0.943 | NPV=0.949 | F1=0.900 | TP=149 FP=9 TN=451 FN=24
+2026-05-24 20:54:18,317 | INFO |   90% Sens (recommended) | thresh=0.365 | Sens=0.896 | Spec=0.963 | PPV=0.901 | NPV=0.961 | F1=0.899 | TP=155 FP=17 TN=443 FN=18
+2026-05-24 20:54:18,327 | INFO |   92% Sens | thresh=0.276 | Sens=0.919 | Spec=0.943 | PPV=0.859 | NPV=0.969 | F1=0.888 | TP=159 FP=26 TN=434 FN=14
+2026-05-24 20:54:18,338 | INFO |   95% Sens | thresh=0.213 | Sens=0.954 | Spec=0.930 | PPV=0.838 | NPV=0.982 | F1=0.892 | TP=165 FP=32 TN=428 FN=8
+2026-05-24 20:54:18,342 | INFO | Threshold table saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\results\phase3_threshold_table.csv
+2026-05-24 20:54:18,342 | INFO | 
+2026-05-24 20:54:18,343 | INFO | ============================================================
+2026-05-24 20:54:18,343 | INFO | Generating figures...
+2026-05-24 20:54:18,343 | INFO | ============================================================
+2026-05-24 20:54:20,623 | INFO | Figure 1 saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\figures\phase3_evaluation\phase3_fig1_roc_pr_all_models.png
+2026-05-24 20:54:21,136 | INFO | Figure 2 saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\figures\phase3_evaluation\phase3_fig2_delong_comparison.png
+2026-05-24 20:54:22,596 | INFO | Figure 3 saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\figures\phase3_evaluation\phase3_fig3_calibration.png
+2026-05-24 20:54:23,213 | INFO | Figure 4 saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\figures\phase3_evaluation\phase3_fig4_dca.png
+2026-05-24 20:54:24,362 | INFO | Figure 5 saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\figures\phase3_evaluation\phase3_fig5_subgroup_analysis.png
+2026-05-24 20:54:26,712 | INFO | Figure 6 (dashboard) saved: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\figures\phase3_evaluation\phase3_fig6_summary_dashboard.png
+2026-05-24 20:54:26,713 | INFO | 
+2026-05-24 20:54:26,713 | INFO | ============================================================
+2026-05-24 20:54:26,714 | INFO | Appending results to experiment log...
+2026-05-24 20:54:26,714 | INFO | ============================================================
+2026-05-24 20:54:26,724 | INFO | Experiment log updated: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\results\experiment_log.json
+2026-05-24 20:54:26,830 | INFO | Results summary updated: D:\Projects\pediatric-sepsis-PIC\sepsis_ml\results\results_summary.csv
+2026-05-24 20:54:26,831 | INFO | 
+2026-05-24 20:54:26,835 | INFO | ======================================================================
+2026-05-24 20:54:26,841 | INFO | PHASE 3 COMPLETE — SUMMARY
+2026-05-24 20:54:26,841 | INFO | ======================================================================
+2026-05-24 20:54:26,842 | INFO | Tuned CatBoost AUROC        : 0.9868 [0.9794–0.9931]
+2026-05-24 20:54:26,842 | INFO | Tuned CatBoost AUPRC        : 0.9691
+2026-05-24 20:54:26,842 | INFO | Brier score (before Platt)  : 0.0385
+2026-05-24 20:54:26,843 | INFO | Brier score (after Platt)   : 0.0422
+2026-05-24 20:54:26,843 | INFO | DeLong comparisons done     : 5
+2026-05-24 20:54:26,843 | INFO | Significant improvements    : 4 / 5
+2026-05-24 20:54:26,843 | INFO | Age bands analysed          : 4
+2026-05-24 20:54:26,844 | INFO | Figures saved to            : D:\Projects\pediatric-sepsis-PIC\sepsis_ml\figures\phase3_evaluation
+2026-05-24 20:54:26,845 | INFO | Results saved to            : D:\Projects\pediatric-sepsis-PIC\sepsis_ml\results
+2026-05-24 20:54:26,846 | INFO | Log saved to                : D:\Projects\pediatric-sepsis-PIC\sepsis_ml\logs\phase3_evaluation.log
+2026-05-24 20:54:26,846 | INFO | 
+2026-05-24 20:54:26,846 | INFO | Next step: Phase 4 — SHAP Explainability
+2026-05-24 20:54:26,950 | INFO | ======================================================================
