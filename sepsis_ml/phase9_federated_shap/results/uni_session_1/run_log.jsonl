@@ -35,3 +35,13 @@
 {"ts": "2026-08-12T20:24:30.171934", "event": "step_done", "step": "sensitivity_analysis"}
 {"ts": "2026-08-12T20:24:30.171934", "event": "step_start", "step": "export_dashboard_data", "cmd": "D:\\pediatric-sepsis-PIC\\sepsis_ml\\.venv\\Scripts\\python.exe export_dashboard_data.py --run-dir D:/pediatric-sepsis-PIC\\sepsis_ml\\phase9_federated_shap\\results\\uni_session_1"}
 {"ts": "2026-08-12T20:24:30.334140", "event": "step_done", "step": "export_dashboard_data"}
+{"ts": "2026-09-15T10:27:40.281572", "event": "federated_shap_start", "algo": "fedavg", "device": "cpu", "node_filter": "General"}
+{"ts": "2026-09-15T10:27:40.359761", "event": "node_shap_start", "node": "General"}
+{"ts": "2026-09-15T10:31:42.376331", "event": "node_shap_done", "node": "General", "top_feature": "lactate_max"}
+{"ts": "2026-09-15T10:33:34.994599", "event": "federated_shap_start", "algo": "fedprox", "device": "cpu", "node_filter": "General"}
+{"ts": "2026-09-15T10:33:35.043194", "event": "node_shap_start", "node": "General"}
+{"ts": "2026-09-15T10:37:27.959585", "event": "node_shap_done", "node": "General", "top_feature": "lactate_max"}
+{"ts": "2026-09-15T10:37:29.722257", "event": "aggregate_shap_start", "algo": "fedavg"}
+{"ts": "2026-09-15T10:37:30.957140", "event": "aggregate_shap_start", "algo": "fedprox"}
+{"ts": "2026-09-15T10:37:41.021014", "event": "sensitivity_analysis_start"}
+{"ts": "2026-09-15T10:37:41.021014", "event": "axis3_skipped", "reason": "[Errno 2] No such file or directory: 'D:\\\\Projects\\\\pediatric-sepsis-PIC\\\\sepsis_ml\\\\phase9_federated_shap\\\\results\\\\uni_session_1\\\\federated_ranking_fedavg.json'"}

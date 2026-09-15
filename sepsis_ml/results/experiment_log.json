@@ -846,5 +846,383 @@
       "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig6_shap_by_class.png",
       "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig7_shap_dashboard.png"
     ]
+  },
+  {
+    "phase": "Phase4_SHAP",
+    "timestamp": "2026-09-15T10:27:40.243956",
+    "dataset": "Option_B",
+    "model": "Tuned_CatBoost",
+    "n_test": 633,
+    "expected_value": -1.0262163125351573,
+    "top_20_features": [
+      {
+        "rank": 1,
+        "feature": "lactate_max",
+        "display_name": "Lactate (max)",
+        "mean_abs_shap": 0.9919822184263843
+      },
+      {
+        "rank": 2,
+        "feature": "ddimer_max",
+        "display_name": "D-dimer (max)",
+        "mean_abs_shap": 0.9573892607351585
+      },
+      {
+        "rank": 3,
+        "feature": "platelets_min",
+        "display_name": "Platelets (min)",
+        "mean_abs_shap": 0.7762260985403078
+      },
+      {
+        "rank": 4,
+        "feature": "inr_max",
+        "display_name": "INR (max)",
+        "mean_abs_shap": 0.5389678237873222
+      },
+      {
+        "rank": 5,
+        "feature": "calcium_max",
+        "display_name": "Calcium (max)",
+        "mean_abs_shap": 0.5191997851768151
+      },
+      {
+        "rank": 6,
+        "feature": "pt_max",
+        "display_name": "PT (max)",
+        "mean_abs_shap": 0.2590288028360192
+      },
+      {
+        "rank": 7,
+        "feature": "calcium_mean",
+        "display_name": "Calcium (mean)",
+        "mean_abs_shap": 0.2215509804597806
+      },
+      {
+        "rank": 8,
+        "feature": "glucose_max",
+        "display_name": "Glucose (max)",
+        "mean_abs_shap": 0.21425035354092437
+      },
+      {
+        "rank": 9,
+        "feature": "pao2_max",
+        "display_name": "PaO2 (max)",
+        "mean_abs_shap": 0.17612490214623078
+      },
+      {
+        "rank": 10,
+        "feature": "ph_min",
+        "display_name": "pH (min)",
+        "mean_abs_shap": 0.16052059860986806
+      },
+      {
+        "rank": 11,
+        "feature": "hematocrit_min",
+        "display_name": "Haematocrit (min)",
+        "mean_abs_shap": 0.14608882452732036
+      },
+      {
+        "rank": 12,
+        "feature": "platelets_first",
+        "display_name": "Platelets (first)",
+        "mean_abs_shap": 0.14574488051553858
+      },
+      {
+        "rank": 13,
+        "feature": "care_unit_SICU",
+        "display_name": "care_unit_SICU",
+        "mean_abs_shap": 0.12438593197560101
+      },
+      {
+        "rank": 14,
+        "feature": "fibrinogen_min",
+        "display_name": "Fibrinogen (min)",
+        "mean_abs_shap": 0.11477667979186779
+      },
+      {
+        "rank": 15,
+        "feature": "care_unit_CICU",
+        "display_name": "care_unit_CICU",
+        "mean_abs_shap": 0.11361650594750734
+      },
+      {
+        "rank": 16,
+        "feature": "ddimer_mean",
+        "display_name": "D-dimer (mean)",
+        "mean_abs_shap": 0.1083113265650977
+      },
+      {
+        "rank": 17,
+        "feature": "platelets_mean",
+        "display_name": "Platelets (mean)",
+        "mean_abs_shap": 0.0908292526218213
+      },
+      {
+        "rank": 18,
+        "feature": "potassium_min",
+        "display_name": "Potassium (min)",
+        "mean_abs_shap": 0.08437896319605707
+      },
+      {
+        "rank": 19,
+        "feature": "lactate_first",
+        "display_name": "Lactate (first)",
+        "mean_abs_shap": 0.07490995109813448
+      },
+      {
+        "rank": 20,
+        "feature": "bicarbonate_min",
+        "display_name": "Bicarbonate (min)",
+        "mean_abs_shap": 0.07258060843322736
+      }
+    ],
+    "waterfall_patients": {
+      "true_positive": {
+        "idx": 448,
+        "prob": 0.9996928165013125,
+        "true_label": 1
+      },
+      "false_negative": {
+        "idx": 442,
+        "prob": 0.3649710335974,
+        "true_label": 1
+      },
+      "false_positive": {
+        "idx": 613,
+        "prob": 0.9824869634219943,
+        "true_label": 0
+      }
+    },
+    "interaction_pairs": [
+      {
+        "feature_1": "lactate_max",
+        "feature_2": "platelets_min",
+        "title": "Lactate (max) \u00d7 Platelets (min)",
+        "clinical_axis": "Cardiovascular-Coagulation Burden",
+        "mean_interaction_sepsis": -0.004055028884305008,
+        "mean_interaction_nonsepsis": -0.007557416280461855,
+        "mean_abs_interaction": 0.03471111264820638
+      },
+      {
+        "feature_1": "inr_max",
+        "feature_2": "ddimer_max",
+        "title": "INR (max) \u00d7 D-dimer (max)",
+        "clinical_axis": "Coagulopathy Axis",
+        "mean_interaction_sepsis": -0.015210394044597113,
+        "mean_interaction_nonsepsis": -0.0029672281688760756,
+        "mean_abs_interaction": 0.021247451278669643
+      }
+    ],
+    "top_10_features_for_interaction": [
+      "lactate_max",
+      "ddimer_max",
+      "platelets_min",
+      "inr_max",
+      "calcium_max",
+      "pt_max",
+      "calcium_mean",
+      "glucose_max",
+      "pao2_max",
+      "ph_min"
+    ],
+    "figures": [
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig1_beeswarm_top20.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig2_bar_importance.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig3_dependence_plots.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig4_waterfall_plots.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig5a_interaction_heatmap.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig5b_interaction_scatter.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig6_shap_by_class.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig7_shap_dashboard.png"
+    ]
+  },
+  {
+    "phase": "Phase4_SHAP",
+    "timestamp": "2026-09-15T10:33:34.929322",
+    "dataset": "Option_B",
+    "model": "Tuned_CatBoost",
+    "n_test": 633,
+    "expected_value": -1.0262163125351573,
+    "top_20_features": [
+      {
+        "rank": 1,
+        "feature": "lactate_max",
+        "display_name": "Lactate (max)",
+        "mean_abs_shap": 0.9919822184263843
+      },
+      {
+        "rank": 2,
+        "feature": "ddimer_max",
+        "display_name": "D-dimer (max)",
+        "mean_abs_shap": 0.9573892607351585
+      },
+      {
+        "rank": 3,
+        "feature": "platelets_min",
+        "display_name": "Platelets (min)",
+        "mean_abs_shap": 0.7762260985403078
+      },
+      {
+        "rank": 4,
+        "feature": "inr_max",
+        "display_name": "INR (max)",
+        "mean_abs_shap": 0.5389678237873222
+      },
+      {
+        "rank": 5,
+        "feature": "calcium_max",
+        "display_name": "Calcium (max)",
+        "mean_abs_shap": 0.5191997851768151
+      },
+      {
+        "rank": 6,
+        "feature": "pt_max",
+        "display_name": "PT (max)",
+        "mean_abs_shap": 0.2590288028360192
+      },
+      {
+        "rank": 7,
+        "feature": "calcium_mean",
+        "display_name": "Calcium (mean)",
+        "mean_abs_shap": 0.2215509804597806
+      },
+      {
+        "rank": 8,
+        "feature": "glucose_max",
+        "display_name": "Glucose (max)",
+        "mean_abs_shap": 0.21425035354092437
+      },
+      {
+        "rank": 9,
+        "feature": "pao2_max",
+        "display_name": "PaO2 (max)",
+        "mean_abs_shap": 0.17612490214623078
+      },
+      {
+        "rank": 10,
+        "feature": "ph_min",
+        "display_name": "pH (min)",
+        "mean_abs_shap": 0.16052059860986806
+      },
+      {
+        "rank": 11,
+        "feature": "hematocrit_min",
+        "display_name": "Haematocrit (min)",
+        "mean_abs_shap": 0.14608882452732036
+      },
+      {
+        "rank": 12,
+        "feature": "platelets_first",
+        "display_name": "Platelets (first)",
+        "mean_abs_shap": 0.14574488051553858
+      },
+      {
+        "rank": 13,
+        "feature": "care_unit_SICU",
+        "display_name": "care_unit_SICU",
+        "mean_abs_shap": 0.12438593197560101
+      },
+      {
+        "rank": 14,
+        "feature": "fibrinogen_min",
+        "display_name": "Fibrinogen (min)",
+        "mean_abs_shap": 0.11477667979186779
+      },
+      {
+        "rank": 15,
+        "feature": "care_unit_CICU",
+        "display_name": "care_unit_CICU",
+        "mean_abs_shap": 0.11361650594750734
+      },
+      {
+        "rank": 16,
+        "feature": "ddimer_mean",
+        "display_name": "D-dimer (mean)",
+        "mean_abs_shap": 0.1083113265650977
+      },
+      {
+        "rank": 17,
+        "feature": "platelets_mean",
+        "display_name": "Platelets (mean)",
+        "mean_abs_shap": 0.0908292526218213
+      },
+      {
+        "rank": 18,
+        "feature": "potassium_min",
+        "display_name": "Potassium (min)",
+        "mean_abs_shap": 0.08437896319605707
+      },
+      {
+        "rank": 19,
+        "feature": "lactate_first",
+        "display_name": "Lactate (first)",
+        "mean_abs_shap": 0.07490995109813448
+      },
+      {
+        "rank": 20,
+        "feature": "bicarbonate_min",
+        "display_name": "Bicarbonate (min)",
+        "mean_abs_shap": 0.07258060843322736
+      }
+    ],
+    "waterfall_patients": {
+      "true_positive": {
+        "idx": 448,
+        "prob": 0.9996928165013125,
+        "true_label": 1
+      },
+      "false_negative": {
+        "idx": 442,
+        "prob": 0.3649710335974,
+        "true_label": 1
+      },
+      "false_positive": {
+        "idx": 613,
+        "prob": 0.9824869634219943,
+        "true_label": 0
+      }
+    },
+    "interaction_pairs": [
+      {
+        "feature_1": "lactate_max",
+        "feature_2": "platelets_min",
+        "title": "Lactate (max) \u00d7 Platelets (min)",
+        "clinical_axis": "Cardiovascular-Coagulation Burden",
+        "mean_interaction_sepsis": -0.004055028884305008,
+        "mean_interaction_nonsepsis": -0.007557416280461855,
+        "mean_abs_interaction": 0.03471111264820638
+      },
+      {
+        "feature_1": "inr_max",
+        "feature_2": "ddimer_max",
+        "title": "INR (max) \u00d7 D-dimer (max)",
+        "clinical_axis": "Coagulopathy Axis",
+        "mean_interaction_sepsis": -0.015210394044597113,
+        "mean_interaction_nonsepsis": -0.0029672281688760756,
+        "mean_abs_interaction": 0.021247451278669643
+      }
+    ],
+    "top_10_features_for_interaction": [
+      "lactate_max",
+      "ddimer_max",
+      "platelets_min",
+      "inr_max",
+      "calcium_max",
+      "pt_max",
+      "calcium_mean",
+      "glucose_max",
+      "pao2_max",
+      "ph_min"
+    ],
+    "figures": [
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig1_beeswarm_top20.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig2_bar_importance.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig3_dependence_plots.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig4_waterfall_plots.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig5a_interaction_heatmap.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig5b_interaction_scatter.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig6_shap_by_class.png",
+      "D:\\pediatric-sepsis-PIC\\sepsis_ml\\figures\\phase4_shap\\phase4_fig7_shap_dashboard.png"
+    ]
   }
 ]

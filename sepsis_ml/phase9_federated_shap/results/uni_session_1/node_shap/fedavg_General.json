@@ -1,0 +1,1159 @@
+{
+  "node": "General",
+  "n_patients": 290,
+  "n_weight": 1251,
+  "feature_ranking": [
+    {
+      "feature": "lactate_max",
+      "display_name": "Lactate (max)",
+      "mean_abs_shap": 1.2797060436704193
+    },
+    {
+      "feature": "platelets_min",
+      "display_name": "Platelets (min)",
+      "mean_abs_shap": 1.0969824386714169
+    },
+    {
+      "feature": "ddimer_first",
+      "display_name": "D-dimer (first)",
+      "mean_abs_shap": 0.7742188684116309
+    },
+    {
+      "feature": "ddimer_mean",
+      "display_name": "D-dimer (mean)",
+      "mean_abs_shap": 0.635600343916347
+    },
+    {
+      "feature": "inr_max",
+      "display_name": "INR (max)",
+      "mean_abs_shap": 0.5601613616981943
+    },
+    {
+      "feature": "pt_max",
+      "display_name": "PT (max)",
+      "mean_abs_shap": 0.42357425628718015
+    },
+    {
+      "feature": "calcium_mean",
+      "display_name": "Calcium (mean)",
+      "mean_abs_shap": 0.3983417579193497
+    },
+    {
+      "feature": "calcium_max",
+      "display_name": "Calcium (max)",
+      "mean_abs_shap": 0.34616471300096163
+    },
+    {
+      "feature": "had_surgery_flag",
+      "display_name": "Had Surgery Flag",
+      "mean_abs_shap": 0.30012805493561767
+    },
+    {
+      "feature": "sodium_min",
+      "display_name": "Sodium Min",
+      "mean_abs_shap": 0.2791777404884881
+    },
+    {
+      "feature": "ldh_first",
+      "display_name": "Ldh First",
+      "mean_abs_shap": 0.2394156706383057
+    },
+    {
+      "feature": "spo2_lab_first",
+      "display_name": "Spo2 Lab First",
+      "mean_abs_shap": 0.23933707906142543
+    },
+    {
+      "feature": "uric_acid_first",
+      "display_name": "Uric Acid First",
+      "mean_abs_shap": 0.22932959131961522
+    },
+    {
+      "feature": "calcium_first",
+      "display_name": "Calcium First",
+      "mean_abs_shap": 0.22911261152406842
+    },
+    {
+      "feature": "crp_min",
+      "display_name": "Crp Min",
+      "mean_abs_shap": 0.22268518196207546
+    },
+    {
+      "feature": "platelets_mean",
+      "display_name": "Platelets (mean)",
+      "mean_abs_shap": 0.2068088452527834
+    },
+    {
+      "feature": "glucose_max",
+      "display_name": "Glucose (max)",
+      "mean_abs_shap": 0.18445780372498258
+    },
+    {
+      "feature": "pt_mean",
+      "display_name": "PT (mean)",
+      "mean_abs_shap": 0.17933744488208891
+    },
+    {
+      "feature": "ph_min",
+      "display_name": "pH (min)",
+      "mean_abs_shap": 0.17349101559717425
+    },
+    {
+      "feature": "platelets_first",
+      "display_name": "Platelets (first)",
+      "mean_abs_shap": 0.1516955631998832
+    },
+    {
+      "feature": "heart_rate_mean",
+      "display_name": "Heart Rate Mean",
+      "mean_abs_shap": 0.1515753184086042
+    },
+    {
+      "feature": "pao2_max",
+      "display_name": "PaO2 (max)",
+      "mean_abs_shap": 0.14903325587727928
+    },
+    {
+      "feature": "fluid_input_total_ml",
+      "display_name": "Fluid Input Total Ml",
+      "mean_abs_shap": 0.14053559141695687
+    },
+    {
+      "feature": "ph_trend",
+      "display_name": "Ph Trend",
+      "mean_abs_shap": 0.11826840575730327
+    },
+    {
+      "feature": "hematocrit_min",
+      "display_name": "Haematocrit (min)",
+      "mean_abs_shap": 0.11120568197274447
+    },
+    {
+      "feature": "hematocrit_first",
+      "display_name": "Hematocrit First",
+      "mean_abs_shap": 0.11118987087829894
+    },
+    {
+      "feature": "lactate_trend",
+      "display_name": "Lactate (trend)",
+      "mean_abs_shap": 0.11039332709026048
+    },
+    {
+      "feature": "pao2_min",
+      "display_name": "Pao2 Min",
+      "mean_abs_shap": 0.10558167574344371
+    },
+    {
+      "feature": "bilirubin_max",
+      "display_name": "Bilirubin (max)",
+      "mean_abs_shap": 0.09876782095405948
+    },
+    {
+      "feature": "lactate_mean",
+      "display_name": "Lactate (mean)",
+      "mean_abs_shap": 0.0986338459687361
+    },
+    {
+      "feature": "ddimer_min",
+      "display_name": "Ddimer Min",
+      "mean_abs_shap": 0.09497311654211085
+    },
+    {
+      "feature": "pao2_first",
+      "display_name": "Pao2 First",
+      "mean_abs_shap": 0.0944669602748073
+    },
+    {
+      "feature": "systolic_bp_min",
+      "display_name": "Systolic Bp Min",
+      "mean_abs_shap": 0.09344131611077308
+    },
+    {
+      "feature": "pco2_max",
+      "display_name": "Pco2 Max",
+      "mean_abs_shap": 0.092391372837849
+    },
+    {
+      "feature": "fibrinogen_first",
+      "display_name": "Fibrinogen First",
+      "mean_abs_shap": 0.08650352834919073
+    },
+    {
+      "feature": "inr_min",
+      "display_name": "Inr Min",
+      "mean_abs_shap": 0.08643041615458055
+    },
+    {
+      "feature": "resp_rate_min",
+      "display_name": "Resp Rate Min",
+      "mean_abs_shap": 0.08529153954047766
+    },
+    {
+      "feature": "diastolic_bp_first",
+      "display_name": "Diastolic Bp First",
+      "mean_abs_shap": 0.08016581776456
+    },
+    {
+      "feature": "sodium_first",
+      "display_name": "Sodium First",
+      "mean_abs_shap": 0.08008466007191739
+    },
+    {
+      "feature": "anion_gap_min",
+      "display_name": "Anion Gap Min",
+      "mean_abs_shap": 0.07538659854833699
+    },
+    {
+      "feature": "ast_min",
+      "display_name": "Ast Min",
+      "mean_abs_shap": 0.07092331265667093
+    },
+    {
+      "feature": "glucose_min",
+      "display_name": "Glucose (min)",
+      "mean_abs_shap": 0.07087913088731197
+    },
+    {
+      "feature": "diastolic_bp_mean",
+      "display_name": "Diastolic Bp Mean",
+      "mean_abs_shap": 0.06994351057260667
+    },
+    {
+      "feature": "ph_mean",
+      "display_name": "Ph Mean",
+      "mean_abs_shap": 0.06952504366270992
+    },
+    {
+      "feature": "hr_abnormal_for_age",
+      "display_name": "Hr Abnormal For Age",
+      "mean_abs_shap": 0.06563081274812642
+    },
+    {
+      "feature": "inr_trend",
+      "display_name": "Inr Trend",
+      "mean_abs_shap": 0.06389905335873847
+    },
+    {
+      "feature": "glucose_mean",
+      "display_name": "Glucose Mean",
+      "mean_abs_shap": 0.06348619321291718
+    },
+    {
+      "feature": "base_excess_min",
+      "display_name": "Base excess (min)",
+      "mean_abs_shap": 0.06272216905721634
+    },
+    {
+      "feature": "ph_max",
+      "display_name": "Ph Max",
+      "mean_abs_shap": 0.06085828821327926
+    },
+    {
+      "feature": "ddimer_max",
+      "display_name": "D-dimer (max)",
+      "mean_abs_shap": 0.06061833323058262
+    },
+    {
+      "feature": "glucose_first",
+      "display_name": "Glucose First",
+      "mean_abs_shap": 0.05962694254792743
+    },
+    {
+      "feature": "bicarbonate_min",
+      "display_name": "Bicarbonate (min)",
+      "mean_abs_shap": 0.05865005875092185
+    },
+    {
+      "feature": "hematocrit_mean",
+      "display_name": "Hematocrit Mean",
+      "mean_abs_shap": 0.05662710709297325
+    },
+    {
+      "feature": "n_antibiotics_24h",
+      "display_name": "N Antibiotics 24H",
+      "mean_abs_shap": 0.05578255380533744
+    },
+    {
+      "feature": "base_excess_trend",
+      "display_name": "Base Excess Trend",
+      "mean_abs_shap": 0.05512975946595341
+    },
+    {
+      "feature": "lactate_first",
+      "display_name": "Lactate (first)",
+      "mean_abs_shap": 0.054725387156446675
+    },
+    {
+      "feature": "urea_first",
+      "display_name": "Urea First",
+      "mean_abs_shap": 0.054577787166744336
+    },
+    {
+      "feature": "potassium_first",
+      "display_name": "Potassium First",
+      "mean_abs_shap": 0.05326745301937206
+    },
+    {
+      "feature": "calcium_min",
+      "display_name": "Calcium (min)",
+      "mean_abs_shap": 0.053035679750221706
+    },
+    {
+      "feature": "hemoglobin_trend",
+      "display_name": "Hemoglobin Trend",
+      "mean_abs_shap": 0.05004859918682647
+    },
+    {
+      "feature": "fibrinogen_min",
+      "display_name": "Fibrinogen (min)",
+      "mean_abs_shap": 0.04993461941927321
+    },
+    {
+      "feature": "pt_first",
+      "display_name": "PT (first)",
+      "mean_abs_shap": 0.04985623500842289
+    },
+    {
+      "feature": "crp_first",
+      "display_name": "Crp First",
+      "mean_abs_shap": 0.04953318752668442
+    },
+    {
+      "feature": "ptt_max",
+      "display_name": "PTT (max)",
+      "mean_abs_shap": 0.048144373987978314
+    },
+    {
+      "feature": "crp_max",
+      "display_name": "CRP (max)",
+      "mean_abs_shap": 0.047841694638327985
+    },
+    {
+      "feature": "pco2_min",
+      "display_name": "Pco2 Min",
+      "mean_abs_shap": 0.04712122359897035
+    },
+    {
+      "feature": "base_excess_max",
+      "display_name": "Base Excess Max",
+      "mean_abs_shap": 0.046295422744393425
+    },
+    {
+      "feature": "ph_first",
+      "display_name": "Ph First",
+      "mean_abs_shap": 0.04515063287534984
+    },
+    {
+      "feature": "spo2_lab_min",
+      "display_name": "Spo2 Lab Min",
+      "mean_abs_shap": 0.04426726907749572
+    },
+    {
+      "feature": "glucose_trend",
+      "display_name": "Glucose Trend",
+      "mean_abs_shap": 0.04421756431616869
+    },
+    {
+      "feature": "potassium_mean",
+      "display_name": "Potassium Mean",
+      "mean_abs_shap": 0.04339339146809515
+    },
+    {
+      "feature": "potassium_max",
+      "display_name": "Potassium Max",
+      "mean_abs_shap": 0.04126779347019445
+    },
+    {
+      "feature": "anion_gap_mean",
+      "display_name": "Anion Gap Mean",
+      "mean_abs_shap": 0.04122269779537223
+    },
+    {
+      "feature": "temperature_min",
+      "display_name": "Temperature Min",
+      "mean_abs_shap": 0.04101120850177527
+    },
+    {
+      "feature": "diastolic_bp_max",
+      "display_name": "Diastolic Bp Max",
+      "mean_abs_shap": 0.04079297525050038
+    },
+    {
+      "feature": "uric_acid_mean",
+      "display_name": "Uric Acid Mean",
+      "mean_abs_shap": 0.04014393779301247
+    },
+    {
+      "feature": "heart_rate_max",
+      "display_name": "Heart rate (max)",
+      "mean_abs_shap": 0.03986179019208221
+    },
+    {
+      "feature": "ck_min",
+      "display_name": "Ck Min",
+      "mean_abs_shap": 0.03957664686276016
+    },
+    {
+      "feature": "bicarbonate_max",
+      "display_name": "Bicarbonate Max",
+      "mean_abs_shap": 0.03623983371611748
+    },
+    {
+      "feature": "spo2_trend",
+      "display_name": "Spo2 Trend",
+      "mean_abs_shap": 0.03619117808450285
+    },
+    {
+      "feature": "temperature_first",
+      "display_name": "Temperature First",
+      "mean_abs_shap": 0.034026812034931485
+    },
+    {
+      "feature": "platelets_max",
+      "display_name": "Platelets (max)",
+      "mean_abs_shap": 0.03318876979054283
+    },
+    {
+      "feature": "ck_max",
+      "display_name": "Ck Max",
+      "mean_abs_shap": 0.03293775018753978
+    },
+    {
+      "feature": "spo2_lab_mean",
+      "display_name": "Spo2 Lab Mean",
+      "mean_abs_shap": 0.032752044986088996
+    },
+    {
+      "feature": "ldh_min",
+      "display_name": "Ldh Min",
+      "mean_abs_shap": 0.03165119351990752
+    },
+    {
+      "feature": "pao2_mean",
+      "display_name": "Pao2 Mean",
+      "mean_abs_shap": 0.03136189587903306
+    },
+    {
+      "feature": "hemoglobin_min",
+      "display_name": "Hemoglobin Min",
+      "mean_abs_shap": 0.031152412857426395
+    },
+    {
+      "feature": "wbc_trend",
+      "display_name": "Wbc Trend",
+      "mean_abs_shap": 0.03082541948323164
+    },
+    {
+      "feature": "urea_min",
+      "display_name": "Urea Min",
+      "mean_abs_shap": 0.030678468826782577
+    },
+    {
+      "feature": "hemoglobin_max",
+      "display_name": "Hemoglobin Max",
+      "mean_abs_shap": 0.03057794922181499
+    },
+    {
+      "feature": "ck_mean",
+      "display_name": "Ck Mean",
+      "mean_abs_shap": 0.03015808989425054
+    },
+    {
+      "feature": "uric_acid_max",
+      "display_name": "Uric Acid Max",
+      "mean_abs_shap": 0.03007034378170129
+    },
+    {
+      "feature": "fluid_balance_ml",
+      "display_name": "Fluid Balance Ml",
+      "mean_abs_shap": 0.029595066581364994
+    },
+    {
+      "feature": "uric_acid_min",
+      "display_name": "Uric Acid Min",
+      "mean_abs_shap": 0.02946596887958735
+    },
+    {
+      "feature": "fibrinogen_max",
+      "display_name": "Fibrinogen Max",
+      "mean_abs_shap": 0.029441104004899347
+    },
+    {
+      "feature": "temperature_trend",
+      "display_name": "Temperature Trend",
+      "mean_abs_shap": 0.02895721828157564
+    },
+    {
+      "feature": "ast_mean",
+      "display_name": "Ast Mean",
+      "mean_abs_shap": 0.02793960150381907
+    },
+    {
+      "feature": "pco2_mean",
+      "display_name": "Pco2 Mean",
+      "mean_abs_shap": 0.027823041197195697
+    },
+    {
+      "feature": "temperature_max",
+      "display_name": "Temperature Max",
+      "mean_abs_shap": 0.027787831790020482
+    },
+    {
+      "feature": "fibrinogen_mean",
+      "display_name": "Fibrinogen Mean",
+      "mean_abs_shap": 0.027702412410798266
+    },
+    {
+      "feature": "ck_first",
+      "display_name": "Ck First",
+      "mean_abs_shap": 0.026562972889843883
+    },
+    {
+      "feature": "heart_rate_trend",
+      "display_name": "Heart Rate Trend",
+      "mean_abs_shap": 0.025994084312820145
+    },
+    {
+      "feature": "lactate_min",
+      "display_name": "Lactate (min)",
+      "mean_abs_shap": 0.025532277452322064
+    },
+    {
+      "feature": "ast_first",
+      "display_name": "Ast First",
+      "mean_abs_shap": 0.02533649474360349
+    },
+    {
+      "feature": "ldh_mean",
+      "display_name": "Ldh Mean",
+      "mean_abs_shap": 0.024593688101783327
+    },
+    {
+      "feature": "gender",
+      "display_name": "Gender",
+      "mean_abs_shap": 0.024280304631695684
+    },
+    {
+      "feature": "ldh_max",
+      "display_name": "Ldh Max",
+      "mean_abs_shap": 0.024273256910211424
+    },
+    {
+      "feature": "anion_gap_max",
+      "display_name": "Anion Gap Max",
+      "mean_abs_shap": 0.023304490025215844
+    },
+    {
+      "feature": "anc_max",
+      "display_name": "Anc Max",
+      "mean_abs_shap": 0.023046812075887036
+    },
+    {
+      "feature": "wbc_first",
+      "display_name": "Wbc First",
+      "mean_abs_shap": 0.022889220905794355
+    },
+    {
+      "feature": "alc_first",
+      "display_name": "Alc First",
+      "mean_abs_shap": 0.0225329184704545
+    },
+    {
+      "feature": "ast_max",
+      "display_name": "Ast Max",
+      "mean_abs_shap": 0.02234549985773635
+    },
+    {
+      "feature": "systolic_bp_first",
+      "display_name": "Systolic Bp First",
+      "mean_abs_shap": 0.021006870424865952
+    },
+    {
+      "feature": "albumin_first",
+      "display_name": "Albumin First",
+      "mean_abs_shap": 0.02047065723006773
+    },
+    {
+      "feature": "platelets_trend",
+      "display_name": "Platelets Trend",
+      "mean_abs_shap": 0.02035662934937083
+    },
+    {
+      "feature": "age_years",
+      "display_name": "Age (years)",
+      "mean_abs_shap": 0.02025648583479379
+    },
+    {
+      "feature": "symptom_hemorrhage",
+      "display_name": "Symptom Hemorrhage",
+      "mean_abs_shap": 0.02009416688823164
+    },
+    {
+      "feature": "albumin_mean",
+      "display_name": "Albumin Mean",
+      "mean_abs_shap": 0.018190847601080258
+    },
+    {
+      "feature": "shock_index",
+      "display_name": "Shock index",
+      "mean_abs_shap": 0.01769177278670717
+    },
+    {
+      "feature": "heart_rate_min",
+      "display_name": "Heart Rate Min",
+      "mean_abs_shap": 0.01768667929477922
+    },
+    {
+      "feature": "crp_mean",
+      "display_name": "Crp Mean",
+      "mean_abs_shap": 0.017668626721647405
+    },
+    {
+      "feature": "bilirubin_trend",
+      "display_name": "Bilirubin Trend",
+      "mean_abs_shap": 0.017624862598807415
+    },
+    {
+      "feature": "ptt_min",
+      "display_name": "Ptt Min",
+      "mean_abs_shap": 0.01759098129168249
+    },
+    {
+      "feature": "pco2_first",
+      "display_name": "Pco2 First",
+      "mean_abs_shap": 0.017570876935708222
+    },
+    {
+      "feature": "sbp_abnormal_for_age",
+      "display_name": "Sbp Abnormal For Age",
+      "mean_abs_shap": 0.017345327094161995
+    },
+    {
+      "feature": "sodium_mean",
+      "display_name": "Sodium Mean",
+      "mean_abs_shap": 0.017293089606108238
+    },
+    {
+      "feature": "systolic_bp_max",
+      "display_name": "Systolic Bp Max",
+      "mean_abs_shap": 0.017205873596428525
+    },
+    {
+      "feature": "heart_rate_first",
+      "display_name": "Heart Rate First",
+      "mean_abs_shap": 0.016983499863133435
+    },
+    {
+      "feature": "anc_first",
+      "display_name": "Anc First",
+      "mean_abs_shap": 0.01666877124547546
+    },
+    {
+      "feature": "alc_max",
+      "display_name": "Alc Max",
+      "mean_abs_shap": 0.016559350013342758
+    },
+    {
+      "feature": "map_max",
+      "display_name": "Map Max",
+      "mean_abs_shap": 0.016215886419369184
+    },
+    {
+      "feature": "hemoglobin_first",
+      "display_name": "Hemoglobin First",
+      "mean_abs_shap": 0.016142134905778493
+    },
+    {
+      "feature": "hematocrit_max",
+      "display_name": "Hematocrit Max",
+      "mean_abs_shap": 0.016108096553365564
+    },
+    {
+      "feature": "n_positive_cultures",
+      "display_name": "N Positive Cultures",
+      "mean_abs_shap": 0.016084073488981287
+    },
+    {
+      "feature": "n_cultures_24h",
+      "display_name": "N Cultures 24H",
+      "mean_abs_shap": 0.01606231065632547
+    },
+    {
+      "feature": "albumin_max",
+      "display_name": "Albumin Max",
+      "mean_abs_shap": 0.015665780495249523
+    },
+    {
+      "feature": "creatinine_min",
+      "display_name": "Creatinine Min",
+      "mean_abs_shap": 0.015642798805417395
+    },
+    {
+      "feature": "inr_mean",
+      "display_name": "INR (mean)",
+      "mean_abs_shap": 0.015543167893199905
+    },
+    {
+      "feature": "bicarbonate_mean",
+      "display_name": "Bicarbonate Mean",
+      "mean_abs_shap": 0.015387926083387465
+    },
+    {
+      "feature": "wbc_max",
+      "display_name": "WBC (max)",
+      "mean_abs_shap": 0.015261321007443193
+    },
+    {
+      "feature": "base_excess_first",
+      "display_name": "Base Excess First",
+      "mean_abs_shap": 0.015008090432008415
+    },
+    {
+      "feature": "diastolic_bp_min",
+      "display_name": "Diastolic Bp Min",
+      "mean_abs_shap": 0.014796042744737259
+    },
+    {
+      "feature": "potassium_min",
+      "display_name": "Potassium (min)",
+      "mean_abs_shap": 0.014616246721013809
+    },
+    {
+      "feature": "temperature_mean",
+      "display_name": "Temperature Mean",
+      "mean_abs_shap": 0.013820478732107438
+    },
+    {
+      "feature": "sodium_trend",
+      "display_name": "Sodium Trend",
+      "mean_abs_shap": 0.013681519486170062
+    },
+    {
+      "feature": "wbc_min",
+      "display_name": "Wbc Min",
+      "mean_abs_shap": 0.013490996136093048
+    },
+    {
+      "feature": "ptt_mean",
+      "display_name": "Ptt Mean",
+      "mean_abs_shap": 0.013386550338614751
+    },
+    {
+      "feature": "bicarbonate_first",
+      "display_name": "Bicarbonate First",
+      "mean_abs_shap": 0.01303854055948718
+    },
+    {
+      "feature": "map_mean",
+      "display_name": "Map Mean",
+      "mean_abs_shap": 0.012838335424736365
+    },
+    {
+      "feature": "inr_first",
+      "display_name": "INR (first)",
+      "mean_abs_shap": 0.012595683414652418
+    },
+    {
+      "feature": "anc_min",
+      "display_name": "ANC (min)",
+      "mean_abs_shap": 0.012450499101787757
+    },
+    {
+      "feature": "alt_max",
+      "display_name": "ALT (max)",
+      "mean_abs_shap": 0.012416779713454373
+    },
+    {
+      "feature": "urea_max",
+      "display_name": "Urea Max",
+      "mean_abs_shap": 0.012261015032645333
+    },
+    {
+      "feature": "sodium_max",
+      "display_name": "Sodium Max",
+      "mean_abs_shap": 0.01176602020357414
+    },
+    {
+      "feature": "spo2_max",
+      "display_name": "Spo2 Max",
+      "mean_abs_shap": 0.011709932112528694
+    },
+    {
+      "feature": "albumin_min",
+      "display_name": "Albumin Min",
+      "mean_abs_shap": 0.011671950506496628
+    },
+    {
+      "feature": "alc_min",
+      "display_name": "ALC (min)",
+      "mean_abs_shap": 0.01158908434329918
+    },
+    {
+      "feature": "hemoglobin_mean",
+      "display_name": "Hemoglobin Mean",
+      "mean_abs_shap": 0.011465433675324658
+    },
+    {
+      "feature": "urea_mean",
+      "display_name": "Urea Mean",
+      "mean_abs_shap": 0.011233863422700444
+    },
+    {
+      "feature": "base_excess_mean",
+      "display_name": "Base excess (mean)",
+      "mean_abs_shap": 0.011153808238739401
+    },
+    {
+      "feature": "alc_mean",
+      "display_name": "Alc Mean",
+      "mean_abs_shap": 0.011039539687966215
+    },
+    {
+      "feature": "bilirubin_min",
+      "display_name": "Bilirubin Min",
+      "mean_abs_shap": 0.010716692532933735
+    },
+    {
+      "feature": "anc_mean",
+      "display_name": "Anc Mean",
+      "mean_abs_shap": 0.010702397566656493
+    },
+    {
+      "feature": "pt_min",
+      "display_name": "Pt Min",
+      "mean_abs_shap": 0.010687741739768023
+    },
+    {
+      "feature": "ptt_first",
+      "display_name": "Ptt First",
+      "mean_abs_shap": 0.010607251522696547
+    },
+    {
+      "feature": "creatinine_max",
+      "display_name": "Creatinine (max)",
+      "mean_abs_shap": 0.010093005168412744
+    },
+    {
+      "feature": "systolic_bp_mean",
+      "display_name": "Systolic Bp Mean",
+      "mean_abs_shap": 0.009941459627036818
+    },
+    {
+      "feature": "resp_rate_first",
+      "display_name": "Resp Rate First",
+      "mean_abs_shap": 0.009365409703327662
+    },
+    {
+      "feature": "resp_rate_mean",
+      "display_name": "Resp Rate Mean",
+      "mean_abs_shap": 0.008336555130688037
+    },
+    {
+      "feature": "resp_rate_max",
+      "display_name": "Resp Rate Max",
+      "mean_abs_shap": 0.007455220677963336
+    },
+    {
+      "feature": "spo2_lab_max",
+      "display_name": "Spo2 Lab Max",
+      "mean_abs_shap": 0.00734633381266322
+    },
+    {
+      "feature": "anion_gap_first",
+      "display_name": "Anion Gap First",
+      "mean_abs_shap": 0.007344082905945975
+    },
+    {
+      "feature": "map_first",
+      "display_name": "Map First",
+      "mean_abs_shap": 0.007293329438029765
+    },
+    {
+      "feature": "resp_rate_trend",
+      "display_name": "Resp Rate Trend",
+      "mean_abs_shap": 0.007107779843631139
+    },
+    {
+      "feature": "wbc_mean",
+      "display_name": "Wbc Mean",
+      "mean_abs_shap": 0.0064010978666540356
+    },
+    {
+      "feature": "bilirubin_first",
+      "display_name": "Bilirubin First",
+      "mean_abs_shap": 0.006377013321415191
+    },
+    {
+      "feature": "potassium_trend",
+      "display_name": "Potassium Trend",
+      "mean_abs_shap": 0.0054564316010104145
+    },
+    {
+      "feature": "bilirubin_mean",
+      "display_name": "Bilirubin Mean",
+      "mean_abs_shap": 0.005268591509708723
+    },
+    {
+      "feature": "map_min",
+      "display_name": "MAP (min)",
+      "mean_abs_shap": 0.004938121785003232
+    },
+    {
+      "feature": "care_unit_General ICU",
+      "display_name": "Care Unit General Icu",
+      "mean_abs_shap": 0.0045414167504662945
+    },
+    {
+      "feature": "alt_min",
+      "display_name": "Alt Min",
+      "mean_abs_shap": 0.004065042431347332
+    },
+    {
+      "feature": "creatinine_first",
+      "display_name": "Creatinine First",
+      "mean_abs_shap": 0.00383057306262928
+    },
+    {
+      "feature": "symptom_edema",
+      "display_name": "Symptom Edema",
+      "mean_abs_shap": 0.0035080102041214365
+    },
+    {
+      "feature": "alt_first",
+      "display_name": "Alt First",
+      "mean_abs_shap": 0.0035032065801374594
+    },
+    {
+      "feature": "rr_abnormal_for_age",
+      "display_name": "Rr Abnormal For Age",
+      "mean_abs_shap": 0.0030974238963732397
+    },
+    {
+      "feature": "spo2_min",
+      "display_name": "Spo2 Min",
+      "mean_abs_shap": 0.0030861499177526953
+    },
+    {
+      "feature": "spo2_first",
+      "display_name": "Spo2 First",
+      "mean_abs_shap": 0.0030303666712645843
+    },
+    {
+      "feature": "creatinine_mean",
+      "display_name": "Creatinine Mean",
+      "mean_abs_shap": 0.0029970022320454253
+    },
+    {
+      "feature": "creatinine_trend",
+      "display_name": "Creatinine Trend",
+      "mean_abs_shap": 0.0024397168059861
+    },
+    {
+      "feature": "care_unit_NICU",
+      "display_name": "Care Unit Nicu",
+      "mean_abs_shap": 0.0022302122357707914
+    },
+    {
+      "feature": "alt_mean",
+      "display_name": "Alt Mean",
+      "mean_abs_shap": 0.0020299467291560514
+    },
+    {
+      "feature": "spo2_mean",
+      "display_name": "Spo2 Mean",
+      "mean_abs_shap": 0.001969965437350623
+    },
+    {
+      "feature": "urine_output_total_ml",
+      "display_name": "Urine Output Total Ml",
+      "mean_abs_shap": 0.0019390859972295653
+    },
+    {
+      "feature": "symptom_fever",
+      "display_name": "Symptom Fever",
+      "mean_abs_shap": 0.0018801525497814328
+    },
+    {
+      "feature": "symptom_abdominal_distension",
+      "display_name": "Symptom Abdominal Distension",
+      "mean_abs_shap": 0.0016636376252165432
+    },
+    {
+      "feature": "care_unit_CICU",
+      "display_name": "Care Unit Cicu",
+      "mean_abs_shap": 0.001374253743789755
+    },
+    {
+      "feature": "had_cardiac_surgery_flag",
+      "display_name": "Had Cardiac Surgery Flag",
+      "mean_abs_shap": 0.0013701469856994446
+    },
+    {
+      "feature": "urine_output_per_hour",
+      "display_name": "Urine Output Per Hour",
+      "mean_abs_shap": 0.001222382546814141
+    },
+    {
+      "feature": "care_unit_SICU",
+      "display_name": "Care Unit Sicu",
+      "mean_abs_shap": 0.0009900293568859356
+    },
+    {
+      "feature": "symptom_diarrhea",
+      "display_name": "Symptom Diarrhea",
+      "mean_abs_shap": 0.0009760365480050154
+    },
+    {
+      "feature": "symptom_arrhythmia",
+      "display_name": "Symptom Arrhythmia",
+      "mean_abs_shap": 0.0009635621251836714
+    },
+    {
+      "feature": "symptom_listless",
+      "display_name": "Symptom Listless",
+      "mean_abs_shap": 0.0008360600554951306
+    },
+    {
+      "feature": "symptom_vomiting",
+      "display_name": "Symptom Vomiting",
+      "mean_abs_shap": 0.00074446129207538
+    },
+    {
+      "feature": "symptom_cough",
+      "display_name": "Symptom Cough",
+      "mean_abs_shap": 0.0006988151505494802
+    },
+    {
+      "feature": "symptom_phlegm_sound",
+      "display_name": "Symptom Phlegm Sound",
+      "mean_abs_shap": 0.0006525085277933784
+    },
+    {
+      "feature": "care_unit_PICU",
+      "display_name": "Care Unit Picu",
+      "mean_abs_shap": 0.0003957102242944167
+    },
+    {
+      "feature": "symptom_pharyngeal_red",
+      "display_name": "Symptom Pharyngeal Red",
+      "mean_abs_shap": 0.0003855617823810149
+    },
+    {
+      "feature": "symptom_cool_extremities",
+      "display_name": "Symptom Cool Extremities",
+      "mean_abs_shap": 0.00036562585042876344
+    },
+    {
+      "feature": "symptom_erythra",
+      "display_name": "Symptom Erythra",
+      "mean_abs_shap": 0.0002787154717457268
+    },
+    {
+      "feature": "symptom_three_depressions_sign",
+      "display_name": "Symptom Three Depressions Sign",
+      "mean_abs_shap": 0.00022918770270004225
+    },
+    {
+      "feature": "symptom_skin_jaundice",
+      "display_name": "Symptom Skin Jaundice",
+      "mean_abs_shap": 0.0002141123344864699
+    },
+    {
+      "feature": "symptom_anhelation",
+      "display_name": "Symptom Anhelation",
+      "mean_abs_shap": 0.00018856210331093424
+    },
+    {
+      "feature": "symptom_moist_rale",
+      "display_name": "Symptom Moist Rale",
+      "mean_abs_shap": 0.0001104030829968561
+    },
+    {
+      "feature": "symptom_chest_tightness",
+      "display_name": "Symptom Chest Tightness",
+      "mean_abs_shap": 7.521300745786997e-05
+    },
+    {
+      "feature": "symptom_cyanosis",
+      "display_name": "Symptom Cyanosis",
+      "mean_abs_shap": 6.44502255547101e-05
+    },
+    {
+      "feature": "symptom_dry_and_moist_rales",
+      "display_name": "Symptom Dry And Moist Rales",
+      "mean_abs_shap": 5.37702323472958e-05
+    },
+    {
+      "feature": "symptom_rale",
+      "display_name": "Symptom Rale",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "symptom_twitching",
+      "display_name": "Symptom Twitching",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "symptom_warm_extremities",
+      "display_name": "Symptom Warm Extremities",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "symptom_dysphoria",
+      "display_name": "Symptom Dysphoria",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "symptom_swelling",
+      "display_name": "Symptom Swelling",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "symptom_tenderness",
+      "display_name": "Symptom Tenderness",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "symptom_headache",
+      "display_name": "Symptom Headache",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "symptom_rebound_tenderness",
+      "display_name": "Symptom Rebound Tenderness",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "symptom_abdominal_tenderness",
+      "display_name": "Symptom Abdominal Tenderness",
+      "mean_abs_shap": 0.0
+    }
+  ],
+  "top_k": [
+    {
+      "feature": "lactate_max",
+      "display_name": "Lactate (max)",
+      "mean_abs_shap": 1.2797060436704193
+    },
+    {
+      "feature": "platelets_min",
+      "display_name": "Platelets (min)",
+      "mean_abs_shap": 1.0969824386714169
+    },
+    {
+      "feature": "ddimer_first",
+      "display_name": "D-dimer (first)",
+      "mean_abs_shap": 0.7742188684116309
+    },
+    {
+      "feature": "ddimer_mean",
+      "display_name": "D-dimer (mean)",
+      "mean_abs_shap": 0.635600343916347
+    },
+    {
+      "feature": "inr_max",
+      "display_name": "INR (max)",
+      "mean_abs_shap": 0.5601613616981943
+    }
+  ]
+}
