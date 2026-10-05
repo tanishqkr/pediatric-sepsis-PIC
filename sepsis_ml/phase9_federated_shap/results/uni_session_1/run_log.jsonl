@@ -45,3 +45,5 @@
 {"ts": "2026-09-15T10:37:30.957140", "event": "aggregate_shap_start", "algo": "fedprox"}
 {"ts": "2026-09-15T10:37:41.021014", "event": "sensitivity_analysis_start"}
 {"ts": "2026-09-15T10:37:41.021014", "event": "axis3_skipped", "reason": "[Errno 2] No such file or directory: 'D:\\\\Projects\\\\pediatric-sepsis-PIC\\\\sepsis_ml\\\\phase9_federated_shap\\\\results\\\\uni_session_1\\\\federated_ranking_fedavg.json'"}
+{"ts": "2026-10-05T15:01:56.608487", "event": "sensitivity_analysis_start"}
+{"ts": "2026-10-05T15:01:56.616485", "event": "axis3_done", "rho": 0.6963067768790074}
