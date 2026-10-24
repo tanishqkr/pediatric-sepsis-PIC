@@ -1,0 +1,178 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{14}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter does
+%%% not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+\makeatletter
+\@ifundefined{NAT@parse@date}{}{\let\NAT@parse@date@orig\NAT@parse@date}
+\@ifundefined{NAT@parse@date}{}{\def\NAT@parse@date#1#2#3#4#5#6@@{\NAT@parse@date@orig#1#2#3#4#5#6@@\def\NAT@tempyear{0000}\def\NAT@tempexlab{{?}}\ifx\NAT@year\NAT@tempyear\ifx\NAT@exlab\NAT@tempexlab\def\NAT@date{[n.\,d.]}\else\edef\NAT@date{[n.\,d.]\NAT@exlab}\fi\fi}}
+\makeatother
+
+\bibitem[Athukorala and Ilmini(2026)]%
+        {athukorala2026explainable}
+\bibfield{author}{\bibinfo{person}{V.~S. Athukorala} {and} \bibinfo{person}{W.~M. K.~S. Ilmini}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Explainable {AI} for Critical Care: A Systematic Review of Interpretable Models for Sepsis and {ICU} Mortality Prediction}.
+\newblock \bibinfo{journal}{\emph{BMC Medical Informatics and Decision Making}}  \bibinfo{volume}{26} (\bibinfo{year}{2026}), \bibinfo{pages}{64}.
+\newblock
+\href{https://doi.org/10.1186/s12911-026-03344-0}{doi:\nolinkurl{10.1186/s12911-026-03344-0}}
+
+
+\bibitem[Chanci et~al\mbox{.}(2025)]%
+        {chanci2025machine}
+\bibfield{author}{\bibinfo{person}{D. Chanci} {et~al\mbox{.}}} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Machine Learning Model for Daily Prediction of Pediatric Sepsis Using {P}hoenix Criteria}.
+\newblock \bibinfo{journal}{\emph{Pediatric Research}} \bibinfo{volume}{99}, \bibinfo{number}{2} (\bibinfo{year}{2025}), \bibinfo{pages}{631--637}.
+\newblock
+\href{https://doi.org/10.1038/s41390-025-04221-8}{doi:\nolinkurl{10.1038/s41390-025-04221-8}}
+
+
+\bibitem[Deng et~al\mbox{.}(2022)]%
+        {deng2022evaluating}
+\bibfield{author}{\bibinfo{person}{H.-F. Deng} {et~al\mbox{.}}} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Evaluating Machine Learning Models for Sepsis Prediction: A Systematic Review of Methodologies}.
+\newblock \bibinfo{journal}{\emph{iScience}} \bibinfo{volume}{25}, \bibinfo{number}{2} (\bibinfo{year}{2022}), \bibinfo{pages}{103651}.
+\newblock
+\href{https://doi.org/10.1016/j.isci.2021.103651}{doi:\nolinkurl{10.1016/j.isci.2021.103651}}
+
+
+\bibitem[Fleuren et~al\mbox{.}(2020)]%
+        {fleuren2020ml}
+\bibfield{author}{\bibinfo{person}{L.~M. Fleuren}, \bibinfo{person}{T.~L.~T. Klausch}, \bibinfo{person}{C.~L. Zwager}, \bibinfo{person}{L.~J. Schoonmade}, \bibinfo{person}{T. Guo}, \bibinfo{person}{L.~F. Roggeveen}, {et~al\mbox{.}}} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Machine Learning for the Prediction of Sepsis: A Systematic Review and Meta-Analysis of Diagnostic Test Accuracy}.
+\newblock \bibinfo{journal}{\emph{Intensive Care Medicine}} \bibinfo{volume}{46}, \bibinfo{number}{3} (\bibinfo{year}{2020}), \bibinfo{pages}{383--400}.
+\newblock
+\href{https://doi.org/10.1007/s00134-019-05872-y}{doi:\nolinkurl{10.1007/s00134-019-05872-y}}
+
+
+\bibitem[Goldstein et~al\mbox{.}(2005)]%
+        {goldstein2005sirs}
+\bibfield{author}{\bibinfo{person}{B. Goldstein}, \bibinfo{person}{B. Giroir}, {and} \bibinfo{person}{A. Randolph}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{International Pediatric Sepsis Consensus Conference: Definitions for Sepsis and Organ Dysfunction in Pediatrics}.
+\newblock \bibinfo{journal}{\emph{Pediatric Critical Care Medicine}} \bibinfo{volume}{6}, \bibinfo{number}{1} (\bibinfo{year}{2005}), \bibinfo{pages}{2--8}.
+\newblock
+\href{https://doi.org/10.1097/01.PCC.0000149131.72248.E6}{doi:\nolinkurl{10.1097/01.PCC.0000149131.72248.E6}}
+
+
+\bibitem[Gorishniy et~al\mbox{.}(2021)]%
+        {gorishniy2021revisiting}
+\bibfield{author}{\bibinfo{person}{Y. Gorishniy}, \bibinfo{person}{I. Rubachev}, \bibinfo{person}{V. Khrulkov}, {and} \bibinfo{person}{A. Babenko}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Revisiting Deep Learning Models for Tabular Data}. In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems}}, Vol.~\bibinfo{volume}{34}. \bibinfo{pages}{18932--18943}.
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.neurips.cc/paper/2021/hash/9d444086d3c09b691079d4692797e87b-Abstract.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Le et~al\mbox{.}(2019)]%
+        {le2019pediatric}
+\bibfield{author}{\bibinfo{person}{S. Le}, \bibinfo{person}{J. Hoffman}, \bibinfo{person}{C. Barton}, \bibinfo{person}{J.~C. Fitzgerald}, \bibinfo{person}{A. Allen}, \bibinfo{person}{E. Pellegrini}, \bibinfo{person}{J. Calvert}, {and} \bibinfo{person}{R. Das}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Pediatric Severe Sepsis Prediction Using Machine Learning}.
+\newblock \bibinfo{journal}{\emph{Frontiers in Pediatrics}}  \bibinfo{volume}{7} (\bibinfo{year}{2019}), \bibinfo{pages}{413}.
+\newblock
+\href{https://doi.org/10.3389/fped.2019.00413}{doi:\nolinkurl{10.3389/fped.2019.00413}}
+
+
+\bibitem[Li et~al\mbox{.}(2020)]%
+        {li2020fedprox}
+\bibfield{author}{\bibinfo{person}{T. Li}, \bibinfo{person}{A.~K. Sahu}, \bibinfo{person}{M. Zaheer}, \bibinfo{person}{M. Sanjabi}, \bibinfo{person}{A. Talwalkar}, {and} \bibinfo{person}{V. Smith}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Federated Optimization in Heterogeneous Networks}.
+\newblock \bibinfo{journal}{\emph{Proceedings of Machine Learning and Systems}}  \bibinfo{volume}{2} (\bibinfo{year}{2020}), \bibinfo{pages}{429--450}.
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.mlsys.org/paper/2020/hash/3a0295e0e1b3d395372551405026b47c-Abstract.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Lundberg and Lee(2017)]%
+        {lundberg2017shap}
+\bibfield{author}{\bibinfo{person}{S.~M. Lundberg} {and} \bibinfo{person}{S.-I. Lee}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{A Unified Approach to Interpreting Model Predictions}. In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems}}, Vol.~\bibinfo{volume}{30}. \bibinfo{pages}{4765--4774}.
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632b76c45fabd107168d-Abstract.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[McMahan et~al\mbox{.}(2017)]%
+        {mcmahan2017fedavg}
+\bibfield{author}{\bibinfo{person}{B. McMahan}, \bibinfo{person}{E. Moore}, \bibinfo{person}{D. Ramage}, \bibinfo{person}{S. Hampson}, {and} \bibinfo{person}{B. Ag{"{u}}era~y Arcas}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Communication-Efficient Learning of Deep Networks from Decentralized Data}. In \bibinfo{booktitle}{\emph{Proceedings of the 20th International Conference on Artificial Intelligence and Statistics}}, Vol.~\bibinfo{volume}{54}. \bibinfo{pages}{1273--1282}.
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.mlr.press/v54/mcmahan17a.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Sanchez-Pinto et~al\mbox{.}(2024)]%
+        {sanchezpinto2024phoenix}
+\bibfield{author}{\bibinfo{person}{L.~N. Sanchez-Pinto}, \bibinfo{person}{T.~D. Bennett}, \bibinfo{person}{P.~E. DeWitt}, \bibinfo{person}{S. Russell}, \bibinfo{person}{M.~N. Rebull}, \bibinfo{person}{B. Martin}, {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Development and Validation of the {P}hoenix Criteria for Pediatric Sepsis and Septic Shock}.
+\newblock \bibinfo{journal}{\emph{JAMA}} \bibinfo{volume}{331}, \bibinfo{number}{8} (\bibinfo{year}{2024}), \bibinfo{pages}{675--686}.
+\newblock
+\href{https://doi.org/10.1001/jama.2024.0196}{doi:\nolinkurl{10.1001/jama.2024.0196}}
+
+
+\bibitem[Schlapbach et~al\mbox{.}(2024)]%
+        {schlapbach2024phoenix}
+\bibfield{author}{\bibinfo{person}{L.~J. Schlapbach}, \bibinfo{person}{R.~S. Watson}, \bibinfo{person}{L.~R. Sorce}, \bibinfo{person}{A.~C. Argent}, \bibinfo{person}{K. Menon}, \bibinfo{person}{M.~W. Hall}, {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{International Consensus Criteria for Pediatric Sepsis and Septic Shock}.
+\newblock \bibinfo{journal}{\emph{JAMA}} \bibinfo{volume}{331}, \bibinfo{number}{8} (\bibinfo{year}{2024}), \bibinfo{pages}{665--674}.
+\newblock
+\href{https://doi.org/10.1001/jama.2024.0179}{doi:\nolinkurl{10.1001/jama.2024.0179}}
+
+
+\bibitem[Yang et~al\mbox{.}(2023)]%
+        {yang2023sepsis}
+\bibfield{author}{\bibinfo{person}{Z. Yang}, \bibinfo{person}{X. Cui}, {and} \bibinfo{person}{Z. Song}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Predicting Sepsis Onset in {ICU} Using Machine Learning Models: A Systematic Review and Meta-Analysis}.
+\newblock \bibinfo{journal}{\emph{BMC Infectious Diseases}} \bibinfo{volume}{23}, \bibinfo{number}{1} (\bibinfo{year}{2023}), \bibinfo{pages}{635}.
+\newblock
+\href{https://doi.org/10.1186/s12879-023-08614-0}{doi:\nolinkurl{10.1186/s12879-023-08614-0}}
+
+
+\bibitem[Zeng et~al\mbox{.}(2020)]%
+        {zeng2020pic}
+\bibfield{author}{\bibinfo{person}{X. Zeng}, \bibinfo{person}{G. Yu}, \bibinfo{person}{Y. Lu}, \bibinfo{person}{L. Tan}, \bibinfo{person}{X. Wu}, \bibinfo{person}{S. Shi}, \bibinfo{person}{H. Duan}, \bibinfo{person}{Q. Shu}, {and} \bibinfo{person}{H. Li}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{PIC}, a Paediatric-Specific Intensive Care Database}.
+\newblock \bibinfo{journal}{\emph{Scientific Data}}  \bibinfo{volume}{7} (\bibinfo{year}{2020}), \bibinfo{pages}{184}.
+\newblock
+\href{https://doi.org/10.1038/s41597-020-0355-4}{doi:\nolinkurl{10.1038/s41597-020-0355-4}}
+
+
+\end{thebibliography}

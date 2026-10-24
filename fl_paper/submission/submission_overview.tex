@@ -1,0 +1,98 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=0.42in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{primary}{RGB}{13, 71, 161}
+\definecolor{darkalert}{RGB}{183, 28, 28}
+\definecolor{alertbg}{RGB}{255, 235, 238}
+\definecolor{infobg}{RGB}{232, 245, 233}
+\definecolor{darkgreen}{RGB}{27, 94, 32}
+
+\pagestyle{empty}
+
+\begin{document}
+
+{\centering
+{\fontsize{15}{18}\selectfont \textbf{\color{primary}FedSHAP Conference Submission, Timeline \& Conflict Matrix}}\\[3pt]
+\small Pediatric Sepsis Prediction $\cdot$ Multi-Hospital Federated Explainability Pipeline $\cdot$ Current Status: October 2026\\[5pt]
+\hrule height 1.5pt \color{primary}\vspace{5pt}
+}
+
+\vspace{-4pt}
+\section*{\normalsize \color{primary}1. Exact Conference Master Timelines}
+\vspace{-6pt}
+\noindent
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{Conference} & \textbf{Publisher} & \textbf{Submission Portal} & \textbf{Final Deadline} & \textbf{Acceptance Date} & \textbf{Camera-Ready} & \textbf{Event Date} \\
+\midrule
+\textbf{ICon INDIA 2026} & IEEE & \textbf{Aconf System} & \textbf{Oct 20, 2026} & \textbf{Oct 30, 2026} & Nov 07, 2026 & Nov 20--22, 2026 \\
+\textbf{CSCT 2026} & Springer & \textbf{Microsoft CMT} & \textbf{Oct 03, 2026} & \textbf{Nov 12, 2026} & Nov 27, 2026 & Dec 12--13, 2026 \\
+\textbf{ICICC 2027} & Springer & \textbf{Microsoft CMT} & \textbf{Oct 30, 2026} & \textbf{Dec 20, 2026} & Jan 10, 2027 & Feb 05--06, 2027 \\
+\textbf{ACM TRUST 2027} & ACM & \textbf{Microsoft CMT} & \textbf{Oct 31, 2026}* & \textbf{Dec 31, 2026} & Feb 28, 2027 & Mar 07--09, 2027 \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{2pt}
+\noindent
+\footnotesize{*ACM TRUST 2027 Abstract Registration deadline: October 24, 2026; Full Paper Submission deadline: October 31, 2026. ICon INDIA was extended from Sept 30 to Oct 20.}
+
+\vspace{5pt}
+\section*{\normalsize \color{primary}2. Portal Architecture: Microsoft CMT vs. Aconf}
+\vspace{-6pt}
+\noindent
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcp{11.5cm}@{}}
+\toprule
+\textbf{Portal} & \textbf{Hosted Conferences} & \textbf{Duplicate / Cross-Check Behavior} \\
+\midrule
+\textbf{Microsoft CMT} & CSCT, ICICC, ACM TRUST & \textbf{Shared backend database.} Any simultaneous submissions with the same title/authors across CMT-hosted conferences can be flagged immediately by CMT Chair screening modules. \\
+\addlinespace[2pt]
+\textbf{Aconf System} & ICon INDIA 2026 & \textbf{Independent proprietary portal.} Completely isolated from Microsoft CMT; CMT cannot internally view or flag submissions uploaded to Aconf. \\
+\bottomrule
+\end{tabular}%
+}
+
+\vspace{5pt}
+\section*{\normalsize \color{darkalert}3. Dual/Multiple Submission Policies \& Ethics Reality}
+\vspace{-6pt}
+\noindent
+\colorbox{alertbg}{%
+\parbox{0.985\textwidth}{%
+\small
+\textbf{\color{darkalert}Why submitting to all 4 simultaneously is dangerous (The ``Wait for Acceptance'' Fallacy):}
+\begin{itemize}[leftmargin=12pt, itemsep=1pt, topsep=1pt]
+\item \textbf{Timing of Screening:} Turnitin / CrossCheck / iThenticate screening occurs \textbf{at Desk Review (within 7--14 days of submission close)}, \emph{not} after peer review or provisional acceptance.
+\item \textbf{Cross-Publisher iThenticate:} Even though ICon INDIA is on Aconf while the other three are on CMT, \textbf{all IEEE, Springer, and ACM} conference chairs upload received manuscripts to the global CrossCheck/iThenticate repository during desk screening.
+\item \textbf{Automated 95\%+ Text Match:} If the same paper is actively submitted to CSCT, ICICC, and ACM TRUST on CMT, CMT chairs will detect identical manuscripts under your CMT profile, triggering \textbf{immediate desk rejection without review}.
+\item \textbf{Sanctions:} Simultaneous submission violates IEEE Policy 8.2.4, ACM Publication Policy, and Springer Ethics Rules, risking a \textbf{1--3 year submission ban} and notifications to university administration.
+\end{itemize}
+}%
+}
+
+\vspace{5pt}
+\section*{\normalsize \color{darkgreen}4. Recommended Step-by-Step Submission Roadmap}
+\vspace{-6pt}
+\noindent
+\colorbox{infobg}{%
+\parbox{0.985\textwidth}{%
+\small
+\textbf{\color{darkgreen}Safe Sequential Strategy (Zero Risk, Fastest Acceptance Guarantee):}
+\begin{enumerate}[leftmargin=14pt, itemsep=2pt, topsep=2pt]
+\item \textbf{Immediate CMT Cleanup (Mandatory):} Keep at most \textbf{ONE active submission on Microsoft CMT}. If you want ACM TRUST 2027, withdraw CSCT and ICICC on CMT immediately. (Withdrawals made before desk screening leave no record or penalty).
+\item \textbf{Strategy Option A (Fastest Result --- 13 Days):} Submit to \textbf{ICon INDIA 2026 (IEEE)} on Aconf (Deadline: Oct 20). Acceptance notification arrives on \textbf{October 30, 2026}. If accepted, you are done. If rejected, you still have time to submit to ACM TRUST (Oct 31) or ICICC (Oct 30/late).
+\item \textbf{Strategy Option B (Highest Prestige --- ACM Venue):} Keep your submission at \textbf{ACM TRUST 2027} on CMT. Withdraw from CSCT, ICICC, and ICon INDIA. Await notification on \textbf{December 31, 2026}.
+\item \textbf{Sequential Fallback:} All 4 papers are fully formatted and compiled in their respective folders (\texttt{icon/}, \texttt{csct/}, \texttt{icicc/}, \texttt{eigtrust/}). If the active venue rejects, upload the next prepared PDF within 24 hours.
+\end{enumerate}
+}%
+}
+
+\end{document}
