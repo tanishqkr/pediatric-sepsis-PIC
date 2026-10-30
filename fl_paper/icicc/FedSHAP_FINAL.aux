@@ -1,0 +1,99 @@
+\relax 
+\citation{schlapbach2024phoenix}
+\citation{sanchezpinto2024phoenix}
+\citation{goldstein2005sirs}
+\@writefile{toc}{\contentsline {title}{Federated SHAP: Local Explainability, Ranking Consistency, and Sensitivity Analysis for Pediatric Sepsis Prediction}{1}{}\protected@file@percent }
+\@writefile{toc}{\authcount {3}}
+\@writefile{toc}{\contentsline {author}{Tanish Porwal\unskip {} \and Uzair Teli\unskip \unskip {} \and Praveen Modi}{1}{}\protected@file@percent }
+\citation{mcmahan2017fedavg,li2020fedprox}
+\citation{athukorala2026explainable}
+\citation{lundberg2017shap}
+\citation{athukorala2026explainable,chanci2025machine}
+\citation{bonsignori2026interpreting}
+\citation{ducange2026federated}
+\citation{zeng2020pic}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{}\protected@file@percent }
+\newlabel{sec:intro}{{1}{2}{}{section.1}{}}
+\citation{fleuren2020ml,yang2023sepsis}
+\citation{le2019pediatric}
+\citation{deng2022evaluating}
+\citation{chanci2025machine}
+\citation{mcmahan2017fedavg}
+\citation{li2020fedprox}
+\citation{lundberg2017shap}
+\citation{gorishniy2021revisiting}
+\citation{bonsignori2026interpreting}
+\citation{ducange2026federated}
+\citation{shokri2021privacy}
+\citation{patel2022model}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{}\protected@file@percent }
+\newlabel{sec:litreview}{{2}{3}{}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Pediatric Sepsis Prediction and Phoenix Criteria}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Federated Learning in Healthcare}{3}{}\protected@file@percent }
+\citation{zeng2020pic}
+\citation{schlapbach2024phoenix,sanchezpinto2024phoenix}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Explainable AI and Federated Explanations}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{4}{}\protected@file@percent }
+\newlabel{sec:method}{{3}{4}{}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset, Care-Unit Partitioning, and Preprocessing}{4}{}\protected@file@percent }
+\citation{gorishniy2021revisiting}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Care-unit cohort distributions and disaggregated federated test performance}}{5}{}\protected@file@percent }
+\newlabel{tab:cohort-dist}{{1}{5}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Preprocessing Assumption.}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Federated Model Architecture and Training}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Federated SHAP Attribution Pipeline}{5}{}\protected@file@percent }
+\citation{shokri2021privacy}
+\citation{patel2022model}
+\citation{bonawitz2017practical}
+\newlabel{eq:agg}{{2}{6}{}{equation.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Provenance and Execution Note.}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Privacy Boundary and Threat Model}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Threat Model and Privacy Boundaries.}{6}{}\protected@file@percent }
+\citation{schlapbach2024phoenix,sanchezpinto2024phoenix}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Operational data boundary at explanation aggregation time}}{7}{}\protected@file@percent }
+\newlabel{tab:privacy}{{2}{7}{}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Pooled classification performance on held-out test cohort ($N = 633$)}}{7}{}\protected@file@percent }
+\newlabel{tab:fl-performance}{{3}{7}{}{table.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{7}{}\protected@file@percent }
+\newlabel{sec:results}{{4}{7}{}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Pooled Model Discrimination and Thresholded Operating Points}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Node-Level SHAP Rankings and Target-Overlap Audit}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Audit of Feature Prominence.}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Per-node mean $|$SHAP$|$ across top federated clinical features (FedAvg).}}{8}{}\protected@file@percent }
+\newlabel{fig:heatmap}{{1}{8}{}{figure.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Spearman rank correlation ($\rho $): node ranking vs.\ federated aggregate}}{8}{}\protected@file@percent }
+\newlabel{tab:node-agreement}{{4}{8}{}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Node vs.\ Federated Ranking Concordance}{8}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Spearman rank correlation of each node's local SHAP ranking against the federated aggregate.}}{9}{}\protected@file@percent }
+\newlabel{fig:agreement}{{2}{9}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Clinical Divergence in Cardiac ICU.}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Aggregation Rationale: Uniform vs.\ Sample Weighting.}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Algorithm Sensitivity: FedAvg vs.\ FedProx}{9}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Comparison of federated SHAP feature importance under FedAvg versus FedProx.}}{10}{}\protected@file@percent }
+\newlabel{fig:algo-compare}{{3}{10}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Limitations}{10}{}\protected@file@percent }
+\newlabel{sec:limitations}{{5}{10}{}{section.5}{}}
+\bibstyle{splncs04}
+\bibdata{references}
+\bibcite{athukorala2026explainable}{1}
+\bibcite{bonawitz2017practical}{2}
+\bibcite{bonsignori2026interpreting}{3}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{11}{}\protected@file@percent }
+\newlabel{sec:concl}{{6}{11}{}{section.6}{}}
+\bibcite{chanci2025machine}{4}
+\bibcite{deng2022evaluating}{5}
+\bibcite{ducange2026federated}{6}
+\bibcite{fleuren2020ml}{7}
+\bibcite{goldstein2005sirs}{8}
+\bibcite{gorishniy2021revisiting}{9}
+\bibcite{le2019pediatric}{10}
+\bibcite{li2020fedprox}{11}
+\bibcite{lundberg2017shap}{12}
+\bibcite{mcmahan2017fedavg}{13}
+\bibcite{patel2022model}{14}
+\bibcite{sanchezpinto2024phoenix}{15}
+\bibcite{schlapbach2024phoenix}{16}
+\bibcite{shokri2021privacy}{17}
+\bibcite{yang2023sepsis}{18}
+\bibcite{zeng2020pic}{19}
+\gdef \@abspage@last{13}
