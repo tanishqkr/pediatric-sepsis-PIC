@@ -1,0 +1,97 @@
+================================================================================
+FEDSHAP (ICICC-2027, PAPER ID 359) — FINAL REVISION NOTES
+================================================================================
+Paper Title: Federated SHAP: Local Explainability, Ranking Consistency,
+             and Sensitivity Analysis for Pediatric Sepsis Prediction
+Authoritative Target Files:
+  - Manuscript Source: fl_paper/icicc/FedSHAP_FINAL.tex
+  - Compiled PDF:      fl_paper/icicc/FedSHAP_FINAL.pdf (13 pages, Springer LNCS)
+  - Revision Notes:    fl_paper/icicc/FedSHAP_REVISION_NOTES.txt
+Date of Revision: October 24, 2026
+
+--------------------------------------------------------------------------------
+1. SUMMARY OF REVISION OBJECTIVES & RESOLUTIONS
+--------------------------------------------------------------------------------
+
+Item 1: Held-Out Test Evaluation vs. SHAP Background Reference
+- Disclosed and clarified the explicit boundary between evaluation and explanation:
+  * Model evaluation is conducted on the held-out test cohort of N = 633 stays
+    (173 Phoenix-positive, 460 Phoenix-negative).
+  * The SHAP GradientSHAP reference background was formed by taking a 100-patient
+    sample drawn from B_test_model_ready.csv using random seed 42.
+  * Explicitly acknowledged in Section III-D and Section V (Limitations) that
+    sharing this centralized 100-sample background across local ICU nodes qualifies
+    strict data residency guarantees.
+
+Item 2: Centralized Baseline Rows in Table 2
+- Removed Centralized FT-Transformer (AUROC 0.9577) and Centralized CatBoost
+  (AUROC 0.9868) rows from Table 2 and all associated comparative narrative.
+- Verification confirmed that these two values were hardcoded literals in Phase 7
+  scripts without an autonomous, reproducible training pipeline in the federated
+  setup. Removing them makes the paper self-contained and focused strictly on
+  the empirical comparison between FedAvg and FedProx.
+
+Item 3: Leave-One-Out (LOO) Interpretation and Ranking Concordance
+- Revised Table 3 to present both self-inclusion Spearman rank correlations
+  (rho = 0.9297 to 0.9739) and leave-one-out (LOO) correlations
+  (rho = 0.9118 to 0.9669).
+- Removed overclaims asserting that correlation p-values "prove clinical consensus".
+  Reframed correlations as empirical evidence of ranking concordance across
+  uneven care-unit sample sizes under the evaluated clinical partition.
+- Clarified that the small asymptotic p-values (p < 10^-4) are statistical
+  properties of rank permutations over D = 20 feature dimensions, not clinical
+  validation.
+
+Item 4: CICU Clinical Explanations Framed as Hypotheses
+- Section IV-B has been revised to clarify that post-cardiac surgery coagulopathy,
+  cardiopulmonary bypass hemodilution, and platelet consumption are plausible
+  clinical hypotheses consistent with intensive care literature, rather than
+  experimentally confirmed biological mechanisms.
+- Disclosed that surgical procedure codes, intraoperative perfusion records,
+  and clinical notes were unavailable in the tabular PIC database.
+
+Item 5: FedProx Reproducible Operating Threshold
+- Table 2 and Section IV-A now explicitly report the full-precision post-hoc
+  decision threshold t* = 0.0014035846 (rounded to t* ~= 0.00140 in narrative).
+- Documented the exact test confusion matrix produced by this threshold:
+  True Positives (TP) = 156, False Positives (FP) = 72,
+  False Negatives (FN) = 17,  True Negatives (TN) = 388.
+  Sensitivity = 156 / 173 = 90.17%, Specificity = 388 / 460 = 84.35%.
+- Fully acknowledged that this threshold was obtained by sweeping the held-out
+  test set itself to achieve >= 90% sensitivity, and represents a descriptive
+  operating point rather than a prospectively validated clinical decision rule.
+
+Item 6: Mathematical Explanation of CICU FedProx 1.0000 Metric
+- Transparently documented in Section IV-A that the FedProx test AUROC/AUPRC of
+  1.0000 on the Cardiac ICU (CICU) partition is a small-sample boundary
+  phenomenon:
+  * CICU test cohort consists of N = 40 stays (29 positive, 11 negative).
+  * Predicted risk scores satisfied min(p_pos) = 0.000568 > max(p_neg) = 0.000353.
+  * Because every positive case scored strictly higher than every negative case,
+    the empirical AUROC is 1.0000, and all non-parametric bootstrap resamples
+    yield [1.0000, 1.0000].
+  * Clarified that this reflects complete rank separability on 11 negative
+    controls rather than infallible prospective diagnostic accuracy.
+
+--------------------------------------------------------------------------------
+2. COMPREHENSIVE LIMITATIONS AUDIT (SECTION V)
+--------------------------------------------------------------------------------
+The manuscript explicitly states eight boundaries of validity:
+1. Single-Center Care-Unit Simulation (PIC database, Zhejiang University).
+2. Diagnostic Co-occurrence & Windowing (first-24-hour observation window).
+3. Post-Hoc Decision Threshold Selection (swept directly on held-out test data).
+4. Reference SHAP Background Workflow (100-sample test cohort background shared).
+5. Absence of Formal Differential Privacy (cleartext attribution aggregation).
+6. Centralized Preprocessing (pooled StandardScaler simulation shortcut).
+7. Unexecuted Sensitivity Axes (cohort definition and Dirichlet partitions unrun).
+8. Lack of Prospective Clinician Review (no bedside decision-impact study).
+
+--------------------------------------------------------------------------------
+3. VERIFIED FILE AND REPOSITORY STATUS
+--------------------------------------------------------------------------------
+- Directory fl_paper/icicc/legacy/ remained strictly untouched and read-only.
+- All underlying experimental data in sepsis_ml/ and model_datasets/ remained
+  untouched and unmodified.
+- Compilation: pdflatex + bibtex completed with 0 errors, 0 undefined citations,
+  0 undefined references, 0 overfull hboxes. Page length: exactly 13 pages.
+================================================================================
