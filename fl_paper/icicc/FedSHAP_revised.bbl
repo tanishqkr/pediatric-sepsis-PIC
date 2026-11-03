@@ -1,0 +1,63 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{athukorala2026explainable}
+Athukorala, V.S., Ilmini, W.M.K.S.: Explainable {AI} for critical care: A systematic review of interpretable models for sepsis and {ICU} mortality prediction. BMC Medical Informatics and Decision Making  \textbf{26}, ~64 (2026). \doi{10.1186/s12911-026-03344-0}
+
+\bibitem{bonawitz2017practical}
+Bonawitz, K., Ivanov, V., Kreuter, B., Marcedone, A., McMahan, H.B., Patel, S., Ramage, D., Segal, A., Seth, K.: Practical secure aggregation for privacy-preserving machine learning. In: Proceedings of the 2017 ACM SIGSAC Conference on Computer and Communications Security (CCS '17). pp. 1175--1191. ACM (2017). \doi{10.1145/3133956.3133982}
+
+\bibitem{bonsignori2026interpreting}
+Bonsignori, V., Corbucci, L., Naretto, F., Guidotti, R., Monreale, A.: Interpreting federated learning by aggregating {SHAP} explanations. IEEE Access  \textbf{14},  36960--36975 (2026). \doi{10.1109/ACCESS.2026.3696009}
+
+\bibitem{chanci2025machine}
+Chanci, D., Grunwell, J.R., Rafiei, A., Brown, S.R., Ripple, M.J., Bishop, N.R., Rajapreyar, P., Lima, L.M., Kamaleswaran, R.: Machine learning model for daily prediction of pediatric sepsis using {Phoenix} criteria. Pediatric Research  \textbf{99}(2),  631--637 (2025). \doi{10.1038/s41390-025-04221-8}
+
+\bibitem{deng2022evaluating}
+Deng, H.F., Sun, M.W., Wang, Y., Zeng, J., Yuan, T., Li, T., Li, D.H., Chen, W., Zhou, P., Wang, Q., Jiang, H.: Evaluating machine learning models for sepsis prediction: A systematic review of methodologies. iScience  \textbf{25}(2),  103651 (2022). \doi{10.1016/j.isci.2021.103651}
+
+\bibitem{ducange2026federated}
+Ducange, P., Marcelloni, F., Miglionico, G.C., Renda, A., Ruffini, F.: Federated {SHAP}: Privacy-preserving and consistent post-hoc explainability in federated learning. Machine Learning  (2026). \doi{10.1007/s10994-025-06734-x}
+
+\bibitem{fleuren2020ml}
+Fleuren, L.M., Klausch, T.L.T., Zwager, C.L., Schoonmade, L.J., Guo, T., Roggeveen, L.F., et~al.: Machine learning for the prediction of sepsis: A systematic review and meta-analysis of diagnostic test accuracy. Intensive Care Medicine  \textbf{46}(3),  383--400 (2020). \doi{10.1007/s00134-019-05872-y}
+
+\bibitem{goldstein2005sirs}
+Goldstein, B., Giroir, B., Randolph, A.: International pediatric sepsis consensus conference: Definitions for sepsis and organ dysfunction in pediatrics. Pediatric Critical Care Medicine  \textbf{6}(1), ~2--8 (2005). \doi{10.1097/01.PCC.0000149131.72248.E6}
+
+\bibitem{gorishniy2021revisiting}
+Gorishniy, Y., Rubachev, I., Khrulkov, V., Babenko, A.: Revisiting deep learning models for tabular data. In: Advances in Neural Information Processing Systems 34 (NeurIPS 2021). vol.~34, pp. 18932--18943. Virtual (2021), \url{https://proceedings.neurips.cc/paper/2021/hash/9d444086d3c09b691079d4692797e87b-Abstract.html}
+
+\bibitem{le2019pediatric}
+Le, S., Hoffman, J., Barton, C., Fitzgerald, J.C., Allen, A., Pellegrini, E., Calvert, J., Das, R.: Pediatric severe sepsis prediction using machine learning. Frontiers in Pediatrics  \textbf{7}, ~413 (2019). \doi{10.3389/fped.2019.00413}
+
+\bibitem{li2020fedprox}
+Li, T., Sahu, A.K., Zaheer, M., Sanjabi, M., Talwalkar, A., Smith, V.: Federated optimization in heterogeneous networks. In: Proceedings of Machine Learning and Systems 2 (MLSys 2020). vol.~2, pp. 429--450. Austin, TX, USA (2020), \url{https://proceedings.mlsys.org/paper/2020/hash/3a0295e0e1b3d395372551405026b47c-Abstract.html}
+
+\bibitem{lundberg2017shap}
+Lundberg, S.M., Lee, S.I.: A unified approach to interpreting model predictions. In: Advances in Neural Information Processing Systems 30 (NeurIPS 2017). vol.~30, pp. 4765--4774. Long Beach, CA, USA (2017), \url{https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632b76c45fabd107168d-Abstract.html}
+
+\bibitem{mcmahan2017fedavg}
+McMahan, B., Moore, E., Ramage, D., Hampson, S., Ag{\"u}era~y Arcas, B.: Communication-efficient learning of deep networks from decentralized data. In: Proceedings of the 20th International Conference on Artificial Intelligence and Statistics (AISTATS 2017). vol.~54, pp. 1273--1282. PMLR, Fort Lauderdale, FL, USA (2017), \url{https://proceedings.mlr.press/v54/mcmahan17a.html}
+
+\bibitem{patel2022model}
+Patel, N., Shokri, R., Zick, Y.: Model explanations with differential privacy. In: Proceedings of the 2022 ACM Conference on Fairness, Accountability, and Transparency (FAccT '22). pp. 1801--1811. ACM (2022). \doi{10.1145/3531146.3533241}
+
+\bibitem{sanchezpinto2024phoenix}
+Sanchez-Pinto, L.N., Bennett, T.D., DeWitt, P.E., Russell, S., Rebull, M.N., Martin, B., et~al.: Development and validation of the {Phoenix} criteria for pediatric sepsis and septic shock. JAMA  \textbf{331}(8),  675--686 (2024). \doi{10.1001/jama.2024.0196}
+
+\bibitem{schlapbach2024phoenix}
+Schlapbach, L.J., Watson, R.S., Sorce, L.R., Argent, A.C., Menon, K., Hall, M.W., et~al.: International consensus criteria for pediatric sepsis and septic shock. JAMA  \textbf{331}(8),  665--674 (2024). \doi{10.1001/jama.2024.0179}
+
+\bibitem{shokri2021privacy}
+Shokri, R., Strobel, M., Zick, Y.: Privacy risks of explaining machine learning models. In: 2021 IEEE Symposium on Security and Privacy (SP). pp. 1--18. IEEE (2021). \doi{10.1109/SP40001.2021.00078}
+
+\bibitem{yang2023sepsis}
+Yang, Z., Cui, X., Song, Z.: Predicting sepsis onset in {ICU} using machine learning models: A systematic review and meta-analysis. BMC Infectious Diseases  \textbf{23}(1), ~635 (2023). \doi{10.1186/s12879-023-08614-0}
+
+\bibitem{zeng2020pic}
+Zeng, X., Yu, G., Lu, Y., Tan, L., Wu, X., Shi, S., Duan, H., Shu, Q., Li, H.: {PIC}, a paediatric-specific intensive care database. Scientific Data  \textbf{7}, ~184 (2020). \doi{10.1038/s41597-020-0355-4}
+
+\end{thebibliography}
