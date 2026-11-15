@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{14}
+\begin{thebibliography}{19}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -49,10 +49,27 @@
 \href{https://doi.org/10.1186/s12911-026-03344-0}{doi:\nolinkurl{10.1186/s12911-026-03344-0}}
 
 
+\bibitem[Bonawitz et~al\mbox{.}(2017)]%
+        {bonawitz2017practical}
+\bibfield{author}{\bibinfo{person}{K. Bonawitz}, \bibinfo{person}{V. Ivanov}, \bibinfo{person}{B. Kreuter}, \bibinfo{person}{A. Marcedone}, \bibinfo{person}{H.~B. McMahan}, \bibinfo{person}{S. Patel}, \bibinfo{person}{D. Ramage}, \bibinfo{person}{A. Segal}, {and} \bibinfo{person}{K. Seth}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Practical Secure Aggregation for Privacy-Preserving Machine Learning}. In \bibinfo{booktitle}{\emph{Proceedings of the 2017 ACM SIGSAC Conference on Computer and Communications Security (CCS '17)}}. \bibinfo{publisher}{ACM}, \bibinfo{pages}{1175--1191}.
+\newblock
+\href{https://doi.org/10.1145/3133956.3133982}{doi:\nolinkurl{10.1145/3133956.3133982}}
+
+
+\bibitem[Bonsignori et~al\mbox{.}(2026)]%
+        {bonsignori2026interpreting}
+\bibfield{author}{\bibinfo{person}{V. Bonsignori}, \bibinfo{person}{L. Corbucci}, \bibinfo{person}{F. Naretto}, \bibinfo{person}{R. Guidotti}, {and} \bibinfo{person}{A. Monreale}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Interpreting Federated Learning by Aggregating {SHAP} Explanations}.
+\newblock \bibinfo{journal}{\emph{IEEE Access}}  \bibinfo{volume}{14} (\bibinfo{year}{2026}), \bibinfo{pages}{36960--36975}.
+\newblock
+\href{https://doi.org/10.1109/ACCESS.2026.3696009}{doi:\nolinkurl{10.1109/ACCESS.2026.3696009}}
+
+
 \bibitem[Chanci et~al\mbox{.}(2025)]%
         {chanci2025machine}
-\bibfield{author}{\bibinfo{person}{D. Chanci} {et~al\mbox{.}}} \bibinfo{year}{2025}\natexlab{}.
-\newblock \showarticletitle{Machine Learning Model for Daily Prediction of Pediatric Sepsis Using {P}hoenix Criteria}.
+\bibfield{author}{\bibinfo{person}{D. Chanci}, \bibinfo{person}{J.~R. Grunwell}, \bibinfo{person}{A. Rafiei}, \bibinfo{person}{S.~R. Brown}, \bibinfo{person}{M.~J. Ripple}, \bibinfo{person}{N.~R. Bishop}, \bibinfo{person}{P. Rajapreyar}, \bibinfo{person}{L.~M. Lima}, {and} \bibinfo{person}{R. Kamaleswaran}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Machine Learning Model for Daily Prediction of Pediatric Sepsis Using {Phoenix} Criteria}.
 \newblock \bibinfo{journal}{\emph{Pediatric Research}} \bibinfo{volume}{99}, \bibinfo{number}{2} (\bibinfo{year}{2025}), \bibinfo{pages}{631--637}.
 \newblock
 \href{https://doi.org/10.1038/s41390-025-04221-8}{doi:\nolinkurl{10.1038/s41390-025-04221-8}}
@@ -60,11 +77,20 @@
 
 \bibitem[Deng et~al\mbox{.}(2022)]%
         {deng2022evaluating}
-\bibfield{author}{\bibinfo{person}{H.-F. Deng} {et~al\mbox{.}}} \bibinfo{year}{2022}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{H.-F. Deng}, \bibinfo{person}{M.-W. Sun}, \bibinfo{person}{Y. Wang}, \bibinfo{person}{J. Zeng}, \bibinfo{person}{T. Yuan}, \bibinfo{person}{T. Li}, \bibinfo{person}{D.-H. Li}, \bibinfo{person}{W. Chen}, \bibinfo{person}{P. Zhou}, \bibinfo{person}{Q. Wang}, {and} \bibinfo{person}{H. Jiang}.} \bibinfo{year}{2022}\natexlab{}.
 \newblock \showarticletitle{Evaluating Machine Learning Models for Sepsis Prediction: A Systematic Review of Methodologies}.
 \newblock \bibinfo{journal}{\emph{iScience}} \bibinfo{volume}{25}, \bibinfo{number}{2} (\bibinfo{year}{2022}), \bibinfo{pages}{103651}.
 \newblock
 \href{https://doi.org/10.1016/j.isci.2021.103651}{doi:\nolinkurl{10.1016/j.isci.2021.103651}}
+
+
+\bibitem[Ducange et~al\mbox{.}(2026)]%
+        {ducange2026federated}
+\bibfield{author}{\bibinfo{person}{P. Ducange}, \bibinfo{person}{F. Marcelloni}, \bibinfo{person}{G.~C. Miglionico}, \bibinfo{person}{A. Renda}, {and} \bibinfo{person}{F. Ruffini}.} \bibinfo{year}{2026}\natexlab{}.
+\newblock \showarticletitle{Federated {SHAP}: Privacy-Preserving and Consistent Post-hoc Explainability in Federated Learning}.
+\newblock \bibinfo{journal}{\emph{Machine Learning}} (\bibinfo{year}{2026}).
+\newblock
+\href{https://doi.org/10.1007/s10994-025-06734-x}{doi:\nolinkurl{10.1007/s10994-025-06734-x}}
 
 
 \bibitem[Fleuren et~al\mbox{.}(2020)]%
@@ -88,7 +114,7 @@
 \bibitem[Gorishniy et~al\mbox{.}(2021)]%
         {gorishniy2021revisiting}
 \bibfield{author}{\bibinfo{person}{Y. Gorishniy}, \bibinfo{person}{I. Rubachev}, \bibinfo{person}{V. Khrulkov}, {and} \bibinfo{person}{A. Babenko}.} \bibinfo{year}{2021}\natexlab{}.
-\newblock \showarticletitle{Revisiting Deep Learning Models for Tabular Data}. In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems}}, Vol.~\bibinfo{volume}{34}. \bibinfo{pages}{18932--18943}.
+\newblock \showarticletitle{Revisiting Deep Learning Models for Tabular Data}. In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems 34 (NeurIPS 2021)}}, Vol.~\bibinfo{volume}{34}. \bibinfo{address}{Virtual}, \bibinfo{pages}{18932--18943}.
 \newblock
 \urldef\tempurl%
 \url{https://proceedings.neurips.cc/paper/2021/hash/9d444086d3c09b691079d4692797e87b-Abstract.html}
@@ -108,8 +134,7 @@
 \bibitem[Li et~al\mbox{.}(2020)]%
         {li2020fedprox}
 \bibfield{author}{\bibinfo{person}{T. Li}, \bibinfo{person}{A.~K. Sahu}, \bibinfo{person}{M. Zaheer}, \bibinfo{person}{M. Sanjabi}, \bibinfo{person}{A. Talwalkar}, {and} \bibinfo{person}{V. Smith}.} \bibinfo{year}{2020}\natexlab{}.
-\newblock \showarticletitle{Federated Optimization in Heterogeneous Networks}.
-\newblock \bibinfo{journal}{\emph{Proceedings of Machine Learning and Systems}}  \bibinfo{volume}{2} (\bibinfo{year}{2020}), \bibinfo{pages}{429--450}.
+\newblock \showarticletitle{Federated Optimization in Heterogeneous Networks}. In \bibinfo{booktitle}{\emph{Proceedings of Machine Learning and Systems 2 (MLSys 2020)}}, Vol.~\bibinfo{volume}{2}. \bibinfo{address}{Austin, TX, USA}, \bibinfo{pages}{429--450}.
 \newblock
 \urldef\tempurl%
 \url{https://proceedings.mlsys.org/paper/2020/hash/3a0295e0e1b3d395372551405026b47c-Abstract.html}
@@ -120,7 +145,7 @@
 \bibitem[Lundberg and Lee(2017)]%
         {lundberg2017shap}
 \bibfield{author}{\bibinfo{person}{S.~M. Lundberg} {and} \bibinfo{person}{S.-I. Lee}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{A Unified Approach to Interpreting Model Predictions}. In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems}}, Vol.~\bibinfo{volume}{30}. \bibinfo{pages}{4765--4774}.
+\newblock \showarticletitle{A Unified Approach to Interpreting Model Predictions}. In \bibinfo{booktitle}{\emph{Advances in Neural Information Processing Systems 30 (NeurIPS 2017)}}, Vol.~\bibinfo{volume}{30}. \bibinfo{address}{Long Beach, CA, USA}, \bibinfo{pages}{4765--4774}.
 \newblock
 \urldef\tempurl%
 \url{https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632b76c45fabd107168d-Abstract.html}
@@ -130,8 +155,8 @@
 
 \bibitem[McMahan et~al\mbox{.}(2017)]%
         {mcmahan2017fedavg}
-\bibfield{author}{\bibinfo{person}{B. McMahan}, \bibinfo{person}{E. Moore}, \bibinfo{person}{D. Ramage}, \bibinfo{person}{S. Hampson}, {and} \bibinfo{person}{B. Ag{"{u}}era~y Arcas}.} \bibinfo{year}{2017}\natexlab{}.
-\newblock \showarticletitle{Communication-Efficient Learning of Deep Networks from Decentralized Data}. In \bibinfo{booktitle}{\emph{Proceedings of the 20th International Conference on Artificial Intelligence and Statistics}}, Vol.~\bibinfo{volume}{54}. \bibinfo{pages}{1273--1282}.
+\bibfield{author}{\bibinfo{person}{B. McMahan}, \bibinfo{person}{E. Moore}, \bibinfo{person}{D. Ramage}, \bibinfo{person}{S. Hampson}, {and} \bibinfo{person}{B. Ag{\"u}era~y Arcas}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Communication-Efficient Learning of Deep Networks from Decentralized Data}. In \bibinfo{booktitle}{\emph{Proceedings of the 20th International Conference on Artificial Intelligence and Statistics (AISTATS 2017)}}, Vol.~\bibinfo{volume}{54}. \bibinfo{publisher}{PMLR}, \bibinfo{address}{Fort Lauderdale, FL, USA}, \bibinfo{pages}{1273--1282}.
 \newblock
 \urldef\tempurl%
 \url{https://proceedings.mlr.press/v54/mcmahan17a.html}
@@ -139,10 +164,18 @@
 \tempurl}
 
 
+\bibitem[Patel et~al\mbox{.}(2022)]%
+        {patel2022model}
+\bibfield{author}{\bibinfo{person}{N. Patel}, \bibinfo{person}{R. Shokri}, {and} \bibinfo{person}{Y. Zick}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Model Explanations with Differential Privacy}. In \bibinfo{booktitle}{\emph{Proceedings of the 2022 ACM Conference on Fairness, Accountability, and Transparency (FAccT '22)}}. \bibinfo{publisher}{ACM}, \bibinfo{pages}{1801--1811}.
+\newblock
+\href{https://doi.org/10.1145/3531146.3533241}{doi:\nolinkurl{10.1145/3531146.3533241}}
+
+
 \bibitem[Sanchez-Pinto et~al\mbox{.}(2024)]%
         {sanchezpinto2024phoenix}
 \bibfield{author}{\bibinfo{person}{L.~N. Sanchez-Pinto}, \bibinfo{person}{T.~D. Bennett}, \bibinfo{person}{P.~E. DeWitt}, \bibinfo{person}{S. Russell}, \bibinfo{person}{M.~N. Rebull}, \bibinfo{person}{B. Martin}, {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
-\newblock \showarticletitle{Development and Validation of the {P}hoenix Criteria for Pediatric Sepsis and Septic Shock}.
+\newblock \showarticletitle{Development and Validation of the {Phoenix} Criteria for Pediatric Sepsis and Septic Shock}.
 \newblock \bibinfo{journal}{\emph{JAMA}} \bibinfo{volume}{331}, \bibinfo{number}{8} (\bibinfo{year}{2024}), \bibinfo{pages}{675--686}.
 \newblock
 \href{https://doi.org/10.1001/jama.2024.0196}{doi:\nolinkurl{10.1001/jama.2024.0196}}
@@ -155,6 +188,14 @@
 \newblock \bibinfo{journal}{\emph{JAMA}} \bibinfo{volume}{331}, \bibinfo{number}{8} (\bibinfo{year}{2024}), \bibinfo{pages}{665--674}.
 \newblock
 \href{https://doi.org/10.1001/jama.2024.0179}{doi:\nolinkurl{10.1001/jama.2024.0179}}
+
+
+\bibitem[Shokri et~al\mbox{.}(2021)]%
+        {shokri2021privacy}
+\bibfield{author}{\bibinfo{person}{R. Shokri}, \bibinfo{person}{M. Strobel}, {and} \bibinfo{person}{Y. Zick}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Privacy Risks of Explaining Machine Learning Models}. In \bibinfo{booktitle}{\emph{2021 IEEE Symposium on Security and Privacy (SP)}}. \bibinfo{publisher}{IEEE}, \bibinfo{pages}{1--18}.
+\newblock
+\href{https://doi.org/10.1109/SP40001.2021.00078}{doi:\nolinkurl{10.1109/SP40001.2021.00078}}
 
 
 \bibitem[Yang et~al\mbox{.}(2023)]%
