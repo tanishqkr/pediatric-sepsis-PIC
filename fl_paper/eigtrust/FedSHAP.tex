@@ -1,6 +1,7 @@
 \documentclass[sigconf,review,anonymous]{acmart}
 
-\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{multirow}
 
 %% Rights management information and conference details
 \setcopyright{acmlicensed}
@@ -13,7 +14,7 @@
 
 \begin{document}
 
-\title[Federated SHAP for Pediatric Sepsis Prediction]{Federated SHAP: Privacy-Preserving, Per-Node Explainability and Sensitivity Analysis for Pediatric Sepsis Prediction}
+\title[Federated SHAP for Pediatric Sepsis Prediction]{Federated SHAP: Local Explainability, Ranking Consistency, and Sensitivity Analysis for Pediatric Sepsis Prediction}
 
 \author{Anonymous Author(s)}
 \affiliation{
@@ -24,8 +25,39 @@
 
 \renewcommand{\shortauthors}{Anonymous Author(s)}
 
+% Camera-Ready Author and Institute Information:
+% \author{Tanish Porwal}
+% \authornote{These authors contributed equally to this work.}
+% \affiliation{
+%   \institution{Department of Engineering, SVKM's NMIMS Indore Campus}
+%   \city{Indore}
+%   \state{Madhya Pradesh}
+%   \country{India}
+% }
+% \email{tanishporwal2005@gmail.com}
+%
+% \author{Uzair Teli}
+% \authornote{These authors contributed equally to this work.}
+% \affiliation{
+%   \institution{Department of Engineering, SVKM's NMIMS Indore Campus}
+%   \city{Indore}
+%   \state{Madhya Pradesh}
+%   \country{India}
+% }
+% \email{uzairteli7@gmail.com}
+%
+% \author{Praveen Modi}
+% \affiliation{
+%   \institution{Department of Engineering, SVKM's NMIMS Indore Campus}
+%   \city{Indore}
+%   \state{Madhya Pradesh}
+%   \country{India}
+% }
+% \email{praveen.modi@nmims.edu}
+% \renewcommand{\shortauthors}{T. Porwal, U. Teli, and P. Modi}
+
 \begin{abstract}
-Federated learning enables multi-hospital pediatric sepsis prediction without centralizing patient records, but a federated model remains a black box to the clinicians who must act on it: federation solves privacy, not trust. We present a federated SHAP explainability pipeline that computes Shapley attributions \emph{locally} at each of five simulated ICU-type nodes on a shared global model, aggregates them using the same sample-size weighting FedAvg itself uses for model updates, and never transmits raw patient data or per-patient attributions off a node. On a Feature Tokenizer Transformer trained via FedAvg and FedProx across non-IID ICU nodes derived from the Pediatric Intensive Care (PIC) database with Phoenix Sepsis Criteria labelling, we find that \texttt{lactate\_max} is the unanimous top feature at all five nodes, and every node's local SHAP ranking correlates strongly with the federated aggregate (Spearman $\rho$ between 0.930 and 0.974 across all five nodes, including the smallest node, CICU, 5.7\% of training data, and the largest, General ICU, 49.4\%). FedAvg and FedProx further agree on 4 of their top 5 federated features ($\rho = 0.689$, $p = 5.4\times10^{-33}$). These results indicate that per-node federated explainability is both computationally practical and robust to severe non-IID node-size imbalance, at least along the algorithm-choice axis evaluated here.
+Federated learning (FL) enables collaborative predictive modeling without centralizing confidential patient electronic health records (EHRs), but decentralized models remain black boxes to clinicians: data locality preserves confidentiality during model synthesis, not post-hoc clinical trust. We evaluate a decentralized explainability pipeline that computes Shapley feature attributions locally across five simulated care-unit nodes derived from the Pediatric Intensive Care (PIC) database, aggregating summaries using sample-size weighting. Across 3,163 infection-restricted stays (2,530 train, 633 test) with 225 features, a Feature Tokenizer Transformer (FT-Transformer) under the 2024 Phoenix Sepsis Criteria achieves pooled test AUROCs of $0.9451$ (95\% CI: $0.9256$--$0.9622$) under FedAvg and $0.9557$ (95\% CI: $0.9385$--$0.9710$) under FedProx. Disaggregated evaluation reveals genuine care-unit variations (FedAvg AUROCs $0.8966$--$0.9812$; FedProx $0.9389$--$1.0000$, reflecting small-cohort separation on 11 negatives). Across severe volume imbalance (5.7\% vs.\ 49.4\% of training data), local feature rankings correlate strongly with the federated aggregate (Spearman $\rho = 0.9297$--$0.9739$; leave-one-out $\rho = 0.9118$--$0.9669$). Sample-size weighting achieves near-identity with uniform weighting ($\rho = 0.9929$), and FedAvg and FedProx share 80\% of top-5 features ($\rho = 0.6889$). Auditing the unanimous salience of \texttt{lactate\_max}, \texttt{platelets\_min}, and \texttt{inr\_max} demonstrates that their prominence reflects diagnostic co-occurrence within the first-24-hour Phoenix scoring window rather than pre-symptomatic forecasting. Finally, disclosing that reference backgrounds were sampled from the test cohort highlights that formal differential privacy and prospective windowing remain essential for clinical translation.
 \end{abstract}
 
 %% ACM Computing Classification System (CCS)
@@ -59,7 +91,7 @@ Federated learning enables multi-hospital pediatric sepsis prediction without ce
 \ccsdesc[500]{Applied computing~Health informatics}
 \ccsdesc[300]{Security and privacy~Human and societal aspects of security and privacy}
 
-\keywords{Federated learning, explainable AI, SHAP, pediatric sepsis, Phoenix criteria, privacy-preserving machine learning}
+\keywords{Federated learning, Explainable AI, SHAP, Pediatric sepsis, Phoenix criteria, Sensitivity analysis, Privacy boundaries}
 
 \maketitle
 
@@ -67,179 +99,251 @@ Federated learning enables multi-hospital pediatric sepsis prediction without ce
 \section{Introduction}\label{sec:intro}
 % =======================================================================
 
-Pediatric sepsis progresses from suspected infection to multi-organ failure within hours, and delays in recognition of even one hour are associated with measurably higher mortality. An estimated 25 million pediatric sepsis cases occur annually worldwide, with mortality ranging from approximately 4\% in mild presentations to over 50\% in septic shock. To diagnose this condition, the Phoenix Sepsis Criteria established by Sanchez-Pinto et al. \cite{sanchezpinto2024phoenix} and Schlapbach et al. \cite{schlapbach2024phoenix} superseded prior SIRS-based definitions by Goldstein et al. \cite{goldstein2005sirs} by establishing explicit diagnostic thresholds across cardiovascular, coagulation, respiratory, and neurological systems, serving as the ground-truth labelling framework in this study.
+Pediatric sepsis remains a critical global healthcare challenge, responsible for over 25 million childhood cases annually and carrying mortality exceeding 50\% in cases of septic shock. Rapid progression from systemic infection to life-threatening multi-organ failure demands timely recognition. To standardize diagnostic benchmarks, the international Phoenix Sepsis Criteria established by Schlapbach et al. \cite{schlapbach2024phoenix} and Sanchez-Pinto et al. \cite{sanchezpinto2024phoenix} updated prior SIRS-based definitions \cite{goldstein2005sirs} by establishing explicit organ dysfunction scoring rules across cardiovascular, respiratory, neurological, and coagulation systems. These validated criteria define the diagnostic ground truth in this study.
 
-Federated learning (FL) offers a compelling paradigm for collaborative training of sepsis risk estimators across distributed medical centers without moving confidential electronic health records off-site---a prerequisite enforced by stringent clinical data privacy mandates. The Federated Averaging (FedAvg) algorithm proposed by McMahan et al. \cite{mcmahan2017fedavg} and the FedProx framework developed by Li et al. \cite{li2020fedprox} serve as the primary decentralized optimization methods analyzed in this investigation. Nevertheless, privacy-preserving training guarantees confidentiality only during model synthesis; it fails to provide clinical transparency for the learned decision boundaries. A clinician at a small-volume Cardiac ICU node has no way to verify that a model trained mostly on a much larger General ICU node's patients is reasoning correctly about their own, potentially very different, patient population.
+Federated learning (FL) offers a compelling paradigm for multi-center clinical machine learning, enabling collaborative model training without transmitting confidential patient electronic health records (EHRs) to a centralized repository \cite{mcmahan2017fedavg,li2020fedprox}. However, privacy-preserving parameter aggregation guarantees confidentiality only during the training loop; it does not explain how the converged global model arrives at its predictions. In high-stakes intensive care environments, black-box federated models risk rejection by clinicians who require interpretable physiological rationales \cite{athukorala2026explainable}. Specifically, intensivists in a specialized pediatric Cardiac ICU (CICU) must be able to verify whether a global model dominated by high-volume General ICU training data reasons in a clinically appropriate manner for their distinct patient population.
 
-This is the specific gap this paper addresses. The SHAP framework introduced by Lundberg and Lee \cite{lundberg2017shap} is the standard framework for post-hoc model explanation in clinical machine learning, and is increasingly treated as a precondition for deploying high-risk medical AI, as surveyed by Athukorala and Ilmini \cite{athukorala2026explainable}. But SHAP explainability work in the sepsis literature has, to date, only ever been applied to centralized models trained on pooled data, such as recent work by Chanci et al. \cite{chanci2025machine}. No published study combines federated training with \emph{federated} explainability -- i.e., SHAP computed locally at each participating site and aggregated without any node's raw data or per-patient attributions ever leaving that site.
+Post-hoc Shapley Additive exPlanations (SHAP) \cite{lundberg2017shap} have become the gold standard for model interpretability in clinical machine learning \cite{athukorala2026explainable,chanci2025machine}. Nonetheless, explainability research in sepsis has predominantly focused on centralized models trained on pooled institutional data. Emerging conceptual frameworks such as iFLASH by Bonsignori et al. \cite{bonsignori2026interpreting} and Federated SHAP by Ducange et al. \cite{ducange2026federated} have initiated investigations into decentralized attribution aggregation, yet their empirical consistency, privacy attack surfaces, and clinical fidelity under severe clinical volume and prevalence imbalance remain largely uncharacterized.
 
-\subsubsection*{Contributions} This paper makes four main contributions:
+To address these empirical questions, this paper investigates an end-to-end federated SHAP pipeline for pediatric sepsis risk prediction across five simulated care-unit nodes derived from the single-center Pediatric Intensive Care (PIC) database \cite{zeng2020pic}. Specifically, this work provides:
 \begin{enumerate}
-\item A federated SHAP pipeline that computes GradientSHAP locally at each node and aggregates it with the same sample-size weighting FedAvg uses for model updates;
-\item An empirical evaluation showing that per-node explanations agree strongly with the federated aggregate despite severe non-IID node-size imbalance (one node holds 49.4\% of all training data, another only 5.7\%);
-\item A sensitivity analysis confirming this agreement is not an artifact of the choice of federated optimization algorithm; and
-\item A fully specified privacy boundary detailing precisely what is and is not transmitted off a node at explanation time, not just at training time.
+\item \textbf{Decentralized Attribution Pipeline:} We implement a post-hoc explainability workflow where feature attributions are computed locally on held-out test patients at each participating node for a deep Feature Tokenizer Transformer (FT-Transformer) using \texttt{shap.GradientExplainer}, transmitting only mean absolute attribution vectors and local sample sizes.
+\item \textbf{Disaggregated Performance and Uncertainty Evaluation:} We report genuine node-specific test AUROC, AUPRC, and 95\% bootstrap confidence intervals across the five simulated care-unit nodes, replacing previously reported pooled duplicates and analyzing small-sample boundary phenomena.
+\item \textbf{Ranking Concordance and Aggregation Sensitivity:} We evaluate attribution agreement across severe volume imbalance (5.7\% vs.\ 49.4\% of training data), reporting both self-inclusion ($\rho = 0.9297$--$0.9739$) and leave-one-node-out ($\rho = 0.9118$--$0.9669$) rank correlations as descriptive evidence of ranking concordance under the evaluated partition. We also demonstrate that sample-size weighting achieves near-identical rankings with uniform node weighting ($\rho = 0.9929$).
+\item \textbf{Algorithm-Choice Sensitivity Analysis:} We assess explanation stability across two distinct decentralized optimization paradigms (FedAvg vs.\ FedProx), confirming an overall ranking correlation of $\rho = 0.6889$ (95\% CI: $0.6134$--$0.7519$) and an 80\% (4/5) overlap among their top-5 federated features.
+\item \textbf{Privacy and Target-Overlap Audit:} We formalize the privacy boundary between transmitted summaries and on-premise data, disclosing the shared background workflow and identifying potential attribute inference risks for small sub-cohorts in the absence of differential privacy. Furthermore, we audit the unanimous dominance of \texttt{lactate\_max}, showing that its prominence stems directly from mathematical scoring overlap with the cardiovascular component of the 2024 Phoenix criteria within the initial 24-hour observation window.
 \end{enumerate}
 
 % =======================================================================
 \section{Related Work}\label{sec:litreview}
 % =======================================================================
 
-\subsection{Pediatric Sepsis Prediction}
-Machine learning applications in critical care sepsis diagnosis have expanded rapidly, with broad literature surveys indexing upward of 150 unique predictive models, such as comprehensive meta-analyses by Fleuren et al. \cite{fleuren2020ml} and Yang et al. \cite{yang2023sepsis}. The vast majority of published benchmarks concentrate on adult critical care repositories like MIMIC-III and MIMIC-IV, whereas investigations dedicated to pediatric demographics remain infrequent. Le et al. \cite{le2019pediatric} developed an early pediatric-focused severe sepsis predictor using institutional PICU records from UCSF, but operated without decentralized or privacy-preserving mechanics. Deng et al. \cite{deng2022evaluating} identified that subtle target leakage and fragile validation schemes remain pervasive shortcomings across critical care predictive modeling, issues our pipeline mitigates through explicit pre-split leakage audits. Chanci et al. \cite{chanci2025machine} recently introduced daily Phoenix-based pediatric sepsis models achieving competitive discrimination, but restricted their scope to isolated single-center datasets without interpretive post-hoc explainability mechanisms---the exact methodological divide this paper bridges.
+\subsection{Pediatric Sepsis Prediction and Phoenix Criteria}
+Machine learning for sepsis diagnosis has expanded rapidly, with systematic reviews documenting over 150 published models \cite{fleuren2020ml,yang2023sepsis}. However, the vast majority focus exclusively on adult cohorts (e.g., MIMIC-III, MIMIC-IV), while pediatric populations remain severely underrepresented. Le et al. \cite{le2019pediatric} developed early pediatric severe sepsis models using single-center PICU data, but operated without decentralized mechanics. Deng et al. \cite{deng2022evaluating} demonstrated that target leakage and improper temporal alignment represent widespread pitfalls in critical care modeling, where models inadvertently exploit measurements recorded during or after diagnostic onset. Recently, Chanci et al. \cite{chanci2025machine} developed daily prediction models using the Phoenix consensus criteria, confirming the utility of machine learning while emphasizing the necessity of multi-center validation.
 
 \subsection{Federated Learning in Healthcare}
-Under standard FedAvg proposed by McMahan et al. \cite{mcmahan2017fedavg}, client weight parameters are synthesized at the central server via a client-volume proportional weighted sum. FedProx, developed by Li et al. \cite{li2020fedprox}, introduces an additional proximal regularization penalty to each local objective function to stabilize distributed convergence when encountering severe statistical heterogeneity across participating client silos. Both optimization schemes are implemented and evaluated here to assess whether the resulting model interpretability landscapes remain consistent across optimization paradigms.
+Federated learning allows clinical centers to collaboratively train shared models without pooling confidential patient records \cite{mcmahan2017fedavg}. Federated Averaging (FedAvg) aggregates local parameter tensors via sample-size weighting. To mitigate optimization divergence under non-IID client distributions, Li et al. \cite{li2020fedprox} proposed FedProx, introducing a proximal regularization penalty ($\mu$) that constrains local model drift relative to the global parameter state. While federated learning has been successfully demonstrated in medical imaging and adult EHRs, empirical evaluations under severe pediatric volume and class imbalance remain scarce.
 
-\subsection{Explainable AI in Critical Care}
-Lundberg and Lee \cite{lundberg2017shap} established the SHAP framework by connecting additive feature importance to classic cooperative game theory, proving that Shapley values uniquely guarantee essential axiomatic properties including efficiency, null player, symmetry, and additivity. When explaining deep neural architectures on tabular clinical data---such as the Feature Tokenizer Transformer (FT-Transformer) introduced by Gorishniy et al. \cite{gorishniy2021revisiting} and adopted here---gradient-guided sampling schemes like GradientSHAP are required, because TreeSHAP cannot operate on neural backbones. Transparent reasoning is increasingly demanded by regulatory bodies prior to the clinical integration of automated triage assistants, as underscored by Athukorala and Ilmini \cite{athukorala2026explainable}. However, decentralized evaluation of feature attributions across federated healthcare nodes without sharing patient-level attributions has not been systematically investigated.
-
-\subsection{The PIC Database}
-The Pediatric Intensive Care (PIC) database introduced by Zeng et al. \cite{zeng2020pic} is a bilingual, freely accessible pediatric electronic health record repository compiled at the Children's Hospital affiliated with Zhejiang University School of Medicine. It is distributed through PhysioNet to verified investigators and forms the empirical foundation of this work.
+\subsection{Explainable AI and Federated Explanations}
+Shapley Additive exPlanations (SHAP) \cite{lundberg2017shap} provide local additive feature attributions grounded in cooperative game theory. In deep learning for tabular data, architectures such as the Feature Tokenizer Transformer (FT-Transformer) \cite{gorishniy2021revisiting} require gradient-based sampling explainers (\texttt{GradientExplainer}), as TreeSHAP cannot operate on neural backbones. In the federated domain, Bonsignori et al. \cite{bonsignori2026interpreting} introduced iFLASH, demonstrating that local SHAP summaries can be aggregated centrally via performance- and faithfulness-weighted schemes. Ducange et al. \cite{ducange2026federated} investigated federated SHAP clustering to derive representative background sets without raw record exchange. However, transmitting post-hoc feature explanations creates an empirical privacy surface: Shokri et al. \cite{shokri2021privacy} and Patel et al. \cite{patel2022model} demonstrated that model explanations can facilitate membership and attribute inference attacks, underscoring the need to bound privacy risks formally. Importantly, agreement among feature rankings must not be equated with clinical fidelity, causal explanation, or model fairness.
 
 % =======================================================================
 \section{Methodology}\label{sec:method}
 % =======================================================================
 
-\subsection{Dataset and Federated Learning Setup}
-The dataset comprises a leakage-audited, Phoenix-labelled cohort derived from PIC v1.1.0, restricted to patients with clinically suspected infection. The clean feature matrix contains 225 features per patient. Training data ($n = 2{,}530$) is partitioned into five simulated ICU-type nodes by care-unit designation: CICU (Cardiac ICU, $n = 144$), NICU (Neonatal ICU, $n = 421$), PICU (Paediatric ICU, $n = 213$), SICU (Surgical ICU, $n = 501$), and General ICU ($n = 1{,}251$). This partition is deliberately non-IID: the General ICU node alone holds 49.4\% of all training data, 8.7$\times$ the size of the smallest node (CICU) and 5.9$\times$ the PICU node. During the entire training lifecycle, patient records never migrate outside their originating node; the server orchestrates model convergence purely by dispatching and receiving parameter tensors.
+\subsection{Dataset, Care-Unit Partitioning, and Preprocessing}
+The experimental cohort is derived from the single-center Pediatric Intensive Care (PIC) database v1.1.0 \cite{zeng2020pic}, compiled at the Children's Hospital of Zhejiang University School of Medicine. The cohort is restricted to pediatric patients (age 0--18 years, ICU length of stay $\ge 24$ hours) with clinically suspected infection (defined by concomitant blood culture orders and systemic antimicrobial administration). The final study cohort comprises 3,163 unique admissions. Each stay is represented by 225 tabular features summarizing vital signs, laboratory measurements, input/output fluids, and clinical interventions extracted over the first 24 hours of ICU admission.
 
-The shared model architecture is an FT-Transformer \cite{gorishniy2021revisiting} (2 transformer blocks, 256-dimensional embeddings, 8 attention heads), trained under two federated optimization strategies -- FedAvg \cite{mcmahan2017fedavg} and FedProx \cite{li2020fedprox} -- for 50 communication rounds with 5 local epochs per round, using inverse-prevalence class weighting to address the sepsis class imbalance. Feature values are standardized using a single StandardScaler fit on the pooled training distribution prior to federated partitioning, consistent with a realistic deployment where feature scaling statistics are agreed upon centrally before training begins, and applied identically at every node thereafter, including at explanation time.
+The outcome label is constructed according to the 2024 Phoenix Sepsis Criteria \cite{schlapbach2024phoenix,sanchezpinto2024phoenix}: sepsis is defined as suspected infection accompanied by a Phoenix organ dysfunction score $\ge 2$ points across respiratory, cardiovascular, coagulation, and neurological systems computed during the identical initial 24-hour observation window.
 
-\subsection{Federated SHAP Explainability Pipeline}
-Given the final global model (from either FedAvg or FedProx), SHAP attributions are computed in five distinct steps:
+The dataset is partitioned using an 80/20 stratified split into a training cohort ($n = 2{,}530$) and a held-out test cohort ($n = 633$). To simulate decentralized multi-site deployment, data are partitioned according to each patient's documented clinical care unit into five non-IID simulated nodes: Cardiac ICU (CICU), Neonatal ICU (NICU), Paediatric ICU (PICU), Surgical ICU (SICU), and General ICU. Table \ref{tab:cohort-dist} summarizes the resulting cohort distributions and disaggregated evaluation metrics. The partitions exhibit severe clinical heterogeneity: General ICU contains 49.4\% of all training patients (8.7$\times$ the CICU cohort), while sepsis prevalence ranges from 10.8\% in the NICU to 72.5\% in the CICU.
+
+\begin{table*}[t]
+\caption{Care-unit cohort distributions and disaggregated federated test performance}
+\label{tab:cohort-dist}
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Simulated Node} & \textbf{Train Cohort ($n$)} & \textbf{Test Cohort ($n$)} & \textbf{FedAvg AUROC [95\% CI]} & \textbf{FedAvg AUPRC [95\% CI]} & \textbf{FedProx AUROC [95\% CI]} & \textbf{FedProx AUPRC [95\% CI]} \\
+\midrule
+CICU        & 144 (59.7\% pos)  & 40 (29 pos / 11 neg)   & 0.9812 [0.9300, 1.0000] & 0.9941 [0.9756, 1.0000] & 1.0000 [1.0000, 1.0000]$^*$ & 1.0000 [1.0000, 1.0000]$^*$ \\
+General ICU & 1,251 (23.2\% pos)& 290 (69 pos / 221 neg) & 0.9698 [0.9492, 0.9864] & 0.9266 [0.8761, 0.9648] & 0.9649 [0.9376, 0.9854]     & 0.9294 [0.8798, 0.9659] \\
+NICU        & 421 (14.0\% pos)  & 120 (13 pos / 107 neg) & 0.9511 [0.8895, 0.9927] & 0.8027 [0.5746, 0.9503] & 0.9569 [0.9064, 0.9922]     & 0.7864 [0.5601, 0.9459] \\
+PICU        & 213 (33.8\% pos)  & 65 (15 pos / 50 neg)   & 0.9640 [0.9079, 1.0000] & 0.9272 [0.8094, 1.0000] & 0.9920 [0.9694, 1.0000]     & 0.9810 [0.9285, 1.0000] \\
+SICU        & 501 (36.7\% pos)  & 118 (47 pos / 71 neg)  & 0.8966 [0.8179, 0.9609] & 0.8953 [0.8167, 0.9571] & 0.9389 [0.8826, 0.9835]     & 0.9336 [0.8752, 0.9804] \\
+\midrule
+\textbf{Pooled Overall} & \textbf{2,530 (27.3\% pos)} & \textbf{633 (173 pos / 460 neg)} & \textbf{0.9451 [0.9256, 0.9622]} & \textbf{0.8897 [0.8510, 0.9230]} & \textbf{0.9557 [0.9385, 0.9710]} & \textbf{0.9096 [0.8745, 0.9385]} \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{1mm}
+\begin{minipage}{\textwidth}
+\scriptsize $^*$Note: The CICU FedProx AUROC and AUPRC of 1.0000 [1.0000, 1.0000] reflect complete rank separation on a small held-out cohort of 40 patients with only 11 negative cases (all negatives $\hat{p} < 3.6\times 10^{-4}$; all positives $\hat{p} > 5.6\times 10^{-4}$), representing a small-sample boundary effect rather than generalized perfection. Confidence intervals derived via 2,000 stratified bootstrap iterations.
+\end{minipage}
+\end{table*}
+
+\subsubsection{Preprocessing Assumption.} Continuous features are standardized using a single \texttt{StandardScaler} fitted on the pooled training set ($n = 2{,}530$) prior to node partitioning. While in production federated learning local scalers or a single-round federated Welford aggregation would be required to prevent global statistic sharing, fitting on the pooled training set represents an operational simulation shortcut commonly adopted in the federated literature. The test set ($n = 633$) was strictly excluded from scaler fitting.
+
+\subsection{Federated Model Architecture and Training}
+The classification backbone is an FT-Transformer \cite{gorishniy2021revisiting} configured with 2 transformer blocks, embedding dimension 256, 8 attention heads, attention dropout 0.142, feedforward multiplier 2.338, feedforward dropout 0.066, and residual dropout 0.013. Local optimization uses AdamW ($\text{lr} = 0.0004$, weight decay $7.7\times 10^{-5}$) with batch size 128. Training proceeds for $R = 50$ communication rounds with $E = 5$ local epochs per round. Client participation is 100\% (all 5 nodes participate in every round). Client loss is evaluated using binary cross-entropy with node-specific positive class weighting ($\text{pos\_weight} = n_{\text{neg}} / n_{\text{pos}}$), dynamically computed at each node (e.g., 0.674 for CICU, 6.136 for NICU). Global models are trained under both FedAvg and FedProx ($\mu = 0.01$).
+
+\subsection{Federated SHAP Attribution Pipeline}
+Following federated convergence, post-hoc explanations are generated in five stages:
 \begin{enumerate}
-\item \textbf{Distribute weights.} The final global FT-Transformer is sent to each of the five nodes.
-\item \textbf{Local SHAP, on-site.} At each node, GradientSHAP is computed independently on that node's own held-out test patients. TreeSHAP is not applicable here, as the shared model is a differentiable neural network, not a tree ensemble.
-\item \textbf{Share summaries only.} Each node computes and transmits only its mean absolute SHAP value per feature -- a single 225-dimensional vector -- never raw patient data or per-patient attribution vectors.
-\item \textbf{Weighted aggregation.} A federated feature ranking is formed as:
+\item \textbf{Global Checkpoint Deployment:} The converged global FT-Transformer weights are distributed to each local node.
+\item \textbf{Local Feature Attribution:} Each node $k$ computes local feature attributions on its held-out test cohort $X_k \in \mathbb{R}^{n_k \times 225}$ using the \texttt{GradientExplainer} module from \texttt{shap} (v0.42.1). Attributions are evaluated against a 100-patient reference background sample $B \in \mathbb{R}^{100 \times 225}$ randomly drawn from the held-out test cohort (\texttt{B\_test\_model\_ready.csv}, \texttt{seed = 42}). In this simulation, this reference matrix was sampled centrally and distributed to all five nodes to provide an identical baseline for gradient integration, while local patient cohorts remained partitioned by care unit.
+\item \textbf{Summary Generation and Transmission:} Each node computes its mean absolute attribution vector $\overline{|\text{SHAP}|}_k \in \mathbb{R}^{225}$ across its local test patients:
 \begin{equation}
-\text{federated\_SHAP}_j = \sum_{k=1}^{5} \frac{n_k}{N} \cdot \overline{|\text{SHAP}|}_{k,j}
+\overline{|\text{SHAP}|}_{k,j} = \frac{1}{n_k} \sum_{i=1}^{n_k} |\phi_{i,j}^{(k)}|
+\end{equation}
+where $\phi_{i,j}^{(k)}$ is the Shapley attribution of feature $j$ for patient $i$ at node $k$. Each node transmits only this single 225-dimensional vector and its sample size $n_k$ to the orchestrator.
+\item \textbf{Federated Aggregation:} The aggregator computes the global federated importance ranking via sample-size weighting:
+\begin{equation}
+\text{federated\_SHAP}_j = \sum_{k=1}^{K} \left(\frac{n_k}{N}\right) \cdot \overline{|\text{SHAP}|}_{k,j}
 \label{eq:agg}
 \end{equation}
-where $n_k$ is node $k$'s sample size, $N = \sum_k n_k$, and $\overline{|\text{SHAP}|}_{k,j}$ is node $k$'s mean absolute SHAP value for feature $j$ -- the same sample-size weighting FedAvg itself uses for model updates, applied here to explanations instead.
-\item \textbf{Comparative evaluation.} Each node's own local ranking is compared against the federated aggregate via Spearman rank correlation, testing whether the combined explanation is representative of every node or is dominated by the largest one.
+where $n_k$ is node $k$'s training sample size, $N = \sum_k n_k = 2{,}530$, and $K = 5$. Weights are: General ICU ($0.4945$), SICU ($0.1980$), NICU ($0.1664$), PICU ($0.0842$), and CICU ($0.0569$), summing strictly to $1.0000$.
+\item \textbf{Agreement Auditing:} Ranking concordance is assessed via Spearman rank correlation ($\rho$), evaluating both self-inclusion concordance and leave-one-node-out (LOO) concordance.
 \end{enumerate}
 
-\subsection{Sensitivity Analysis Design}
-Robustness of both model performance and its explanations was assessed along three axes. The algorithm axis -- comparing FedAvg-trained and FedProx-trained global models' federated feature rankings via Spearman correlation and top-5 overlap -- was completed and is reported in Section \ref{sec:results}. Two further axes, cohort definition (the full intermediate ICU cohort versus the infection-restricted cohort used throughout this work) and alternate non-IID partitioning (e.g., by age band rather than care-unit type), were designed but not executed in time for this submission; see Section \ref{sec:discussion}.
+\subsubsection{Provenance and Execution Note.}
+Local attribution passes for CICU, NICU, PICU, and SICU were executed on August 12, 2026. Attributions for General ICU were completed on September 15, 2026, following a column-lookup correction in \texttt{fl\_shap\_config.py}. The complete five-node aggregation, sensitivity comparisons, and publication vector figures were generated on October 5, 2026, utilizing the identical global model checkpoints, feature set, and background configuration.
 
-\subsection{Privacy Boundary Analysis}
-Table \ref{tab:privacy} specifies precisely what data crosses a node boundary at explanation time, mirroring the guarantee FedAvg already provides at training time.
+\subsection{Privacy Boundary and Threat Model}
+Table \ref{tab:privacy} details the operational data boundary at explanation aggregation time.
 
 \begin{table}[t]
-\caption{Data flow and boundary guarantees at explanation time}
+\caption{Operational data boundary at explanation aggregation time}
 \label{tab:privacy}
 \centering
+\small
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{ll}
+\begin{tabular}{lp{4.8cm}}
 \toprule
-\textbf{Stays at the Local Node} & \textbf{Sent to Central Aggregator} \\
+\textbf{Data Location / Boundary} & \textbf{Information Exchanged or Retained} \\
 \midrule
-Raw patient records \& EHR traces & One mean $|$SHAP$|$ vector per node ($1\times225$) \\
-Individual per-patient SHAP vectors & Local node sample size $n_k$ \\
-Local background reference sample & (already public: care-unit designation \& count) \\
+Local Node Storage (On-Premise)   & Raw patient records \& clinical EHR traces \\
+                                   & Individual per-patient SHAP matrices \\
+                                   & Patient identifiers \& clinical timestamps \\
+\midrule
+Distributed to All Nodes          & Converged global model weights ($\mathbf{w}$) \\
+                                   & 100-row reference background matrix ($B$) \\
+\midrule
+Sent to Central Aggregator        & Cleartext mean $|$SHAP$|$ vector ($1\times 225$) \\
+                                   & Node sample size $n_k$ \& care-unit label \\
 \bottomrule
 \end{tabular}%
 }
 \end{table}
 
-\subsection{Computational Environment}
-All model architectures and federated pipelines were implemented using Python 3.10 and PyTorch 2.1 on an Apple Silicon computational environment. GradientSHAP attributions were computed using the Captum (v0.7.0) interpretability library. Feature preprocessing, cross-validation partitions, and discriminative performance metrics (AUROC, AUPRC, sensitivity, and specificity) were generated using Scikit-learn (v1.3.0), and rank correlation statistics (Spearman $\rho$ and two-tailed asymptotic $p$-values) were computed with SciPy (v1.11.0).
+\subsubsection{Threat Model and Privacy Boundaries.}
+We assume an honest-but-curious aggregator. Transmitting cleartext mean attribution vectors $\overline{|\text{SHAP}|}_k$ guarantees data residency for the explained test records, but does \emph{not} constitute a formal differential privacy (DP) guarantee. In small patient cohorts (such as CICU with $n=40$ test stays), unperturbed attribution summaries present an exploitable attack surface: as demonstrated by Shokri et al. \cite{shokri2021privacy} and Patel et al. \cite{patel2022model}, outlier patients with extreme physiological derangements can visibly distort average feature attributions, enabling attribute or membership inference. Furthermore, sharing a centralized 100-row background sample represents a departure from strict data residency. In this simulation, neither DP noise addition, vector clipping, nor cryptographic Secure Aggregation (SecAgg) \cite{bonawitz2017practical} was implemented. Claims of formal mathematical privacy are therefore withheld.
 
 % =======================================================================
 \section{Results}\label{sec:results}
 % =======================================================================
 
-\subsection{Federated Learning Performance}
-The overall classification performance across both federated regimes is summarized in Table \ref{tab:fl-performance}. Both models attain high discriminative capacity, with FedProx demonstrating slight gains across AUROC (0.9557 vs.\ 0.9451) and AUPRC (0.9096 vs.\ 0.8897).
+\subsection{Pooled Model Discrimination and Operating Points}
+Table \ref{tab:fl-performance} reports pooled classification and calibration performance on the 633-patient held-out test cohort. Both federated models achieve strong discrimination: FedProx attains an AUROC of $0.9557$ (95\% CI: $0.9385$--$0.9710$) and AUPRC of $0.9096$ (95\% CI: $0.8745$--$0.9385$), slightly outperforming FedAvg (AUROC $0.9451$, 95\% CI: $0.9256$--$0.9622$; AUPRC $0.8897$, 95\% CI: $0.8510$--$0.9230$). DeLong hypothesis testing indicates no statistically significant difference between FedAvg and FedProx ($z = -0.483, p = 0.629$). Both models exhibit low Brier calibration scores ($0.0969$ for FedAvg, $0.0792$ for FedProx).
 
-\begin{table}[t]
-\caption{Federated model classification performance on the test cohort}
+\begin{table*}[t]
+\caption{Pooled classification performance on held-out test cohort ($N = 633$)}
 \label{tab:fl-performance}
 \centering
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lcccc}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccccc}
 \toprule
-\textbf{Configuration} & \textbf{AUROC} & \textbf{AUPRC} & \textbf{Sensitivity} & \textbf{Specificity} \\
+\textbf{Configuration} & \textbf{AUROC [95\% CI]} & \textbf{AUPRC [95\% CI]} & \textbf{Brier} & \textbf{Operating Cutoff ($t^*$)} & \textbf{Sens.$^\dagger$} & \textbf{Spec.$^\dagger$} & \textbf{PPV / NPV$^\dagger$} \\
 \midrule
-FedAvg (50 rounds)     & 0.9451 & 0.8897 & 0.8960 & 0.8609 \\
-FedProx ($\mu=0.01$)   & 0.9557 & 0.9096 & 0.9017 & 0.8435 \\
+FedAvg (50 rounds)     & 0.9451 [0.9256, 0.9622] & 0.8897 [0.8510, 0.9230] & 0.0969 & 0.00253383 & 89.60\% (155/173) & 86.09\% (396/460) & 70.78\% / 95.65\% \\
+FedProx ($\mu=0.01$)   & 0.9557 [0.9385, 0.9710] & 0.9096 [0.8745, 0.9385] & 0.0792 & 0.00140358$^*$ & 90.17\% (156/173) & 84.35\% (388/460) & 68.42\% / 95.80\% \\
 \bottomrule
 \end{tabular}%
 }
-\end{table}
+\vspace{1mm}
+\begin{minipage}{\textwidth}
+\scriptsize $^\dagger$Disclosure: Decision thresholds ($t^* = 0.00253383$ for FedAvg, $0.0014035846$ for FedProx) were derived post-hoc by sweeping the held-out test set itself to target approximately 90\% sensitivity. Reported thresholded metrics (Sens., Spec., PPV, NPV) represent descriptive operating points rather than prospectively validated decision criteria.\\
+$^*$Reproducibility note: Evaluating the exact full-precision threshold $t^* = 0.0014035846$ yields $\text{TP} = 156, \text{FP} = 72, \text{FN} = 17, \text{TN} = 388$, confirming sensitivity of $90.17\%$ and specificity of $84.35\%$. Truncating to 7 decimal places ($0.0014036$) flips a borderline positive patient ($\hat{p} = 0.00140358$) to false negative, reducing sensitivity to $89.60\%$.
+\end{minipage}
+\end{table*}
 
-\subsection{Node-Level SHAP Rankings}
-Figure \ref{fig:heatmap} shows, for each of the five nodes, mean absolute SHAP value across the top federated features. \texttt{lactate\_max} is the unanimous top-ranked feature at every one of the five nodes, the only feature with this property; \texttt{platelets\_min} and \texttt{ddimer\_first} are consistently ranked second and third across most nodes as well.
+\subsection{Node-Level SHAP Rankings and Target-Overlap Audit}
+Figure \ref{fig:heatmap} displays mean absolute SHAP values for top federated features across each care-unit node under FedAvg. \texttt{lactate\_max} is the unanimous top feature across all five nodes, followed consistently by \texttt{platelets\_min}, \texttt{ddimer\_first}, and \texttt{inr\_max}.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_node_shap_heatmap.pdf}
-\caption{Per-node mean $|$SHAP$|$ across the top federated clinical features.}
-\Description{Heatmap of per-node mean absolute SHAP values for top federated features showing unanimous top ranking of lactate max across all five clinical nodes.}
+\caption{Per-node mean $|$SHAP$|$ across top federated clinical features (FedAvg).}
+\Description{Heatmap displaying mean absolute SHAP values across five clinical ICU nodes, showing lactate max unanimously ranked first across all nodes, followed by platelets min, ddimer first, and inr max.}
 \label{fig:heatmap}
 \end{figure}
 
-\subsection{Node vs. Federated Agreement}
-Table \ref{tab:node-agreement} and Figure \ref{fig:agreement} present the concordance between each local node's feature attributions and the aggregated federated ranking.
+\subsubsection{Audit of Feature Prominence.}
+In intensive care medicine, serum lactate is an established marker of hypoperfusion. However, auditing the labeling pipeline reveals an essential finding: under the 2024 Phoenix Consensus Criteria \cite{schlapbach2024phoenix,sanchezpinto2024phoenix}, \textbf{serum lactate directly defines the cardiovascular dysfunction score} ($\ge 5.0$ mmol/L = 1 pt, $\ge 11.0$ mmol/L = 2 pts). Similarly, the coagulation dysfunction subscore is explicitly triggered by platelet count ($<100 \times 10^3/\mu\text{L}$), INR ($>1.3$), and D-dimer ($>2.0$ mg/L). Because predictor features and Phoenix labels were derived from the identical initial 24-hour observation window, the prominence of \texttt{lactate\_max}, \texttt{platelets\_min}, and \texttt{inr\_max} represents \textbf{diagnostic co-occurrence and retrospective criteria reconstruction} rather than anticipatory early forecasting. This confirms that the neural network accurately learns the diagnostic criteria, but cautions against interpreting the model as an early-warning forecasting tool.
+
+\subsection{Node vs.\ Federated Ranking Concordance}
+Table \ref{tab:node-agreement} and Figure \ref{fig:agreement} present ranking concordance across all five nodes.
 
 \begin{table}[t]
-\caption{Spearman rank correlation, node ranking vs.\ federated aggregate (FedAvg)}
+\caption{Spearman rank correlation ($\rho$): node ranking vs.\ federated aggregate}
 \label{tab:node-agreement}
 \centering
-\begin{tabular}{lcc}
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccc}
 \toprule
-\textbf{Node} & \textbf{Spearman $\rho$} & \textbf{$p$-value} \\
+\textbf{Node} & \textbf{Data Fraction} & \textbf{Self-Inclusion $\rho$ [95\% CI]} & \textbf{Leave-One-Out (LOO) $\rho$} \\
 \midrule
-CICU    & 0.9297 & $1.10\times10^{-98}$  \\
-NICU    & 0.9498 & $1.77\times10^{-114}$ \\
-PICU    & 0.9739 & $1.47\times10^{-145}$ \\
-SICU    & 0.9661 & $4.16\times10^{-133}$ \\
-General & 0.9704 & $1.48\times10^{-139}$ \\
+CICU        & 5.7\%  & 0.9297 [0.9095, 0.9455] & 0.9211 \\
+NICU        & 16.6\% & 0.9498 [0.9352, 0.9612] & 0.9276 \\
+SICU        & 19.8\% & 0.9661 [0.9561, 0.9738] & 0.9469 \\
+General ICU & 49.4\% & 0.9704 [0.9617, 0.9772] & 0.9118 \\
+PICU        & 8.4\%  & 0.9739 [0.9662, 0.9799] & 0.9669 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
+\vspace{1mm}
+\begin{minipage}{\columnwidth}
+\scriptsize Note: Self-inclusion evaluates node ranking against the full 5-node aggregate. Leave-one-out (LOO) evaluates node ranking against the aggregate of the remaining four nodes, providing descriptive evidence of ranking concordance under the evaluated partition.
+\end{minipage}
 \end{table}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_node_agreement.pdf}
 \caption{Spearman rank correlation of each node's local SHAP ranking against the federated aggregate.}
-\Description{Bar chart showing Spearman rank correlation between local node SHAP rankings and the federated aggregate ranging from 0.930 to 0.974 across all nodes.}
+\Description{Bar chart showing Spearman rank correlation between local node SHAP rankings and the federated aggregate ranging from 0.9297 to 0.9739 across all nodes.}
 \label{fig:agreement}
 \end{figure}
 
-Every node correlates strongly with the federated aggregate, with Spearman $\rho$ ranging narrowly from 0.930 to 0.974. Notably, General ICU -- the dominant node at 49.4\% of all training data -- does \emph{not} show the highest agreement ($\rho = 0.970$, the second-highest of the five); that distinction belongs to PICU ($\rho = 0.974$). The \emph{lowest} agreement instead belongs to CICU, the smallest node at only 5.7\% of training data ($\rho = 0.930$), though even this minimum remains high in absolute terms. This is the opposite of the pattern that would indicate the federated aggregate is simply reproducing the dominant node's reasoning: if that were the case, General ICU's agreement would be near-perfect while the smaller nodes trailed well behind. Instead, all five nodes -- including both the largest and the smallest -- cluster within a 0.044 range of each other, suggesting the federated model has learned a reasoning pattern that generalizes across care-unit types rather than one dominated by whichever node contributed the most training data.
+Local rankings correlate strongly with the global aggregate (self-inclusion $\rho \in [0.9297, 0.9739]$). To address the methodological concern that self-inclusion inflates agreement for dominant contributors, we computed leave-one-node-out (LOO) correlations by aggregating the remaining four nodes for each evaluation. As reported in Table \ref{tab:node-agreement}, when the dominant General ICU node (49.4\% of training data) is completely excluded, the remaining four nodes still correlate with General ICU at $\rho = 0.9118$. All five units maintain descriptive LOO correlations $\rho > 0.91$, providing evidence of ranking concordance under the evaluated partition rather than an artifact of dominant contributor weight.
 
-\subsection{Sensitivity Analysis: FedAvg vs.\ FedProx}
-Figure \ref{fig:algo-compare} compares the federated feature ranking produced under each optimization algorithm. The two algorithms agree on 4 of their top 5 federated features -- \texttt{lactate\_max}, \texttt{platelets\_min}, \texttt{ddimer\_mean}, and \texttt{inr\_max} -- with an overall Spearman rank correlation across all 225 features of $\rho = 0.689$ ($p = 5.36\times10^{-33}$). While lower than the per-node agreement reported above, this still represents a strong positive correlation and confirms that the feature-importance pattern driving Section \ref{sec:results}'s findings is not an artifact of which federated optimizer was used to train the underlying model.
+\subsubsection{Clinical Divergence in Cardiac ICU.}
+While General ICU, PICU, and SICU share 100\% (5/5) of their top-5 features with the aggregate, CICU shares only 60\% (3/5). At CICU, \texttt{pt\_max} ranks 2nd (mean $|$SHAP$| = 1.2091$) and \texttt{had\_surgery\_flag} ranks 5th ($0.5023$), displacing \texttt{ddimer\_first}. We hypothesize that this divergence plausibly reflects clinical factors characteristic of pediatric cardiac care, such as postcardiac surgical interventions and cardiopulmonary bypass-induced coagulopathies (captured by PT/INR), contrasting with medical sepsis where microvascular thrombosis (D-dimer) is more prominent. We emphasize that these are clinical hypotheses rather than mechanisms demonstrated experimentally by this study.
+
+\subsubsection{Aggregation Rationale: Uniform vs.\ Sample Weighting.}
+Comparing sample-size weighting ($w_k = n_k / N$) against uniform institutional weighting ($w_k = 1/5$) across all 225 features yields a Spearman rank correlation of $\rho = 0.9929$ (95\% CI: $[0.9908, 0.9945]$) for FedAvg and $\rho = 0.9955$ for FedProx, with 100\% top-5 feature overlap. This demonstrates that under the evaluated distribution, feature importance rankings are robust to whether nodes are weighted by patient census or treated as equal institutional peers.
+
+\subsection{Algorithm Sensitivity: FedAvg vs.\ FedProx}
+Figure \ref{fig:algo-compare} compares federated feature importance under FedAvg versus FedProx. Across all 225 features, the algorithms achieve an overall rank correlation of $\rho = 0.6889$ (95\% CI: $[0.6134, 0.7519]$). Top-$k$ overlap analysis demonstrates strong consistency among dominant predictors: 80\% (4/5) in top-5 (\texttt{lactate\_max}, \texttt{platelets\_min}, \texttt{ddimer\_mean}, \texttt{inr\_max}), 70\% (7/10) in top-10, and 60\% (12/20) in top-20.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_fedavg_vs_fedprox.pdf}
-\caption{Comparison of federated SHAP rankings under FedAvg versus FedProx.}
-\Description{Scatter plot comparing federated feature rankings under FedAvg versus FedProx, showing a strong positive Spearman rank correlation of 0.689 and high overlap among top features.}
+\caption{Comparison of federated SHAP feature importance under FedAvg versus FedProx.}
+\Description{Scatter plot comparing federated feature importance under FedAvg versus FedProx, showing a Spearman rank correlation of 0.6889 with 80\% overlap in top-5 features.}
 \label{fig:algo-compare}
 \end{figure}
 
 % =======================================================================
-\section{Discussion}\label{sec:discussion}
+\section{Limitations}\label{sec:limitations}
 % =======================================================================
 
-The central empirical question this paper set out to answer was whether a federated model's explanation is trustworthy at every participating site, or only at the site that happened to contribute the most training data. The results in Section \ref{sec:results} answer this directly: node-level agreement with the federated aggregate is uniformly high (Spearman $\rho$ between 0.930 and 0.974) and does not track node size. If the federated SHAP aggregate were simply amplifying General ICU's reasoning, General ICU's own ranking should align with it almost perfectly while CICU, NICU, SICU, and PICU trailed visibly behind; instead, General ICU sits in the middle of the pack, and the smallest node, CICU, shows only a modestly lower -- still high -- correlation. This is a reassuring result for multi-site federated deployment: it suggests that aggregating SHAP values with the same sample-size weighting used for model updates does not inherit a bias toward the largest contributor's local feature distribution, at least under the care-unit-based non-IID partition evaluated here.
-
-\texttt{lactate\_max} being the unanimous top feature across all five nodes reinforces this reading. Lactate is a direct marker of tissue hypoperfusion and a clinically well-established early indicator of septic shock; its consistent dominance across structurally different care units (a Cardiac ICU population and a Neonatal ICU population, for instance, have very different baseline physiology) is consistent with a model that has learned a genuine, generalizable physiological signal rather than a node-specific correlation. The FedAvg/FedProx agreement in Section \ref{sec:results} (4 of 5 top features shared, $\rho = 0.689$) provides a second, independent line of evidence for the same conclusion: even changing the federated optimization algorithm entirely leaves the core explanation largely intact.
-
-These findings should be read as applying to the single sensitivity axis completed in this work -- the choice of federated algorithm -- and not yet to variation in cohort definition or node partitioning strategy, both of which remain open questions discussed below.
-
-\subsection{Limitations and Future Work}\label{subsec:limitations}
-The federated learning simulation partitions a single database by care-unit designation rather than drawing on genuinely separate institutional data sources; results here establish a lower bound on the practical cost of federation and of federated explainability, not a guarantee that a real multi-hospital deployment would behave identically. Of the three sensitivity axes designed for this work, only the algorithm-choice axis (FedAvg versus FedProx) was completed in time for this submission. The cohort-definition axis (re-running the full pipeline on the complete intermediate ICU cohort rather than the infection-restricted cohort used throughout) and the alternate-partition axis (grouping nodes by a criterion other than care-unit type, such as age band) were designed but not executed, and remain the most direct next steps for strengthening the robustness claims made in Section \ref{sec:discussion}.
+Several scientific limitations must be acknowledged:
+\begin{enumerate}
+\item \textbf{Single-Center Care-Unit Simulation:} The five nodes are care-unit partitions of a single clinical database (PIC, Zhejiang University) rather than genuinely autonomous multi-hospital networks. This setup does not capture inter-institutional EHR divergence, coding variations, or regional clinical protocols.
+\item \textbf{Diagnostic Co-occurrence and Windowing:} Predictor features and Phoenix outcome labels were computed over the identical first-24-hour observation window. Because Phoenix cardiovascular and coagulation criteria directly score lactate, platelets, and INR, the model performs diagnostic phenotyping rather than forward-looking early forecasting.
+\item \textbf{Post-Hoc Decision Threshold Selection:} Operating cutoffs ($t^* \approx 0.00253$ and $t^* \approx 0.00140$; exact cutoffs in Table~\ref{tab:fl-performance}) were selected by sweeping the held-out test set itself. The resulting sensitivity and specificity represent descriptive operating points, not prospectively validated decision thresholds.
+\item \textbf{Reference SHAP Background Workflow:} The reference background was sampled from the held-out test distribution ($n=100$) and shared centrally across nodes, rather than generated through decentralized privacy-preserving protocols.
+\item \textbf{Absence of Formal Differential Privacy:} Transmitting cleartext mean attribution vectors preserves data residency for explained test records but lacks mathematical differential privacy or secure aggregation. Attribute inference risks exist for small cohorts ($n=40$).
+\item \textbf{Centralized Preprocessing:} Standardizing continuous variables using a pooled training \texttt{StandardScaler} represents a centralized simulation shortcut.
+\item \textbf{Unexecuted Sensitivity Axes:} Of the three designed sensitivity axes, only the algorithm-choice axis was executed. Evaluating alternative cohort definitions and Dirichlet partitions remains unexecuted future work.
+\item \textbf{Lack of Prospective Clinician Review:} We did not assess whether decentralized explanations improve bedside clinical decision-making or physician trust in practice.
+\end{enumerate}
 
 % =======================================================================
 \section{Conclusion}\label{sec:concl}
 % =======================================================================
 
-We introduced an interpretable federated SHAP architecture tailored for pediatric sepsis risk prediction, computing Shapley attributions locally at each of five simulated, non-IID ICU-type nodes and aggregating them with the same sample-size weighting used for federated model updates, without any node's raw patient data or per-patient attributions ever leaving that node. Across all five nodes, local SHAP rankings correlated strongly with the federated aggregate (Spearman $\rho$ between 0.930 and 0.974), with no evidence that the dominant node (49.4\% of training data) disproportionately shaped the aggregate explanation relative to the smallest node (5.7\%). \texttt{lactate\_max} emerged as the unanimous top feature at every node, and this finding was further confirmed as robust to the choice of federated optimization algorithm, with FedAvg and FedProx agreeing on 4 of their top 5 federated features. Together, these results suggest that per-node federated explainability is both practical to compute and trustworthy across heterogeneous clinical sites, at least along the one sensitivity axis evaluated to date. Extending this evaluation to cohort definition and alternate node partitioning, and validating the approach on genuinely separate institutional data rather than a simulated partition of a single database, are the natural next steps toward a deployable system.
+We evaluated a decentralized federated SHAP architecture for pediatric sepsis risk prediction, computing feature attributions locally across five simulated care-unit nodes and aggregating them centrally using sample-size weighting. Across severe volume imbalance (5.7\% to 49.4\% of training data), local care-unit feature rankings correlate strongly with the global aggregate ($\rho = 0.9297$--$0.9739$; leave-one-out $\rho = 0.9118$--$0.9669$). Sample-size weighting achieves near-identity with uniform node weighting ($\rho = 0.9929$), and FedAvg and FedProx share 80\% of their top-5 features ($\rho = 0.6889$). Auditing feature salience confirmed that while \texttt{lactate\_max} is unanimously prominent, its prominence reflects diagnostic co-occurrence within the first-24-hour Phoenix scoring window. These findings indicate that federated attribution aggregation is computationally consistent under care-unit volume imbalance, while underscoring that prospective multi-center validation, formal differential privacy, and temporal landmark windowing remain essential prerequisites for safe clinical deployment.
+
+% =======================================================================
+\begin{acks}
+The investigators gratefully acknowledge the PhysioNet research consortium and the clinical curation teams responsible for hosting and maintaining the PIC database.
+\end{acks}
 
 % =======================================================================
 \section*{GenAI Usage Disclosure}
