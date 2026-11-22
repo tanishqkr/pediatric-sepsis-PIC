@@ -2,9 +2,8 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\citation{schlapbach2024phoenix}
-\citation{sanchezpinto2024phoenix}
 \citation{goldstein2005sirs}
+\citation{schlapbach2024phoenix,sanchezpinto2024phoenix}
 \citation{mcmahan2017fedavg,li2020fedprox}
 \citation{athukorala2026explainable}
 \citation{lundberg2017shap}
@@ -28,7 +27,6 @@
 \citation{patel2022model}
 \citation{zeng2020pic}
 \citation{schlapbach2024phoenix,sanchezpinto2024phoenix}
-\citation{gorishniy2021revisiting}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{section.2}\protected@file@percent }
 \newlabel{sec:litreview}{{II}{2}{Related Work}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Pediatric Sepsis Prediction and Phoenix Criteria}{2}{subsection.2.1}\protected@file@percent }
@@ -38,6 +36,7 @@
 \newlabel{sec:method}{{III}{2}{Methodology}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Dataset, Care-Unit Partitioning, and Preprocessing}{2}{subsection.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-A}1}Preprocessing Assumption.}{2}{subsubsection.3.1.1}\protected@file@percent }
+\citation{gorishniy2021revisiting}
 \citation{shokri2021privacy}
 \citation{patel2022model}
 \citation{bonawitz2017practical}
@@ -50,23 +49,23 @@
 \newlabel{eq:agg}{{2}{3}{Federated SHAP Attribution Pipeline}{equation.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-C}1}Provenance and Execution Note.}{3}{subsubsection.3.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Privacy Boundary and Threat Model}{3}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-D}1}Threat Model and Privacy Boundaries.}{3}{subsubsection.3.4.1}\protected@file@percent }
 \citation{schlapbach2024phoenix,sanchezpinto2024phoenix}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Per-node mean $|$SHAP$|$ across top federated clinical features (FedAvg).}}{4}{figure.1}\protected@file@percent }
 \newlabel{fig:heatmap}{{1}{4}{Per-node mean $|$SHAP$|$ across top federated clinical features (FedAvg)}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {III-D}1}Threat Model and Privacy Boundaries.}{4}{subsubsection.3.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Results}{4}{section.4}\protected@file@percent }
 \newlabel{sec:results}{{IV}{4}{Results}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Pooled Model Discrimination and Operating Points}{4}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Node-Level SHAP Rankings and Target-Overlap Audit}{4}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}1}Audit of Feature Prominence.}{4}{subsubsection.4.2.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Spearman rank correlation of each node's local SHAP ranking against the federated aggregate.}}{4}{figure.2}\protected@file@percent }
 \newlabel{fig:agreement}{{2}{4}{Spearman rank correlation of each node's local SHAP ranking against the federated aggregate}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-B}1}Audit of Feature Prominence.}{4}{subsubsection.4.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Node vs.\ Federated Ranking Concordance}{4}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}1}Clinical Divergence in Cardiac ICU.}{4}{subsubsection.4.3.1}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Pooled classification performance on held-out test cohort ($N = 633$)}}{5}{table.3}\protected@file@percent }
 \newlabel{tab:fl-performance}{{III}{5}{Pooled classification performance on held-out test cohort ($N = 633$)}{table.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Spearman rank correlation ($\rho $): node ranking vs.\ federated aggregate}}{5}{table.4}\protected@file@percent }
-\newlabel{tab:node-agreement}{{IV}{5}{Spearman rank correlation ($\rho $): node ranking vs.\ federated aggregate}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Spearman rank correlations ($\rho $) between local node and federated feature rankings}}{5}{table.4}\protected@file@percent }
+\newlabel{tab:node-agreement}{{IV}{5}{Spearman rank correlations ($\rho $) between local node and federated feature rankings}{table.4}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {IV-C}2}Aggregation Rationale: Uniform vs.\ Sample Weighting.}{5}{subsubsection.4.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Algorithm Sensitivity: FedAvg vs.\ FedProx}{5}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {V}Limitations}{5}{section.5}\protected@file@percent }
@@ -75,9 +74,9 @@
 \newlabel{fig:algo-compare}{{3}{5}{Comparison of federated SHAP feature importance under FedAvg versus FedProx}{figure.3}{}}
 \bibstyle{IEEEtran}
 \bibdata{references}
-\bibcite{schlapbach2024phoenix}{1}
-\bibcite{sanchezpinto2024phoenix}{2}
-\bibcite{goldstein2005sirs}{3}
+\bibcite{goldstein2005sirs}{1}
+\bibcite{schlapbach2024phoenix}{2}
+\bibcite{sanchezpinto2024phoenix}{3}
 \bibcite{mcmahan2017fedavg}{4}
 \bibcite{li2020fedprox}{5}
 \bibcite{athukorala2026explainable}{6}
