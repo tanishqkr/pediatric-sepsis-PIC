@@ -20,14 +20,14 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{goldstein2005sirs}
+B.~Goldstein, B.~Giroir, and A.~Randolph, ``International pediatric sepsis consensus conference: Definitions for sepsis and organ dysfunction in pediatrics,'' \emph{Pediatric Critical Care Medicine}, vol.~6, no.~1, pp. 2--8, 2005.
+
 \bibitem{schlapbach2024phoenix}
 L.~J. Schlapbach, R.~S. Watson, L.~R. Sorce, A.~C. Argent, K.~Menon, M.~W. Hall \emph{et~al.}, ``International consensus criteria for pediatric sepsis and septic shock,'' \emph{JAMA}, vol. 331, no.~8, pp. 665--674, 2024.
 
 \bibitem{sanchezpinto2024phoenix}
 L.~N. Sanchez-Pinto, T.~D. Bennett, P.~E. DeWitt, S.~Russell, M.~N. Rebull, B.~Martin \emph{et~al.}, ``Development and validation of the {Phoenix} criteria for pediatric sepsis and septic shock,'' \emph{JAMA}, vol. 331, no.~8, pp. 675--686, 2024.
-
-\bibitem{goldstein2005sirs}
-B.~Goldstein, B.~Giroir, and A.~Randolph, ``International pediatric sepsis consensus conference: Definitions for sepsis and organ dysfunction in pediatrics,'' \emph{Pediatric Critical Care Medicine}, vol.~6, no.~1, pp. 2--8, 2005.
 
 \bibitem{mcmahan2017fedavg}
 \BIBentryALTinterwordspacing
